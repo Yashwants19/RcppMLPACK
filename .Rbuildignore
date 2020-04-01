@@ -1,0 +1,8 @@
+.travis.yml
+.git
+^.*\.Rproj$
+^\.Rproj\.user$
+^m4
+^.editorconfig$
+.*\.tar\.gz$
+^\.travis\.yml$

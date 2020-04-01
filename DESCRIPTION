@@ -1,0 +1,24 @@
+Package: RcppMLPACK
+Type: Package
+Title: 'Rcpp' Integration for the 'MLPACK' Library
+Version: 3.2.2
+Date: 2020-04-01
+Author: Yashwant Singh
+Maintainer: Yashwant Singh <Yashwantsingh.sngh@gmail.com>
+Description: 'MLPACK' is an intuitive, fast, scalable C++ machine learning
+   library, meant to be a machine learning analog to 'LAPACK'. It
+   aims to implement a wide array of machine learning methods
+   and function as a Swiss army knife for machine learning
+   researchers: 'MLPACK' is available from <http://www.mlpack.org/>;
+   sources are included in the package.
+SystemRequirements: A C++11 compiler. Versions 4.8.*, 4.9.* or later of GCC will be fine. 
+License: GPL (>= 2)
+Depends: R (>= 3.2.0)
+Imports: Rcpp (>= 0.12.4)
+LinkingTo: Rcpp, RcppArmadillo, BH
+Suggests: 
+    testthat (>= 2.1.0)
+URL: http://www.mlpack.org/
+BugReports: https://github.com/Yashwants19/RcppMLPACK/issues
+RoxygenNote: 7.1.0
+Encoding: UTF-8
