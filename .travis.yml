@@ -7,6 +7,3 @@ matrix:
   - r: 3.5
   - r: 3.4
     env: R_REMOTES_NO_ERRORS_FROM_WARNINGS=true
-  include:
-    before_install:
-      - R -e 'install.packages("BH")'

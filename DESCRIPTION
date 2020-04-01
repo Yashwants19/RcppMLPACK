@@ -14,7 +14,7 @@ Description: 'MLPACK' is an intuitive, fast, scalable C++ machine learning
 SystemRequirements: A C++11 compiler. Versions 4.8.*, 4.9.* or later of GCC will be fine.
 License: GPL (>= 2)
 Depends: R (>= 3.2.0)
-Imports: Rcpp (>= 0.12.4)
+Imports: Rcpp (>= 0.12.4), BH
 LinkingTo: Rcpp, RcppArmadillo, BH
 Suggests:
     testthat (>= 2.1.0)
