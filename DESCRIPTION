@@ -11,14 +11,15 @@ Description: 'MLPACK' is an intuitive, fast, scalable C++ machine learning
    and function as a Swiss army knife for machine learning
    researchers: 'MLPACK' is available from <http://www.mlpack.org/>;
    sources are included in the package.
-SystemRequirements: A C++11 compiler. Versions 4.8.*, 4.9.* or later of GCC will be fine. 
+SystemRequirements: A C++11 compiler. Versions 4.8.*, 4.9.* or later of GCC will be fine.
 License: GPL (>= 2)
 Depends: R (>= 3.2.0)
 Imports: Rcpp (>= 0.12.4)
 LinkingTo: Rcpp, RcppArmadillo, BH
-Suggests: 
+Suggests:
+    BH,
     testthat (>= 2.1.0)
 URL: http://www.mlpack.org/
-BugReports: https://github.com/Yashwants19/RcppMLPACK/issues
+BugReports: https://github.com/Yashwants19/RcppMLPACK1/issues
 RoxygenNote: 7.1.0
 Encoding: UTF-8
