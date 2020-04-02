@@ -9,4 +9,5 @@ matrix:
     env: R_REMOTES_NO_ERRORS_FROM_WARNINGS=true
   include:
     before_install:
+      - R -e 'install.packages("devtools")'
       - R -e 'devtools::install_github("Yashwants19/bh")'
