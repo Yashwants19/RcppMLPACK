@@ -6,7 +6,7 @@
 using namespace mlpack;
 using namespace Rcpp;
 
- // [[Rcpp::export()]]
+ // [[Rcpp::export]]
  SEXP CLI_RestoreSettings(SEXP programName)
  {
    CLI::RestoreSettings(Rcpp::as<std::string>(programName));
