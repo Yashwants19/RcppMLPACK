@@ -13,6 +13,7 @@
 #include <boost/program_options.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <iostream>
+#include <Rcpp.h>
 
 #include "cli.hpp"
 #include "log.hpp"
@@ -58,7 +59,7 @@ void CLI::Add(ParamData&& data)
   #endif
 
   // Temporary outstream object for detecting duplicate identifiers.
-  util::PrefixedOutStream outstr(std::cerr,
+  util::PrefixedOutStream outstr(Rcpp::Rcerr,
         BASH_RED "[FATAL] " BASH_CLEAR, false, true /* fatal */);
 
   #undef BASH_RED

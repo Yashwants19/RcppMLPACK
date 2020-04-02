@@ -27,8 +27,6 @@
 
 #include <Rcpp.h>
 #include <mlpack/core/util/cli.cpp>
-#include <mlpack/bindings/cli/print_help.cpp>
-#include <mlpack/bindings/tests/clean_memory.cpp>
 #include <mlpack/core/util/backtrace.cpp>
 #include <mlpack/core/util/log.cpp>
 #include <mlpack/core/util/prefixedoutstream.cpp>

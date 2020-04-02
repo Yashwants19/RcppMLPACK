@@ -75,27 +75,27 @@ g++: fatal error: no input files
 compilation terminated.
 configure:1914: $? = 1
 configure:1934: checking whether the C++ compiler works
-configure:1956: g++ -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g   conftest.cpp  >&5
+configure:1956: g++ -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -UNDEBUG -Wall -pedantic -g -O0 -fdiagnostics-color=always   conftest.cpp  >&5
 configure:1960: $? = 0
 configure:2008: result: yes
 configure:2011: checking for C++ compiler default output file name
 configure:2013: result: a.out
 configure:2019: checking for suffix of executables
-configure:2026: g++ -o conftest -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g   conftest.cpp  >&5
+configure:2026: g++ -o conftest -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -UNDEBUG -Wall -pedantic -g -O0 -fdiagnostics-color=always   conftest.cpp  >&5
 configure:2030: $? = 0
 configure:2052: result: 
 configure:2074: checking whether we are cross compiling
-configure:2082: g++ -o conftest -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g   conftest.cpp  >&5
+configure:2082: g++ -o conftest -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -UNDEBUG -Wall -pedantic -g -O0 -fdiagnostics-color=always   conftest.cpp  >&5
 configure:2086: $? = 0
 configure:2093: ./conftest
 configure:2097: $? = 0
 configure:2112: result: no
 configure:2117: checking for suffix of object files
-configure:2139: g++ -c -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  conftest.cpp >&5
+configure:2139: g++ -c -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -UNDEBUG -Wall -pedantic -g -O0 -fdiagnostics-color=always  conftest.cpp >&5
 configure:2143: $? = 0
 configure:2164: result: o
 configure:2168: checking whether we are using the GNU C++ compiler
-configure:2187: g++ -c -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  conftest.cpp >&5
+configure:2187: g++ -c -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -UNDEBUG -Wall -pedantic -g -O0 -fdiagnostics-color=always  conftest.cpp >&5
 configure:2187: $? = 0
 configure:2196: result: yes
 configure:2205: checking whether g++ accepts -g
@@ -206,7 +206,7 @@ ac_cv_prog_cxx_g=yes
 CPPFLAGS=''
 CXX='g++'
 CXXCPP='g++ -E'
-CXXFLAGS='-g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g'
+CXXFLAGS='-g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -UNDEBUG -Wall -pedantic -g -O0 -fdiagnostics-color=always'
 DEFS=''
 ECHO_C=''
 ECHO_N='-n'

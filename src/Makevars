@@ -2,8 +2,6 @@ CXX_STD = CXX11
 
 MLPACKOBJECTS=\
 ./mlpack/core/util/cli.o \
-./mlpack/bindings/cli/print_help.o \
-./mlpack/bindings/tests/clean_memory.o \
 ./mlpack/core/util/backtrace.o \
 ./mlpack/core/util/log.o \
 ./mlpack/core/util/prefixedoutstream.o \
