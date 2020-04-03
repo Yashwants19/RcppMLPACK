@@ -9,7 +9,8 @@ matrix:
       - R -e 'devtools::install_github("Yashwants19/bh")'
 
   - os: osx
-    osx_image: xcode9.4
+    latex: false
+    r_build_args: --no-build-vignettes  ## WORKAROUND: multirow.sty missing
     r_check_args: --as-cran --no-build-vignettes --no-vignettes
     before_install:
       - R -e 'install.packages("devtools")'
