@@ -15,10 +15,6 @@
     #endif
 #endif
 
-#if defined(__MINGW32__)
-#define ARMA_DONT_USE_CXX11
-#endif
-
 // Rcpp has its own stream object which cooperates more nicely with R's i/o
 // And as of Armadillo 2.4.3, we can use this stream object as well
 //
