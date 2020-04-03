@@ -1,10 +1,18 @@
 #ifndef RcppMLPACK__RcppMLPACK__h
 #define RcppMLPACK__RcppMLPACK__h
 
-#if _WIN64
-#ifndef ARMA_64BIT_WORD
-#define ARMA_64BIT_WORD
-#endif
+#if defined(_MSC_VER)
+    #ifdef _WIN64
+        #define ARMA_64BIT_WORD
+        #ifdef ARMA_32BIT_WORD
+            #undef ARMA_32BIT_WORD
+        #endif
+    #else
+        #define ARMA_32BIT_WORD
+        #ifdef ARMA_64BIT_WORD
+            #undef ARMA_64BIT_WORD
+        #endif
+    #endif
 #endif
 
 #if defined(__MINGW32__)
