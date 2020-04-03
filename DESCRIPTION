@@ -16,7 +16,9 @@ License: GPL (>= 2)
 Depends: R (>= 3.2.0)
 Imports: Rcpp (>= 0.12.4)
 LinkingTo: Rcpp, RcppArmadillo, BH
+VignetteBuilder: knitr
 Suggests:
+    knitr,
     testthat (>= 2.1.0)
 URL: http://www.mlpack.org/
 BugReports: https://github.com/Yashwants19/RcppMLPACK1/issues
