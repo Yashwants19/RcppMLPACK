@@ -9,6 +9,7 @@
 
 #include "strip_type.hpp"
 #include "get_julia_type.hpp"
+#include <Rcpp.h>
 
 namespace mlpack {
 namespace bindings {
@@ -36,7 +37,7 @@ void PrintInputProcessing(
     // This gives us code like the following:
     //
     // CLISetParam("<param_name>", <paramName>)
-    std::cout << "  CLISetParam(\"" << d.name << "\", " << juliaName << ")"
+    Rcpp::Rcout << "  CLISetParam(\"" << d.name << "\", " << juliaName << ")"
         << std::endl;
   }
   else
@@ -46,10 +47,10 @@ void PrintInputProcessing(
     // if !ismissing(<param_name>)
     //   CLISetParam("<param_name>", convert(<type>, <param_name>))
     // end
-    std::cout << "  if !ismissing(" << juliaName << ")" << std::endl;
-    std::cout << "    CLISetParam(\"" << d.name << "\", convert("
+    Rcpp::Rcout << "  if !ismissing(" << juliaName << ")" << std::endl;
+    Rcpp::Rcout << "    CLISetParam(\"" << d.name << "\", convert("
         << GetJuliaType<T>() << ", " << juliaName << "))" << std::endl;
-    std::cout << "  end" << std::endl;
+    Rcpp::Rcout << "  end" << std::endl;
   }
 }
 
@@ -71,7 +72,7 @@ void PrintInputProcessing(
   size_t extraIndent = 0;
   if (!d.required)
   {
-    std::cout << "  if !ismissing(" << juliaName << ")" << std::endl;
+    Rcpp::Rcout << "  if !ismissing(" << juliaName << ")" << std::endl;
     extraIndent = 2;
   }
 
@@ -97,12 +98,12 @@ void PrintInputProcessing(
   }
 
   // Now print the CLISetParam call.
-  std::cout << indent << "CLISetParam" << uChar << matTypeModifier << "(\""
+  Rcpp::Rcout << indent << "CLISetParam" << uChar << matTypeModifier << "(\""
       << d.name << "\", " << juliaName << extra << ")" << std::endl;
 
   if (!d.required)
   {
-    std::cout << "  end" << std::endl;
+    Rcpp::Rcout << "  end" << std::endl;
   }
 }
 
@@ -125,20 +126,20 @@ void PrintInputProcessing(
   size_t extraIndent = 0;
   if (!d.required)
   {
-    std::cout << "  if !ismissing(" << juliaName << ")" << std::endl;
+    Rcpp::Rcout << "  if !ismissing(" << juliaName << ")" << std::endl;
     extraIndent = 2;
   }
 
   std::string indent(extraIndent + 2, ' ');
   std::string type = StripType(d.cppType);
-  std::cout << indent << functionName << "_internal.CLISetParam" << type
+  Rcpp::Rcout << indent << functionName << "_internal.CLISetParam" << type
       << "Ptr(\"" << d.name << "\", convert("
       << GetJuliaType<typename std::remove_pointer<T>::type>() << ", "
       << juliaName << "))" << std::endl;
 
   if (!d.required)
   {
-    std::cout << "  end" << std::endl;
+    Rcpp::Rcout << "  end" << std::endl;
   }
 }
 
@@ -163,7 +164,7 @@ void PrintInputProcessing(
     // This gives us code like the following:
     //
     // CLISetParam("<param_name>", convert(<type>, <paramName>))
-    std::cout << "  CLISetParam(\"" << d.name << "\", convert("
+    Rcpp::Rcout << "  CLISetParam(\"" << d.name << "\", convert("
         << GetJuliaType<T>() << ", " << juliaName << "), points_are_rows)"
         << std::endl;
   }
@@ -174,11 +175,11 @@ void PrintInputProcessing(
     // if !ismissing(<param_name>)
     //   CLISetParam("<param_name>", convert(<type>, <param_name>))
     // end
-    std::cout << "  if !ismissing(" << juliaName << ")" << std::endl;
-    std::cout << "    CLISetParam(\"" << d.name << "\", convert("
+    Rcpp::Rcout << "  if !ismissing(" << juliaName << ")" << std::endl;
+    Rcpp::Rcout << "    CLISetParam(\"" << d.name << "\", convert("
         << GetJuliaType<T>() << ", " << juliaName << "), points_are_rows)"
         << std::endl;
-    std::cout << "  end" << std::endl;
+    Rcpp::Rcout << "  end" << std::endl;
   }
 }
 

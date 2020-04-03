@@ -9,6 +9,7 @@
 #define MLPACK_BINDINGS_JULIA_PRINT_INPUT_PARAM_HPP
 
 #include "get_julia_type.hpp"
+#include <Rcpp.h>
 
 namespace mlpack {
 namespace bindings {
@@ -26,26 +27,26 @@ void PrintInputParam(const util::ParamData& d,
   // "type" is a reserved keyword or function.
   const std::string juliaName = (d.name == "type") ? "type_" : d.name;
 
-  std::cout << juliaName;
+  Rcpp::Rcout << juliaName;
 
   if (!arma::is_arma_type<T>::value)
   {
-    std::cout << "::";
+    Rcpp::Rcout << "::";
     // If it's required, then we need the type.
     if (d.required)
     {
-      std::cout << GetJuliaType<typename std::remove_pointer<T>::type>();
+      Rcpp::Rcout << GetJuliaType<typename std::remove_pointer<T>::type>();
     }
     else
     {
-      std::cout << "Union{"
+      Rcpp::Rcout << "Union{"
           << GetJuliaType<typename std::remove_pointer<T>::type>()
           << ", Missing} = missing";
     }
   }
   else if (!d.required)
   {
-    std::cout << " = missing";
+    Rcpp::Rcout << " = missing";
   }
 }
 

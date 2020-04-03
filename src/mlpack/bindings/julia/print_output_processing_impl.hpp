@@ -8,6 +8,7 @@
 #define MLPACK_BINDINGS_JULIA_PRINT_OUTPUT_PROCESSING_IMPL_HPP
 
 #include "print_output_processing.hpp"
+#include <Rcpp.h>
 
 #include "strip_type.hpp"
 #include "get_julia_type.hpp"
@@ -46,12 +47,12 @@ void PrintOutputProcessing(
 
   // Strings need a little special handling.
   if (std::is_same<T, std::string>::value)
-    std::cout << "Base.unsafe_string(";
+    Rcpp::Rcout << "Base.unsafe_string(";
 
-  std::cout << "CLIGetParam" << type << "(\"" << d.name << "\")";
+  Rcpp::Rcout << "CLIGetParam" << type << "(\"" << d.name << "\")";
 
   if (std::is_same<T, std::string>::value)
-    std::cout << ")";
+    Rcpp::Rcout << ")";
 }
 
 /**
@@ -83,7 +84,7 @@ void PrintOutputProcessing(
     extra = ", points_are_rows";
   }
 
-  std::cout << "CLIGetParam" << uChar << matTypeSuffix << "(\"" << d.name
+  Rcpp::Rcout << "CLIGetParam" << uChar << matTypeSuffix << "(\"" << d.name
       << "\"" << extra << ")";
 }
 
@@ -99,7 +100,7 @@ void PrintOutputProcessing(
     const typename std::enable_if<!std::is_same<T,
         std::tuple<data::DatasetInfo, arma::mat>>::value>::type*)
 {
-  std::cout << functionName << "_internal.CLIGetParam" << StripType(d.cppType)
+  Rcpp::Rcout << functionName << "_internal.CLIGetParam" << StripType(d.cppType)
       << "Ptr(\"" << d.name << "\")";
 }
 
@@ -113,7 +114,7 @@ void PrintOutputProcessing(
     const typename std::enable_if<std::is_same<T,
         std::tuple<data::DatasetInfo, arma::mat>>::value>::type*)
 {
-  std::cout << "CLIGetParamMatWithInfo(\"" << d.name << "\")";
+  Rcpp::Rcout << "CLIGetParamMatWithInfo(\"" << d.name << "\")";
 }
 
 } // namespace julia

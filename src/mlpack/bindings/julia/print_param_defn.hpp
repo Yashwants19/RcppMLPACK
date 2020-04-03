@@ -9,6 +9,7 @@
 #define MLPACK_BINDINGS_JULIA_PRINT_PARAM_DEFN_HPP
 
 #include "strip_type.hpp"
+#include <Rcpp.h>
 
 namespace mlpack {
 namespace bindings {
@@ -61,25 +62,25 @@ void PrintParamDefn(
   //       (Cstring, Ptr{Nothing}), paramName, ptr)
   // end
   std::string type = StripType(d.cppType);
-  std::cout << "\" Get the value of a model pointer parameter of type " << type
+  Rcpp::Rcout << "\" Get the value of a model pointer parameter of type " << type
       << ".\"" << std::endl;
-  std::cout << "function CLIGetParam" << type << "Ptr(paramName::String)"
+  Rcpp::Rcout << "function CLIGetParam" << type << "Ptr(paramName::String)"
       << std::endl;
-  std::cout << "  return ccall((:CLI_GetParam" << type << "Ptr, "
+  Rcpp::Rcout << "  return ccall((:CLI_GetParam" << type << "Ptr, "
       << programName << "Library), Ptr{Nothing}, "
       << "(Cstring,), paramName)" << std::endl;
-  std::cout << "end" << std::endl;
-  std::cout << std::endl;
+  Rcpp::Rcout << "end" << std::endl;
+  Rcpp::Rcout << std::endl;
 
-  std::cout << "\" Set the value of a model pointer parameter of type " << type
+  Rcpp::Rcout << "\" Set the value of a model pointer parameter of type " << type
       << ".\"" << std::endl;
-  std::cout << "function CLISetParam" << type << "Ptr(paramName::String, "
+  Rcpp::Rcout << "function CLISetParam" << type << "Ptr(paramName::String, "
       << "ptr::Ptr{Nothing})" << std::endl;
-  std::cout << "  ccall((:CLI_SetParam" << type << "Ptr, "
+  Rcpp::Rcout << "  ccall((:CLI_SetParam" << type << "Ptr, "
       << programName << "Library), Nothing, (Cstring, "
       << "Ptr{Nothing}), paramName, ptr)" << std::endl;
-  std::cout << "end" << std::endl;
-  std::cout << std::endl;
+  Rcpp::Rcout << "end" << std::endl;
+  Rcpp::Rcout << std::endl;
 }
 
 /**
