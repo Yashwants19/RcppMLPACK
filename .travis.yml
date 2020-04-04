@@ -1,8 +1,6 @@
 language: R
 cache: packages
 warnings_are_errors: false
-r_github_packages:
-- Yashwants19/bh
 
 matrix:
   include:

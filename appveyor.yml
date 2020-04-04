@@ -15,7 +15,6 @@ cache:
 # Adapt as necessary starting from here
 
 build_script:
-  - travis-tool.sh install_github "Yashwants19/BH"
   - travis-tool.sh install_deps
 
 test_script:
