@@ -1,4 +1,5 @@
 .travis.yml
+appveyor.yml
 .git
 ^.*\.Rproj$
 ^\.Rproj\.user$
@@ -6,3 +7,4 @@
 ^.editorconfig$
 .*\.tar\.gz$
 ^\.travis\.yml$
+^\appveyor\.yml$
