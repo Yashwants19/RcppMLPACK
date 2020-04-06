@@ -1,19 +1,20 @@
 #ifndef RcppMLPACK__RcppMLPACK__h
 #define RcppMLPACK__RcppMLPACK__h
 
-#if _WIN64
-#ifndef ARMA_64BIT_WORD
-#define ARMA_64BIT_WORD
-#endif
+#if defined(_MSC_VER)
+    #ifdef _WIN64
+        #define ARMA_64BIT_WORD
+        #ifdef ARMA_32BIT_WORD
+            #undef ARMA_32BIT_WORD
+        #endif
+    #else
+        #define ARMA_32BIT_WORD
+        #ifdef ARMA_64BIT_WORD
+            #undef ARMA_64BIT_WORD
+        #endif
+    #endif
 #endif
 
-#if defined(__MINGW32__)
-#define ARMA_DONT_USE_CXX11
-#endif
-
-// Rcpp has its own stream object which cooperates more nicely with R's i/o
-// And as of Armadillo 2.4.3, we can use this stream object as well
-//
 // More recently this changes from ARMA_DEFAULT_OSTREAM to ARMA_COUT_STREAM
 // and ARMA_CERR_STREAM
 #if !defined(ARMA_COUT_STREAM)
