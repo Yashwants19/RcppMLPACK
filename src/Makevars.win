@@ -1,42 +1,4 @@
 CXX_STD = CXX11
 
-MLPACKOBJECTS=\
-./mlpack/core/util/cli.o \
-./mlpack/core/util/backtrace.o \
-./mlpack/core/util/log.o \
-./mlpack/core/util/prefixedoutstream.o \
-./mlpack/core/util/program_doc.o \
-./mlpack/core/util/singletons.o \
-./mlpack/core/util/timers.o \
-./mlpack/core/util/version.o \
-
-PKGOBJECTS = RcppExports.o test_r_binding.o r_util.o
-
-PKG_CPPFLAGS=-DBOOST_MATH_PROMOTE_DOUBLE_POLICY=false -I.
+PKG_CXXFLAGS= -I.
 PKG_LIBS= $(LAPACK_LIBS) $(BLAS_LIBS) $(FLIBS)
-
-USERDIR	= 	../inst/lib$(R_ARCH)
-MLPACKSTATICLIB =	libmlpack.a
-MLPACKLIB =	$(USERDIR)/$(MLPACKSTATICLIB)
-STATICLIB =	libRcppMLPACK.a
-USERLIB	= 	$(USERDIR)/$(STATICLIB)
-
-RM = 		rm -f
-
-.PHONY: 	all clean
-
-all: 		userlib $(SHLIB)
-
-clean:
-		${RM} $(MLPACKOBJECTS) $(PKGOBJECTS) $(SHLIB)
-
-$(MLPACKLIB): $(MLPACKOBJECTS)
-$(USERLIB):	$(PKGOBJECTS) $(MLPACKLIB)
-
-userlib:	$(MLPACKSTATICLIB) $(STATICLIB)
-		-mkdir -p $(USERDIR)
-		-mv $(MLPACKSTATICLIB) $(USERDIR)
-		-mv $(STATICLIB) $(USERDIR)
-
-$(STATICLIB):	$(PKGOBJECTS)
-$(MLPACKSTATICLIB):	$(MLPACKOBJECTS)

@@ -1,4 +1,4 @@
-#include <Rcpp.h>
+#include <RcppMLPACK.h>
 #include <mlpack/prereqs.hpp>
 #include <mlpack/core/util/cli.hpp>
 

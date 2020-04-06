@@ -32,12 +32,12 @@ testRBinding <- function(doubleIn, intIn, stringIn, matrixIn = matrix(NA), build
     CLI_SetParamBool("build_model", buildModel)
   }
 
-  if (!identical(modelIn,NULL))
+  if (!identical(modelIn, NULL))
   {
     CLI_SetParamGaussianKernelPtr("model_in", modelIn)
   }
 
-  if (!identical(matrixIn,matrix(NA)))
+  if (!identical(matrixIn, matrix(NA)))
   {
     CLI_SetParamMat("matrix_in", matrixIn)
   }
