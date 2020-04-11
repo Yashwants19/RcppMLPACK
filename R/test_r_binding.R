@@ -9,9 +9,13 @@
 #' @param flag1 Input flag, must be specified.
 #' @param flag2 Input flag, must not be specified.
 #' @param modelIn Input model.
-#' @return A list with several components: Output double, will be 5.0,
-#' Output int, will be 13, Output string, will be 'hello2', Output matrix, 
-#' Output model, with twice the bandwidth, The bandwidth of the model.
+#' @return A list with several components: 
+#' \item{doubleOut}{ Output double, will be 5.0.}
+#' \item{intOut}{ Output int, will be 13.} 
+#' \item{stringOut}{ Output string, will be 'hello2'.}
+#' \item{matrixOut}{ Output matrix.} 
+#' \item{modelOut}{ Output model, with twice the bandwidth.}
+#' \item{modelBwOut}{ The bandwidth of the model.}
 #' @examples
 #' ## testRBinding:
 #' x <- matrix ( c( 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15), nrow = 5)
@@ -35,6 +39,11 @@ testRBinding <- function(doubleIn, intIn, stringIn, matrixIn = matrix(NA), build
   if (!identical(modelIn, NULL))
   {
     CLI_SetParamGaussianKernelPtr("model_in", modelIn)
+  }
+
+  if (!identical(modelIn, NULL))
+  {
+  outputXml = SerializeTestRBindingToXML("R_binding_test", modelIn)
   }
 
   if (!identical(matrixIn, matrix(NA)))
@@ -68,9 +77,14 @@ testRBinding <- function(doubleIn, intIn, stringIn, matrixIn = matrix(NA), build
   modelOut = CLI_GetParamGaussianKernelPtr("model_out")
   modelBwout = CLI_GetParamDouble("model_bw_out")
 
+  if (identical(modelIn, NULL))
+  {
+    outputXml = NULL
+  }
+
   CLI_ClearSettings()
 
-  my_list <- list("doubleOut" = doubleOut, "intOut" = intOut, "stringOut" = stringOut, "matrixOut" = matrixOut, "modelOut" = modelOut, "modelBwout" = modelBwout)
+  out <- list("doubleOut" = doubleOut, "intOut" = intOut, "stringOut" = stringOut, "matrixOut" = matrixOut, "modelOut" = modelOut, "modelBwout" = modelBwout, "outputXml" = outputXml)
 
-  return (my_list)
+  return (out)
 }

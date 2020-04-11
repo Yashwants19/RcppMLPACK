@@ -23,13 +23,9 @@
 #define BINDING_TYPE_PYX 2
 #define BINDING_TYPE_JL 3
 #define BINDING_TYPE_GO 4
-#define BINDING_TYPE_OCTAVE 5
+#define BINDING_TYPE_R 5
 #define BINDING_TYPE_MARKDOWN 128
 #define BINDING_TYPE_UNKNOWN -1
-
-#ifndef BINDING_TYPE
-#define BINDING_TYPE BINDING_TYPE_OCTAVE
-#endif
 
 #if (BINDING_TYPE == BINDING_TYPE_CLI) // This is a command-line executable.
 
@@ -285,26 +281,27 @@ PARAM_FLAG("verbose", "Display informational messages and the full list of "
 
 // Nothing else needs to be defined---the binding will use mlpackMain() as-is.
 
-#elif(BINDING_TYPE == BINDING_TYPE_OCTAVE) // This is a Octave binding.
+#elif(BINDING_TYPE == BINDING_TYPE_R) // This is a R binding.
 
 // Matrices are transposed on load/save.
 #define BINDING_MATRIX_TRANSPOSED true
 
-#include <mlpack/bindings/julia/julia_option.hpp>
-#include <mlpack/bindings/julia/print_doc_functions.hpp>
+#include <mlpack/bindings/R/R_option.hpp>
+#include <mlpack/bindings/R/ignore_check.hpp>
 
-#define PRINT_PARAM_STRING mlpack::bindings::julia::ParamString
-#define PRINT_PARAM_VALUE mlpack::bindings::julia::PrintValue
-#define PRINT_DATASET mlpack::bindings::julia::PrintDataset
-#define PRINT_MODEL mlpack::bindings::julia::PrintModel
-#define PRINT_CALL mlpack::bindings::julia::ProgramCall
-#define BINDING_IGNORE_CHECK mlpack::bindings::julia::IgnoreCheck
+// These functions will do nothing.
+#define PRINT_PARAM_STRING(A) std::string(" ")
+#define PRINT_PARAM_VALUE(A, B) std::string(" ")
+#define PRINT_DATASET(A) std::string(" ")
+#define PRINT_MODEL(A) std::string(" ")
+#define PRINT_CALL(...) std::string(" ")
+#define BINDING_IGNORE_CHECK mlpack::bindings::r::IgnoreCheck
 
 namespace mlpack {
 namespace util {
 
 template<typename T>
-using Option = mlpack::bindings::julia::JuliaOption<T>;
+using Option = mlpack::bindings::r::ROption<T>;
 
 }
 }
@@ -316,14 +313,7 @@ static const std::string testName = "";
 #define PROGRAM_INFO(NAME, SHORT_DESC, DESC, ...) static \
     mlpack::util::ProgramDoc \
     cli_programdoc_dummy_object = mlpack::util::ProgramDoc(NAME, SHORT_DESC, \
-    []() { return DESC; }, { __VA_ARGS__ }); \
-    namespace mlpack { \
-    namespace bindings { \
-    namespace julia { \
-    std::string programName = NAME; \
-    } \
-    } \
-    }
+    []() { return DESC; }, { __VA_ARGS__ })
 
 PARAM_FLAG("verbose", "Display informational messages and the full list of "
     "parameters and timers at the end of execution.", "v");

@@ -33,9 +33,13 @@ testRBinding(
 \item{modelIn}{Input model.}
 }
 \value{
-A list with several components: Output double, will be 5.0,
-Output int, will be 13, Output string, will be 'hello2', Output matrix, 
-Output model, with twice the bandwidth, The bandwidth of the model.
+A list with several components: 
+\item{doubleOut}{ Output double, will be 5.0.}
+\item{intOut}{ Output int, will be 13.} 
+\item{stringOut}{ Output string, will be 'hello2'.}
+\item{matrixOut}{ Output matrix.} 
+\item{modelOut}{ Output model, with twice the bandwidth.}
+\item{modelBwOut}{ The bandwidth of the model.}
 }
 \description{
 A simple program to test R binding functionality.

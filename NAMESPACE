@@ -1,5 +1,9 @@
 useDynLib("RcppMLPACK", .registration=TRUE)
 export("RcppMLPACK.package.skeleton",
-       "testRBinding")
+       "testRBinding",
+       "Lars",
+       "Pca",
+       "transform_model")
+import(xml2)
 importFrom("Rcpp", "evalCpp")
 importFrom("utils", "packageDescription", "package.skeleton")
