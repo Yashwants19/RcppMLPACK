@@ -15,6 +15,8 @@
     #endif
 #endif
 
+#define BINDING_TYPE BINDING_TYPE_R
+
 #include <Rcpp.h>
 // More recently this changes from ARMA_DEFAULT_OSTREAM to ARMA_COUT_STREAM
 // and ARMA_CERR_STREAM
@@ -24,6 +26,10 @@
 #if !defined(ARMA_CERR_STREAM)
   #define ARMA_CERR_STREAM Rcpp::Rcerr
 #endif
+#if !defined(ARMA_RNG_ALT)
+  #define ARMA_RNG_ALT         RcppArmadillo/Alt_R_RNG.h
+#endif
+
 #include <mlpack/core/data/load.cpp>
 #include <mlpack/core/data/load_csv.cpp>
 #include <mlpack/core/math/columns_to_blocks.cpp>

@@ -72,8 +72,13 @@ class ValidationRMSETermination
       // pick a random non-zero entry
       do
       {
-        t_row = rand() % n;
-        t_col = rand() % m;
+        #if (BINDING_TYPE != BINDING_TYPE_R)
+          t_row = ::Rf_runif(0, RAND_MAX) % n;
+          t_col = ::Rf_runif(0, RAND_MAX) % m;
+        #else
+          t_row = rand() % n;
+          t_col = rand() % m;
+        #endif
       } while ((t_val = V(t_row, t_col)) == 0);
 
       // add the entry to the validation set

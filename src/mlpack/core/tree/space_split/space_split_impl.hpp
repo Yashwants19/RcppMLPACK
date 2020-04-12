@@ -63,7 +63,11 @@ bool SpaceSplit<MetricType, MatType>::GetProjVector(
   MetricType metric;
 
   // Efficiently estimate the farthest pair of points in the given set.
+  #if (BINDING_TYPE != BINDING_TYPE_R)
+  size_t fst = points[::Rf_runif(0, RAND_MAX) % points.n_elem];
+  #else
   size_t fst = points[rand() % points.n_elem];
+  #endif
   size_t snd = points[0];
   double max = metric.Evaluate(data.col(fst), data.col(snd));
 
