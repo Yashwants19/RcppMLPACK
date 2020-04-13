@@ -15,8 +15,6 @@
     #endif
 #endif
 
-#define BINDING_TYPE BINDING_TYPE_R
-
 #include <Rcpp.h>
 // More recently this changes from ARMA_DEFAULT_OSTREAM to ARMA_COUT_STREAM
 // and ARMA_CERR_STREAM
