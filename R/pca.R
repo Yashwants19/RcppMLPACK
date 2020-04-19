@@ -1,85 +1,90 @@
 #' @title Principal Components Analysis
-#' 
-#' @description 
+#'
+#' @description
 #' This program performs principal components analysis on the given dataset using
 #' the exact, randomized, randomized block Krylov, or QUIC SVD method. It will
 #' transform the data onto its principal components, optionally performing
 #' dimensionality reduction by ignoring the principal components with the smallest
 #' eigenvalues.
-#' 
-#' Use the `Input` parameter to specify the dataset to perform PCA on.  A desired
-#' new dimensionality can be specified with the `NewDimensionality` parameter, or
-#' the desired variance to retain can be specified with the `VarToRetain`
+#'
+#' Use the `input` parameter to specify the dataset to perform PCA on.  A desired
+#' new dimensionality can be specified with the `new_dimensionality` parameter, or
+#' the desired variance to retain can be specified with the `var_to_retain`
 #' parameter.  If desired, the dataset can be scaled before running PCA with the
-#' `Scale` parameter.
-#' 
+#' `scale` parameter.
+#'
 #' Multiple different decomposition techniques can be used.  The method to use can
-#' be specified with the `DecompositionMethod` parameter, and it may take the
+#' be specified with the `decomposition_method` parameter, and it may take the
 #' values 'exact', 'randomized', or 'quic'.
-#' 
+#'
 #' @examples 
 #' \dontrun{
 #' For example, to reduce the dimensionality of the matrix `Data` to 5 dimensions
 #' using randomized SVD for the decomposition, storing the output matrix to
 #' `DataMod`, the following command can be used:
 #'   
-#' DataMod = Pca(Input = Data, DecompositionMethod="randomized",
-#'                                          NewDimensionality=5)
-#'}
-#' @param Input Input dataset to perform PCA on.
-#' @param DecompositionMethod Method used for the principal
+#' DataMod = pca(input = Data, decomposition_method="randomized",
+#'                                          new_dimensionality=5)
+#' }
+#' @param input input dataset to perform PCA on.
+#' @param decomposition_method Method used for the principal
 #' components analysis: 'exact', 'randomized', 'randomized-block-krylov',
 #' 'quic'.  Default value `exact`.
-#' @param NewDimensionality Desired dimensionality of output dataset. If
+#' @param new_dimensionality Desired dimensionality of output dataset. If
 #' 0, no dimensionality reduction is performed.  Default value `0`.
-#' @param Scale If set, the data will be scaled before running PCA, such
+#' @param scale If set, the data will be scaled before running PCA, such
 #' that the variance of each feature is 1.  Default value `FALSE`.
-#' @param VarToRetain Amount of variance to retain; should be
+#' @param var_to_retain Amount of variance to retain; should be
 #' between 0 and 1.  If 1, all variance is retained.  Overrides -d.  Default
 #' value `0`.
-#' 
-#' @param Verbose Display informational messages and the full list of
+#'
+#' @param verbose Display informational messages and the full list of
 #' parameters and timers at the end of execution.  Default value `FALSE`.
-#' 
-#' 
+#'
+#'
 #' @return
-#' 
-#' \item{Output}{ Matrix to save modified dataset to.}
+#'
+#' \item{output}{ Matrix to save modified dataset to.}
 
-Pca <- function(Input,
-    DecompositionMethod = "exact",
-    NewDimensionality = 0,
-    Scale = FALSE,
-    VarToRetain = 0,
-    Verbose = FALSE
-)
-{
+pca <- function(input,
+                decomposition_method = "exact",
+                new_dimensionality = 0,
+                scale = FALSE,
+                var_to_retain = 0,
+                verbose = FALSE) {
   CLI_RestoreSettings("Principal Components Analysis")
 
   # Process each input argument before calling mlpackMain().
-  CLI_SetParamMat("input", Input)
-  if (DecompositionMethod != "exact")
-    CLI_SetParamString("decomposition_method", DecompositionMethod)
- 
-  if (NewDimensionality != 0)
-    CLI_SetParamInt("new_dimensionality", NewDimensionality)
+  CLI_SetParamMat("input", input)
 
-  if (Scale != FALSE)
-    CLI_SetParamBool("scale", Scale)
+  if (decomposition_method != "exact") {
+    CLI_SetParamString("decomposition_method", decomposition_method)
+  }
 
-  if (VarToRetain != 0.0)
-    CLI_SetParamDouble("var_to_retain", VarToRetain)
+  if (new_dimensionality != 0) {
+    CLI_SetParamInt("new_dimensionality", new_dimensionality)
+  }
 
-  if (Verbose != FALSE || Verbose == TRUE)
+  if (scale != FALSE) {
+    CLI_SetParamBool("scale", scale)
+  }
+
+  if (var_to_retain != 0.0) {
+    CLI_SetParamDouble("var_to_retain", var_to_retain)
+  }
+
+  if (verbose != FALSE || verbose == TRUE) {
     CLI_EnableVerbose()
-  else
+  } else {
     CLI_DisableVerbose()
+  }
 
   CLI_SetPassed("output")
 
-    pca_mlpackMain()
+  pca_mlpackMain()
 
-  Output = CLI_GetParamMat("output")
-  out <- list("Output"= Output)
+  output <- CLI_GetParamMat("output")
+  out <- list("output" = output)
+
   return(out)
 }

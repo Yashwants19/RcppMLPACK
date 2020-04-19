@@ -13,8 +13,16 @@ CLI_SetParamLARSPtr <- function(paramName, ptr) {
     invisible(.Call(`_RcppMLPACK_CLI_SetParamLARSPtr`, paramName, ptr))
 }
 
-SerializeLARSToXML <- function(paramName, ptr) {
-    .Call(`_RcppMLPACK_SerializeLARSToXML`, paramName, ptr)
+SerializeLARSToXML <- function(ptr) {
+    .Call(`_RcppMLPACK_SerializeLARSToXML`, ptr)
+}
+
+SerializeLARSPtr <- function(ptr) {
+    .Call(`_RcppMLPACK_SerializeLARSPtr`, ptr)
+}
+
+UnserializeLARSPtr <- function(str) {
+    .Call(`_RcppMLPACK_UnserializeLARSPtr`, str)
 }
 
 pca_mlpackMain <- function() {
@@ -105,7 +113,15 @@ CLI_SetParamGaussianKernelPtr <- function(paramName, ptr) {
     invisible(.Call(`_RcppMLPACK_CLI_SetParamGaussianKernelPtr`, paramName, ptr))
 }
 
-SerializeTestRBindingToXML <- function(paramName, ptr) {
-    .Call(`_RcppMLPACK_SerializeTestRBindingToXML`, paramName, ptr)
+SerializeGaussianKernelToXML <- function(ptr) {
+    .Call(`_RcppMLPACK_SerializeGaussianKernelToXML`, ptr)
+}
+
+SerializeGaussianKernelPtr <- function(ptr) {
+    .Call(`_RcppMLPACK_SerializeGaussianKernelPtr`, ptr)
+}
+
+UnserializeGaussianKernelPtr <- function(str) {
+    .Call(`_RcppMLPACK_UnserializeGaussianKernelPtr`, str)
 }
 

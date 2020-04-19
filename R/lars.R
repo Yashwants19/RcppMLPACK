@@ -1,6 +1,6 @@
 #' @title Least Angle Regression (Stagewise/laSso).
 #'
-#' @description 
+#' @description
 #' An implementation of LARS: Least Angle Regression (Stagewise/laSso).  This is a
 #' stage-wise homotopy-based algorithm for L1-regularized linear regression (LASSO)
 #' and L1+L2-regularized linear regression (Elastic Net).
@@ -8,7 +8,7 @@
 #' This program is able to train a LARS/LASSO/Elastic Net model or load a model
 #' from file, output regression predictions for a test set, and save the trained
 #' model to a file.  The LARS algorithm is described in more detail below:
-#'  
+#'
 #'   Let X be a matrix where each row is a point and each column is a dimension, and
 #' let y be a vector of targets.
 #'
@@ -23,125 +23,147 @@
 #' If lambda1 = 0 and lambda2 = 0, the problem is unregularized linear regression.
 #'
 #' For efficiency reasons, it is not recommended to use this algorithm with
-#' `Lambda1` = 0.  In that case, use the 'linear_regression' program, which
+#' `lambda1` = 0.  In that case, use the 'linear_regression' program, which
 #' implements both unregularized linear regression and ridge regression.
 #'
-#' To train a LARS/LASSO/Elastic Net model, the `Input` and `Responses` parameters
-#' must be given.  The `Lambda1`, `Lambda2`, and `UseCholesky` parameters control
-#' the training options.  A trained model can be saved with the `OutputModel`.  If
-#' no training is desired at all, a model can be passed via the `InputModel`
+#' To train a LARS/LASSO/Elastic Net model, the `input` and `responses` parameters
+#' must be given.  The `lambda1`, `lambda2`, and `use_cholesky` parameters control
+#' the training options.  A trained model can be saved with the `output_model`.  If
+#' no training is desired at all, a model can be passed via the `input_model`
 #' parameter.
 #'
 #' The program can also provide predictions for test data using either the trained
 #' model or the given input model.  Test points can be specified with the `Test`
 #' parameter.  Predicted responses to the test points can be saved with the
-#' `OutputPredictions` output parameter.
+#' `output_predictions` output parameter.
 #'
 #' @examples 
 #' \dontrun{
 #' For example, the following command trains a model on the data `Data` and
-#' responses `Responses` with lambda1 set to 0.4 and lambda2 set to 0 (so, LASSO is
+#' responses `responses` with lambda1 set to 0.4 and lambda2 set to 0 (so, LASSO is
 #' being solved), and then the model is saved to `out1$outputModel`:
 #' 
-#' out1 <- Lars(Input=Data, Lambda1=0.4, Lambda2=0, Responses=Responses)
+#' out1 <- lars(input=Data, lambda1=0.4, lambda2=0, responses=responses)
 #'
-#' The following command uses the `out1$OutputModel` to provide predicted responses for
-#' the data `Test` and save those responses to `out2$outputPredictions`: 
+#' The following command uses the `out1$output_model` to provide predicted responses for
+#' the data `test` and save those responses to `out2$output_predictions`: 
 #'
-#' out2 <- Lars(InputModel=out1$outputModel, Test=test)
+#' out2 <- lars(input_model=out1$outputModel, test=test)
 #' }
-#' @param Input Matrix of covariates (X).
-#' @param InputModel Trained LARS model to use.
-#' @param Lambda1 Regularization parameter for l1-norm penalty. Default value `0`.
-#' @param Lambda2 Regularization parameter for l2-norm penalty. Default value `0`.
-#' @param Responses Matrix of responses/observations (y).
-#' @param Test Matrix containing points to regress on (test points).
-#' @param UseCholesky Use Cholesky decomposition during computation
+#' @param input Matrix of covariates (X).
+#' @param input_model Trained LARS model to use.
+#' @param lambda1 Regularization parameter for l1-norm penalty. Default value `0`.
+#' @param lambda2 Regularization parameter for l2-norm penalty. Default value `0`.
+#' @param responses Matrix of responses/observations (y).
+#' @param test Matrix containing points to regress on (test points).
+#' @param use_cholesky Use Cholesky decomposition during computation
 #'  rather than explicitly computing the full Gram matrix.  Default value `FALSE`.
-#' @param Verbose Display informational messages and the full list of
+#' @param verbose Display informational messages and the full list of
 #'  parameters and timers at the end of execution.  Default value `FALSE`.
 #'
 #'
 #' @return A list with several components:
 #'
-#' \item{outputModel}{Output LARS model.}
-#' \item{outputPredictions}{ If --test_file is specified,
+#' \item{output_model}{Output LARS model.}
+#' \item{output_predictions}{ If --test_file is specified,
 #'   this file is where the predicted responses will be saved.}
 
 
-Lars <- function(
-    Input = matrix(NA),
-    InputModel = NULL,
-    Lambda1 = 0.0,
-    Lambda2 = 0.0,
-    Responses = matrix(NA),
-    Test = matrix(NA),
-    UseCholesky = FALSE,
-    Verbose = FALSE)
-{
+lars <- function(input = matrix(NA),
+                 input_model = NULL,
+                 lambda1 = 0.0,
+                 lambda2 = 0.0,
+                 responses = matrix(NA),
+                 test = matrix(NA),
+                 use_cholesky = FALSE,
+                 verbose = FALSE) {
   CLI_RestoreSettings("LARS")
-  
-  if (!identical(Input, matrix(NA)))
-  {
-    CLI_SetParamMat("input", Input)
+
+  if (!identical(input, matrix(NA))) {
+    CLI_SetParamMat("input", input)
   }
 
-  if (!identical(InputModel, NULL))
-  {
-    CLI_SetParamLARSPtr("input_model", InputModel)
+  if (!identical(input_model, NULL)) {
+    CLI_SetParamLARSPtr("input_model", input_model)
   }
 
-  if (!identical(InputModel, NULL))
-  {
-  outputXml = SerializeLARSToXML("LARS", InputModel)    
+  if (lambda1 != 0) {
+    CLI_SetParamDouble("lambda1", lambda1)
   }
 
-  if (Lambda1 != 0) 
-  {
-    CLI_SetParamDouble("lambda1", Lambda1)
+  if (lambda2 != 0) {
+    CLI_SetParamDouble("lambda2", lambda2)
   }
 
-  if (Lambda2 != 0)
-  {
-    CLI_SetParamDouble("lambda2", Lambda2)
+  if (!identical(responses, matrix(NA))) {
+    CLI_SetParamMat("responses", responses)
   }
 
-  if (!identical(Responses, matrix(NA)))
-  {
-    CLI_SetParamMat("responses", Responses)
+  if (!identical(test, matrix(NA))) {
+    CLI_SetParamMat("test", test)
   }
 
-  if (!identical(Test, matrix(NA)))
-  {
-    CLI_SetParamMat("test", Test)
+  if (use_cholesky != FALSE) {
+    CLI_SetParamBool("use_cholesky", use_cholesky)
   }
 
-  if (UseCholesky != FALSE) 
-  {
-    CLI_SetParamBool("use_cholesky", UseCholesky)
-  }
-  
-  if (Verbose != FALSE || Verbose == TRUE)
+  if (verbose != FALSE || verbose == TRUE) {
     CLI_EnableVerbose()
-  else
+  } else {
     CLI_DisableVerbose()
+  }
 
   CLI_SetPassed("output_model")
   CLI_SetPassed("output_predictions")
 
   lars_mlpackMain()
 
-  outputPredictions = CLIGetParamMat("output_predictions")
-  outputModel = CLI_GetParamLARSPtr("output_model")
-
-  if (identical(InputModel, NULL))
-  {
-    outputXml = NULL
-  }
+  output_predictions <- CLIGetParamMat("output_predictions")
+  output_model <- CLI_GetParamLARSPtr("output_model")
 
   CLI_ClearSettings()
 
-  out <- list("outputModel" = outputModel, "outputPredictions" = outputPredictions, "outputXml" = outputXml)
-  
-  return (out)
+  out <- list(
+    "output_model" = output_model,
+    "output_predictions" = output_predictions
+  )
+
+  return(out)
+}
+
+
+#' Extract serialized information for model.
+#'
+#' @title Serialize LARS to xml
+#' @param model_in Input model.
+#' @return transformed_model
+serialize_lars_to_xml <- function(model_in = NULL) {
+  if (!identical(model_in, NULL)) {
+    return(transform_model(SerializeLARSToXML(model_in)))
+  }
+}
+
+#' Serialize a model to the given filename.
+#'
+#' @title Serialize LARS.
+#' @param filename Input filename.
+#' @param model_in Input model.
+serialize_lars <- function(filename, model_in = NULL) {
+  if (!identical(model_in, NULL)) {
+    con <- file(as.character(filename), "wb")
+    serialize(SerializeLARSPtr(model_in), con)
+    close(con)
+  }
+}
+
+#' Unserialize a model to the given filename.
+#'
+#' @title Unserialize LARS.
+#' @param filename Input filename.
+#' @return model_ptr Output model.
+unserialize_lars <- function(filename) {
+  con <- file(as.character(filename), "rb")
+  model_ptr <- UnserializeLARSPtr(unserialize(con))
+  close(con)
+  return(model_ptr)
 }

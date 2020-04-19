@@ -39,14 +39,35 @@ BEGIN_RCPP
 END_RCPP
 }
 // SerializeLARSToXML
-SEXP SerializeLARSToXML(SEXP paramName, SEXP ptr);
-RcppExport SEXP _RcppMLPACK_SerializeLARSToXML(SEXP paramNameSEXP, SEXP ptrSEXP) {
+SEXP SerializeLARSToXML(SEXP ptr);
+RcppExport SEXP _RcppMLPACK_SerializeLARSToXML(SEXP ptrSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< SEXP >::type paramName(paramNameSEXP);
     Rcpp::traits::input_parameter< SEXP >::type ptr(ptrSEXP);
-    rcpp_result_gen = Rcpp::wrap(SerializeLARSToXML(paramName, ptr));
+    rcpp_result_gen = Rcpp::wrap(SerializeLARSToXML(ptr));
+    return rcpp_result_gen;
+END_RCPP
+}
+// SerializeLARSPtr
+SEXP SerializeLARSPtr(SEXP ptr);
+RcppExport SEXP _RcppMLPACK_SerializeLARSPtr(SEXP ptrSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< SEXP >::type ptr(ptrSEXP);
+    rcpp_result_gen = Rcpp::wrap(SerializeLARSPtr(ptr));
+    return rcpp_result_gen;
+END_RCPP
+}
+// UnserializeLARSPtr
+SEXP UnserializeLARSPtr(Rcpp::RawVector str);
+RcppExport SEXP _RcppMLPACK_UnserializeLARSPtr(SEXP strSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::RawVector >::type str(strSEXP);
+    rcpp_result_gen = Rcpp::wrap(UnserializeLARSPtr(str));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -278,15 +299,36 @@ BEGIN_RCPP
     return R_NilValue;
 END_RCPP
 }
-// SerializeTestRBindingToXML
-SEXP SerializeTestRBindingToXML(SEXP paramName, SEXP ptr);
-RcppExport SEXP _RcppMLPACK_SerializeTestRBindingToXML(SEXP paramNameSEXP, SEXP ptrSEXP) {
+// SerializeGaussianKernelToXML
+SEXP SerializeGaussianKernelToXML(SEXP ptr);
+RcppExport SEXP _RcppMLPACK_SerializeGaussianKernelToXML(SEXP ptrSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< SEXP >::type paramName(paramNameSEXP);
     Rcpp::traits::input_parameter< SEXP >::type ptr(ptrSEXP);
-    rcpp_result_gen = Rcpp::wrap(SerializeTestRBindingToXML(paramName, ptr));
+    rcpp_result_gen = Rcpp::wrap(SerializeGaussianKernelToXML(ptr));
+    return rcpp_result_gen;
+END_RCPP
+}
+// SerializeGaussianKernelPtr
+SEXP SerializeGaussianKernelPtr(SEXP ptr);
+RcppExport SEXP _RcppMLPACK_SerializeGaussianKernelPtr(SEXP ptrSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< SEXP >::type ptr(ptrSEXP);
+    rcpp_result_gen = Rcpp::wrap(SerializeGaussianKernelPtr(ptr));
+    return rcpp_result_gen;
+END_RCPP
+}
+// UnserializeGaussianKernelPtr
+SEXP UnserializeGaussianKernelPtr(Rcpp::RawVector str);
+RcppExport SEXP _RcppMLPACK_UnserializeGaussianKernelPtr(SEXP strSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::RawVector >::type str(strSEXP);
+    rcpp_result_gen = Rcpp::wrap(UnserializeGaussianKernelPtr(str));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -295,7 +337,9 @@ static const R_CallMethodDef CallEntries[] = {
     {"_RcppMLPACK_lars_mlpackMain", (DL_FUNC) &_RcppMLPACK_lars_mlpackMain, 0},
     {"_RcppMLPACK_CLI_GetParamLARSPtr", (DL_FUNC) &_RcppMLPACK_CLI_GetParamLARSPtr, 1},
     {"_RcppMLPACK_CLI_SetParamLARSPtr", (DL_FUNC) &_RcppMLPACK_CLI_SetParamLARSPtr, 2},
-    {"_RcppMLPACK_SerializeLARSToXML", (DL_FUNC) &_RcppMLPACK_SerializeLARSToXML, 2},
+    {"_RcppMLPACK_SerializeLARSToXML", (DL_FUNC) &_RcppMLPACK_SerializeLARSToXML, 1},
+    {"_RcppMLPACK_SerializeLARSPtr", (DL_FUNC) &_RcppMLPACK_SerializeLARSPtr, 1},
+    {"_RcppMLPACK_UnserializeLARSPtr", (DL_FUNC) &_RcppMLPACK_UnserializeLARSPtr, 1},
     {"_RcppMLPACK_pca_mlpackMain", (DL_FUNC) &_RcppMLPACK_pca_mlpackMain, 0},
     {"_RcppMLPACK_CLI_RestoreSettings", (DL_FUNC) &_RcppMLPACK_CLI_RestoreSettings, 1},
     {"_RcppMLPACK_CLI_SetParamInt", (DL_FUNC) &_RcppMLPACK_CLI_SetParamInt, 2},
@@ -318,7 +362,9 @@ static const R_CallMethodDef CallEntries[] = {
     {"_RcppMLPACK_test_r_binding_mlpackMain", (DL_FUNC) &_RcppMLPACK_test_r_binding_mlpackMain, 0},
     {"_RcppMLPACK_CLI_GetParamGaussianKernelPtr", (DL_FUNC) &_RcppMLPACK_CLI_GetParamGaussianKernelPtr, 1},
     {"_RcppMLPACK_CLI_SetParamGaussianKernelPtr", (DL_FUNC) &_RcppMLPACK_CLI_SetParamGaussianKernelPtr, 2},
-    {"_RcppMLPACK_SerializeTestRBindingToXML", (DL_FUNC) &_RcppMLPACK_SerializeTestRBindingToXML, 2},
+    {"_RcppMLPACK_SerializeGaussianKernelToXML", (DL_FUNC) &_RcppMLPACK_SerializeGaussianKernelToXML, 1},
+    {"_RcppMLPACK_SerializeGaussianKernelPtr", (DL_FUNC) &_RcppMLPACK_SerializeGaussianKernelPtr, 1},
+    {"_RcppMLPACK_UnserializeGaussianKernelPtr", (DL_FUNC) &_RcppMLPACK_UnserializeGaussianKernelPtr, 1},
     {NULL, NULL, 0}
 };
 

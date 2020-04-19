@@ -50,18 +50,22 @@
 
 #include <mlpack/core.hpp>
 
-#include <boost/src/xml_oarchive.cpp>
+#include <boost/src/archive_exception.cpp>
+#include <boost/src/basic_archive.cpp>
 #include <boost/src/basic_oarchive.cpp>
 #include <boost/src/basic_oserializer.cpp>
-#include <boost/src/archive_exception.cpp>
-#include <boost/src/extended_type_info_typeid.cpp>
-#include <boost/src/xml_archive_exception.cpp>
-#include <boost/src/extended_type_info.cpp>
+#include <boost/src/basic_iarchive.cpp>
+#include <boost/src/basic_iserializer.cpp>
 #include <boost/src/basic_text_oprimitive.cpp>
 #include <boost/src/basic_serializer_map.cpp>
-#include <boost/src/basic_archive.cpp>
 #include <boost/src/basic_xml_archive.cpp>
+#include <boost/src/binary_iarchive.cpp>
+#include <boost/src/binary_oarchive.cpp>
+#include <boost/src/extended_type_info_typeid.cpp>
+#include <boost/src/extended_type_info.cpp>
 #include <boost/src/utf8_codecvt_facet.cpp>
+#include <boost/src/xml_oarchive.cpp>
+#include <boost/src/xml_archive_exception.cpp>
 
 #undef ARMA_EXTRA_MAT_PROTO
 #undef ARMA_EXTRA_MAT_MEAT

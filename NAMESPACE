@@ -1,9 +1,14 @@
 useDynLib("RcppMLPACK", .registration=TRUE)
 export("RcppMLPACK.package.skeleton",
-       "testRBinding",
-       "Lars",
-       "Pca",
-       "transform_model")
+       "test_r_binding",
+       "lars",
+       "pca",
+       "serialize_gaussian_kernel_to_xml",
+       "serialize_gaussian_kernel",
+       "unserialize_gaussian_kernel",
+       "serialize_lars_to_xml",
+       "serialize_lars",
+       "unserialize_lars")
 import(xml2)
 importFrom("Rcpp", "evalCpp")
 importFrom("utils", "packageDescription", "package.skeleton")

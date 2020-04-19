@@ -1,63 +1,59 @@
 #' A simple program to test R binding functionality.
 #'
 #' @title Run to test R binding functionality
-#' @param doubleIn Input double, must be 4.0.
-#' @param intIn Input int, must be 12.
-#' @param stringIn Input string, must be 'hello'.
-#' @param matrixIn Input matrix.
-#' @param buildModel If true, a model will be returned.
+#' @param double_in Input double, must be 4.0.
+#' @param int_in Input int, must be 12.
+#' @param string_in Input string, must be 'hello'.
+#' @param matrix_in Input matrix.
+#' @param build_model If true, a model will be returned.
 #' @param flag1 Input flag, must be specified.
 #' @param flag2 Input flag, must not be specified.
-#' @param modelIn Input model.
-#' @return A list with several components: 
-#' \item{doubleOut}{ Output double, will be 5.0.}
-#' \item{intOut}{ Output int, will be 13.} 
-#' \item{stringOut}{ Output string, will be 'hello2'.}
-#' \item{matrixOut}{ Output matrix.} 
-#' \item{modelOut}{ Output model, with twice the bandwidth.}
-#' \item{modelBwOut}{ The bandwidth of the model.}
+#' @param model_in Input model.
+#' @return A list with several components:
+#' \item{double_out}{ Output double, will be 5.0.}
+#' \item{int_out}{ Output int, will be 13.}
+#' \item{string_out}{ Output string, will be 'hello2'.}
+#' \item{matrix_out}{ Output matrix.}
+#' \item{model_out}{ Output model, with twice the bandwidth.}
+#' \item{model_bw_out}{ The bandwidth of the model.}
 #' @examples
-#' ## testRBinding:
-#' x <- matrix ( c( 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15), nrow = 5)
-#' out1 <- testRBinding(4.0, 12, 'hello', flag1 = TRUE, buildModel = TRUE)
-#' out2 <- testRBinding(4.0, 12 , 'hello', x, TRUE, TRUE, modelIn = out1$modelOut)
-testRBinding <- function(doubleIn, intIn, stringIn, matrixIn = matrix(NA), buildModel = FALSE, flag1 = FALSE, flag2 = FALSE, modelIn = NULL)
-{
+#' ## test_r_binding:
+#' x <- matrix(c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15), nrow = 5)
+#' out1 <- test_r_binding(4.0, 12, "hello", flag1 = TRUE, build_model = TRUE)
+#' out2 <- test_r_binding(4.0, 12, "hello", x, TRUE, TRUE, model_in = out1$model_out)
+test_r_binding <- function(double_in,
+                           int_in,
+                           string_in,
+                           matrix_in = matrix(NA),
+                           build_model = FALSE,
+                           flag1 = FALSE,
+                           flag2 = FALSE,
+                           model_in = NULL) {
   CLI_RestoreSettings("R binding test")
 
-  CLI_SetParamDouble("double_in", doubleIn)
+  CLI_SetParamDouble("double_in", double_in)
 
-  CLI_SetParamInt("int_in", intIn)
+  CLI_SetParamInt("int_in", int_in)
 
-  CLI_SetParamString("string_in", stringIn)
+  CLI_SetParamString("string_in", string_in)
 
-  if (buildModel != FALSE)
-  {
-    CLI_SetParamBool("build_model", buildModel)
+  if (build_model != FALSE) {
+    CLI_SetParamBool("build_model", build_model)
   }
 
-  if (!identical(modelIn, NULL))
-  {
-    CLI_SetParamGaussianKernelPtr("model_in", modelIn)
+  if (!identical(model_in, NULL)) {
+    CLI_SetParamGaussianKernelPtr("model_in", model_in)
   }
 
-  if (!identical(modelIn, NULL))
-  {
-  outputXml = SerializeTestRBindingToXML("R_binding_test", modelIn)
+  if (!identical(matrix_in, matrix(NA))) {
+    CLI_SetParamMat("matrix_in", matrix_in)
   }
 
-  if (!identical(matrixIn, matrix(NA)))
-  {
-    CLI_SetParamMat("matrix_in", matrixIn)
-  }
-
-  if (flag1 != FALSE)
-  {
+  if (flag1 != FALSE) {
     CLI_SetParamBool("flag1", flag1)
   }
 
-  if (flag2 != FALSE)
-  {
+  if (flag2 != FALSE) {
     CLI_SetParamBool("flag2", flag2)
   }
 
@@ -70,21 +66,59 @@ testRBinding <- function(doubleIn, intIn, stringIn, matrixIn = matrix(NA), build
 
   test_r_binding_mlpackMain()
 
-  doubleOut = CLI_GetParamDouble("double_out")
-  intOut = CLI_GetParamInt("int_out")
-  stringOut = CLI_GetParamString("string_out")
-  matrixOut = CLIGetParamMat("matrix_out")
-  modelOut = CLI_GetParamGaussianKernelPtr("model_out")
-  modelBwout = CLI_GetParamDouble("model_bw_out")
-
-  if (identical(modelIn, NULL))
-  {
-    outputXml = NULL
-  }
+  double_out <- CLI_GetParamDouble("double_out")
+  int_out <- CLI_GetParamInt("int_out")
+  string_out <- CLI_GetParamString("string_out")
+  matrix_out <- CLIGetParamMat("matrix_out")
+  model_out <- CLI_GetParamGaussianKernelPtr("model_out")
+  model_bw_out <- CLI_GetParamDouble("model_bw_out")
 
   CLI_ClearSettings()
 
-  out <- list("doubleOut" = doubleOut, "intOut" = intOut, "stringOut" = stringOut, "matrixOut" = matrixOut, "modelOut" = modelOut, "modelBwout" = modelBwout, "outputXml" = outputXml)
+  out <- list(
+    "double_out" = double_out,
+    "int_out" = int_out,
+    "string_out" = string_out,
+    "matrix_out" = matrix_out,
+    "model_out" = model_out,
+    "model_bw_out" = model_bw_out
+  )
 
-  return (out)
+  return(out)
+}
+
+#' Extract serialized information for model.
+#'
+#' @title Serialize GaussianKernel to xml
+#' @param model_in Input model.
+#' @return transformed_model
+serialize_gaussian_kernel_to_xml <- function(model_in = NULL) {
+  if (!identical(model_in, NULL)) {
+    return(transform_model(SerializeGaussianKernelToXML(model_in)))
+  }
+}
+
+#' Serialize a model to the given filename.
+#'
+#' @title Serialize GaussianKernel.
+#' @param filename Input filename.
+#' @param model_in Input model.
+serialize_gaussian_kernel <- function(filename, model_in = NULL) {
+  if (!identical(model_in, NULL)) {
+    con <- file(as.character(filename), "wb")
+    serialize(SerializeGaussianKernelPtr(model_in), con)
+    close(con)
+  }
+}
+
+#' Unserialize a model to the given filename.
+#'
+#' @title Unserialize GaussianKernel.
+#' @param filename Input filename.
+#' @return model_ptr Output model.
+unserialize_gaussian_kernel <- function(filename) {
+  con <- file(as.character(filename), "rb")
+  model_ptr <- UnserializeGaussianKernelPtr(unserialize(con))
+  close(con)
+  return(model_ptr)
 }
