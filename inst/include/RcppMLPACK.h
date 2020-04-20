@@ -28,8 +28,6 @@
   #define ARMA_RNG_ALT         RcppArmadillo/Alt_R_RNG.h
 #endif
 
-#define BOOST_SERIALIZATION_NULL_POINTER_TAG boost::archive::class_id_type(-1)
-
 #include <mlpack/core/data/load.cpp>
 #include <mlpack/core/data/load_csv.cpp>
 #include <mlpack/core/math/columns_to_blocks.cpp>

@@ -13,3 +13,6 @@
 
 # RUnit generated stuff
 .Rproj.user
+.Rhistory
+.RData
+*tar.gz
