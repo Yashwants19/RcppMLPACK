@@ -12,7 +12,9 @@ test_r_binding(
   build_model = FALSE,
   flag1 = FALSE,
   flag2 = FALSE,
-  model_in = NULL
+  model_in = NULL,
+  copy_all_inputs = FALSE,
+  verbose = FALSE
 )
 }
 \arguments{
@@ -31,6 +33,14 @@ test_r_binding(
 \item{flag2}{Input flag, must not be specified.}
 
 \item{model_in}{Input model.}
+
+\item{copy_all_inputs}{If specified, all input parameters will be
+deep copied before the method is run.  This is useful for debugging
+problems where the input parameters are being modified by the algorithm,
+but can slow down the code.}
+
+\item{verbose}{Display informational messages and the full list of
+parameters and timers at the end of execution.  Default value `FALSE`.}
 }
 \value{
 A list with several components:

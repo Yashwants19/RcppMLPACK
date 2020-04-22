@@ -12,6 +12,7 @@ lars(
   responses = matrix(NA),
   test = matrix(NA),
   use_cholesky = FALSE,
+  copy_all_inputs = FALSE,
   verbose = FALSE
 )
 }
@@ -30,6 +31,11 @@ lars(
 
 \item{use_cholesky}{Use Cholesky decomposition during computation
 rather than explicitly computing the full Gram matrix.  Default value `FALSE`.}
+
+\item{copy_all_inputs}{If specified, all input parameters will be
+deep copied before the method is run.  This is useful for debugging
+problems where the input parameters are being modified by the algorithm,
+but can slow down the code.}
 
 \item{verbose}{Display informational messages and the full list of
 parameters and timers at the end of execution.  Default value `FALSE`.}
@@ -82,7 +88,7 @@ parameter.  Predicted responses to the test points can be saved with the
 \dontrun{
 For example, the following command trains a model on the data `Data` and
 responses `responses` with lambda1 set to 0.4 and lambda2 set to 0 (so, LASSO is
-being solved), and then the model is saved to `out1$outputModel`:
+being solved), and then the model is saved to `out1$output_model`:
 
 out1 <- lars(input=Data, lambda1=0.4, lambda2=0, responses=responses)
 

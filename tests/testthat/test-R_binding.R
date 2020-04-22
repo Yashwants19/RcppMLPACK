@@ -43,9 +43,32 @@ test_that("TestRunBadFlag", {
 context("TestMatrix")
 test_that("TestMatrix", {
   x <- matrix(c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15), nrow = 5)
-  y <- matrix(c(1, 2, 6, 4, 6, 7, 16, 9, 11, 12, 26, 14), nrow = 4)
-  output <- test_r_binding(4.0, 12, "hello", x)
-  expect_identical(output$matrix_out, y)
+  y <- rlang::duplicate(x, shallow = FALSE)
+  output <- test_r_binding(4.0, 12, "hello", y)
+
+  expect_identical(dim(output$matrix_out), as.integer(c(4, 3)))
+
+  for (i in 1:3)
+    for (j in c(1,2,4))
+      expect_true(output$matrix_out[j, i] == x[j, i])
+
+  for(j in 1:3)
+    expect_true(output$matrix_out[3, j] == 2 * x[3, j])
+})
+
+context("TestMatrixForceCopy")
+test_that("TestMatrixForceCopy", {
+  x <- matrix(c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15), nrow = 5)
+  output <- test_r_binding(4.0, 12, "hello", x, copy_all_inputs=TRUE)
+
+  expect_identical(dim(output$matrix_out), as.integer(c(4, 3)))
+
+  for (i in 1:3)
+    for (j in c(1,2,4))
+      expect_true(output$matrix_out[j, i] == x[j, i])
+
+  for (j in 1:3)
+    expect_true(output$matrix_out[3, j] == 2 * x[3, j])
 })
 
 context("TestModel")

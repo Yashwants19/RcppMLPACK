@@ -135,13 +135,14 @@ BEGIN_RCPP
 END_RCPP
 }
 // CLI_SetParamMat
-void CLI_SetParamMat(SEXP paramName, SEXP paramValue);
-RcppExport SEXP _RcppMLPACK_CLI_SetParamMat(SEXP paramNameSEXP, SEXP paramValueSEXP) {
+void CLI_SetParamMat(SEXP paramName, SEXP paramValue, SEXP copyAllInputs);
+RcppExport SEXP _RcppMLPACK_CLI_SetParamMat(SEXP paramNameSEXP, SEXP paramValueSEXP, SEXP copyAllInputsSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< SEXP >::type paramName(paramNameSEXP);
     Rcpp::traits::input_parameter< SEXP >::type paramValue(paramValueSEXP);
-    CLI_SetParamMat(paramName, paramValue);
+    Rcpp::traits::input_parameter< SEXP >::type copyAllInputs(copyAllInputsSEXP);
+    CLI_SetParamMat(paramName, paramValue, copyAllInputs);
     return R_NilValue;
 END_RCPP
 }
@@ -346,7 +347,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_RcppMLPACK_CLI_SetParamDouble", (DL_FUNC) &_RcppMLPACK_CLI_SetParamDouble, 2},
     {"_RcppMLPACK_CLI_SetParamString", (DL_FUNC) &_RcppMLPACK_CLI_SetParamString, 2},
     {"_RcppMLPACK_CLI_SetParamBool", (DL_FUNC) &_RcppMLPACK_CLI_SetParamBool, 2},
-    {"_RcppMLPACK_CLI_SetParamMat", (DL_FUNC) &_RcppMLPACK_CLI_SetParamMat, 2},
+    {"_RcppMLPACK_CLI_SetParamMat", (DL_FUNC) &_RcppMLPACK_CLI_SetParamMat, 3},
     {"_RcppMLPACK_CLI_GetParamInt", (DL_FUNC) &_RcppMLPACK_CLI_GetParamInt, 1},
     {"_RcppMLPACK_CLI_GetParamDouble", (DL_FUNC) &_RcppMLPACK_CLI_GetParamDouble, 1},
     {"_RcppMLPACK_CLI_GetParamString", (DL_FUNC) &_RcppMLPACK_CLI_GetParamString, 1},

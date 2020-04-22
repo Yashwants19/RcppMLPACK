@@ -49,8 +49,8 @@ CLI_SetParamBool <- function(paramName, paramValue) {
     invisible(.Call(`_RcppMLPACK_CLI_SetParamBool`, paramName, paramValue))
 }
 
-CLI_SetParamMat <- function(paramName, paramValue) {
-    invisible(.Call(`_RcppMLPACK_CLI_SetParamMat`, paramName, paramValue))
+CLI_SetParamMat <- function(paramName, paramValue, copyAllInputs) {
+    invisible(.Call(`_RcppMLPACK_CLI_SetParamMat`, paramName, paramValue, copyAllInputs))
 }
 
 CLI_GetParamInt <- function(paramName) {

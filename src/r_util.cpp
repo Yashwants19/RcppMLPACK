@@ -44,9 +44,9 @@ using namespace Rcpp;
   }
 
   // [[Rcpp::export]]
-  void CLI_SetParamMat(SEXP paramName, SEXP paramValue)
+  void CLI_SetParamMat(SEXP paramName, SEXP paramValue, SEXP copyAllInputs)
   {
-    Rcpp::NumericMatrix mat(Rcpp::clone(paramValue));
+    Rcpp::NumericMatrix mat(Rcpp::as<bool>(copyAllInputs) ? Rcpp::clone(paramValue) : paramValue);
     arma::mat m(mat.begin(), mat.nrow(), mat.ncol(), false);
     CLI::GetParam<arma::mat>(Rcpp::as<std::string>(paramName)) = std::move(m);
     CLI::SetPassed(Rcpp::as<std::string>(paramName));

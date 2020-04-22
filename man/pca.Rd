@@ -10,6 +10,7 @@ pca(
   new_dimensionality = 0,
   scale = FALSE,
   var_to_retain = 0,
+  copy_all_inputs = FALSE,
   verbose = FALSE
 )
 }
@@ -29,6 +30,11 @@ that the variance of each feature is 1.  Default value `FALSE`.}
 \item{var_to_retain}{Amount of variance to retain; should be
 between 0 and 1.  If 1, all variance is retained.  Overrides -d.  Default
 value `0`.}
+
+\item{copy_all_inputs}{If specified, all input parameters will be
+deep copied before the method is run.  This is useful for debugging
+problems where the input parameters are being modified by the algorithm,
+but can slow down the code.}
 
 \item{verbose}{Display informational messages and the full list of
 parameters and timers at the end of execution.  Default value `FALSE`.}

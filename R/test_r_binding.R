@@ -9,6 +9,13 @@
 #' @param flag1 Input flag, must be specified.
 #' @param flag2 Input flag, must not be specified.
 #' @param model_in Input model.
+#' @param copy_all_inputs If specified, all input parameters will be
+#' deep copied before the method is run.  This is useful for debugging
+#' problems where the input parameters are being modified by the algorithm,
+#' but can slow down the code.
+#' @param verbose Display informational messages and the full list of
+#' parameters and timers at the end of execution.  Default value `FALSE`.
+#'
 #' @return A list with several components:
 #' \item{double_out}{ Output double, will be 5.0.}
 #' \item{int_out}{ Output int, will be 13.}
@@ -28,7 +35,9 @@ test_r_binding <- function(double_in,
                            build_model = FALSE,
                            flag1 = FALSE,
                            flag2 = FALSE,
-                           model_in = NULL) {
+                           model_in = NULL,
+                           copy_all_inputs = FALSE,
+                           verbose = FALSE) {
   CLI_RestoreSettings("R binding test")
 
   CLI_SetParamDouble("double_in", double_in)
@@ -46,7 +55,7 @@ test_r_binding <- function(double_in,
   }
 
   if (!identical(matrix_in, matrix(NA))) {
-    CLI_SetParamMat("matrix_in", matrix_in)
+    CLI_SetParamMat("matrix_in", matrix_in, copy_all_inputs)
   }
 
   if (flag1 != FALSE) {
@@ -55,6 +64,12 @@ test_r_binding <- function(double_in,
 
   if (flag2 != FALSE) {
     CLI_SetParamBool("flag2", flag2)
+  }
+
+  if (verbose != FALSE || verbose == TRUE) {
+    CLI_EnableVerbose()
+  } else {
+    CLI_DisableVerbose()
   }
 
   CLI_SetPassed("double_out")
@@ -66,24 +81,17 @@ test_r_binding <- function(double_in,
 
   test_r_binding_mlpackMain()
 
-  double_out <- CLI_GetParamDouble("double_out")
-  int_out <- CLI_GetParamInt("int_out")
-  string_out <- CLI_GetParamString("string_out")
-  matrix_out <- CLIGetParamMat("matrix_out")
-  model_out <- CLI_GetParamGaussianKernelPtr("model_out")
-  model_bw_out <- CLI_GetParamDouble("model_bw_out")
-
-  CLI_ClearSettings()
-
   out <- list(
-    "double_out" = double_out,
-    "int_out" = int_out,
-    "string_out" = string_out,
-    "matrix_out" = matrix_out,
-    "model_out" = model_out,
-    "model_bw_out" = model_bw_out
+    "double_out" = CLI_GetParamDouble("double_out"),
+    "int_out" = CLI_GetParamInt("int_out"),
+    "string_out" = CLI_GetParamString("string_out"),
+    "matrix_out" = CLIGetParamMat("matrix_out"),
+    "model_out" = CLI_GetParamGaussianKernelPtr("model_out"),
+    "model_bw_out" = CLI_GetParamDouble("model_bw_out")
   )
 
+  CLI_ClearSettings()
+  
   return(out)
 }
 

@@ -41,7 +41,7 @@
 #' \dontrun{
 #' For example, the following command trains a model on the data `Data` and
 #' responses `responses` with lambda1 set to 0.4 and lambda2 set to 0 (so, LASSO is
-#' being solved), and then the model is saved to `out1$outputModel`:
+#' being solved), and then the model is saved to `out1$output_model`:
 #' 
 #' out1 <- lars(input=Data, lambda1=0.4, lambda2=0, responses=responses)
 #'
@@ -58,6 +58,10 @@
 #' @param test Matrix containing points to regress on (test points).
 #' @param use_cholesky Use Cholesky decomposition during computation
 #'  rather than explicitly computing the full Gram matrix.  Default value `FALSE`.
+#' @param copy_all_inputs If specified, all input parameters will be
+#' deep copied before the method is run.  This is useful for debugging
+#' problems where the input parameters are being modified by the algorithm,
+#' but can slow down the code.
 #' @param verbose Display informational messages and the full list of
 #'  parameters and timers at the end of execution.  Default value `FALSE`.
 #'
@@ -76,11 +80,12 @@ lars <- function(input = matrix(NA),
                  responses = matrix(NA),
                  test = matrix(NA),
                  use_cholesky = FALSE,
+                 copy_all_inputs = FALSE,
                  verbose = FALSE) {
   CLI_RestoreSettings("LARS")
 
   if (!identical(input, matrix(NA))) {
-    CLI_SetParamMat("input", input)
+    CLI_SetParamMat("input", input, copy_all_inputs)
   }
 
   if (!identical(input_model, NULL)) {
@@ -96,11 +101,11 @@ lars <- function(input = matrix(NA),
   }
 
   if (!identical(responses, matrix(NA))) {
-    CLI_SetParamMat("responses", responses)
+    CLI_SetParamMat("responses", responses, copy_all_inputs)
   }
 
   if (!identical(test, matrix(NA))) {
-    CLI_SetParamMat("test", test)
+    CLI_SetParamMat("test", test, copy_all_inputs)
   }
 
   if (use_cholesky != FALSE) {
@@ -118,19 +123,15 @@ lars <- function(input = matrix(NA),
 
   lars_mlpackMain()
 
-  output_predictions <- CLIGetParamMat("output_predictions")
-  output_model <- CLI_GetParamLARSPtr("output_model")
+  out <- list(
+    "output_predictions" = CLIGetParamMat("output_predictions"),
+    "output_model" = CLI_GetParamLARSPtr("output_model")
+  )
 
   CLI_ClearSettings()
 
-  out <- list(
-    "output_model" = output_model,
-    "output_predictions" = output_predictions
-  )
-
   return(out)
 }
-
 
 #' Extract serialized information for model.
 #'
