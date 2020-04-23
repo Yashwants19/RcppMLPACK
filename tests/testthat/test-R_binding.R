@@ -1,3 +1,5 @@
+library(rlang)
+
 context("TestRunBindingCorrectly")
 test_that("TestRunBindingCorrectly", {
   output <- test_r_binding(4.0, 12, "hello", flag1 = TRUE)
@@ -43,7 +45,7 @@ test_that("TestRunBadFlag", {
 context("TestMatrix")
 test_that("TestMatrix", {
   x <- matrix(c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15), nrow = 5)
-  y <- rlang::duplicate(x, shallow = FALSE)
+  y <- duplicate(x, shallow = FALSE)
   output <- test_r_binding(4.0, 12, "hello", y)
 
   expect_identical(dim(output$matrix_out), as.integer(c(4, 3)))
