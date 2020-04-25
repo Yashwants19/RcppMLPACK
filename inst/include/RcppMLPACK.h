@@ -35,8 +35,6 @@
   #define MLPACK_CERR_STREAM Rcpp::Rcerr
 #endif
 
-#include <mlpack/core.hpp>
-
 #include <mlpack/core/data/load.cpp>
 #include <mlpack/core/data/load_csv.cpp>
 #include <mlpack/core/math/columns_to_blocks.cpp>
@@ -56,6 +54,8 @@
 #include <mlpack/methods/quic_svd/quic_svd.cpp>
 #include <mlpack/methods/randomized_svd/randomized_svd.cpp>>
 #include <mlpack/methods/block_krylov_svd/randomized_block_krylov_svd.cpp>
+
+#include <mlpack/core.hpp>
 
 #include <boost/src/archive_exception.cpp>
 #include <boost/src/basic_archive.cpp>
