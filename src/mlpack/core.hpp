@@ -120,4 +120,12 @@
   #define MLPACK_USE_CX11
 #endif
 
+#if !defined(MLPACK_COUT_STREAM)
+ #define MLPACK_COUT_STREAM std::cout
+#endif
+
+#if !defined(MLPACK_CERR_STREAM)
+ #define MLPACK_CERR_STREAM std::cerr
+#endif
+
 #endif

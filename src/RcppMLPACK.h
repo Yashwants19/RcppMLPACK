@@ -15,6 +15,8 @@
     #endif
 #endif
 
+#include <Rcpp.h>
+
 // More recently this changes from ARMA_DEFAULT_OSTREAM to ARMA_COUT_STREAM
 // and ARMA_CERR_STREAM
 #if !defined(ARMA_COUT_STREAM)
@@ -24,11 +26,15 @@
   #define ARMA_CERR_STREAM Rcpp::Rcerr
 #endif
 
-
-
-#include <Rcpp.h>
+#if !defined(MLPACK_COUT_STREAM)
+  #define MLPACK_COUT_STREAM Rcpp::Rcout
+#endif
+#if !defined(MLPACK_CERR_STREAM)
+  #define MLPACK_CERR_STREAM Rcpp::Rcerr
+#endif
 
 #include <mlpack/core.hpp>
+
 #undef ARMA_EXTRA_MAT_PROTO
 #undef ARMA_EXTRA_MAT_MEAT
 

@@ -1,8 +1,3 @@
-#' Extract serialized information for model.
-#'
-#' @title Transform Model
-#' @param model Input model xml.
-#' @return transformed_model
 transform_model <- function(model) {
   model_list <- as_list(read_xml(model))
   model_list <- model_list[[1]]

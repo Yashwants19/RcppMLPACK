@@ -12,7 +12,6 @@
 #include "cli.hpp"
 #include "log.hpp"
 #include <iostream>
-#include <Rcpp.h>
 
 using namespace mlpack;
 using namespace mlpack::util;
@@ -33,15 +32,15 @@ using namespace mlpack::util;
 #endif
 
 #ifdef DEBUG
-PrefixedOutStream Log::Debug = PrefixedOutStream(Rcpp::Rcout,
+PrefixedOutStream Log::Debug = PrefixedOutStream(MLPACK_COUT_STREAM,
     BASH_CYAN "[DEBUG] " BASH_CLEAR);
 #else
 NullOutStream Log::Debug = NullOutStream();
 #endif
 
-PrefixedOutStream Log::Info = PrefixedOutStream(Rcpp::Rcout,
+PrefixedOutStream Log::Info = PrefixedOutStream(MLPACK_COUT_STREAM,
     BASH_GREEN "[INFO ] " BASH_CLEAR, true /* unless --verbose */, false);
-PrefixedOutStream Log::Warn = PrefixedOutStream(Rcpp::Rcout,
+PrefixedOutStream Log::Warn = PrefixedOutStream(MLPACK_COUT_STREAM,
     BASH_YELLOW "[WARN ] " BASH_CLEAR, false, false);
-PrefixedOutStream Log::Fatal = PrefixedOutStream(Rcpp::Rcerr,
+PrefixedOutStream Log::Fatal = PrefixedOutStream(MLPACK_CERR_STREAM,
     BASH_RED "[FATAL] " BASH_CLEAR, false, true /* fatal */);

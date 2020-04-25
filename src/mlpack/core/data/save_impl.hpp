@@ -317,8 +317,9 @@ bool Save(const std::string& filename,
   }
   if (matrix.n_cols > 1)
   {
-    std::cout << "Input Matrix contains more than 1 image." << std::endl;
-    std::cout << "Only the firstimage will be saved!" << std::endl;
+    MLPACK_COUT_STREAM << "Input Matrix contains more than 1 image."
+                       << std::endl;
+    MLPACK_COUT_STREAM << "Only the firstimage will be saved!" << std::endl;
   }
   stbi_flip_vertically_on_write(transpose);
 
