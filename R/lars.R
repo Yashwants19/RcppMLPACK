@@ -124,7 +124,7 @@ lars <- function(input = matrix(NA),
   lars_mlpackMain()
 
   out <- list(
-    "output_predictions" = CLIGetParamMat("output_predictions"),
+    "output_predictions" = CLI_GetParamMat("output_predictions"),
     "output_model" = CLI_GetParamLARSPtr("output_model")
   )
 

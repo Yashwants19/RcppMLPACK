@@ -87,7 +87,7 @@ pca <- function(input,
 
   pca_mlpackMain()
 
-  out <- list("output" = CLIGetParamMat("output"))
+  out <- list("output" = CLI_GetParamMat("output"))
 
   CLI_ClearSettings()
 

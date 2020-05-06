@@ -69,14 +69,6 @@ CLI_GetParamBool <- function(paramName) {
     .Call(`_RcppMLPACK_CLI_GetParamBool`, paramName)
 }
 
-CLI_GetParamMatRows <- function(paramName) {
-    .Call(`_RcppMLPACK_CLI_GetParamMatRows`, paramName)
-}
-
-CLI_GetParamMatCols <- function(paramName) {
-    .Call(`_RcppMLPACK_CLI_GetParamMatCols`, paramName)
-}
-
 CLI_GetParamMat <- function(paramName) {
     .Call(`_RcppMLPACK_CLI_GetParamMat`, paramName)
 }

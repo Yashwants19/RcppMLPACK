@@ -85,7 +85,7 @@ test_r_binding <- function(double_in,
     "double_out" = CLI_GetParamDouble("double_out"),
     "int_out" = CLI_GetParamInt("int_out"),
     "string_out" = CLI_GetParamString("string_out"),
-    "matrix_out" = CLIGetParamMat("matrix_out"),
+    "matrix_out" = CLI_GetParamMat("matrix_out"),
     "model_out" = CLI_GetParamGaussianKernelPtr("model_out"),
     "model_bw_out" = CLI_GetParamDouble("model_bw_out")
   )

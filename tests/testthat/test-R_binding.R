@@ -61,7 +61,7 @@ test_that("TestMatrix", {
 context("TestMatrixForceCopy")
 test_that("TestMatrixForceCopy", {
   x <- matrix(c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15), nrow = 5)
-  output <- test_r_binding(4.0, 12, "hello", x, copy_all_inputs=TRUE)
+  output <- test_r_binding(4.0, 12, "hello", x, copy_all_inputs = TRUE)
 
   expect_identical(dim(output$matrix_out), as.integer(c(4, 3)))
 
