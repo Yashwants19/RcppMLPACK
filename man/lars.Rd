@@ -12,7 +12,6 @@ lars(
   responses = matrix(NA),
   test = matrix(NA),
   use_cholesky = FALSE,
-  copy_all_inputs = FALSE,
   verbose = FALSE
 )
 }
@@ -31,11 +30,6 @@ lars(
 
 \item{use_cholesky}{Use Cholesky decomposition during computation
 rather than explicitly computing the full Gram matrix.  Default value `FALSE`.}
-
-\item{copy_all_inputs}{If specified, all input parameters will be
-deep copied before the method is run.  This is useful for debugging
-problems where the input parameters are being modified by the algorithm,
-but can slow down the code.}
 
 \item{verbose}{Display informational messages and the full list of
 parameters and timers at the end of execution.  Default value `FALSE`.}

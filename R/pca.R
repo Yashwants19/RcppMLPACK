@@ -37,10 +37,6 @@
 #' @param var_to_retain Amount of variance to retain; should be
 #' between 0 and 1.  If 1, all variance is retained.  Overrides -d.  Default
 #' value `0`.
-#' @param copy_all_inputs If specified, all input parameters will be
-#' deep copied before the method is run.  This is useful for debugging
-#' problems where the input parameters are being modified by the algorithm,
-#' but can slow down the code.
 #' @param verbose Display informational messages and the full list of
 #' parameters and timers at the end of execution.  Default value `FALSE`.
 #'
@@ -54,12 +50,11 @@ pca <- function(input,
                 new_dimensionality = 0,
                 scale = FALSE,
                 var_to_retain = 0,
-                copy_all_inputs = FALSE,
                 verbose = FALSE) {
   CLI_RestoreSettings("Principal Components Analysis")
 
   # Process each input argument before calling mlpackMain().
-  CLI_SetParamMat("input", input, copy_all_inputs)
+  CLI_SetParamMat("input", to_matrix(input))
 
   if (decomposition_method != "exact") {
     CLI_SetParamString("decomposition_method", decomposition_method)
@@ -77,7 +72,7 @@ pca <- function(input,
     CLI_SetParamDouble("var_to_retain", var_to_retain)
   }
 
-  if (verbose != FALSE || verbose == TRUE) {
+  if (verbose) {
     CLI_EnableVerbose()
   } else {
     CLI_DisableVerbose()

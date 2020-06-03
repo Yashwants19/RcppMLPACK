@@ -58,10 +58,6 @@
 #' @param test Matrix containing points to regress on (test points).
 #' @param use_cholesky Use Cholesky decomposition during computation
 #'  rather than explicitly computing the full Gram matrix.  Default value `FALSE`.
-#' @param copy_all_inputs If specified, all input parameters will be
-#' deep copied before the method is run.  This is useful for debugging
-#' problems where the input parameters are being modified by the algorithm,
-#' but can slow down the code.
 #' @param verbose Display informational messages and the full list of
 #'  parameters and timers at the end of execution.  Default value `FALSE`.
 #'
@@ -80,12 +76,11 @@ lars <- function(input = matrix(NA),
                  responses = matrix(NA),
                  test = matrix(NA),
                  use_cholesky = FALSE,
-                 copy_all_inputs = FALSE,
                  verbose = FALSE) {
   CLI_RestoreSettings("LARS")
 
   if (!identical(input, matrix(NA))) {
-    CLI_SetParamMat("input", input, copy_all_inputs)
+    CLI_SetParamMat("input", to_matrix(input))
   }
 
   if (!identical(input_model, NULL)) {
@@ -101,18 +96,18 @@ lars <- function(input = matrix(NA),
   }
 
   if (!identical(responses, matrix(NA))) {
-    CLI_SetParamMat("responses", responses, copy_all_inputs)
+    CLI_SetParamMat("responses", to_matrix(responses))
   }
 
   if (!identical(test, matrix(NA))) {
-    CLI_SetParamMat("test", test, copy_all_inputs)
+    CLI_SetParamMat("test", to_matrix(test))
   }
 
   if (use_cholesky != FALSE) {
     CLI_SetParamBool("use_cholesky", use_cholesky)
   }
 
-  if (verbose != FALSE || verbose == TRUE) {
+  if (verbose) {
     CLI_EnableVerbose()
   } else {
     CLI_DisableVerbose()

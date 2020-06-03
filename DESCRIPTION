@@ -18,7 +18,6 @@ Imports: Rcpp (>= 0.12.4), xml2
 LinkingTo: Rcpp, RcppArmadillo, BH
 VignetteBuilder: knitr
 Suggests:
-    rlang,
     knitr,
     testthat (>= 2.1.0)
 URL: http://www.mlpack.org/

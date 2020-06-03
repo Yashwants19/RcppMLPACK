@@ -8,12 +8,19 @@ test_r_binding(
   double_in,
   int_in,
   string_in,
-  matrix_in = matrix(NA),
   build_model = FALSE,
+  col_in = matrix(NA),
   flag1 = FALSE,
   flag2 = FALSE,
+  matrix_and_info_in = data.frame(NA),
+  matrix_in = matrix(NA),
   model_in = NULL,
-  copy_all_inputs = FALSE,
+  row_in = matrix(NA),
+  str_vector_in = NA,
+  ucol_in = matrix(NA),
+  umatrix_in = matrix(NA),
+  urow_in = matrix(NA),
+  vector_in = NA,
   verbose = FALSE
 )
 }
@@ -24,39 +31,59 @@ test_r_binding(
 
 \item{string_in}{Input string, must be 'hello'.}
 
-\item{matrix_in}{Input matrix.}
-
 \item{build_model}{If true, a model will be returned.}
+
+\item{col_in}{Input column.}
 
 \item{flag1}{Input flag, must be specified.}
 
 \item{flag2}{Input flag, must not be specified.}
 
+\item{matrix_and_info_in}{Input matrix and info.}
+
+\item{matrix_in}{Input matrix.}
+
 \item{model_in}{Input model.}
 
-\item{copy_all_inputs}{If specified, all input parameters will be
-deep copied before the method is run.  This is useful for debugging
-problems where the input parameters are being modified by the algorithm,
-but can slow down the code.}
+\item{row_in}{Input row.}
+
+\item{str_vector_in}{Input vector of strings.}
+
+\item{ucol_in}{Input unsigned column.}
+
+\item{umatrix_in}{Input unsigned matrix.}
+
+\item{urow_in}{Input unsigned row.}
+
+\item{vector_in}{Input unsigned vector.}
 
 \item{verbose}{Display informational messages and the full list of
 parameters and timers at the end of execution.  Default value `FALSE`.}
 }
 \value{
 A list with several components:
+\item{col_out}{ Output column. 2x input column}
 \item{double_out}{ Output double, will be 5.0.}
 \item{int_out}{ Output int, will be 13.}
-\item{string_out}{ Output string, will be 'hello2'.}
+\item{matrix_and_info_out}{ Output matrix and info; all
+      numeric elements multiplied by 3. }
 \item{matrix_out}{ Output matrix.}
-\item{model_out}{ Output model, with twice the bandwidth.}
 \item{model_bw_out}{ The bandwidth of the model.}
+\item{model_out}{ Output model, with twice the bandwidth.}
+\item{row_out}{ Output row.  2x input row.}
+\item{str_vector_out}{ Output string vector.}
+\item{string_out}{ Output string, will be 'hello2'.}
+\item{ucol_out}{ Output unsigned column. 2x input column.}
+\item{umatrix_out}{ Output unsigned matrix.}
+\item{urow_out}{ Output unsigned row.  2x input row.}
+\item{vector_out}{ Output vector.}
 }
 \description{
 A simple program to test R binding functionality.
 }
 \examples{
 ## test_r_binding:
-x <- matrix(c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15), nrow = 5)
+x <- matrix(c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15), nrow = 3)
 out1 <- test_r_binding(4.0, 12, "hello", flag1 = TRUE, build_model = TRUE)
-out2 <- test_r_binding(4.0, 12, "hello", x, TRUE, TRUE, model_in = out1$model_out)
+out2 <- test_r_binding(4.0, 12, "hello", matrix_in=x, model_in = out1$model_out)
 }

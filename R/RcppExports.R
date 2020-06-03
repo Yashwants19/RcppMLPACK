@@ -49,8 +49,40 @@ CLI_SetParamBool <- function(paramName, paramValue) {
     invisible(.Call(`_RcppMLPACK_CLI_SetParamBool`, paramName, paramValue))
 }
 
-CLI_SetParamMat <- function(paramName, paramValue, copyAllInputs) {
-    invisible(.Call(`_RcppMLPACK_CLI_SetParamMat`, paramName, paramValue, copyAllInputs))
+CLI_SetParamVectorStr <- function(paramName, str) {
+    invisible(.Call(`_RcppMLPACK_CLI_SetParamVectorStr`, paramName, str))
+}
+
+CLI_SetParamVectorInt <- function(paramName, ints) {
+    invisible(.Call(`_RcppMLPACK_CLI_SetParamVectorInt`, paramName, ints))
+}
+
+CLI_SetParamMat <- function(paramName, paramValue) {
+    invisible(.Call(`_RcppMLPACK_CLI_SetParamMat`, paramName, paramValue))
+}
+
+CLI_SetParamUMat <- function(paramName, paramValue) {
+    invisible(.Call(`_RcppMLPACK_CLI_SetParamUMat`, paramName, paramValue))
+}
+
+CLI_SetParamRow <- function(paramName, paramValue) {
+    invisible(.Call(`_RcppMLPACK_CLI_SetParamRow`, paramName, paramValue))
+}
+
+CLI_SetParamURow <- function(paramName, paramValue) {
+    invisible(.Call(`_RcppMLPACK_CLI_SetParamURow`, paramName, paramValue))
+}
+
+CLI_SetParamCol <- function(paramName, paramValue) {
+    invisible(.Call(`_RcppMLPACK_CLI_SetParamCol`, paramName, paramValue))
+}
+
+CLI_SetParamUCol <- function(paramName, paramValue) {
+    invisible(.Call(`_RcppMLPACK_CLI_SetParamUCol`, paramName, paramValue))
+}
+
+CLI_SetParamMatWithInfo <- function(paramName, dimensions, paramValue) {
+    invisible(.Call(`_RcppMLPACK_CLI_SetParamMatWithInfo`, paramName, dimensions, paramValue))
 }
 
 CLI_GetParamInt <- function(paramName) {
@@ -69,8 +101,40 @@ CLI_GetParamBool <- function(paramName) {
     .Call(`_RcppMLPACK_CLI_GetParamBool`, paramName)
 }
 
+CLI_GetParamVectorStr <- function(paramName) {
+    .Call(`_RcppMLPACK_CLI_GetParamVectorStr`, paramName)
+}
+
+CLI_GetParamVectorInt <- function(paramName) {
+    .Call(`_RcppMLPACK_CLI_GetParamVectorInt`, paramName)
+}
+
 CLI_GetParamMat <- function(paramName) {
     .Call(`_RcppMLPACK_CLI_GetParamMat`, paramName)
+}
+
+CLI_GetParamUMat <- function(paramName) {
+    .Call(`_RcppMLPACK_CLI_GetParamUMat`, paramName)
+}
+
+CLI_GetParamRow <- function(paramName) {
+    .Call(`_RcppMLPACK_CLI_GetParamRow`, paramName)
+}
+
+CLI_GetParamURow <- function(paramName) {
+    .Call(`_RcppMLPACK_CLI_GetParamURow`, paramName)
+}
+
+CLI_GetParamCol <- function(paramName) {
+    .Call(`_RcppMLPACK_CLI_GetParamCol`, paramName)
+}
+
+CLI_GetParamUCol <- function(paramName) {
+    .Call(`_RcppMLPACK_CLI_GetParamUCol`, paramName)
+}
+
+CLI_GetParamMatWithInfo <- function(paramName) {
+    .Call(`_RcppMLPACK_CLI_GetParamMatWithInfo`, paramName)
 }
 
 CLI_EnableVerbose <- function() {

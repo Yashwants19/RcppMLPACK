@@ -134,15 +134,103 @@ BEGIN_RCPP
     return R_NilValue;
 END_RCPP
 }
-// CLI_SetParamMat
-void CLI_SetParamMat(const std::string& paramName, arma::mat& paramValue, const bool copyAllInputs);
-RcppExport SEXP _RcppMLPACK_CLI_SetParamMat(SEXP paramNameSEXP, SEXP paramValueSEXP, SEXP copyAllInputsSEXP) {
+// CLI_SetParamVectorStr
+void CLI_SetParamVectorStr(const std::string& paramName, const std::vector<std::string>& str);
+RcppExport SEXP _RcppMLPACK_CLI_SetParamVectorStr(SEXP paramNameSEXP, SEXP strSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const std::string& >::type paramName(paramNameSEXP);
-    Rcpp::traits::input_parameter< arma::mat& >::type paramValue(paramValueSEXP);
-    Rcpp::traits::input_parameter< const bool >::type copyAllInputs(copyAllInputsSEXP);
-    CLI_SetParamMat(paramName, paramValue, copyAllInputs);
+    Rcpp::traits::input_parameter< const std::vector<std::string>& >::type str(strSEXP);
+    CLI_SetParamVectorStr(paramName, str);
+    return R_NilValue;
+END_RCPP
+}
+// CLI_SetParamVectorInt
+void CLI_SetParamVectorInt(const std::string& paramName, const std::vector<int>& ints);
+RcppExport SEXP _RcppMLPACK_CLI_SetParamVectorInt(SEXP paramNameSEXP, SEXP intsSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const std::string& >::type paramName(paramNameSEXP);
+    Rcpp::traits::input_parameter< const std::vector<int>& >::type ints(intsSEXP);
+    CLI_SetParamVectorInt(paramName, ints);
+    return R_NilValue;
+END_RCPP
+}
+// CLI_SetParamMat
+void CLI_SetParamMat(const std::string& paramName, const arma::mat& paramValue);
+RcppExport SEXP _RcppMLPACK_CLI_SetParamMat(SEXP paramNameSEXP, SEXP paramValueSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const std::string& >::type paramName(paramNameSEXP);
+    Rcpp::traits::input_parameter< const arma::mat& >::type paramValue(paramValueSEXP);
+    CLI_SetParamMat(paramName, paramValue);
+    return R_NilValue;
+END_RCPP
+}
+// CLI_SetParamUMat
+void CLI_SetParamUMat(const std::string& paramName, const arma::Mat<size_t>& paramValue);
+RcppExport SEXP _RcppMLPACK_CLI_SetParamUMat(SEXP paramNameSEXP, SEXP paramValueSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const std::string& >::type paramName(paramNameSEXP);
+    Rcpp::traits::input_parameter< const arma::Mat<size_t>& >::type paramValue(paramValueSEXP);
+    CLI_SetParamUMat(paramName, paramValue);
+    return R_NilValue;
+END_RCPP
+}
+// CLI_SetParamRow
+void CLI_SetParamRow(const std::string& paramName, const arma::rowvec& paramValue);
+RcppExport SEXP _RcppMLPACK_CLI_SetParamRow(SEXP paramNameSEXP, SEXP paramValueSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const std::string& >::type paramName(paramNameSEXP);
+    Rcpp::traits::input_parameter< const arma::rowvec& >::type paramValue(paramValueSEXP);
+    CLI_SetParamRow(paramName, paramValue);
+    return R_NilValue;
+END_RCPP
+}
+// CLI_SetParamURow
+void CLI_SetParamURow(const std::string& paramName, const arma::Row<size_t>& paramValue);
+RcppExport SEXP _RcppMLPACK_CLI_SetParamURow(SEXP paramNameSEXP, SEXP paramValueSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const std::string& >::type paramName(paramNameSEXP);
+    Rcpp::traits::input_parameter< const arma::Row<size_t>& >::type paramValue(paramValueSEXP);
+    CLI_SetParamURow(paramName, paramValue);
+    return R_NilValue;
+END_RCPP
+}
+// CLI_SetParamCol
+void CLI_SetParamCol(const std::string& paramName, const arma::vec& paramValue);
+RcppExport SEXP _RcppMLPACK_CLI_SetParamCol(SEXP paramNameSEXP, SEXP paramValueSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const std::string& >::type paramName(paramNameSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type paramValue(paramValueSEXP);
+    CLI_SetParamCol(paramName, paramValue);
+    return R_NilValue;
+END_RCPP
+}
+// CLI_SetParamUCol
+void CLI_SetParamUCol(const std::string& paramName, const arma::Col<size_t>& paramValue);
+RcppExport SEXP _RcppMLPACK_CLI_SetParamUCol(SEXP paramNameSEXP, SEXP paramValueSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const std::string& >::type paramName(paramNameSEXP);
+    Rcpp::traits::input_parameter< const arma::Col<size_t>& >::type paramValue(paramValueSEXP);
+    CLI_SetParamUCol(paramName, paramValue);
+    return R_NilValue;
+END_RCPP
+}
+// CLI_SetParamMatWithInfo
+void CLI_SetParamMatWithInfo(const std::string& paramName, const LogicalVector& dimensions, const arma::mat& paramValue);
+RcppExport SEXP _RcppMLPACK_CLI_SetParamMatWithInfo(SEXP paramNameSEXP, SEXP dimensionsSEXP, SEXP paramValueSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const std::string& >::type paramName(paramNameSEXP);
+    Rcpp::traits::input_parameter< const LogicalVector& >::type dimensions(dimensionsSEXP);
+    Rcpp::traits::input_parameter< const arma::mat& >::type paramValue(paramValueSEXP);
+    CLI_SetParamMatWithInfo(paramName, dimensions, paramValue);
     return R_NilValue;
 END_RCPP
 }
@@ -190,14 +278,102 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// CLI_GetParamVectorStr
+const std::vector<std::string>& CLI_GetParamVectorStr(const std::string& paramName);
+RcppExport SEXP _RcppMLPACK_CLI_GetParamVectorStr(SEXP paramNameSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const std::string& >::type paramName(paramNameSEXP);
+    rcpp_result_gen = Rcpp::wrap(CLI_GetParamVectorStr(paramName));
+    return rcpp_result_gen;
+END_RCPP
+}
+// CLI_GetParamVectorInt
+const std::vector<int>& CLI_GetParamVectorInt(const std::string& paramName);
+RcppExport SEXP _RcppMLPACK_CLI_GetParamVectorInt(SEXP paramNameSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const std::string& >::type paramName(paramNameSEXP);
+    rcpp_result_gen = Rcpp::wrap(CLI_GetParamVectorInt(paramName));
+    return rcpp_result_gen;
+END_RCPP
+}
 // CLI_GetParamMat
-arma::mat& CLI_GetParamMat(const std::string& paramName);
+const arma::mat& CLI_GetParamMat(const std::string& paramName);
 RcppExport SEXP _RcppMLPACK_CLI_GetParamMat(SEXP paramNameSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const std::string& >::type paramName(paramNameSEXP);
     rcpp_result_gen = Rcpp::wrap(CLI_GetParamMat(paramName));
+    return rcpp_result_gen;
+END_RCPP
+}
+// CLI_GetParamUMat
+const arma::Mat<size_t>& CLI_GetParamUMat(const std::string& paramName);
+RcppExport SEXP _RcppMLPACK_CLI_GetParamUMat(SEXP paramNameSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const std::string& >::type paramName(paramNameSEXP);
+    rcpp_result_gen = Rcpp::wrap(CLI_GetParamUMat(paramName));
+    return rcpp_result_gen;
+END_RCPP
+}
+// CLI_GetParamRow
+const arma::vec CLI_GetParamRow(const std::string& paramName);
+RcppExport SEXP _RcppMLPACK_CLI_GetParamRow(SEXP paramNameSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const std::string& >::type paramName(paramNameSEXP);
+    rcpp_result_gen = Rcpp::wrap(CLI_GetParamRow(paramName));
+    return rcpp_result_gen;
+END_RCPP
+}
+// CLI_GetParamURow
+const arma::Col<size_t> CLI_GetParamURow(const std::string& paramName);
+RcppExport SEXP _RcppMLPACK_CLI_GetParamURow(SEXP paramNameSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const std::string& >::type paramName(paramNameSEXP);
+    rcpp_result_gen = Rcpp::wrap(CLI_GetParamURow(paramName));
+    return rcpp_result_gen;
+END_RCPP
+}
+// CLI_GetParamCol
+const arma::rowvec CLI_GetParamCol(const std::string& paramName);
+RcppExport SEXP _RcppMLPACK_CLI_GetParamCol(SEXP paramNameSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const std::string& >::type paramName(paramNameSEXP);
+    rcpp_result_gen = Rcpp::wrap(CLI_GetParamCol(paramName));
+    return rcpp_result_gen;
+END_RCPP
+}
+// CLI_GetParamUCol
+const arma::Row<size_t> CLI_GetParamUCol(const std::string& paramName);
+RcppExport SEXP _RcppMLPACK_CLI_GetParamUCol(SEXP paramNameSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const std::string& >::type paramName(paramNameSEXP);
+    rcpp_result_gen = Rcpp::wrap(CLI_GetParamUCol(paramName));
+    return rcpp_result_gen;
+END_RCPP
+}
+// CLI_GetParamMatWithInfo
+List CLI_GetParamMatWithInfo(const std::string& paramName);
+RcppExport SEXP _RcppMLPACK_CLI_GetParamMatWithInfo(SEXP paramNameSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const std::string& >::type paramName(paramNameSEXP);
+    rcpp_result_gen = Rcpp::wrap(CLI_GetParamMatWithInfo(paramName));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -325,12 +501,28 @@ static const R_CallMethodDef CallEntries[] = {
     {"_RcppMLPACK_CLI_SetParamDouble", (DL_FUNC) &_RcppMLPACK_CLI_SetParamDouble, 2},
     {"_RcppMLPACK_CLI_SetParamString", (DL_FUNC) &_RcppMLPACK_CLI_SetParamString, 2},
     {"_RcppMLPACK_CLI_SetParamBool", (DL_FUNC) &_RcppMLPACK_CLI_SetParamBool, 2},
-    {"_RcppMLPACK_CLI_SetParamMat", (DL_FUNC) &_RcppMLPACK_CLI_SetParamMat, 3},
+    {"_RcppMLPACK_CLI_SetParamVectorStr", (DL_FUNC) &_RcppMLPACK_CLI_SetParamVectorStr, 2},
+    {"_RcppMLPACK_CLI_SetParamVectorInt", (DL_FUNC) &_RcppMLPACK_CLI_SetParamVectorInt, 2},
+    {"_RcppMLPACK_CLI_SetParamMat", (DL_FUNC) &_RcppMLPACK_CLI_SetParamMat, 2},
+    {"_RcppMLPACK_CLI_SetParamUMat", (DL_FUNC) &_RcppMLPACK_CLI_SetParamUMat, 2},
+    {"_RcppMLPACK_CLI_SetParamRow", (DL_FUNC) &_RcppMLPACK_CLI_SetParamRow, 2},
+    {"_RcppMLPACK_CLI_SetParamURow", (DL_FUNC) &_RcppMLPACK_CLI_SetParamURow, 2},
+    {"_RcppMLPACK_CLI_SetParamCol", (DL_FUNC) &_RcppMLPACK_CLI_SetParamCol, 2},
+    {"_RcppMLPACK_CLI_SetParamUCol", (DL_FUNC) &_RcppMLPACK_CLI_SetParamUCol, 2},
+    {"_RcppMLPACK_CLI_SetParamMatWithInfo", (DL_FUNC) &_RcppMLPACK_CLI_SetParamMatWithInfo, 3},
     {"_RcppMLPACK_CLI_GetParamInt", (DL_FUNC) &_RcppMLPACK_CLI_GetParamInt, 1},
     {"_RcppMLPACK_CLI_GetParamDouble", (DL_FUNC) &_RcppMLPACK_CLI_GetParamDouble, 1},
     {"_RcppMLPACK_CLI_GetParamString", (DL_FUNC) &_RcppMLPACK_CLI_GetParamString, 1},
     {"_RcppMLPACK_CLI_GetParamBool", (DL_FUNC) &_RcppMLPACK_CLI_GetParamBool, 1},
+    {"_RcppMLPACK_CLI_GetParamVectorStr", (DL_FUNC) &_RcppMLPACK_CLI_GetParamVectorStr, 1},
+    {"_RcppMLPACK_CLI_GetParamVectorInt", (DL_FUNC) &_RcppMLPACK_CLI_GetParamVectorInt, 1},
     {"_RcppMLPACK_CLI_GetParamMat", (DL_FUNC) &_RcppMLPACK_CLI_GetParamMat, 1},
+    {"_RcppMLPACK_CLI_GetParamUMat", (DL_FUNC) &_RcppMLPACK_CLI_GetParamUMat, 1},
+    {"_RcppMLPACK_CLI_GetParamRow", (DL_FUNC) &_RcppMLPACK_CLI_GetParamRow, 1},
+    {"_RcppMLPACK_CLI_GetParamURow", (DL_FUNC) &_RcppMLPACK_CLI_GetParamURow, 1},
+    {"_RcppMLPACK_CLI_GetParamCol", (DL_FUNC) &_RcppMLPACK_CLI_GetParamCol, 1},
+    {"_RcppMLPACK_CLI_GetParamUCol", (DL_FUNC) &_RcppMLPACK_CLI_GetParamUCol, 1},
+    {"_RcppMLPACK_CLI_GetParamMatWithInfo", (DL_FUNC) &_RcppMLPACK_CLI_GetParamMatWithInfo, 1},
     {"_RcppMLPACK_CLI_EnableVerbose", (DL_FUNC) &_RcppMLPACK_CLI_EnableVerbose, 0},
     {"_RcppMLPACK_CLI_DisableVerbose", (DL_FUNC) &_RcppMLPACK_CLI_DisableVerbose, 0},
     {"_RcppMLPACK_CLI_ResetTimers", (DL_FUNC) &_RcppMLPACK_CLI_ResetTimers, 0},

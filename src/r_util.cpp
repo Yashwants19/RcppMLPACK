@@ -2,8 +2,23 @@
 #include <mlpack/prereqs.hpp>
 #include <mlpack/core/util/cli.hpp>
 
+
 using namespace mlpack;
 using namespace Rcpp;
+
+template<typename eT>
+bool inline inplace_transpose(arma::Mat<eT>& X)
+{
+  try
+  {
+    X = arma::trans(X);
+    return false;
+  }
+  catch (std::bad_alloc&)
+  {
+    return true;
+  }
+}
 
 // [[Rcpp::export]]
 void CLI_RestoreSettings(const std::string& programName)
@@ -40,19 +55,84 @@ void CLI_SetParamBool(const std::string& paramName, bool paramValue)
 }
 
 // [[Rcpp::export]]
-void CLI_SetParamMat(const std::string& paramName,
-                     arma::mat& paramValue,
-                     const bool copyAllInputs)
+void CLI_SetParamVectorStr(const std::string& paramName,
+                           const std::vector<std::string>& str)
 {
-  if (copyAllInputs)
+  CLI::GetParam<std::vector<std::string>>(paramName) = std::move(str);
+  CLI::SetPassed(paramName);
+}
+
+// [[Rcpp::export]]
+void CLI_SetParamVectorInt(const std::string& paramName,
+                           const std::vector<int>& ints)
+{
+  CLI::GetParam<std::vector<int>>(paramName) = std::move(ints);
+  CLI::SetPassed(paramName);
+}
+
+// [[Rcpp::export]]
+void CLI_SetParamMat(const std::string& paramName,
+                     const arma::mat& paramValue)
+{
+  CLI::GetParam<arma::mat>(paramName) = std::move(paramValue.t());
+  CLI::SetPassed(paramName);
+}
+
+// [[Rcpp::export]]
+void CLI_SetParamUMat(const std::string& paramName,
+                      const arma::Mat<size_t>& paramValue)
+{
+  CLI::GetParam<arma::Mat<size_t>>(paramName) = std::move(paramValue.t());
+  CLI::SetPassed(paramName);
+}
+
+// [[Rcpp::export]]
+void CLI_SetParamRow(const std::string& paramName,
+                     const arma::rowvec& paramValue)
+{
+  CLI::GetParam<arma::rowvec>(paramName) = std::move(paramValue);
+  CLI::SetPassed(paramName);
+}
+
+// [[Rcpp::export]]
+void CLI_SetParamURow(const std::string& paramName,
+                      const arma::Row<size_t>& paramValue)
+{
+  CLI::GetParam<arma::Row<size_t>>(paramName) = std::move(paramValue);
+  CLI::SetPassed(paramName);
+}
+
+// [[Rcpp::export]]
+void CLI_SetParamCol(const std::string& paramName,
+                     const arma::vec& paramValue)
+{
+  CLI::GetParam<arma::vec>(paramName) = std::move(paramValue);
+  CLI::SetPassed(paramName);
+}
+
+// [[Rcpp::export]]
+void CLI_SetParamUCol(const std::string& paramName,
+                      const arma::Col<size_t>& paramValue)
+{
+  CLI::GetParam<arma::Col<size_t>>(paramName) = std::move(paramValue);
+  CLI::SetPassed(paramName);
+}
+
+// [[Rcpp::export]]
+void CLI_SetParamMatWithInfo(const std::string& paramName,
+                             const LogicalVector& dimensions,
+                             const arma::mat& paramValue)
+{
+  data::DatasetInfo d(paramValue.n_cols);
+  for (size_t i = 0; i < d.Dimensionality(); ++i)
   {
-    arma::mat m(paramValue.memptr(), paramValue.n_rows, paramValue.n_cols, true);
-    CLI::GetParam<arma::mat>(paramName) = std::move(m);
+    d.Type(i) = (dimensions[i]) ? data::Datatype::categorical :
+        data::Datatype::numeric;
   }
-  else
-  {
-    CLI::GetParam<arma::mat>(paramName) = std::move(paramValue);
-  }
+  std::get<0>(CLI::GetParam<std::tuple<data::DatasetInfo, arma::mat>>(
+      paramName)) = std::move(d);
+  std::get<1>(CLI::GetParam<std::tuple<data::DatasetInfo, arma::mat>>(
+      paramName)) = std::move(paramValue.t());
   CLI::SetPassed(paramName);
 }
 
@@ -81,9 +161,70 @@ bool CLI_GetParamBool(const std::string& paramName)
 }
 
 // [[Rcpp::export]]
-arma::mat& CLI_GetParamMat(const std::string& paramName)
+const std::vector<std::string>& CLI_GetParamVectorStr(const 
+                                    std::string& paramName)
 {
-  return CLI::GetParam<arma::mat>(paramName);
+  return std::move(CLI::GetParam<std::vector<std::string>>(paramName));
+}
+
+// [[Rcpp::export]]
+const std::vector<int>& CLI_GetParamVectorInt(const std::string& paramName)
+{
+  return std::move(CLI::GetParam<std::vector<int>>(paramName));
+}
+
+// [[Rcpp::export]]
+const arma::mat& CLI_GetParamMat(const std::string& paramName)
+{
+  inplace_transpose(CLI::GetParam<arma::mat>(paramName));
+  return std::move(CLI::GetParam<arma::mat>(paramName));
+}
+
+// [[Rcpp::export]]
+const arma::Mat<size_t>& CLI_GetParamUMat(const std::string& paramName)
+{
+  inplace_transpose(CLI::GetParam<arma::Mat<size_t>>(paramName));
+  return std::move(CLI::GetParam<arma::Mat<size_t>>(paramName));
+}
+
+// [[Rcpp::export]]
+const arma::vec CLI_GetParamRow(const std::string& paramName)
+{
+  return std::move(CLI::GetParam<arma::rowvec>(paramName).t());
+}
+
+// [[Rcpp::export]]
+const arma::Col<size_t> CLI_GetParamURow(const std::string& paramName)
+{
+  return std::move(CLI::GetParam<arma::Row<size_t>>(paramName).t());
+}
+
+// [[Rcpp::export]]
+const arma::rowvec CLI_GetParamCol(const std::string& paramName)
+{
+  return std::move(CLI::GetParam<arma::vec>(paramName).t());
+}
+
+// [[Rcpp::export]]
+const arma::Row<size_t> CLI_GetParamUCol(const std::string& paramName)
+{
+  return std::move(CLI::GetParam<arma::Col<size_t>>(paramName).t());
+}
+
+// [[Rcpp::export]]
+List CLI_GetParamMatWithInfo(const std::string& paramName)
+{
+  const data::DatasetInfo& d = std::get<0>(
+      CLI::GetParam<std::tuple<data::DatasetInfo, arma::mat>>(paramName));
+  const arma::mat& m = std::get<1>(
+      CLI::GetParam<std::tuple<data::DatasetInfo, arma::mat>>(paramName)).t();
+
+  LogicalVector dims(d.Dimensionality());
+  for (size_t i = 0; i < d.Dimensionality(); ++i)
+    dims[i] = (d.Type(i) == data::Datatype::numeric) ? false : true;
+
+  return List::create (Rcpp::Named("Info") = std::move(dims),
+                       Rcpp::Named("Data") = std::move(m));
 }
 
 // [[Rcpp::export]]
