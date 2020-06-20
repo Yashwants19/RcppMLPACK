@@ -18,7 +18,7 @@ void test_r_binding_mlpackMain()
 // [[Rcpp::export]]
 SEXP CLI_GetParamGaussianKernelPtr(SEXP paramName)
 {
-  return Rcpp::wrap((XPtrGaussianKernel) (CLI::GetParam<GaussianKernel*>
+  return std::move((XPtrGaussianKernel) (CLI::GetParam<GaussianKernel*>
             (Rcpp::as<std::string>(paramName))));
 }
 
@@ -43,7 +43,7 @@ SEXP SerializeGaussianKernelToXML(SEXP ptr)
 }
 
 // [[Rcpp::export]]
-SEXP SerializeGaussianKernelPtr(SEXP ptr)
+RawVector SerializeGaussianKernelPtr(SEXP ptr)
 {
   std::ostringstream oss;
   {
@@ -53,6 +53,7 @@ SEXP SerializeGaussianKernelPtr(SEXP ptr)
   }
   Rcpp::RawVector raw_vec(oss.str().size());
   memcpy(&raw_vec[0], oss.str().c_str(), oss.str().size());
+  raw_vec.attr("type") = "GaussianKernel";
   return raw_vec;
 }
 
@@ -65,5 +66,5 @@ SEXP UnserializeGaussianKernelPtr(Rcpp::RawVector str)
     boost::archive::binary_iarchive ia(iss);
     ia >> boost::serialization::make_nvp("GaussianKernel", *ptr);
   }
-  return Rcpp::wrap((XPtrGaussianKernel) ptr);
+  return std::move((XPtrGaussianKernel)ptr);
 }

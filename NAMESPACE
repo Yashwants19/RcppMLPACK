@@ -4,11 +4,9 @@ export("RcppMLPACK.package.skeleton",
        "lars",
        "pca",
        "serialize_gaussian_kernel_to_xml",
-       "serialize_gaussian_kernel",
-       "unserialize_gaussian_kernel",
        "serialize_lars_to_xml",
-       "serialize_lars",
-       "unserialize_lars")
+       "Serialize",
+       "Unserialize")
 import(xml2)
 importFrom("Rcpp", "evalCpp")
 importFrom("utils", "packageDescription", "package.skeleton")

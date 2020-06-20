@@ -18,7 +18,7 @@ void lars_mlpackMain()
 // [[Rcpp::export]]
 SEXP CLI_GetParamLARSPtr(SEXP paramName)
 {
-  return Rcpp::wrap((XPtrLARS) (CLI::GetParam<LARS*>
+  return std::move((XPtrLARS) (CLI::GetParam<LARS*>
            (Rcpp::as<std::string>(paramName))));
 }
 
@@ -42,7 +42,7 @@ SEXP SerializeLARSToXML(SEXP ptr)
 }
 
 // [[Rcpp::export]]
-SEXP SerializeLARSPtr(SEXP ptr)
+RawVector SerializeLARSPtr(SEXP ptr)
 {
   std::ostringstream oss;
   {
@@ -51,6 +51,7 @@ SEXP SerializeLARSPtr(SEXP ptr)
   }
   Rcpp::RawVector raw_vec(oss.str().size());
   memcpy(&raw_vec[0], oss.str().c_str(), oss.str().size());
+  raw_vec.attr("type") = "LARS";
   return raw_vec;
 }
 
@@ -63,5 +64,5 @@ SEXP UnserializeLARSPtr(Rcpp::RawVector str)
     boost::archive::binary_iarchive ia(iss);
     ia >> boost::serialization::make_nvp("LARS", *ptr);
   }
-  return Rcpp::wrap((XPtrLARS) ptr);
+  return std::move((XPtrLARS) ptr);
 }

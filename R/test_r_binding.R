@@ -142,6 +142,9 @@ test_r_binding <- function(double_in,
 
   test_r_binding_mlpackMain()
 
+  output_model <- CLI_GetParamGaussianKernelPtr("model_out")
+  attr(output_model, "type") <- "GaussianKernel"
+
   out <- list(
     "col_out" = CLI_GetParamCol("col_out"),
     "double_out" = CLI_GetParamDouble("double_out"),
@@ -149,7 +152,7 @@ test_r_binding <- function(double_in,
     "matrix_and_info_out" = CLI_GetParamMat("matrix_and_info_out"),
     "matrix_out" = CLI_GetParamMat("matrix_out"),
     "model_bw_out" = CLI_GetParamDouble("model_bw_out"),
-    "model_out" = CLI_GetParamGaussianKernelPtr("model_out"),
+    "model_out" = output_model,
     "row_out" = CLI_GetParamRow("row_out"),
     "str_vector_out" = CLI_GetParamVectorStr("str_vector_out"),
     "string_out" = CLI_GetParamString("string_out"),
@@ -173,29 +176,4 @@ serialize_gaussian_kernel_to_xml <- function(model_in = NULL) {
   if (!identical(model_in, NULL)) {
     return(transform_model(SerializeGaussianKernelToXML(model_in)))
   }
-}
-
-#' Serialize a model to the given filename.
-#'
-#' @title Serialize GaussianKernel.
-#' @param filename Input filename.
-#' @param model_in Input model.
-serialize_gaussian_kernel <- function(filename, model_in = NULL) {
-  if (!identical(model_in, NULL)) {
-    con <- file(as.character(filename), "wb")
-    serialize(SerializeGaussianKernelPtr(model_in), con)
-    close(con)
-  }
-}
-
-#' Unserialize a model to the given filename.
-#'
-#' @title Unserialize GaussianKernel.
-#' @param filename Input filename.
-#' @return model_ptr Output model.
-unserialize_gaussian_kernel <- function(filename) {
-  con <- file(as.character(filename), "rb")
-  model_ptr <- UnserializeGaussianKernelPtr(unserialize(con))
-  close(con)
-  return(model_ptr)
 }

@@ -286,9 +286,9 @@ test_that("TestSerialization", {
   output1 <- test_r_binding(4.0, 12, "hello",
                             build_model=TRUE)
 
-  serialize_gaussian_kernel("model.bin", output1$model_out)
+  Serialize(output1$model_out, "model.bin")
 
-  new_model <- unserialize_gaussian_kernel("model.bin")
+  new_model <- Unserialize("model.bin")
   unlink("model.bin")
 
   output2 <- test_r_binding(4.0, 12, "hello", model_in = new_model)

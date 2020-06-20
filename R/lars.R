@@ -117,10 +117,13 @@ lars <- function(input = matrix(NA),
   CLI_SetPassed("output_predictions")
 
   lars_mlpackMain()
+  
+  output_model <- CLI_GetParamLARSPtr("output_model")
+  attr(output_model, "type") <- "LARS"
 
   out <- list(
     "output_predictions" = CLI_GetParamMat("output_predictions"),
-    "output_model" = CLI_GetParamLARSPtr("output_model")
+    "output_model" = output_model
   )
 
   CLI_ClearSettings()
@@ -137,29 +140,4 @@ serialize_lars_to_xml <- function(model_in = NULL) {
   if (!identical(model_in, NULL)) {
     return(transform_model(SerializeLARSToXML(model_in)))
   }
-}
-
-#' Serialize a model to the given filename.
-#'
-#' @title Serialize LARS.
-#' @param filename Input filename.
-#' @param model_in Input model.
-serialize_lars <- function(filename, model_in = NULL) {
-  if (!identical(model_in, NULL)) {
-    con <- file(as.character(filename), "wb")
-    serialize(SerializeLARSPtr(model_in), con)
-    close(con)
-  }
-}
-
-#' Unserialize a model to the given filename.
-#'
-#' @title Unserialize LARS.
-#' @param filename Input filename.
-#' @return model_ptr Output model.
-unserialize_lars <- function(filename) {
-  con <- file(as.character(filename), "rb")
-  model_ptr <- UnserializeLARSPtr(unserialize(con))
-  close(con)
-  return(model_ptr)
 }

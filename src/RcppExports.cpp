@@ -50,7 +50,7 @@ BEGIN_RCPP
 END_RCPP
 }
 // SerializeLARSPtr
-SEXP SerializeLARSPtr(SEXP ptr);
+RawVector SerializeLARSPtr(SEXP ptr);
 RcppExport SEXP _RcppMLPACK_SerializeLARSPtr(SEXP ptrSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
@@ -466,7 +466,7 @@ BEGIN_RCPP
 END_RCPP
 }
 // SerializeGaussianKernelPtr
-SEXP SerializeGaussianKernelPtr(SEXP ptr);
+RawVector SerializeGaussianKernelPtr(SEXP ptr);
 RcppExport SEXP _RcppMLPACK_SerializeGaussianKernelPtr(SEXP ptrSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
