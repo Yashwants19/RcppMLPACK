@@ -1,21 +1,19 @@
-#ifndef RcppMLPACK__RcppMLPACK__h
-#define RcppMLPACK__RcppMLPACK__h
-
-#if defined(_MSC_VER)
-    #ifdef _WIN64
-        #define ARMA_64BIT_WORD
-        #ifdef ARMA_32BIT_WORD
-            #undef ARMA_32BIT_WORD
-        #endif
-    #else
-        #define ARMA_32BIT_WORD
-        #ifdef ARMA_64BIT_WORD
-            #undef ARMA_64BIT_WORD
-        #endif
-    #endif
-#endif
+/**
+ * @file inst/include/mlpack.h
+ * @author Yashwant Singh Parihar
+ *
+ * Include all of the base components required to work mlpack bindings.
+ *
+ * mlpack is free software; you may redistribute it and/or modify it under the
+ * terms of the 3-clause BSD license.  You should have received a copy of the
+ * 3-clause BSD license along with mlpack.  If not, see
+ * http://www.opensource.org/licenses/BSD-3-Clause for more information.
+ */
+#ifndef MLPACK_BINDINGS_R_RCPP_MLPACK_H
+#define MLPACK_BINDINGS_R_RCPP_MLPACK_H
 
 #include <Rcpp.h>
+
 // More recently this changes from ARMA_DEFAULT_OSTREAM to ARMA_COUT_STREAM
 // and ARMA_CERR_STREAM
 #if !defined(ARMA_COUT_STREAM)
@@ -37,42 +35,70 @@
 
 #include <mlpack/core/data/load.cpp>
 #include <mlpack/core/data/load_csv.cpp>
+#include <mlpack/core/data/load_image.cpp>
+#include <mlpack/core/data/save_image.cpp>
+#include <mlpack/core/dists/diagonal_gaussian_distribution.cpp>
+#include <mlpack/core/dists/discrete_distribution.cpp>
+#include <mlpack/core/dists/gamma_distribution.cpp>
+#include <mlpack/core/dists/gaussian_distribution.cpp>
+#include <mlpack/core/dists/laplace_distribution.cpp>
+#include <mlpack/core/dists/regression_distribution.cpp>
+#include <mlpack/core/kernels/epanechnikov_kernel.cpp>
+#include <mlpack/core/kernels/pspectrum_string_kernel.cpp>
 #include <mlpack/core/math/columns_to_blocks.cpp>
 #include <mlpack/core/math/lin_alg.cpp>
 #include <mlpack/core/math/random.cpp>
 #include <mlpack/core/math/random_basis.cpp>
 #include <mlpack/core/tree/cosine_tree/cosine_tree.cpp>
-#include <mlpack/core/util/cli.cpp>
 #include <mlpack/core/util/backtrace.cpp>
+#include <mlpack/core/util/cli.cpp>
 #include <mlpack/core/util/log.cpp>
 #include <mlpack/core/util/prefixedoutstream.cpp>
 #include <mlpack/core/util/program_doc.cpp>
 #include <mlpack/core/util/singletons.cpp>
 #include <mlpack/core/util/timers.cpp>
 #include <mlpack/core/util/version.cpp>
-#include <mlpack/methods/lars/lars.cpp>
-#include <mlpack/methods/quic_svd/quic_svd.cpp>
-#include <mlpack/methods/randomized_svd/randomized_svd.cpp>>
+#include <mlpack/methods/adaboost/adaboost_model.cpp>
 #include <mlpack/methods/block_krylov_svd/randomized_block_krylov_svd.cpp>
+#include <mlpack/methods/fastmks/fastmks_model.cpp>
+#include <mlpack/methods/gmm/diagonal_gmm.cpp>
+#include <mlpack/methods/gmm/gmm.cpp>
+#include <mlpack/methods/hoeffding_trees/hoeffding_tree_model.cpp>
+#include <mlpack/methods/lars/lars.cpp>
+#include <mlpack/methods/linear_regression/linear_regression.cpp>
+#include <mlpack/methods/local_coordinate_coding/lcc.cpp>
+#include <mlpack/methods/matrix_completion/matrix_completion.cpp>
+#include <mlpack/methods/neighbor_search/unmap.cpp>
+#include <mlpack/methods/quic_svd/quic_svd.cpp>
+#include <mlpack/methods/radical/radical.cpp>
+#include <mlpack/methods/randomized_svd/randomized_svd.cpp>
+#include <mlpack/methods/rann/ra_util.cpp>
+#include <mlpack/methods/softmax_regression/softmax_regression.cpp>
+#include <mlpack/methods/softmax_regression/softmax_regression_function.cpp>
+#include <mlpack/methods/sparse_autoencoder/maximal_inputs.cpp>
+#include <mlpack/methods/sparse_autoencoder/sparse_autoencoder.cpp>
+#include <mlpack/methods/sparse_autoencoder/sparse_autoencoder_function.cpp>
+#include <mlpack/methods/sparse_coding/sparse_coding.cpp>
+
 
 #include <mlpack/core.hpp>
 
-#include <boost/src/archive_exception.cpp>
-#include <boost/src/basic_archive.cpp>
-#include <boost/src/basic_oarchive.cpp>
-#include <boost/src/basic_oserializer.cpp>
-#include <boost/src/basic_iarchive.cpp>
-#include <boost/src/basic_iserializer.cpp>
-#include <boost/src/basic_text_oprimitive.cpp>
-#include <boost/src/basic_serializer_map.cpp>
-#include <boost/src/basic_xml_archive.cpp>
-#include <boost/src/binary_iarchive.cpp>
-#include <boost/src/binary_oarchive.cpp>
-#include <boost/src/extended_type_info_typeid.cpp>
-#include <boost/src/extended_type_info.cpp>
-#include <boost/src/utf8_codecvt_facet.cpp>
-#include <boost/src/xml_oarchive.cpp>
-#include <boost/src/xml_archive_exception.cpp>
+#include <boost/serialization/archive_exception.cpp>
+#include <boost/serialization/basic_archive.cpp>
+#include <boost/serialization/basic_oarchive.cpp>
+#include <boost/serialization/basic_oserializer.cpp>
+#include <boost/serialization/basic_iarchive.cpp>
+#include <boost/serialization/basic_iserializer.cpp>
+#include <boost/serialization/basic_pointer_iserializer.cpp>
+#include <boost/serialization/basic_pointer_oserializer.cpp>
+#include <boost/serialization/basic_text_oprimitive.cpp>
+#include <boost/serialization/binary_iarchive.cpp>
+#include <boost/serialization/binary_oarchive.cpp>
+#include <boost/serialization/extended_type_info_typeid.cpp>
+#include <boost/serialization/extended_type_info.cpp>
+#include <boost/serialization/basic_serializer_map.cpp>
+#include <boost/serialization/void_cast.cpp>
+#include <boost/serialization/utf8_codecvt_facet.cpp>
 
 #undef ARMA_EXTRA_MAT_PROTO
 #undef ARMA_EXTRA_MAT_MEAT
@@ -90,4 +116,5 @@
 // autogenerated RcppExports.cpp
 #define Rcpp_hpp
 #define RcppArmadillo__RcppArmadillo__h
+
 #endif

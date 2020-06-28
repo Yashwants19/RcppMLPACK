@@ -53,7 +53,7 @@
  *  - @ref sample
  *  - @ref sample_ml_app
  *  - @ref cv
- *  - @ref hpt
+ *  - @ref hpt_guide
  *  - @ref verinfo
  *
  * @section remarks Final Remarks
@@ -118,14 +118,6 @@
 // Use Armadillo's C++ version detection.
 #ifdef ARMA_USE_CXX11
   #define MLPACK_USE_CX11
-#endif
-
-#if !defined(MLPACK_COUT_STREAM)
- #define MLPACK_COUT_STREAM std::cout
-#endif
-
-#if !defined(MLPACK_CERR_STREAM)
- #define MLPACK_CERR_STREAM std::cerr
 #endif
 
 #endif

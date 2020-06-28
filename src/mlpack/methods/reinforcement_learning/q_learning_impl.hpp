@@ -1,5 +1,5 @@
 /**
- * @file q_learning_impl.hpp
+ * @file methods/reinforcement_learning/q_learning_impl.hpp
  * @author Shangtong Zhang
  *
  * This file is the implementation of QLearning class.
@@ -30,20 +30,20 @@ QLearning<
   UpdaterType,
   PolicyType,
   ReplayType
->::QLearning(TrainingConfig config,
-             NetworkType network,
-             PolicyType policy,
-             ReplayType replayMethod,
+>::QLearning(TrainingConfig& config,
+             NetworkType& network,
+             PolicyType& policy,
+             ReplayType& replayMethod,
              UpdaterType updater,
              EnvironmentType environment):
-    config(std::move(config)),
-    learningNetwork(std::move(network)),
+    config(config),
+    learningNetwork(network),
+    policy(policy),
+    replayMethod(replayMethod),
     updater(std::move(updater)),
     #if ENS_VERSION_MAJOR >= 2
     updatePolicy(NULL),
     #endif
-    policy(std::move(policy)),
-    replayMethod(std::move(replayMethod)),
     environment(std::move(environment)),
     totalSteps(0),
     deterministic(false)
@@ -131,7 +131,7 @@ double QLearning<
   learningNetwork.Predict(state.Encode(), actionValue);
 
   // Select an action according to the behavior policy.
-  ActionType action = policy.Sample(actionValue, deterministic);
+  action = policy.Sample(actionValue, deterministic, config.NoisyQLearning());
 
   // Interact with the environment to advance to next state.
   StateType nextState;
@@ -179,6 +179,7 @@ double QLearning<
   // Compute the update target.
   arma::mat target;
   learningNetwork.Forward(sampledStates, target);
+
   /**
    * If the agent is at a terminal state, then we don't need to add the
    * discounted reward. At terminal state, the agent wont perform any
@@ -199,7 +200,7 @@ double QLearning<
 
   // Learn from experience.
   arma::mat gradients;
-  learningNetwork.Backward(target, gradients);
+  learningNetwork.Backward(sampledStates, target, gradients);
 
   replayMethod.Update(target, sampledActions, nextActionValues, gradients);
 
@@ -209,6 +210,12 @@ double QLearning<
   updatePolicy->Update(learningNetwork.Parameters(), config.StepSize(),
       gradients);
   #endif
+
+  if (config.NoisyQLearning() == true)
+  {
+    learningNetwork.ResetNoise();
+    targetNetwork.ResetNoise();
+  }
 
   return reward;
 }
@@ -266,4 +273,3 @@ double QLearning<
 } // namespace mlpack
 
 #endif
-

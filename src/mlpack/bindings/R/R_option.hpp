@@ -1,6 +1,6 @@
 /**
  * @file R_option.hpp
- * @author Yashwant Singh
+ * @author Yashwant Singh Parihar
  *
  * The R option type.
  *
@@ -12,6 +12,10 @@
 #ifndef MLPACK_BINDINGS_R_R_OPTION_HPP
 #define MLPACK_BINDINGS_R_R_OPTION_HPP
 #include <mlpack/core/util/param_data.hpp>
+#include "print_input_param.hpp"
+#include "print_input_processing.hpp"
+#include "print_output_processing.hpp"
+#include "print_serialize_util.hpp"
 
 namespace mlpack {
 namespace bindings {
@@ -64,6 +68,16 @@ class ROption
     // Restore the parameters for this program.
     if (identifier != "verbose")
       CLI::RestoreSettings(CLI::ProgramName(), false);
+
+    // These are used by the R generator.
+    CLI::GetSingleton().functionMap[data.tname]["PrintInputParam"] =
+        &PrintInputParam<T>;
+    CLI::GetSingleton().functionMap[data.tname]["PrintOutputProcessing"] =
+        &PrintOutputProcessing<T>;
+    CLI::GetSingleton().functionMap[data.tname]["PrintInputProcessing"] =
+        &PrintInputProcessing<T>;
+    CLI::GetSingleton().functionMap[data.tname]["PrintSerializeUtil"] =
+        &PrintSerializeUtil<T>;
 
     // Add the ParamData object, then store.  This is necessary because we may
     // import more than one .so or .o that uses CLI, so we have to keep the options

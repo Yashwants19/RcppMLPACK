@@ -583,6 +583,7 @@ PACKAGE_URL=''
 
 ac_subst_vars='LTLIBOBJS
 LIBOBJS
+ENS_HAVE_OPENMP
 OPENMP_FLAG
 CXXCPP
 OBJEXT
@@ -2820,6 +2821,8 @@ fi
 
 OPENMP_FLAG="${openmp_flag}"
 
+ENS_HAVE_OPENMP="${ens_have_openmp}"
+
 ac_config_files="$ac_config_files src/Makevars"
 
 cat >confcache <<\_ACEOF
@@ -3982,8 +3985,4 @@ fi
 echo "
 RcppMLPACK $PACKAGE_VERSION
 ==================
-
-compiler:	${CXX}
-cflags:         ${OPENMP_FLAG}
-libs:           ${OPENMP_FLAG}
 "

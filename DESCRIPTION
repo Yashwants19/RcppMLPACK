@@ -15,7 +15,7 @@ SystemRequirements: A C++11 compiler. Versions 4.8.*, 4.9.* or later of GCC will
 License: GPL (>= 2)
 Depends: R (>= 3.2.0)
 Imports: Rcpp (>= 0.12.4), xml2
-LinkingTo: Rcpp, RcppArmadillo, BH
+LinkingTo: Rcpp, RcppArmadillo, BH, RcppEnsmallen
 VignetteBuilder: knitr
 Suggests:
     knitr,

@@ -16,7 +16,8 @@
 ##
 ## You should have received a copy of the GNU General Public License
 ## along with RcppMLPACK.  If not, see <http://www.gnu.org/licenses/>.
-
+##
+#' @export
 RcppMLPACK.package.skeleton <- function(name = "anRpackage", list = character(),
                                         environment = .GlobalEnv,
                                         path = ".", force = FALSE,

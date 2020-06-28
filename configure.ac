@@ -125,14 +125,11 @@ fi
 
 
 AC_SUBST([OPENMP_FLAG], ["${openmp_flag}"])
+AC_SUBST([ENS_HAVE_OPENMP], ["${ens_have_openmp}"])
 AC_OUTPUT(src/Makevars)
 
 
 echo "
 RcppMLPACK $PACKAGE_VERSION
 ==================
-
-compiler:	${CXX}
-cflags:         ${OPENMP_FLAG}
-libs:           ${OPENMP_FLAG}
 "

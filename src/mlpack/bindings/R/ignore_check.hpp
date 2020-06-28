@@ -2,7 +2,7 @@
  * @file ignore_check.hpp
  * @author Yashwant Singh
  *
- * Implementation of IgnoreCheck() for Python bindings.
+ * Implementation of IgnoreCheck() for R bindings.
  *
  * mlpack is free software; you may redistribute it and/or modify it under the
  * terms of the 3-clause BSD license.  You should have received a copy of the
@@ -17,7 +17,7 @@ namespace bindings {
 namespace r {
 
 /**
- * Return whether or not a parameter check should be ignored.  For test
+ * Return whether or not a parameter check should be ignored.  For R
  * bindings, we do not ignore any checks, so this always returns false.
  */
 template<typename T>
