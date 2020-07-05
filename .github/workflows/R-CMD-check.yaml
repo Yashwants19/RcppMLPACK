@@ -31,11 +31,10 @@ jobs:
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
       CRAN: ${{ matrix.config.cran }}
+      MAKEFLAGS: "-j 2"
       R_BUILD_ARGS: "--no-build-vignettes"
       R_CHECK_ARGS: "--no-build-vignettes"
       _R_CHECK_FORCE_SUGGESTS: 0
-      if: runner.os != 'Windows'
-      MAKEFLAGS: "-j 2"
 
     steps:
       - uses: actions/checkout@v1
