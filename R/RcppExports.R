@@ -41,6 +41,26 @@ DeserializeApproxKFNModelPtr <- function(str) {
     .Call('_RcppMLPACK_DeserializeApproxKFNModelPtr', PACKAGE = 'RcppMLPACK', str)
 }
 
+cf_mlpackMain <- function() {
+    invisible(.Call('_RcppMLPACK_cf_mlpackMain', PACKAGE = 'RcppMLPACK'))
+}
+
+CLI_GetParamCFModelPtr <- function(paramName) {
+    .Call('_RcppMLPACK_CLI_GetParamCFModelPtr', PACKAGE = 'RcppMLPACK', paramName)
+}
+
+CLI_SetParamCFModelPtr <- function(paramName, ptr) {
+    invisible(.Call('_RcppMLPACK_CLI_SetParamCFModelPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
+}
+
+SerializeCFModelPtr <- function(ptr) {
+    .Call('_RcppMLPACK_SerializeCFModelPtr', PACKAGE = 'RcppMLPACK', ptr)
+}
+
+DeserializeCFModelPtr <- function(str) {
+    .Call('_RcppMLPACK_DeserializeCFModelPtr', PACKAGE = 'RcppMLPACK', str)
+}
+
 dbscan_mlpackMain <- function() {
     invisible(.Call('_RcppMLPACK_dbscan_mlpackMain', PACKAGE = 'RcppMLPACK'))
 }

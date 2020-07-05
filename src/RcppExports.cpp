@@ -114,6 +114,59 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// cf_mlpackMain
+void cf_mlpackMain();
+RcppExport SEXP _RcppMLPACK_cf_mlpackMain() {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    cf_mlpackMain();
+    return R_NilValue;
+END_RCPP
+}
+// CLI_GetParamCFModelPtr
+SEXP CLI_GetParamCFModelPtr(const std::string& paramName);
+RcppExport SEXP _RcppMLPACK_CLI_GetParamCFModelPtr(SEXP paramNameSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const std::string& >::type paramName(paramNameSEXP);
+    rcpp_result_gen = Rcpp::wrap(CLI_GetParamCFModelPtr(paramName));
+    return rcpp_result_gen;
+END_RCPP
+}
+// CLI_SetParamCFModelPtr
+void CLI_SetParamCFModelPtr(const std::string& paramName, SEXP ptr);
+RcppExport SEXP _RcppMLPACK_CLI_SetParamCFModelPtr(SEXP paramNameSEXP, SEXP ptrSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const std::string& >::type paramName(paramNameSEXP);
+    Rcpp::traits::input_parameter< SEXP >::type ptr(ptrSEXP);
+    CLI_SetParamCFModelPtr(paramName, ptr);
+    return R_NilValue;
+END_RCPP
+}
+// SerializeCFModelPtr
+Rcpp::RawVector SerializeCFModelPtr(SEXP ptr);
+RcppExport SEXP _RcppMLPACK_SerializeCFModelPtr(SEXP ptrSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< SEXP >::type ptr(ptrSEXP);
+    rcpp_result_gen = Rcpp::wrap(SerializeCFModelPtr(ptr));
+    return rcpp_result_gen;
+END_RCPP
+}
+// DeserializeCFModelPtr
+SEXP DeserializeCFModelPtr(Rcpp::RawVector str);
+RcppExport SEXP _RcppMLPACK_DeserializeCFModelPtr(SEXP strSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::RawVector >::type str(strSEXP);
+    rcpp_result_gen = Rcpp::wrap(DeserializeCFModelPtr(str));
+    return rcpp_result_gen;
+END_RCPP
+}
 // dbscan_mlpackMain
 void dbscan_mlpackMain();
 RcppExport SEXP _RcppMLPACK_dbscan_mlpackMain() {
@@ -1965,6 +2018,11 @@ static const R_CallMethodDef CallEntries[] = {
     {"_RcppMLPACK_CLI_SetParamApproxKFNModelPtr", (DL_FUNC) &_RcppMLPACK_CLI_SetParamApproxKFNModelPtr, 2},
     {"_RcppMLPACK_SerializeApproxKFNModelPtr", (DL_FUNC) &_RcppMLPACK_SerializeApproxKFNModelPtr, 1},
     {"_RcppMLPACK_DeserializeApproxKFNModelPtr", (DL_FUNC) &_RcppMLPACK_DeserializeApproxKFNModelPtr, 1},
+    {"_RcppMLPACK_cf_mlpackMain", (DL_FUNC) &_RcppMLPACK_cf_mlpackMain, 0},
+    {"_RcppMLPACK_CLI_GetParamCFModelPtr", (DL_FUNC) &_RcppMLPACK_CLI_GetParamCFModelPtr, 1},
+    {"_RcppMLPACK_CLI_SetParamCFModelPtr", (DL_FUNC) &_RcppMLPACK_CLI_SetParamCFModelPtr, 2},
+    {"_RcppMLPACK_SerializeCFModelPtr", (DL_FUNC) &_RcppMLPACK_SerializeCFModelPtr, 1},
+    {"_RcppMLPACK_DeserializeCFModelPtr", (DL_FUNC) &_RcppMLPACK_DeserializeCFModelPtr, 1},
     {"_RcppMLPACK_dbscan_mlpackMain", (DL_FUNC) &_RcppMLPACK_dbscan_mlpackMain, 0},
     {"_RcppMLPACK_decision_stump_mlpackMain", (DL_FUNC) &_RcppMLPACK_decision_stump_mlpackMain, 0},
     {"_RcppMLPACK_CLI_GetParamDSModelPtr", (DL_FUNC) &_RcppMLPACK_CLI_GetParamDSModelPtr, 1},

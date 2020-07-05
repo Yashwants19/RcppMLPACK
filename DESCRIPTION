@@ -23,4 +23,3 @@ Suggests:
 URL: http://www.mlpack.org/
 BugReports: https://github.com/Yashwants19/RcppMLPACK/issues
 RoxygenNote: 7.1.0
-Encoding: UTF-8
