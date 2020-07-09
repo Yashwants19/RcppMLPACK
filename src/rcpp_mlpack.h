@@ -40,7 +40,6 @@
 #endif
 
 // To suppress warnings related to core/util/arma_util.hpp.
-#define MLPACK_CORE_ARMA_UTIL_CONFIG_HPP
+#define MLPACK_CORE_UTIL_ARMA_CONFIG_HPP
 
-#include <mlpack/core.hpp>
 #endif
