@@ -15,25 +15,31 @@
 
 #include <Rcpp.h>
 
+// To suppress Found ‘__assert_fail’, possibly from ‘assert’ (C).
 #define BOOST_DISABLE_ASSERTS
 
-// More recently this changes from ARMA_DEFAULT_OSTREAM to ARMA_COUT_STREAM
-// and ARMA_CERR_STREAM
+// To suppress warnings related core/util/arma_util.hpp.
+#define MLPACK_CORE_ARMA_UTIL_CONFIG_HPP
+
+// Rcpp has its own stream object which cooperates more nicely with R's i/o
+// And as of armadillo and mlpack, we can use this stream object as well.
 #if !defined(ARMA_COUT_STREAM)
   #define ARMA_COUT_STREAM Rcpp::Rcout
 #endif
 #if !defined(ARMA_CERR_STREAM)
   #define ARMA_CERR_STREAM Rcpp::Rcerr
 #endif
-#if !defined(ARMA_RNG_ALT)
-  #define ARMA_RNG_ALT         RcppArmadillo/Alt_R_RNG.h
-#endif
-
 #if !defined(MLPACK_COUT_STREAM)
   #define MLPACK_COUT_STREAM Rcpp::Rcout
 #endif
 #if !defined(MLPACK_CERR_STREAM)
   #define MLPACK_CERR_STREAM Rcpp::Rcerr
+#endif
+
+// This define makes the R RNG have precedent over the C++11-based
+// RNG provided by Armadillo.
+#if !defined(ARMA_RNG_ALT)
+  #define ARMA_RNG_ALT         RcppArmadillo/Alt_R_RNG.h
 #endif
 
 #endif
