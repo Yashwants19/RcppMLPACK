@@ -77,7 +77,7 @@ void PrintDoc(util::ParamData& d,
   if (out)
     oss << "}";
 
-  std::cout << util::HyphenateString(oss.str(), "#'   ");
+  MLPACK_COUT_STREAM << util::HyphenateString(oss.str(), "#'   ");
 }
 
 } // namespace r
