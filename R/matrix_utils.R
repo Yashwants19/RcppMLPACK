@@ -2,11 +2,11 @@
 #
 # This file defines the to_matrix() function, which can be used to convert
 # data.frame or other types of matrix-like objects to matrix for use in
-# mlpack bindings(CLI_SetParamMat/UMat).
+# mlpack bindings(IO_SetParamMat/UMat).
 #
 # This file also defines the to_matirx_with_info() function, which can be used
 # to construct dataset information vector from the given dataset for use in 
-# mlpack bindings(CLI_SetParamMatWithInfo).
+# mlpack bindings(IO_SetParamMatWithInfo).
 #
 # 
 # mlpack is free software; you may redistribute it and/or modify it under the

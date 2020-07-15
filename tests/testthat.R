@@ -1,4 +1,4 @@
 library(testthat)
-library(RcppMLPACK)
+library(mlpack)
 
-test_check("RcppMLPACK")
+test_check("mlpack")

@@ -1,4 +1,4 @@
-﻿/**
+/**
  * @file core.hpp
  *
  * Include all of the base components required to write mlpack methods, and the
@@ -53,7 +53,7 @@
  *  - @ref sample
  *  - @ref sample_ml_app
  *  - @ref cv
- *  - @ref hpt
+ *  - @ref hpt_guide
  *  - @ref verinfo
  *
  * @section remarks Final Remarks
@@ -69,7 +69,7 @@
 // Now the core mlpack classes.
 #include <mlpack/core/util/arma_traits.hpp>
 #include <mlpack/core/util/log.hpp>
-#include <mlpack/core/util/cli.hpp>
+#include <mlpack/core/util/io.hpp>
 #include <mlpack/core/util/deprecated.hpp>
 #include <mlpack/core/data/load.hpp>
 #include <mlpack/core/data/save.hpp>
@@ -118,14 +118,6 @@
 // Use Armadillo's C++ version detection.
 #ifdef ARMA_USE_CXX11
   #define MLPACK_USE_CX11
-#endif
-
-#if !defined(MLPACK_COUT_STREAM)
- #define MLPACK_COUT_STREAM std::cout
-#endif
-
-#if !defined(MLPACK_CERR_STREAM)
- #define MLPACK_CERR_STREAM std::cerr
 #endif
 
 #endif

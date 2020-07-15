@@ -2,15 +2,15 @@
 % Please edit documentation in R/lars.R
 \name{lars}
 \alias{lars}
-\title{Least Angle Regression (Stagewise/laSso).}
+\title{LARS}
 \usage{
 lars(
-  input = matrix(NA),
-  input_model = NULL,
-  lambda1 = 0,
-  lambda2 = 0,
-  responses = matrix(NA),
-  test = matrix(NA),
+  input = NA,
+  input_model = NA,
+  lambda1 = NA,
+  lambda2 = NA,
+  responses = NA,
+  test = NA,
   use_cholesky = FALSE,
   verbose = FALSE
 )
@@ -20,75 +20,87 @@ lars(
 
 \item{input_model}{Trained LARS model to use.}
 
-\item{lambda1}{Regularization parameter for l1-norm penalty. Default value `0`.}
+\item{lambda1}{Regularization parameter for l1-norm penalty.  Default value "0".}
 
-\item{lambda2}{Regularization parameter for l2-norm penalty. Default value `0`.}
+\item{lambda2}{Regularization parameter for l2-norm penalty.  Default value "0".}
 
 \item{responses}{Matrix of responses/observations (y).}
 
 \item{test}{Matrix containing points to regress on (test points).}
 
-\item{use_cholesky}{Use Cholesky decomposition during computation
-rather than explicitly computing the full Gram matrix.  Default value `FALSE`.}
+\item{use_cholesky}{Use Cholesky decomposition during computation rather than
+explicitly computing the full Gram matrix.  Default value "FALSE".}
 
-\item{verbose}{Display informational messages and the full list of
-parameters and timers at the end of execution.  Default value `FALSE`.}
+\item{verbose}{Display informational messages and the full list of parameters and
+timers at the end of execution.  Default value "FALSE".}
 }
 \value{
 A list with several components:
-
 \item{output_model}{Output LARS model.}
-\item{output_predictions}{ If --test_file is specified,
-  this file is where the predicted responses will be saved.}
+\item{output_predictions}{If --test_file is specified, this file is where the
+  predicted responses will be saved.}
 }
 \description{
-An implementation of LARS: Least Angle Regression (Stagewise/laSso).  This is a
-stage-wise homotopy-based algorithm for L1-regularized linear regression (LASSO)
-and L1+L2-regularized linear regression (Elastic Net).
+An implementation of Least Angle Regression (Stagewise/laSso), also known as
+LARS.  This can train a LARS/LASSO/Elastic Net model and use that model or a
+pre-trained model to output regression predictions for a test set.
+}
+\details{
+An implementation of LARS: Least Angle Regression (Stagewise/laSso).  This is
+a stage-wise homotopy-based algorithm for L1-regularized linear regression
+(LASSO) and L1+L2-regularized linear regression (Elastic Net).
 
 This program is able to train a LARS/LASSO/Elastic Net model or load a model
 from file, output regression predictions for a test set, and save the trained
 model to a file.  The LARS algorithm is described in more detail below:
 
-  Let X be a matrix where each row is a point and each column is a dimension, and
-let y be a vector of targets.
+Let X be a matrix where each row is a point and each column is a dimension,
+and let y be a vector of targets.
 
 The Elastic Net problem is to solve
 
-min_beta 0.5 || X * beta - y ||_2^2 + lambda_1 ||beta||_1 +
-  0.5 lambda_2 ||beta||_2^2
+  min_beta 0.5 || X * beta - y ||_2^2 + lambda_1 ||beta||_1 +
+      0.5 lambda_2 ||beta||_2^2
 
 If lambda1 > 0 and lambda2 = 0, the problem is the LASSO.
 If lambda1 > 0 and lambda2 > 0, the problem is the Elastic Net.
 If lambda1 = 0 and lambda2 > 0, the problem is ridge regression.
-If lambda1 = 0 and lambda2 = 0, the problem is unregularized linear regression.
+If lambda1 = 0 and lambda2 = 0, the problem is unregularized linear
+regression.
 
 For efficiency reasons, it is not recommended to use this algorithm with
-`lambda1` = 0.  In that case, use the 'linear_regression' program, which
+"lambda1" = 0.  In that case, use the 'linear_regression' program, which
 implements both unregularized linear regression and ridge regression.
 
-To train a LARS/LASSO/Elastic Net model, the `input` and `responses` parameters
-must be given.  The `lambda1`, `lambda2`, and `use_cholesky` parameters control
-the training options.  A trained model can be saved with the `output_model`.  If
-no training is desired at all, a model can be passed via the `input_model`
-parameter.
+To train a LARS/LASSO/Elastic Net model, the "input" and "responses"
+parameters must be given.  The "lambda1", "lambda2", and "use_cholesky"
+parameters control the training options.  A trained model can be saved with
+the "output_model".  If no training is desired at all, a model can be passed
+via the "input_model" parameter.
 
-The program can also provide predictions for test data using either the trained
-model or the given input model.  Test points can be specified with the `Test`
-parameter.  Predicted responses to the test points can be saved with the
-`output_predictions` output parameter.
+The program can also provide predictions for test data using either the
+trained model or the given input model.  Test points can be specified with
+the "test" parameter.  Predicted responses to the test points can be saved
+with the "output_predictions" output parameter.
 }
 \examples{
-\dontrun{
-For example, the following command trains a model on the data `Data` and
-responses `responses` with lambda1 set to 0.4 and lambda2 set to 0 (so, LASSO is
-being solved), and then the model is saved to `out1$output_model`:
+# For example, the following command trains a model on the data "data" and
+# responses "responses" with lambda1 set to 0.4 and lambda2 set to 0 (so,
+# LASSO is being solved), and then the model is saved to "lasso_model":
 
-out1 <- lars(input=Data, lambda1=0.4, lambda2=0, responses=responses)
-
-The following command uses the `out1$output_model` to provide predicted responses for
-the data `test` and save those responses to `out2$output_predictions`: 
-
-out2 <- lars(input_model=out1$outputModel, test=test)
+\donttest{
+output <- lars(input=data, responses=responses, lambda1=0.4, lambda2=0)
+lasso_model <- output$output_model
 }
+
+# The following command uses the "lasso_model" to provide predicted responses
+# for the data "test" and save those responses to "test_predictions": 
+
+\donttest{
+output <- lars(input_model=lasso_model, test=test)
+test_predictions <- output$output_predictions
+}
+}
+\author{
+MLPACK Developers
 }

@@ -248,7 +248,7 @@ test_that("TestStringVector", {
 })
 
 # If we give data other than matrix/data.frame in matrix_in/matrix_and_info_in,
-# we should get an error. 
+# we should get an error.
 test_that("TestNotMatrix", {
   expect_error(test_r_binding(4.0, 12, "hello",
                               matrix_in="wrong"))
@@ -291,7 +291,7 @@ test_that("TestSerialization", {
   new_model <- Unserialize("model.bin")
   unlink("model.bin")
 
-  output2 <- test_r_binding(4.0, 12, "hello", model_in = new_model)
+  output2 <- test_r_binding(4.0, 12, "hello", model_in=new_model)
 
   expect_true(output2$model_bw_out == 20)
 })

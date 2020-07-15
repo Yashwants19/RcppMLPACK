@@ -2,24 +2,24 @@
 % Please edit documentation in R/test_r_binding.R
 \name{test_r_binding}
 \alias{test_r_binding}
-\title{Run to test R binding functionality}
+\title{R binding test}
 \usage{
 test_r_binding(
   double_in,
   int_in,
   string_in,
   build_model = FALSE,
-  col_in = matrix(NA),
+  col_in = NA,
   flag1 = FALSE,
   flag2 = FALSE,
-  matrix_and_info_in = data.frame(NA),
-  matrix_in = matrix(NA),
-  model_in = NULL,
-  row_in = matrix(NA),
+  matrix_and_info_in = NA,
+  matrix_in = NA,
+  model_in = NA,
+  row_in = NA,
   str_vector_in = NA,
-  ucol_in = matrix(NA),
-  umatrix_in = matrix(NA),
-  urow_in = matrix(NA),
+  ucol_in = NA,
+  umatrix_in = NA,
+  urow_in = NA,
   vector_in = NA,
   verbose = FALSE
 )
@@ -31,13 +31,13 @@ test_r_binding(
 
 \item{string_in}{Input string, must be 'hello'.}
 
-\item{build_model}{If true, a model will be returned.}
+\item{build_model}{If true, a model will be returned.  Default value "FALSE".}
 
 \item{col_in}{Input column.}
 
-\item{flag1}{Input flag, must be specified.}
+\item{flag1}{Input flag, must be specified.  Default value "FALSE".}
 
-\item{flag2}{Input flag, must not be specified.}
+\item{flag2}{Input flag, must not be specified.  Default value "FALSE".}
 
 \item{matrix_and_info_in}{Input matrix and info.}
 
@@ -55,35 +55,36 @@ test_r_binding(
 
 \item{urow_in}{Input unsigned row.}
 
-\item{vector_in}{Input unsigned vector.}
+\item{vector_in}{Input vector of numbers.}
 
-\item{verbose}{Display informational messages and the full list of
-parameters and timers at the end of execution.  Default value `FALSE`.}
+\item{verbose}{Display informational messages and the full list of parameters and
+timers at the end of execution.  Default value "FALSE".}
 }
 \value{
 A list with several components:
-\item{col_out}{ Output column. 2x input column}
-\item{double_out}{ Output double, will be 5.0.}
-\item{int_out}{ Output int, will be 13.}
-\item{matrix_and_info_out}{ Output matrix and info; all
-      numeric elements multiplied by 3. }
-\item{matrix_out}{ Output matrix.}
-\item{model_bw_out}{ The bandwidth of the model.}
-\item{model_out}{ Output model, with twice the bandwidth.}
-\item{row_out}{ Output row.  2x input row.}
-\item{str_vector_out}{ Output string vector.}
-\item{string_out}{ Output string, will be 'hello2'.}
-\item{ucol_out}{ Output unsigned column. 2x input column.}
-\item{umatrix_out}{ Output unsigned matrix.}
-\item{urow_out}{ Output unsigned row.  2x input row.}
-\item{vector_out}{ Output vector.}
+\item{col_out}{Output column. 2x input column}
+\item{double_out}{Output double, will be 5.0.  Default value "0".}
+\item{int_out}{Output int, will be 13.  Default value "0".}
+\item{matrix_and_info_out}{Output matrix and info; all numeric elements
+  multiplied by 3.}
+\item{matrix_out}{Output matrix.}
+\item{model_bw_out}{The bandwidth of the model.  Default value "0".}
+\item{model_out}{Output model, with twice the bandwidth.}
+\item{row_out}{Output row.  2x input row.}
+\item{str_vector_out}{Output string vector.}
+\item{string_out}{Output string, will be 'hello2'.  Default value "".}
+\item{ucol_out}{Output unsigned column. 2x input column.}
+\item{umatrix_out}{Output unsigned matrix.}
+\item{urow_out}{Output unsigned row.  2x input row.}
+\item{vector_out}{Output vector.}
 }
 \description{
 A simple program to test R binding functionality.
 }
-\examples{
-## test_r_binding:
-x <- matrix(c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15), nrow = 3)
-out1 <- test_r_binding(4.0, 12, "hello", flag1 = TRUE, build_model = TRUE)
-out2 <- test_r_binding(4.0, 12, "hello", matrix_in=x, model_in = out1$model_out)
+\details{
+A simple program to test R binding functionality.  You can build mlpack with
+the BUILD_TESTS option set to off, and this binding will no longer be built.
+}
+\author{
+MLPACK Developers
 }
