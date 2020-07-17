@@ -67,14 +67,6 @@ eigenvalues.
 
 For the case where a linear kernel is used, this reduces to regular PCA.
 
-For example, the following command will perform KPCA on the dataset "input"
-using the Gaussian kernel, and saving the transformed data to "transformed": 
-
-\donttest{
-output <- kernel_pca(input=input, kernel="gaussian")
-transformed <- output$output
-}
-
 The kernels that are supported are listed below:
 
  * 'linear': the standard linear dot product (same as normal PCA):
@@ -109,6 +101,16 @@ subset of the data as basis to reconstruct the kernel matrix; to specify the
 sampling scheme, the "sampling" parameter is used.  The sampling scheme for
 the Nystroem method can be chosen from the following list: 'kmeans',
 'random', 'ordered'.
+}
+\examples{
+# For example, the following command will perform KPCA on the dataset "input"
+# using the Gaussian kernel, and saving the transformed data to
+# "transformed": 
+
+\donttest{
+output <- kernel_pca(input=input, kernel="gaussian")
+transformed <- output$output
+}
 }
 \author{
 MLPACK Developers
