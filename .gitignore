@@ -8,6 +8,9 @@
 *.dll
 *.a
 
+# Rstripper stuff
+*.bak
+
 # SVN stuff
 .svn
 
