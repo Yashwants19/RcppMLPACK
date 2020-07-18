@@ -13,10 +13,12 @@
 #ifndef MLPACK_BINDINGS_R_RCPP_MLPACK_H
 #define MLPACK_BINDINGS_R_RCPP_MLPACK_H
 
+// #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+
 #include <Rcpp.h>
 
 // To suppress Found ‘__assert_fail’, possibly from ‘assert’ (C).
-#define BOOST_DISABLE_ASSERTS
+//#define BOOST_DISABLE_ASSERTS
 
 // Rcpp has its own stream object which cooperates more nicely with R's i/o
 // And as of armadillo and mlpack, we can use this stream object as well.
