@@ -25,7 +25,7 @@ namespace r {
  */
 template<typename T>
 void PrintOutputProcessing(
-    const util::ParamData& d,
+    util::ParamData& d,
     const typename boost::disable_if<arma::is_arma_type<T>>::type* = 0,
     const typename boost::disable_if<data::HasSerialize<T>>::type* = 0,
     const typename boost::disable_if<std::is_same<T,
@@ -34,11 +34,11 @@ void PrintOutputProcessing(
   /**
    * This gives us code like:
    *
-   *  "\<paramName\>" = CLI_GetParam\<Type\>("paramName")
+   *  "<paramName>" = IO_GetParam<Type>("paramName")
    *
    */
 
-  MLPACK_COUT_STREAM << "  \"" << d.name << "\" = CLI_GetParam" << GetType<T>(d)
+  MLPACK_COUT_STREAM << "  \"" << d.name << "\" = IO_GetParam" << GetType<T>(d)
             << "(\"" << d.name << "\")";
 }
 
@@ -47,7 +47,7 @@ void PrintOutputProcessing(
  */
 template<typename T>
 void PrintOutputProcessing(
-    const util::ParamData& d,
+    util::ParamData& d,
     const typename boost::enable_if<arma::is_arma_type<T>>::type* = 0,
     const typename std::enable_if<!std::is_same<T,
         std::tuple<data::DatasetInfo, arma::mat>>::value>::type* = 0)
@@ -55,11 +55,11 @@ void PrintOutputProcessing(
   /**
    * This gives us code like:
    *
-   *  "\<paramName\>" = CLI_GetParam\<Type\>("paramName")
+   *  "<paramName>" = IO_GetParam<Type>("paramName")
    *
    */
 
-  MLPACK_COUT_STREAM << "  \"" << d.name << "\" = CLI_GetParam" << GetType<T>(d)
+  MLPACK_COUT_STREAM << "  \"" << d.name << "\" = IO_GetParam" << GetType<T>(d)
             << "(\"" << d.name << "\")";
 }
 
@@ -68,18 +68,18 @@ void PrintOutputProcessing(
  */
 template<typename T>
 void PrintOutputProcessing(
-    const util::ParamData& d,
+    util::ParamData& d,
     const typename boost::enable_if<std::is_same<T,
         std::tuple<data::DatasetInfo, arma::mat>>>::type* = 0)
 {
   /**
    * This gives us code like:
    *
-   *  "\<paramName\>" = CLI_GetParam\<Type\>("paramName")
+   *  "<paramName>" = IO_GetParam<Type>("paramName")
    *
    */
 
-  MLPACK_COUT_STREAM << "  \"" << d.name << "\" = CLI_GetParam" << GetType<T>(d)
+  MLPACK_COUT_STREAM << "  \"" << d.name << "\" = IO_GetParam" << GetType<T>(d)
             << "(\"" << d.name << "\")";
 }
 
@@ -88,14 +88,14 @@ void PrintOutputProcessing(
  */
 template<typename T>
 void PrintOutputProcessing(
-    const util::ParamData& d,
+    util::ParamData& d,
     const typename boost::disable_if<arma::is_arma_type<T>>::type* = 0,
     const typename boost::enable_if<data::HasSerialize<T>>::type* = 0)
 {
   /**
    * This gives us code like:
    *
-   *  "\<paramName\>" = \<paramName\>
+   *  "<paramName>" = <paramName>
    *
    */
 
@@ -108,7 +108,7 @@ void PrintOutputProcessing(
  * @param * (output) Unused parameter.
  */
 template<typename T>
-void PrintOutputProcessing(const util::ParamData& d,
+void PrintOutputProcessing(util::ParamData& d,
                            const void* /*input*/,
                            void* /* output */)
 {

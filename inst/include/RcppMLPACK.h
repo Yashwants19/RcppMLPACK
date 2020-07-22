@@ -59,7 +59,7 @@
 #include <mlpack/core/math/random_basis.cpp>
 #include <mlpack/core/tree/cosine_tree/cosine_tree.cpp>
 #include <mlpack/core/util/backtrace.cpp>
-#include <mlpack/core/util/cli.cpp>
+#include <mlpack/core/util/io.cpp>
 #include <mlpack/core/util/log.cpp>
 #include <mlpack/core/util/prefixedoutstream.cpp>
 #include <mlpack/core/util/program_doc.cpp>
@@ -91,6 +91,8 @@
 
 #include <mlpack/core.hpp>
 
+// These are all the boost files, we need to compile R bindings for mlpack that
+// are not a part of mlpack itself.
 #include <boost/serialization/archive_exception.cpp>
 #include <boost/serialization/basic_archive.cpp>
 #include <boost/serialization/basic_oarchive.cpp>

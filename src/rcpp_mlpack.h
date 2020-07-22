@@ -1,5 +1,5 @@
 /**
- * @file src/RcppMLPACK.h
+ * @file src/rcpp_mlpack.h
  * @author Dirk Eddelbuettel
  * @author Yashwant Singh Parihar
  *

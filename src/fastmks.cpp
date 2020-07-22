@@ -19,17 +19,17 @@ void fastmks_mlpackMain()
 
 // Get the pointer to a FastMKSModel parameter.
 // [[Rcpp::export]]
-SEXP CLI_GetParamFastMKSModelPtr(const std::string& paramName)
+SEXP IO_GetParamFastMKSModelPtr(const std::string& paramName)
 {
-  return std::move((Rcpp::XPtr<FastMKSModel>) CLI::GetParam<FastMKSModel*>(paramName));
+  return std::move((Rcpp::XPtr<FastMKSModel>) IO::GetParam<FastMKSModel*>(paramName));
 }
 
 // Set the pointer to a FastMKSModel parameter.
 // [[Rcpp::export]]
-void CLI_SetParamFastMKSModelPtr(const std::string& paramName, SEXP ptr)
+void IO_SetParamFastMKSModelPtr(const std::string& paramName, SEXP ptr)
 {
-  CLI::GetParam<FastMKSModel*>(paramName) =  Rcpp::as<Rcpp::XPtr<FastMKSModel>>(ptr);
-  CLI::SetPassed(paramName);
+  IO::GetParam<FastMKSModel*>(paramName) =  Rcpp::as<Rcpp::XPtr<FastMKSModel>>(ptr);
+  IO::SetPassed(paramName);
 }
 
 // Serialize a FastMKSModel pointer.

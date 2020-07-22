@@ -1,4 +1,54 @@
+#' @title Image Converter
+#'
+#' @description
+#' A utility to load an image or set of images into a single dataset that can
+#' then be used by other mlpack methods and utilities. This can also unpack an
+#' image dataset into individual files, for instance after mlpack methods have
+#' been used.
+#'
+#' @param input Image filenames which have to be loaded/saved (character vector).
+#' @param channels Number of channels in the image.  Default value "0" (integer).
+#' @param dataset Input matrix to save as images (numeric matrix).
+#' @param height Height of the images.  Default value "0" (integer).
+#' @param quality Compression of the image if saved as jpg (0-100).  Default value
+#'   "90" (integer).
+#' @param save Save a dataset as images.  Default value "FALSE" (logical).
+#' @param verbose Display informational messages and the full list of parameters and
+#'   timers at the end of execution.  Default value "FALSE" (logical).
+#' @param width Width of the image.  Default value "0" (integer).
+#'
+#' @return A list with several components:
+#' \item{output}{Matrix to save images data to, Onlyneeded if you are specifying
+#'   'save' option (numeric matrix).}
+#'
+#' @details
+#' This utility takes an image or an array of images and loads them to a matrix.
+#' You can optionally specify the height "height" width "width" and channel
+#' "channels" of the images that needs to be loaded; otherwise, these parameters
+#' will be automatically detected from the image.
+#' There are other options too, that can be specified such as "quality".
+#' 
+#' You can also provide a dataset and save them as images using "dataset" and
+#' "save" as an parameter.
+#'
+#' @author
+#' mlpack developers
+#'
 #' @export
+#' @examples
+#' # An example to load an image : 
+#' 
+#' \donttest{
+#' output <- image_converter(input=X, height=256, width=256, channels=3)
+#' Y <- output$output
+#' }
+#' 
+#' # An example to save an image is :
+#' 
+#' \donttest{
+#' output <- image_converter(input=X, height=256, width=256, channels=3,
+#'   dataset=Y, save=TRUE)
+#' }
 image_converter <- function(input,
                             channels=NA,
                             dataset=NA,
@@ -7,50 +57,57 @@ image_converter <- function(input,
                             save=FALSE,
                             verbose=FALSE,
                             width=NA) {
+  # Restore IO settings.
+  IO_RestoreSettings("Image Converter")
 
-  CLI_RestoreSettings("Image Converter")
-
-  CLI_SetParamVecString("input", input)
+  # Process each input argument before calling mlpackMain().
+  IO_SetParamVecString("input", input)
 
   if (!identical(channels, NA)) {
-    CLI_SetParamInt("channels", channels)
+    IO_SetParamInt("channels", channels)
   }
 
   if (!identical(dataset, NA)) {
-    CLI_SetParamMat("dataset", to_matrix(dataset))
+    IO_SetParamMat("dataset", to_matrix(dataset))
   }
 
   if (!identical(height, NA)) {
-    CLI_SetParamInt("height", height)
+    IO_SetParamInt("height", height)
   }
 
   if (!identical(quality, NA)) {
-    CLI_SetParamInt("quality", quality)
+    IO_SetParamInt("quality", quality)
   }
 
   if (!identical(save, FALSE)) {
-    CLI_SetParamBool("save", save)
+    IO_SetParamBool("save", save)
   }
 
   if (!identical(width, NA)) {
-    CLI_SetParamInt("width", width)
+    IO_SetParamInt("width", width)
   }
 
   if (verbose) {
-    CLI_EnableVerbose()
+    IO_EnableVerbose()
   } else {
-    CLI_DisableVerbose()
+    IO_DisableVerbose()
   }
 
-  CLI_SetPassed("output")
+  # Mark all output options as passed.
+  IO_SetPassed("output")
 
+  # Call the program.
   image_converter_mlpackMain()
 
+  # Add ModelType as attribute to the model pointer, if needed.
+
+  # Extract the results in order.
   out <- list(
-      "output" = CLI_GetParamMat("output")
+      "output" = IO_GetParamMat("output")
   )
 
-  CLI_ClearSettings()
+  # Clear the parameters.
+  IO_ClearSettings()
 
   return(out)
 }

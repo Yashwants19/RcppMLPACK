@@ -1,4 +1,87 @@
+#' @title Sparse Coding
+#'
+#' @description
+#' An implementation of Sparse Coding with Dictionary Learning.  Given a
+#' dataset, this will decompose the dataset into a sparse combination of a few
+#' dictionary elements, where the dictionary is learned during computation; a
+#' dictionary can be reused for future sparse coding of new points.
+#'
+#' @param atoms Number of atoms in the dictionary.  Default value "15" (integer).
+#' @param initial_dictionary Optional initial dictionary matrix (numeric matrix).
+#' @param input_model File containing input sparse coding model (SparseCoding).
+#' @param lambda1 Sparse coding l1-norm regularization parameter.  Default value "0"
+#'   (numeric).
+#' @param lambda2 Sparse coding l2-norm regularization parameter.  Default value "0"
+#'   (numeric).
+#' @param max_iterations Maximum number of iterations for sparse coding (0 indicates
+#'   no limit).  Default value "0" (integer).
+#' @param newton_tolerance Tolerance for convergence of Newton method.  Default value
+#'   "1e-06" (numeric).
+#' @param normalize If set, the input data matrix will be normalized before coding. 
+#'   Default value "FALSE" (logical).
+#' @param objective_tolerance Tolerance for convergence of the objective function. 
+#'   Default value "0.01" (numeric).
+#' @param seed Random seed.  If 0, 'std::time(NULL)' is used.  Default value "0"
+#'   (integer).
+#' @param test Optional matrix to be encoded by trained model (numeric matrix).
+#' @param training Matrix of training data (X) (numeric matrix).
+#' @param verbose Display informational messages and the full list of parameters and
+#'   timers at the end of execution.  Default value "FALSE" (logical).
+#'
+#' @return A list with several components:
+#' \item{codes}{Matrix to save the output sparse codes of the test matrix
+#'   (--test_file) to (numeric matrix).}
+#' \item{dictionary}{Matrix to save the output dictionary to (numeric matrix).}
+#' \item{output_model}{File to save trained sparse coding model to (SparseCoding).}
+#'
+#' @details
+#' An implementation of Sparse Coding with Dictionary Learning, which achieves
+#' sparsity via an l1-norm regularizer on the codes (LASSO) or an (l1+l2)-norm
+#' regularizer on the codes (the Elastic Net).  Given a dense data matrix X with
+#' d dimensions and n points, sparse coding seeks to find a dense dictionary
+#' matrix D with k atoms in d dimensions, and a sparse coding matrix Z with n
+#' points in k dimensions.
+#' 
+#' The original data matrix X can then be reconstructed as Z * D.  Therefore,
+#' this program finds a representation of each point in X as a sparse linear
+#' combination of atoms in the dictionary D.
+#' 
+#' The sparse coding is found with an algorithm which alternates between a
+#' dictionary step, which updates the dictionary D, and a sparse coding step,
+#' which updates the sparse coding matrix.
+#' 
+#' Once a dictionary D is found, the sparse coding model may be used to encode
+#' other matrices, and saved for future usage.
+#' 
+#' To run this program, either an input matrix or an already-saved sparse coding
+#' model must be specified.  An input matrix may be specified with the
+#' "training" option, along with the number of atoms in the dictionary
+#' (specified with the "atoms" parameter).  It is also possible to specify an
+#' initial dictionary for the optimization, with the "initial_dictionary"
+#' parameter.  An input model may be specified with the "input_model"
+#' parameter.
+#'
+#' @author
+#' mlpack developers
+#'
 #' @export
+#' @examples
+#' # As an example, to build a sparse coding model on the dataset "data" using
+#' # 200 atoms and an l1-regularization parameter of 0.1, saving the model into
+#' # "model", use 
+#' 
+#' \donttest{
+#' output <- sparse_coding(training=data, atoms=200, lambda1=0.1)
+#' model <- output$output_model
+#' }
+#' 
+#' # Then, this model could be used to encode a new matrix, "otherdata", and
+#' # save the output codes to "codes": 
+#' 
+#' \donttest{
+#' output <- sparse_coding(input_model=model, test=otherdata)
+#' codes <- output$codes
+#' }
 sparse_coding <- function(atoms=NA,
                           initial_dictionary=NA,
                           input_model=NA,
@@ -12,79 +95,85 @@ sparse_coding <- function(atoms=NA,
                           test=NA,
                           training=NA,
                           verbose=FALSE) {
+  # Restore IO settings.
+  IO_RestoreSettings("Sparse Coding")
 
-  CLI_RestoreSettings("Sparse Coding")
-
+  # Process each input argument before calling mlpackMain().
   if (!identical(atoms, NA)) {
-    CLI_SetParamInt("atoms", atoms)
+    IO_SetParamInt("atoms", atoms)
   }
 
   if (!identical(initial_dictionary, NA)) {
-    CLI_SetParamMat("initial_dictionary", to_matrix(initial_dictionary))
+    IO_SetParamMat("initial_dictionary", to_matrix(initial_dictionary))
   }
 
   if (!identical(input_model, NA)) {
-    CLI_SetParamSparseCodingPtr("input_model", input_model)
+    IO_SetParamSparseCodingPtr("input_model", input_model)
   }
 
   if (!identical(lambda1, NA)) {
-    CLI_SetParamDouble("lambda1", lambda1)
+    IO_SetParamDouble("lambda1", lambda1)
   }
 
   if (!identical(lambda2, NA)) {
-    CLI_SetParamDouble("lambda2", lambda2)
+    IO_SetParamDouble("lambda2", lambda2)
   }
 
   if (!identical(max_iterations, NA)) {
-    CLI_SetParamInt("max_iterations", max_iterations)
+    IO_SetParamInt("max_iterations", max_iterations)
   }
 
   if (!identical(newton_tolerance, NA)) {
-    CLI_SetParamDouble("newton_tolerance", newton_tolerance)
+    IO_SetParamDouble("newton_tolerance", newton_tolerance)
   }
 
   if (!identical(normalize, FALSE)) {
-    CLI_SetParamBool("normalize", normalize)
+    IO_SetParamBool("normalize", normalize)
   }
 
   if (!identical(objective_tolerance, NA)) {
-    CLI_SetParamDouble("objective_tolerance", objective_tolerance)
+    IO_SetParamDouble("objective_tolerance", objective_tolerance)
   }
 
   if (!identical(seed, NA)) {
-    CLI_SetParamInt("seed", seed)
+    IO_SetParamInt("seed", seed)
   }
 
   if (!identical(test, NA)) {
-    CLI_SetParamMat("test", to_matrix(test))
+    IO_SetParamMat("test", to_matrix(test))
   }
 
   if (!identical(training, NA)) {
-    CLI_SetParamMat("training", to_matrix(training))
+    IO_SetParamMat("training", to_matrix(training))
   }
 
   if (verbose) {
-    CLI_EnableVerbose()
+    IO_EnableVerbose()
   } else {
-    CLI_DisableVerbose()
+    IO_DisableVerbose()
   }
 
-  CLI_SetPassed("codes")
-  CLI_SetPassed("dictionary")
-  CLI_SetPassed("output_model")
+  # Mark all output options as passed.
+  IO_SetPassed("codes")
+  IO_SetPassed("dictionary")
+  IO_SetPassed("output_model")
 
+  # Call the program.
   sparse_coding_mlpackMain()
 
-  output_model <- CLI_GetParamSparseCodingPtr("output_model")
+  # Add ModelType as attribute to the model pointer, if needed.
+  output_model <- IO_GetParamSparseCodingPtr("output_model")
   attr(output_model, "type") <- "SparseCoding"
 
+  # Extract the results in order.
   out <- list(
-      "codes" = CLI_GetParamMat("codes"),
-      "dictionary" = CLI_GetParamMat("dictionary"),
+      "codes" = IO_GetParamMat("codes"),
+      "dictionary" = IO_GetParamMat("dictionary"),
       "output_model" = output_model
   )
 
-  CLI_ClearSettings()
+  # Clear the parameters.
+  IO_ClearSettings()
 
   return(out)
 }

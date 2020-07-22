@@ -19,17 +19,17 @@ void adaboost_mlpackMain()
 
 // Get the pointer to a AdaBoostModel parameter.
 // [[Rcpp::export]]
-SEXP CLI_GetParamAdaBoostModelPtr(const std::string& paramName)
+SEXP IO_GetParamAdaBoostModelPtr(const std::string& paramName)
 {
-  return std::move((Rcpp::XPtr<AdaBoostModel>) CLI::GetParam<AdaBoostModel*>(paramName));
+  return std::move((Rcpp::XPtr<AdaBoostModel>) IO::GetParam<AdaBoostModel*>(paramName));
 }
 
 // Set the pointer to a AdaBoostModel parameter.
 // [[Rcpp::export]]
-void CLI_SetParamAdaBoostModelPtr(const std::string& paramName, SEXP ptr)
+void IO_SetParamAdaBoostModelPtr(const std::string& paramName, SEXP ptr)
 {
-  CLI::GetParam<AdaBoostModel*>(paramName) =  Rcpp::as<Rcpp::XPtr<AdaBoostModel>>(ptr);
-  CLI::SetPassed(paramName);
+  IO::GetParam<AdaBoostModel*>(paramName) =  Rcpp::as<Rcpp::XPtr<AdaBoostModel>>(ptr);
+  IO::SetPassed(paramName);
 }
 
 // Serialize a AdaBoostModel pointer.

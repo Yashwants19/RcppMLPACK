@@ -1,4 +1,58 @@
+#' @title Mean Shift Clustering
+#'
+#' @description
+#' A fast implementation of mean-shift clustering using dual-tree range search. 
+#' Given a dataset, this uses the mean shift algorithm to produce and return a
+#' clustering of the data.
+#'
+#' @param input Input dataset to perform clustering on (numeric matrix).
+#' @param force_convergence If specified, the mean shift algorithm will continue
+#'   running regardless of max_iterations until the clusters converge.  Default
+#'   value "FALSE" (logical).
+#' @param in_place If specified, a column containing the learned cluster assignments
+#'   will be added to the input dataset file.  In this case, --output_file is
+#'   overridden.  (Do not use with Python..  Default value "FALSE" (logical).
+#' @param labels_only If specified, only the output labels will be written to the
+#'   file specified by --output_file.  Default value "FALSE" (logical).
+#' @param max_iterations Maximum number of iterations before mean shift terminates. 
+#'   Default value "1000" (integer).
+#' @param radius If the distance between two centroids is less than the given radius,
+#'   one will be removed.  A radius of 0 or less means an estimate will be
+#'   calculated and used for the radius.  Default value "0" (numeric).
+#' @param verbose Display informational messages and the full list of parameters and
+#'   timers at the end of execution.  Default value "FALSE" (logical).
+#'
+#' @return A list with several components:
+#' \item{centroid}{If specified, the centroids of each cluster will be written to
+#'   the given matrix (numeric matrix).}
+#' \item{output}{Matrix to write output labels or labeled data to (numeric
+#'   matrix).}
+#'
+#' @details
+#' This program performs mean shift clustering on the given dataset, storing the
+#' learned cluster assignments either as a column of labels in the input dataset
+#' or separately.
+#' 
+#' The input dataset should be specified with the "input" parameter, and the
+#' radius used for search can be specified with the "radius" parameter.  The
+#' maximum number of iterations before algorithm termination is controlled with
+#' the "max_iterations" parameter.
+#' 
+#' The output labels may be saved with the "output" output parameter and the
+#' centroids of each cluster may be saved with the "centroid" output parameter.
+#'
+#' @author
+#' mlpack developers
+#'
 #' @export
+#' @examples
+#' # For example, to run mean shift clustering on the dataset "data" and store
+#' # the centroids to "centroids", the following command may be used: 
+#' 
+#' \donttest{
+#' output <- mean_shift(input=data)
+#' centroids <- output$centroid
+#' }
 mean_shift <- function(input,
                        force_convergence=FALSE,
                        in_place=FALSE,
@@ -6,48 +60,55 @@ mean_shift <- function(input,
                        max_iterations=NA,
                        radius=NA,
                        verbose=FALSE) {
+  # Restore IO settings.
+  IO_RestoreSettings("Mean Shift Clustering")
 
-  CLI_RestoreSettings("Mean Shift Clustering")
-
-  CLI_SetParamMat("input", to_matrix(input))
+  # Process each input argument before calling mlpackMain().
+  IO_SetParamMat("input", to_matrix(input))
 
   if (!identical(force_convergence, FALSE)) {
-    CLI_SetParamBool("force_convergence", force_convergence)
+    IO_SetParamBool("force_convergence", force_convergence)
   }
 
   if (!identical(in_place, FALSE)) {
-    CLI_SetParamBool("in_place", in_place)
+    IO_SetParamBool("in_place", in_place)
   }
 
   if (!identical(labels_only, FALSE)) {
-    CLI_SetParamBool("labels_only", labels_only)
+    IO_SetParamBool("labels_only", labels_only)
   }
 
   if (!identical(max_iterations, NA)) {
-    CLI_SetParamInt("max_iterations", max_iterations)
+    IO_SetParamInt("max_iterations", max_iterations)
   }
 
   if (!identical(radius, NA)) {
-    CLI_SetParamDouble("radius", radius)
+    IO_SetParamDouble("radius", radius)
   }
 
   if (verbose) {
-    CLI_EnableVerbose()
+    IO_EnableVerbose()
   } else {
-    CLI_DisableVerbose()
+    IO_DisableVerbose()
   }
 
-  CLI_SetPassed("centroid")
-  CLI_SetPassed("output")
+  # Mark all output options as passed.
+  IO_SetPassed("centroid")
+  IO_SetPassed("output")
 
+  # Call the program.
   mean_shift_mlpackMain()
 
+  # Add ModelType as attribute to the model pointer, if needed.
+
+  # Extract the results in order.
   out <- list(
-      "centroid" = CLI_GetParamMat("centroid"),
-      "output" = CLI_GetParamMat("output")
+      "centroid" = IO_GetParamMat("centroid"),
+      "output" = IO_GetParamMat("output")
   )
 
-  CLI_ClearSettings()
+  # Clear the parameters.
+  IO_ClearSettings()
 
   return(out)
 }

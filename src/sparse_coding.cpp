@@ -19,17 +19,17 @@ void sparse_coding_mlpackMain()
 
 // Get the pointer to a SparseCoding parameter.
 // [[Rcpp::export]]
-SEXP CLI_GetParamSparseCodingPtr(const std::string& paramName)
+SEXP IO_GetParamSparseCodingPtr(const std::string& paramName)
 {
-  return std::move((Rcpp::XPtr<SparseCoding>) CLI::GetParam<SparseCoding*>(paramName));
+  return std::move((Rcpp::XPtr<SparseCoding>) IO::GetParam<SparseCoding*>(paramName));
 }
 
 // Set the pointer to a SparseCoding parameter.
 // [[Rcpp::export]]
-void CLI_SetParamSparseCodingPtr(const std::string& paramName, SEXP ptr)
+void IO_SetParamSparseCodingPtr(const std::string& paramName, SEXP ptr)
 {
-  CLI::GetParam<SparseCoding*>(paramName) =  Rcpp::as<Rcpp::XPtr<SparseCoding>>(ptr);
-  CLI::SetPassed(paramName);
+  IO::GetParam<SparseCoding*>(paramName) =  Rcpp::as<Rcpp::XPtr<SparseCoding>>(ptr);
+  IO::SetPassed(paramName);
 }
 
 // Serialize a SparseCoding pointer.

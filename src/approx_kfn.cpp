@@ -19,17 +19,17 @@ void approx_kfn_mlpackMain()
 
 // Get the pointer to a ApproxKFNModel parameter.
 // [[Rcpp::export]]
-SEXP CLI_GetParamApproxKFNModelPtr(const std::string& paramName)
+SEXP IO_GetParamApproxKFNModelPtr(const std::string& paramName)
 {
-  return std::move((Rcpp::XPtr<ApproxKFNModel>) CLI::GetParam<ApproxKFNModel*>(paramName));
+  return std::move((Rcpp::XPtr<ApproxKFNModel>) IO::GetParam<ApproxKFNModel*>(paramName));
 }
 
 // Set the pointer to a ApproxKFNModel parameter.
 // [[Rcpp::export]]
-void CLI_SetParamApproxKFNModelPtr(const std::string& paramName, SEXP ptr)
+void IO_SetParamApproxKFNModelPtr(const std::string& paramName, SEXP ptr)
 {
-  CLI::GetParam<ApproxKFNModel*>(paramName) =  Rcpp::as<Rcpp::XPtr<ApproxKFNModel>>(ptr);
-  CLI::SetPassed(paramName);
+  IO::GetParam<ApproxKFNModel*>(paramName) =  Rcpp::as<Rcpp::XPtr<ApproxKFNModel>>(ptr);
+  IO::SetPassed(paramName);
 }
 
 // Serialize a ApproxKFNModel pointer.

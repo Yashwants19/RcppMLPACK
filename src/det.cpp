@@ -19,17 +19,17 @@ void det_mlpackMain()
 
 // Get the pointer to a DTree<> parameter.
 // [[Rcpp::export]]
-SEXP CLI_GetParamDTreePtr(const std::string& paramName)
+SEXP IO_GetParamDTreePtr(const std::string& paramName)
 {
-  return std::move((Rcpp::XPtr<DTree<>>) CLI::GetParam<DTree<>*>(paramName));
+  return std::move((Rcpp::XPtr<DTree<>>) IO::GetParam<DTree<>*>(paramName));
 }
 
 // Set the pointer to a DTree<> parameter.
 // [[Rcpp::export]]
-void CLI_SetParamDTreePtr(const std::string& paramName, SEXP ptr)
+void IO_SetParamDTreePtr(const std::string& paramName, SEXP ptr)
 {
-  CLI::GetParam<DTree<>*>(paramName) =  Rcpp::as<Rcpp::XPtr<DTree<>>>(ptr);
-  CLI::SetPassed(paramName);
+  IO::GetParam<DTree<>*>(paramName) =  Rcpp::as<Rcpp::XPtr<DTree<>>>(ptr);
+  IO::SetPassed(paramName);
 }
 
 // Serialize a DTree<> pointer.

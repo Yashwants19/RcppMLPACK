@@ -1,4 +1,70 @@
+#' @title FastMKS (Fast Max-Kernel Search)
+#'
+#' @description
+#' An implementation of the single-tree and dual-tree fast max-kernel search
+#' (FastMKS) algorithm.  Given a set of reference points and a set of query
+#' points, this can find the reference point with maximum kernel value for each
+#' query point; trained models can be reused for future queries.
+#'
+#' @param bandwidth Bandwidth (for Gaussian, Epanechnikov, and triangular kernels). 
+#'   Default value "1" (numeric).
+#' @param base Base to use during cover tree construction.  Default value "2"
+#'   (numeric).
+#' @param degree Degree of polynomial kernel.  Default value "2" (numeric).
+#' @param input_model Input FastMKS model to use (FastMKSModel).
+#' @param k Number of maximum kernels to find.  Default value "0" (integer).
+#' @param kernel Kernel type to use: 'linear', 'polynomial', 'cosine', 'gaussian',
+#'   'epanechnikov', 'triangular', 'hyptan'.  Default value "linear"
+#'   (character).
+#' @param naive If true, O(n^2) naive mode is used for computation.  Default value
+#'   "FALSE" (logical).
+#' @param offset Offset of kernel (for polynomial and hyptan kernels).  Default value
+#'   "0" (numeric).
+#' @param query The query dataset (numeric matrix).
+#' @param reference The reference dataset (numeric matrix).
+#' @param scale Scale of kernel (for hyptan kernel).  Default value "1" (numeric).
+#' @param single If true, single-tree search is used (as opposed to dual-tree search.
+#'    Default value "FALSE" (logical).
+#' @param verbose Display informational messages and the full list of parameters and
+#'   timers at the end of execution.  Default value "FALSE" (logical).
+#'
+#' @return A list with several components:
+#' \item{indices}{Output matrix of indices (integer matrix).}
+#' \item{kernels}{Output matrix of kernels (numeric matrix).}
+#' \item{output_model}{Output for FastMKS model (FastMKSModel).}
+#'
+#' @details
+#' This program will find the k maximum kernels of a set of points, using a
+#' query set and a reference set (which can optionally be the same set). More
+#' specifically, for each point in the query set, the k points in the reference
+#' set with maximum kernel evaluations are found.  The kernel function used is
+#' specified with the "kernel" parameter.
+#'
+#' @author
+#' mlpack developers
+#'
 #' @export
+#' @examples
+#' # For example, the following command will calculate, for each point in the
+#' # query set "query", the five points in the reference set "reference" with
+#' # maximum kernel evaluation using the linear kernel.  The kernel evaluations
+#' # may be saved with the  "kernels" output parameter and the indices may be
+#' # saved with the "indices" output parameter.
+#' 
+#' \donttest{
+#' output <- fastmks(k=5, reference=reference, query=query, kernel="linear")
+#' indices <- output$indices
+#' kernels <- output$kernels
+#' }
+#' 
+#' # The output matrices are organized such that row i and column j in the
+#' # indices matrix corresponds to the index of the point in the reference set
+#' # that has j'th largest kernel evaluation with the point in the query set
+#' # with index i.  Row i and column j in the kernels matrix corresponds to the
+#' # kernel evaluation between those two points.
+#' # 
+#' # This program performs FastMKS using a cover tree.  The base used to build
+#' # the cover tree can be specified with the "base" parameter.
 fastmks <- function(bandwidth=NA,
                     base=NA,
                     degree=NA,
@@ -12,79 +78,85 @@ fastmks <- function(bandwidth=NA,
                     scale=NA,
                     single=FALSE,
                     verbose=FALSE) {
+  # Restore IO settings.
+  IO_RestoreSettings("FastMKS (Fast Max-Kernel Search)")
 
-  CLI_RestoreSettings("FastMKS (Fast Max-Kernel Search)")
-
+  # Process each input argument before calling mlpackMain().
   if (!identical(bandwidth, NA)) {
-    CLI_SetParamDouble("bandwidth", bandwidth)
+    IO_SetParamDouble("bandwidth", bandwidth)
   }
 
   if (!identical(base, NA)) {
-    CLI_SetParamDouble("base", base)
+    IO_SetParamDouble("base", base)
   }
 
   if (!identical(degree, NA)) {
-    CLI_SetParamDouble("degree", degree)
+    IO_SetParamDouble("degree", degree)
   }
 
   if (!identical(input_model, NA)) {
-    CLI_SetParamFastMKSModelPtr("input_model", input_model)
+    IO_SetParamFastMKSModelPtr("input_model", input_model)
   }
 
   if (!identical(k, NA)) {
-    CLI_SetParamInt("k", k)
+    IO_SetParamInt("k", k)
   }
 
   if (!identical(kernel, NA)) {
-    CLI_SetParamString("kernel", kernel)
+    IO_SetParamString("kernel", kernel)
   }
 
   if (!identical(naive, FALSE)) {
-    CLI_SetParamBool("naive", naive)
+    IO_SetParamBool("naive", naive)
   }
 
   if (!identical(offset, NA)) {
-    CLI_SetParamDouble("offset", offset)
+    IO_SetParamDouble("offset", offset)
   }
 
   if (!identical(query, NA)) {
-    CLI_SetParamMat("query", to_matrix(query))
+    IO_SetParamMat("query", to_matrix(query))
   }
 
   if (!identical(reference, NA)) {
-    CLI_SetParamMat("reference", to_matrix(reference))
+    IO_SetParamMat("reference", to_matrix(reference))
   }
 
   if (!identical(scale, NA)) {
-    CLI_SetParamDouble("scale", scale)
+    IO_SetParamDouble("scale", scale)
   }
 
   if (!identical(single, FALSE)) {
-    CLI_SetParamBool("single", single)
+    IO_SetParamBool("single", single)
   }
 
   if (verbose) {
-    CLI_EnableVerbose()
+    IO_EnableVerbose()
   } else {
-    CLI_DisableVerbose()
+    IO_DisableVerbose()
   }
 
-  CLI_SetPassed("indices")
-  CLI_SetPassed("kernels")
-  CLI_SetPassed("output_model")
+  # Mark all output options as passed.
+  IO_SetPassed("indices")
+  IO_SetPassed("kernels")
+  IO_SetPassed("output_model")
 
+  # Call the program.
   fastmks_mlpackMain()
 
-  output_model <- CLI_GetParamFastMKSModelPtr("output_model")
+  # Add ModelType as attribute to the model pointer, if needed.
+  output_model <- IO_GetParamFastMKSModelPtr("output_model")
   attr(output_model, "type") <- "FastMKSModel"
 
+  # Extract the results in order.
   out <- list(
-      "indices" = CLI_GetParamUMat("indices"),
-      "kernels" = CLI_GetParamMat("kernels"),
+      "indices" = IO_GetParamUMat("indices"),
+      "kernels" = IO_GetParamMat("kernels"),
       "output_model" = output_model
   )
 
-  CLI_ClearSettings()
+  # Clear the parameters.
+  IO_ClearSettings()
 
   return(out)
 }

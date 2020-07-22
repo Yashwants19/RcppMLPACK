@@ -13,75 +13,56 @@
 #ifndef MLPACK_BINDINGS_R_PRINT_SERIALIZE_UTIL_HPP
 #define MLPACK_BINDINGS_R_PRINT_SERIALIZE_UTIL_HPP
 
-#include <mlpack/prereqs.hpp>
-#include "get_type.hpp"
-#include "strip_type.hpp"
+#include <mlpack/bindings/util/strip_type.hpp>
 
 namespace mlpack {
 namespace bindings {
 namespace r {
 
 /**
- * Print serialize utility for a regular parameter type.
+ * If the type is not serializable, print nothing.
  */
 template<typename T>
 void PrintSerializeUtil(
-    const util::ParamData& /* d */,
-    const typename boost::disable_if<arma::is_arma_type<T>>::type* = 0,
-    const typename boost::disable_if<data::HasSerialize<T>>::type* = 0,
-    const typename boost::disable_if<std::is_same<T,
-        std::tuple<data::DatasetInfo, arma::mat>>>::type* = 0)
+    util::ParamData& /* d */,
+    const typename std::enable_if<!arma::is_arma_type<T>::value>::type* = 0,
+    const typename std::enable_if<!data::HasSerialize<T>::value>::type* = 0)
 {
   // Do Nothing.
 }
 
 /**
- * Print serialize utility for a matrix type.
+ * Matrices are serializable but here we also print nothing.
  */
 template<typename T>
 void PrintSerializeUtil(
-    const util::ParamData& /* d */,
-    const typename boost::enable_if<arma::is_arma_type<T>>::type* = 0,
-    const typename std::enable_if<!std::is_same<T,
-        std::tuple<data::DatasetInfo, arma::mat>>::value>::type* = 0)
+    util::ParamData& /* d */,
+    const typename std::enable_if<arma::is_arma_type<T>::value>::type* = 0)
 {
   // Do Nothing.
 }
 
 /**
- * Print serialize utility for a matrix with info type.
+ * For non-matrix serializable types we need to print something.
  */
 template<typename T>
 void PrintSerializeUtil(
-    const util::ParamData& /* d */,
-    const typename boost::enable_if<std::is_same<T,
-        std::tuple<data::DatasetInfo, arma::mat>>>::type* = 0)
-{
-  // Do Nothing.
-}
-
-/**
- * Print serialize utility for a serializable model.
- */
-template<typename T>
-void PrintSerializeUtil(
-    const util::ParamData& d,
-    const typename boost::disable_if<arma::is_arma_type<T>>::type* = 0,
-    const typename boost::enable_if<data::HasSerialize<T>>::type* = 0)
+    util::ParamData& d,
+    const typename std::enable_if<!arma::is_arma_type<T>::value>::type* = 0,
+    const typename std::enable_if<data::HasSerialize<T>::value>::type* = 0)
 {
   /**
    * This gives us code like:
    *
-   *  \<paramName\> <- CLI_GetParam\<ModelType\>Ptr("\<paramName\>")
-   *  attr(\<paramName\>, "type") <- "\<ModelType\>"
+   *  <paramName> <- IO_GetParam<ModelType>Ptr("<paramName>")
+   *  attr(<paramName>, "type") <- "<ModelType>"
    *
    */
+  MLPACK_COUT_STREAM << "  " << d.name << " <- IO_GetParam"
+      << util::StripType(d.cppType) << "Ptr(\"" << d.name << "\")";
   MLPACK_COUT_STREAM << std::endl;
-  MLPACK_COUT_STREAM << "  " << d.name << " <- CLI_GetParam"
-      << StripType(d.cppType) << "Ptr(\"" << d.name << "\")";
-  MLPACK_COUT_STREAM << std::endl;
-  MLPACK_COUT_STREAM << "  attr(" << d.name << ", \"type\") <- \"" 
-      << StripType(d.cppType) << "\"";
+  MLPACK_COUT_STREAM << "  attr(" << d.name << ", \"type\") <- \""
+      << util::StripType(d.cppType) << "\"";
   MLPACK_COUT_STREAM << std::endl;
 }
 
@@ -91,7 +72,7 @@ void PrintSerializeUtil(
  * @param * (output) Unused parameter.
  */
 template<typename T>
-void PrintSerializeUtil(const util::ParamData& d,
+void PrintSerializeUtil(util::ParamData& d,
                         const void* /*input*/,
                         void* /* output */)
 {

@@ -19,17 +19,17 @@ void gmm_generate_mlpackMain()
 
 // Get the pointer to a GMM parameter.
 // [[Rcpp::export]]
-SEXP CLI_GetParamGMMPtr(const std::string& paramName)
+SEXP IO_GetParamGMMPtr(const std::string& paramName)
 {
-  return std::move((Rcpp::XPtr<GMM>) CLI::GetParam<GMM*>(paramName));
+  return std::move((Rcpp::XPtr<GMM>) IO::GetParam<GMM*>(paramName));
 }
 
 // Set the pointer to a GMM parameter.
 // [[Rcpp::export]]
-void CLI_SetParamGMMPtr(const std::string& paramName, SEXP ptr)
+void IO_SetParamGMMPtr(const std::string& paramName, SEXP ptr)
 {
-  CLI::GetParam<GMM*>(paramName) =  Rcpp::as<Rcpp::XPtr<GMM>>(ptr);
-  CLI::SetPassed(paramName);
+  IO::GetParam<GMM*>(paramName) =  Rcpp::as<Rcpp::XPtr<GMM>>(ptr);
+  IO::SetPassed(paramName);
 }
 
 // Serialize a GMM pointer.

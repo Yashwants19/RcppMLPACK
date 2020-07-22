@@ -19,17 +19,17 @@ void decision_stump_mlpackMain()
 
 // Get the pointer to a DSModel parameter.
 // [[Rcpp::export]]
-SEXP CLI_GetParamDSModelPtr(const std::string& paramName)
+SEXP IO_GetParamDSModelPtr(const std::string& paramName)
 {
-  return std::move((Rcpp::XPtr<DSModel>) CLI::GetParam<DSModel*>(paramName));
+  return std::move((Rcpp::XPtr<DSModel>) IO::GetParam<DSModel*>(paramName));
 }
 
 // Set the pointer to a DSModel parameter.
 // [[Rcpp::export]]
-void CLI_SetParamDSModelPtr(const std::string& paramName, SEXP ptr)
+void IO_SetParamDSModelPtr(const std::string& paramName, SEXP ptr)
 {
-  CLI::GetParam<DSModel*>(paramName) =  Rcpp::as<Rcpp::XPtr<DSModel>>(ptr);
-  CLI::SetPassed(paramName);
+  IO::GetParam<DSModel*>(paramName) =  Rcpp::as<Rcpp::XPtr<DSModel>>(ptr);
+  IO::SetPassed(paramName);
 }
 
 // Serialize a DSModel pointer.

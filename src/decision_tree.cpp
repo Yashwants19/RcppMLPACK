@@ -19,17 +19,17 @@ void decision_tree_mlpackMain()
 
 // Get the pointer to a DecisionTreeModel parameter.
 // [[Rcpp::export]]
-SEXP CLI_GetParamDecisionTreeModelPtr(const std::string& paramName)
+SEXP IO_GetParamDecisionTreeModelPtr(const std::string& paramName)
 {
-  return std::move((Rcpp::XPtr<DecisionTreeModel>) CLI::GetParam<DecisionTreeModel*>(paramName));
+  return std::move((Rcpp::XPtr<DecisionTreeModel>) IO::GetParam<DecisionTreeModel*>(paramName));
 }
 
 // Set the pointer to a DecisionTreeModel parameter.
 // [[Rcpp::export]]
-void CLI_SetParamDecisionTreeModelPtr(const std::string& paramName, SEXP ptr)
+void IO_SetParamDecisionTreeModelPtr(const std::string& paramName, SEXP ptr)
 {
-  CLI::GetParam<DecisionTreeModel*>(paramName) =  Rcpp::as<Rcpp::XPtr<DecisionTreeModel>>(ptr);
-  CLI::SetPassed(paramName);
+  IO::GetParam<DecisionTreeModel*>(paramName) =  Rcpp::as<Rcpp::XPtr<DecisionTreeModel>>(ptr);
+  IO::SetPassed(paramName);
 }
 
 // Serialize a DecisionTreeModel pointer.

@@ -19,17 +19,17 @@ void cf_mlpackMain()
 
 // Get the pointer to a CFModel parameter.
 // [[Rcpp::export]]
-SEXP CLI_GetParamCFModelPtr(const std::string& paramName)
+SEXP IO_GetParamCFModelPtr(const std::string& paramName)
 {
-  return std::move((Rcpp::XPtr<CFModel>) CLI::GetParam<CFModel*>(paramName));
+  return std::move((Rcpp::XPtr<CFModel>) IO::GetParam<CFModel*>(paramName));
 }
 
 // Set the pointer to a CFModel parameter.
 // [[Rcpp::export]]
-void CLI_SetParamCFModelPtr(const std::string& paramName, SEXP ptr)
+void IO_SetParamCFModelPtr(const std::string& paramName, SEXP ptr)
 {
-  CLI::GetParam<CFModel*>(paramName) =  Rcpp::as<Rcpp::XPtr<CFModel>>(ptr);
-  CLI::SetPassed(paramName);
+  IO::GetParam<CFModel*>(paramName) =  Rcpp::as<Rcpp::XPtr<CFModel>>(ptr);
+  IO::SetPassed(paramName);
 }
 
 // Serialize a CFModel pointer.

@@ -19,17 +19,17 @@ void test_r_binding_mlpackMain()
 
 // Get the pointer to a GaussianKernel parameter.
 // [[Rcpp::export]]
-SEXP CLI_GetParamGaussianKernelPtr(const std::string& paramName)
+SEXP IO_GetParamGaussianKernelPtr(const std::string& paramName)
 {
-  return std::move((Rcpp::XPtr<GaussianKernel>) CLI::GetParam<GaussianKernel*>(paramName));
+  return std::move((Rcpp::XPtr<GaussianKernel>) IO::GetParam<GaussianKernel*>(paramName));
 }
 
 // Set the pointer to a GaussianKernel parameter.
 // [[Rcpp::export]]
-void CLI_SetParamGaussianKernelPtr(const std::string& paramName, SEXP ptr)
+void IO_SetParamGaussianKernelPtr(const std::string& paramName, SEXP ptr)
 {
-  CLI::GetParam<GaussianKernel*>(paramName) =  Rcpp::as<Rcpp::XPtr<GaussianKernel>>(ptr);
-  CLI::SetPassed(paramName);
+  IO::GetParam<GaussianKernel*>(paramName) =  Rcpp::as<Rcpp::XPtr<GaussianKernel>>(ptr);
+  IO::SetPassed(paramName);
 }
 
 // Serialize a GaussianKernel pointer.

@@ -5,12 +5,12 @@ adaboost_mlpackMain <- function() {
     invisible(.Call('_RcppMLPACK_adaboost_mlpackMain', PACKAGE = 'RcppMLPACK'))
 }
 
-CLI_GetParamAdaBoostModelPtr <- function(paramName) {
-    .Call('_RcppMLPACK_CLI_GetParamAdaBoostModelPtr', PACKAGE = 'RcppMLPACK', paramName)
+IO_GetParamAdaBoostModelPtr <- function(paramName) {
+    .Call('_RcppMLPACK_IO_GetParamAdaBoostModelPtr', PACKAGE = 'RcppMLPACK', paramName)
 }
 
-CLI_SetParamAdaBoostModelPtr <- function(paramName, ptr) {
-    invisible(.Call('_RcppMLPACK_CLI_SetParamAdaBoostModelPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
+IO_SetParamAdaBoostModelPtr <- function(paramName, ptr) {
+    invisible(.Call('_RcppMLPACK_IO_SetParamAdaBoostModelPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
 }
 
 SerializeAdaBoostModelPtr <- function(ptr) {
@@ -25,12 +25,12 @@ approx_kfn_mlpackMain <- function() {
     invisible(.Call('_RcppMLPACK_approx_kfn_mlpackMain', PACKAGE = 'RcppMLPACK'))
 }
 
-CLI_GetParamApproxKFNModelPtr <- function(paramName) {
-    .Call('_RcppMLPACK_CLI_GetParamApproxKFNModelPtr', PACKAGE = 'RcppMLPACK', paramName)
+IO_GetParamApproxKFNModelPtr <- function(paramName) {
+    .Call('_RcppMLPACK_IO_GetParamApproxKFNModelPtr', PACKAGE = 'RcppMLPACK', paramName)
 }
 
-CLI_SetParamApproxKFNModelPtr <- function(paramName, ptr) {
-    invisible(.Call('_RcppMLPACK_CLI_SetParamApproxKFNModelPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
+IO_SetParamApproxKFNModelPtr <- function(paramName, ptr) {
+    invisible(.Call('_RcppMLPACK_IO_SetParamApproxKFNModelPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
 }
 
 SerializeApproxKFNModelPtr <- function(ptr) {
@@ -45,12 +45,12 @@ cf_mlpackMain <- function() {
     invisible(.Call('_RcppMLPACK_cf_mlpackMain', PACKAGE = 'RcppMLPACK'))
 }
 
-CLI_GetParamCFModelPtr <- function(paramName) {
-    .Call('_RcppMLPACK_CLI_GetParamCFModelPtr', PACKAGE = 'RcppMLPACK', paramName)
+IO_GetParamCFModelPtr <- function(paramName) {
+    .Call('_RcppMLPACK_IO_GetParamCFModelPtr', PACKAGE = 'RcppMLPACK', paramName)
 }
 
-CLI_SetParamCFModelPtr <- function(paramName, ptr) {
-    invisible(.Call('_RcppMLPACK_CLI_SetParamCFModelPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
+IO_SetParamCFModelPtr <- function(paramName, ptr) {
+    invisible(.Call('_RcppMLPACK_IO_SetParamCFModelPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
 }
 
 SerializeCFModelPtr <- function(ptr) {
@@ -69,12 +69,12 @@ decision_stump_mlpackMain <- function() {
     invisible(.Call('_RcppMLPACK_decision_stump_mlpackMain', PACKAGE = 'RcppMLPACK'))
 }
 
-CLI_GetParamDSModelPtr <- function(paramName) {
-    .Call('_RcppMLPACK_CLI_GetParamDSModelPtr', PACKAGE = 'RcppMLPACK', paramName)
+IO_GetParamDSModelPtr <- function(paramName) {
+    .Call('_RcppMLPACK_IO_GetParamDSModelPtr', PACKAGE = 'RcppMLPACK', paramName)
 }
 
-CLI_SetParamDSModelPtr <- function(paramName, ptr) {
-    invisible(.Call('_RcppMLPACK_CLI_SetParamDSModelPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
+IO_SetParamDSModelPtr <- function(paramName, ptr) {
+    invisible(.Call('_RcppMLPACK_IO_SetParamDSModelPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
 }
 
 SerializeDSModelPtr <- function(ptr) {
@@ -89,12 +89,12 @@ decision_tree_mlpackMain <- function() {
     invisible(.Call('_RcppMLPACK_decision_tree_mlpackMain', PACKAGE = 'RcppMLPACK'))
 }
 
-CLI_GetParamDecisionTreeModelPtr <- function(paramName) {
-    .Call('_RcppMLPACK_CLI_GetParamDecisionTreeModelPtr', PACKAGE = 'RcppMLPACK', paramName)
+IO_GetParamDecisionTreeModelPtr <- function(paramName) {
+    .Call('_RcppMLPACK_IO_GetParamDecisionTreeModelPtr', PACKAGE = 'RcppMLPACK', paramName)
 }
 
-CLI_SetParamDecisionTreeModelPtr <- function(paramName, ptr) {
-    invisible(.Call('_RcppMLPACK_CLI_SetParamDecisionTreeModelPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
+IO_SetParamDecisionTreeModelPtr <- function(paramName, ptr) {
+    invisible(.Call('_RcppMLPACK_IO_SetParamDecisionTreeModelPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
 }
 
 SerializeDecisionTreeModelPtr <- function(ptr) {
@@ -109,12 +109,12 @@ det_mlpackMain <- function() {
     invisible(.Call('_RcppMLPACK_det_mlpackMain', PACKAGE = 'RcppMLPACK'))
 }
 
-CLI_GetParamDTreePtr <- function(paramName) {
-    .Call('_RcppMLPACK_CLI_GetParamDTreePtr', PACKAGE = 'RcppMLPACK', paramName)
+IO_GetParamDTreePtr <- function(paramName) {
+    .Call('_RcppMLPACK_IO_GetParamDTreePtr', PACKAGE = 'RcppMLPACK', paramName)
 }
 
-CLI_SetParamDTreePtr <- function(paramName, ptr) {
-    invisible(.Call('_RcppMLPACK_CLI_SetParamDTreePtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
+IO_SetParamDTreePtr <- function(paramName, ptr) {
+    invisible(.Call('_RcppMLPACK_IO_SetParamDTreePtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
 }
 
 SerializeDTreePtr <- function(ptr) {
@@ -133,12 +133,12 @@ fastmks_mlpackMain <- function() {
     invisible(.Call('_RcppMLPACK_fastmks_mlpackMain', PACKAGE = 'RcppMLPACK'))
 }
 
-CLI_GetParamFastMKSModelPtr <- function(paramName) {
-    .Call('_RcppMLPACK_CLI_GetParamFastMKSModelPtr', PACKAGE = 'RcppMLPACK', paramName)
+IO_GetParamFastMKSModelPtr <- function(paramName) {
+    .Call('_RcppMLPACK_IO_GetParamFastMKSModelPtr', PACKAGE = 'RcppMLPACK', paramName)
 }
 
-CLI_SetParamFastMKSModelPtr <- function(paramName, ptr) {
-    invisible(.Call('_RcppMLPACK_CLI_SetParamFastMKSModelPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
+IO_SetParamFastMKSModelPtr <- function(paramName, ptr) {
+    invisible(.Call('_RcppMLPACK_IO_SetParamFastMKSModelPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
 }
 
 SerializeFastMKSModelPtr <- function(ptr) {
@@ -153,12 +153,12 @@ gmm_generate_mlpackMain <- function() {
     invisible(.Call('_RcppMLPACK_gmm_generate_mlpackMain', PACKAGE = 'RcppMLPACK'))
 }
 
-CLI_GetParamGMMPtr <- function(paramName) {
-    .Call('_RcppMLPACK_CLI_GetParamGMMPtr', PACKAGE = 'RcppMLPACK', paramName)
+IO_GetParamGMMPtr <- function(paramName) {
+    .Call('_RcppMLPACK_IO_GetParamGMMPtr', PACKAGE = 'RcppMLPACK', paramName)
 }
 
-CLI_SetParamGMMPtr <- function(paramName, ptr) {
-    invisible(.Call('_RcppMLPACK_CLI_SetParamGMMPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
+IO_SetParamGMMPtr <- function(paramName, ptr) {
+    invisible(.Call('_RcppMLPACK_IO_SetParamGMMPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
 }
 
 SerializeGMMPtr <- function(ptr) {
@@ -181,12 +181,12 @@ hmm_generate_mlpackMain <- function() {
     invisible(.Call('_RcppMLPACK_hmm_generate_mlpackMain', PACKAGE = 'RcppMLPACK'))
 }
 
-CLI_GetParamHMMModelPtr <- function(paramName) {
-    .Call('_RcppMLPACK_CLI_GetParamHMMModelPtr', PACKAGE = 'RcppMLPACK', paramName)
+IO_GetParamHMMModelPtr <- function(paramName) {
+    .Call('_RcppMLPACK_IO_GetParamHMMModelPtr', PACKAGE = 'RcppMLPACK', paramName)
 }
 
-CLI_SetParamHMMModelPtr <- function(paramName, ptr) {
-    invisible(.Call('_RcppMLPACK_CLI_SetParamHMMModelPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
+IO_SetParamHMMModelPtr <- function(paramName, ptr) {
+    invisible(.Call('_RcppMLPACK_IO_SetParamHMMModelPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
 }
 
 SerializeHMMModelPtr <- function(ptr) {
@@ -213,12 +213,12 @@ hoeffding_tree_mlpackMain <- function() {
     invisible(.Call('_RcppMLPACK_hoeffding_tree_mlpackMain', PACKAGE = 'RcppMLPACK'))
 }
 
-CLI_GetParamHoeffdingTreeModelPtr <- function(paramName) {
-    .Call('_RcppMLPACK_CLI_GetParamHoeffdingTreeModelPtr', PACKAGE = 'RcppMLPACK', paramName)
+IO_GetParamHoeffdingTreeModelPtr <- function(paramName) {
+    .Call('_RcppMLPACK_IO_GetParamHoeffdingTreeModelPtr', PACKAGE = 'RcppMLPACK', paramName)
 }
 
-CLI_SetParamHoeffdingTreeModelPtr <- function(paramName, ptr) {
-    invisible(.Call('_RcppMLPACK_CLI_SetParamHoeffdingTreeModelPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
+IO_SetParamHoeffdingTreeModelPtr <- function(paramName, ptr) {
+    invisible(.Call('_RcppMLPACK_IO_SetParamHoeffdingTreeModelPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
 }
 
 SerializeHoeffdingTreeModelPtr <- function(ptr) {
@@ -237,12 +237,12 @@ kde_mlpackMain <- function() {
     invisible(.Call('_RcppMLPACK_kde_mlpackMain', PACKAGE = 'RcppMLPACK'))
 }
 
-CLI_GetParamKDEModelPtr <- function(paramName) {
-    .Call('_RcppMLPACK_CLI_GetParamKDEModelPtr', PACKAGE = 'RcppMLPACK', paramName)
+IO_GetParamKDEModelPtr <- function(paramName) {
+    .Call('_RcppMLPACK_IO_GetParamKDEModelPtr', PACKAGE = 'RcppMLPACK', paramName)
 }
 
-CLI_SetParamKDEModelPtr <- function(paramName, ptr) {
-    invisible(.Call('_RcppMLPACK_CLI_SetParamKDEModelPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
+IO_SetParamKDEModelPtr <- function(paramName, ptr) {
+    invisible(.Call('_RcppMLPACK_IO_SetParamKDEModelPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
 }
 
 SerializeKDEModelPtr <- function(ptr) {
@@ -261,12 +261,12 @@ kfn_mlpackMain <- function() {
     invisible(.Call('_RcppMLPACK_kfn_mlpackMain', PACKAGE = 'RcppMLPACK'))
 }
 
-CLI_GetParamKFNModelPtr <- function(paramName) {
-    .Call('_RcppMLPACK_CLI_GetParamKFNModelPtr', PACKAGE = 'RcppMLPACK', paramName)
+IO_GetParamKFNModelPtr <- function(paramName) {
+    .Call('_RcppMLPACK_IO_GetParamKFNModelPtr', PACKAGE = 'RcppMLPACK', paramName)
 }
 
-CLI_SetParamKFNModelPtr <- function(paramName, ptr) {
-    invisible(.Call('_RcppMLPACK_CLI_SetParamKFNModelPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
+IO_SetParamKFNModelPtr <- function(paramName, ptr) {
+    invisible(.Call('_RcppMLPACK_IO_SetParamKFNModelPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
 }
 
 SerializeKFNModelPtr <- function(ptr) {
@@ -285,12 +285,12 @@ knn_mlpackMain <- function() {
     invisible(.Call('_RcppMLPACK_knn_mlpackMain', PACKAGE = 'RcppMLPACK'))
 }
 
-CLI_GetParamKNNModelPtr <- function(paramName) {
-    .Call('_RcppMLPACK_CLI_GetParamKNNModelPtr', PACKAGE = 'RcppMLPACK', paramName)
+IO_GetParamKNNModelPtr <- function(paramName) {
+    .Call('_RcppMLPACK_IO_GetParamKNNModelPtr', PACKAGE = 'RcppMLPACK', paramName)
 }
 
-CLI_SetParamKNNModelPtr <- function(paramName, ptr) {
-    invisible(.Call('_RcppMLPACK_CLI_SetParamKNNModelPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
+IO_SetParamKNNModelPtr <- function(paramName, ptr) {
+    invisible(.Call('_RcppMLPACK_IO_SetParamKNNModelPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
 }
 
 SerializeKNNModelPtr <- function(ptr) {
@@ -305,12 +305,12 @@ krann_mlpackMain <- function() {
     invisible(.Call('_RcppMLPACK_krann_mlpackMain', PACKAGE = 'RcppMLPACK'))
 }
 
-CLI_GetParamRANNModelPtr <- function(paramName) {
-    .Call('_RcppMLPACK_CLI_GetParamRANNModelPtr', PACKAGE = 'RcppMLPACK', paramName)
+IO_GetParamRANNModelPtr <- function(paramName) {
+    .Call('_RcppMLPACK_IO_GetParamRANNModelPtr', PACKAGE = 'RcppMLPACK', paramName)
 }
 
-CLI_SetParamRANNModelPtr <- function(paramName, ptr) {
-    invisible(.Call('_RcppMLPACK_CLI_SetParamRANNModelPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
+IO_SetParamRANNModelPtr <- function(paramName, ptr) {
+    invisible(.Call('_RcppMLPACK_IO_SetParamRANNModelPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
 }
 
 SerializeRANNModelPtr <- function(ptr) {
@@ -325,12 +325,12 @@ lars_mlpackMain <- function() {
     invisible(.Call('_RcppMLPACK_lars_mlpackMain', PACKAGE = 'RcppMLPACK'))
 }
 
-CLI_GetParamLARSPtr <- function(paramName) {
-    .Call('_RcppMLPACK_CLI_GetParamLARSPtr', PACKAGE = 'RcppMLPACK', paramName)
+IO_GetParamLARSPtr <- function(paramName) {
+    .Call('_RcppMLPACK_IO_GetParamLARSPtr', PACKAGE = 'RcppMLPACK', paramName)
 }
 
-CLI_SetParamLARSPtr <- function(paramName, ptr) {
-    invisible(.Call('_RcppMLPACK_CLI_SetParamLARSPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
+IO_SetParamLARSPtr <- function(paramName, ptr) {
+    invisible(.Call('_RcppMLPACK_IO_SetParamLARSPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
 }
 
 SerializeLARSPtr <- function(ptr) {
@@ -345,12 +345,12 @@ linear_regression_mlpackMain <- function() {
     invisible(.Call('_RcppMLPACK_linear_regression_mlpackMain', PACKAGE = 'RcppMLPACK'))
 }
 
-CLI_GetParamLinearRegressionPtr <- function(paramName) {
-    .Call('_RcppMLPACK_CLI_GetParamLinearRegressionPtr', PACKAGE = 'RcppMLPACK', paramName)
+IO_GetParamLinearRegressionPtr <- function(paramName) {
+    .Call('_RcppMLPACK_IO_GetParamLinearRegressionPtr', PACKAGE = 'RcppMLPACK', paramName)
 }
 
-CLI_SetParamLinearRegressionPtr <- function(paramName, ptr) {
-    invisible(.Call('_RcppMLPACK_CLI_SetParamLinearRegressionPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
+IO_SetParamLinearRegressionPtr <- function(paramName, ptr) {
+    invisible(.Call('_RcppMLPACK_IO_SetParamLinearRegressionPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
 }
 
 SerializeLinearRegressionPtr <- function(ptr) {
@@ -365,12 +365,12 @@ linear_svm_mlpackMain <- function() {
     invisible(.Call('_RcppMLPACK_linear_svm_mlpackMain', PACKAGE = 'RcppMLPACK'))
 }
 
-CLI_GetParamLinearSVMModelPtr <- function(paramName) {
-    .Call('_RcppMLPACK_CLI_GetParamLinearSVMModelPtr', PACKAGE = 'RcppMLPACK', paramName)
+IO_GetParamLinearSVMModelPtr <- function(paramName) {
+    .Call('_RcppMLPACK_IO_GetParamLinearSVMModelPtr', PACKAGE = 'RcppMLPACK', paramName)
 }
 
-CLI_SetParamLinearSVMModelPtr <- function(paramName, ptr) {
-    invisible(.Call('_RcppMLPACK_CLI_SetParamLinearSVMModelPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
+IO_SetParamLinearSVMModelPtr <- function(paramName, ptr) {
+    invisible(.Call('_RcppMLPACK_IO_SetParamLinearSVMModelPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
 }
 
 SerializeLinearSVMModelPtr <- function(ptr) {
@@ -389,12 +389,12 @@ local_coordinate_coding_mlpackMain <- function() {
     invisible(.Call('_RcppMLPACK_local_coordinate_coding_mlpackMain', PACKAGE = 'RcppMLPACK'))
 }
 
-CLI_GetParamLocalCoordinateCodingPtr <- function(paramName) {
-    .Call('_RcppMLPACK_CLI_GetParamLocalCoordinateCodingPtr', PACKAGE = 'RcppMLPACK', paramName)
+IO_GetParamLocalCoordinateCodingPtr <- function(paramName) {
+    .Call('_RcppMLPACK_IO_GetParamLocalCoordinateCodingPtr', PACKAGE = 'RcppMLPACK', paramName)
 }
 
-CLI_SetParamLocalCoordinateCodingPtr <- function(paramName, ptr) {
-    invisible(.Call('_RcppMLPACK_CLI_SetParamLocalCoordinateCodingPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
+IO_SetParamLocalCoordinateCodingPtr <- function(paramName, ptr) {
+    invisible(.Call('_RcppMLPACK_IO_SetParamLocalCoordinateCodingPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
 }
 
 SerializeLocalCoordinateCodingPtr <- function(ptr) {
@@ -409,12 +409,12 @@ logistic_regression_mlpackMain <- function() {
     invisible(.Call('_RcppMLPACK_logistic_regression_mlpackMain', PACKAGE = 'RcppMLPACK'))
 }
 
-CLI_GetParamLogisticRegressionPtr <- function(paramName) {
-    .Call('_RcppMLPACK_CLI_GetParamLogisticRegressionPtr', PACKAGE = 'RcppMLPACK', paramName)
+IO_GetParamLogisticRegressionPtr <- function(paramName) {
+    .Call('_RcppMLPACK_IO_GetParamLogisticRegressionPtr', PACKAGE = 'RcppMLPACK', paramName)
 }
 
-CLI_SetParamLogisticRegressionPtr <- function(paramName, ptr) {
-    invisible(.Call('_RcppMLPACK_CLI_SetParamLogisticRegressionPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
+IO_SetParamLogisticRegressionPtr <- function(paramName, ptr) {
+    invisible(.Call('_RcppMLPACK_IO_SetParamLogisticRegressionPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
 }
 
 SerializeLogisticRegressionPtr <- function(ptr) {
@@ -429,12 +429,12 @@ lsh_mlpackMain <- function() {
     invisible(.Call('_RcppMLPACK_lsh_mlpackMain', PACKAGE = 'RcppMLPACK'))
 }
 
-CLI_GetParamLSHSearchPtr <- function(paramName) {
-    .Call('_RcppMLPACK_CLI_GetParamLSHSearchPtr', PACKAGE = 'RcppMLPACK', paramName)
+IO_GetParamLSHSearchPtr <- function(paramName) {
+    .Call('_RcppMLPACK_IO_GetParamLSHSearchPtr', PACKAGE = 'RcppMLPACK', paramName)
 }
 
-CLI_SetParamLSHSearchPtr <- function(paramName, ptr) {
-    invisible(.Call('_RcppMLPACK_CLI_SetParamLSHSearchPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
+IO_SetParamLSHSearchPtr <- function(paramName, ptr) {
+    invisible(.Call('_RcppMLPACK_IO_SetParamLSHSearchPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
 }
 
 SerializeLSHSearchPtr <- function(ptr) {
@@ -453,12 +453,12 @@ nbc_mlpackMain <- function() {
     invisible(.Call('_RcppMLPACK_nbc_mlpackMain', PACKAGE = 'RcppMLPACK'))
 }
 
-CLI_GetParamNBCModelPtr <- function(paramName) {
-    .Call('_RcppMLPACK_CLI_GetParamNBCModelPtr', PACKAGE = 'RcppMLPACK', paramName)
+IO_GetParamNBCModelPtr <- function(paramName) {
+    .Call('_RcppMLPACK_IO_GetParamNBCModelPtr', PACKAGE = 'RcppMLPACK', paramName)
 }
 
-CLI_SetParamNBCModelPtr <- function(paramName, ptr) {
-    invisible(.Call('_RcppMLPACK_CLI_SetParamNBCModelPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
+IO_SetParamNBCModelPtr <- function(paramName, ptr) {
+    invisible(.Call('_RcppMLPACK_IO_SetParamNBCModelPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
 }
 
 SerializeNBCModelPtr <- function(ptr) {
@@ -485,12 +485,12 @@ perceptron_mlpackMain <- function() {
     invisible(.Call('_RcppMLPACK_perceptron_mlpackMain', PACKAGE = 'RcppMLPACK'))
 }
 
-CLI_GetParamPerceptronModelPtr <- function(paramName) {
-    .Call('_RcppMLPACK_CLI_GetParamPerceptronModelPtr', PACKAGE = 'RcppMLPACK', paramName)
+IO_GetParamPerceptronModelPtr <- function(paramName) {
+    .Call('_RcppMLPACK_IO_GetParamPerceptronModelPtr', PACKAGE = 'RcppMLPACK', paramName)
 }
 
-CLI_SetParamPerceptronModelPtr <- function(paramName, ptr) {
-    invisible(.Call('_RcppMLPACK_CLI_SetParamPerceptronModelPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
+IO_SetParamPerceptronModelPtr <- function(paramName, ptr) {
+    invisible(.Call('_RcppMLPACK_IO_SetParamPerceptronModelPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
 }
 
 SerializePerceptronModelPtr <- function(ptr) {
@@ -513,12 +513,12 @@ preprocess_scale_mlpackMain <- function() {
     invisible(.Call('_RcppMLPACK_preprocess_scale_mlpackMain', PACKAGE = 'RcppMLPACK'))
 }
 
-CLI_GetParamScalingModelPtr <- function(paramName) {
-    .Call('_RcppMLPACK_CLI_GetParamScalingModelPtr', PACKAGE = 'RcppMLPACK', paramName)
+IO_GetParamScalingModelPtr <- function(paramName) {
+    .Call('_RcppMLPACK_IO_GetParamScalingModelPtr', PACKAGE = 'RcppMLPACK', paramName)
 }
 
-CLI_SetParamScalingModelPtr <- function(paramName, ptr) {
-    invisible(.Call('_RcppMLPACK_CLI_SetParamScalingModelPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
+IO_SetParamScalingModelPtr <- function(paramName, ptr) {
+    invisible(.Call('_RcppMLPACK_IO_SetParamScalingModelPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
 }
 
 SerializeScalingModelPtr <- function(ptr) {
@@ -533,132 +533,132 @@ preprocess_split_mlpackMain <- function() {
     invisible(.Call('_RcppMLPACK_preprocess_split_mlpackMain', PACKAGE = 'RcppMLPACK'))
 }
 
-CLI_RestoreSettings <- function(programName) {
-    invisible(.Call('_RcppMLPACK_CLI_RestoreSettings', PACKAGE = 'RcppMLPACK', programName))
+IO_RestoreSettings <- function(programName) {
+    invisible(.Call('_RcppMLPACK_IO_RestoreSettings', PACKAGE = 'RcppMLPACK', programName))
 }
 
-CLI_SetParamInt <- function(paramName, paramValue) {
-    invisible(.Call('_RcppMLPACK_CLI_SetParamInt', PACKAGE = 'RcppMLPACK', paramName, paramValue))
+IO_SetParamInt <- function(paramName, paramValue) {
+    invisible(.Call('_RcppMLPACK_IO_SetParamInt', PACKAGE = 'RcppMLPACK', paramName, paramValue))
 }
 
-CLI_SetParamDouble <- function(paramName, paramValue) {
-    invisible(.Call('_RcppMLPACK_CLI_SetParamDouble', PACKAGE = 'RcppMLPACK', paramName, paramValue))
+IO_SetParamDouble <- function(paramName, paramValue) {
+    invisible(.Call('_RcppMLPACK_IO_SetParamDouble', PACKAGE = 'RcppMLPACK', paramName, paramValue))
 }
 
-CLI_SetParamString <- function(paramName, paramValue) {
-    invisible(.Call('_RcppMLPACK_CLI_SetParamString', PACKAGE = 'RcppMLPACK', paramName, paramValue))
+IO_SetParamString <- function(paramName, paramValue) {
+    invisible(.Call('_RcppMLPACK_IO_SetParamString', PACKAGE = 'RcppMLPACK', paramName, paramValue))
 }
 
-CLI_SetParamBool <- function(paramName, paramValue) {
-    invisible(.Call('_RcppMLPACK_CLI_SetParamBool', PACKAGE = 'RcppMLPACK', paramName, paramValue))
+IO_SetParamBool <- function(paramName, paramValue) {
+    invisible(.Call('_RcppMLPACK_IO_SetParamBool', PACKAGE = 'RcppMLPACK', paramName, paramValue))
 }
 
-CLI_SetParamVecString <- function(paramName, str) {
-    invisible(.Call('_RcppMLPACK_CLI_SetParamVecString', PACKAGE = 'RcppMLPACK', paramName, str))
+IO_SetParamVecString <- function(paramName, str) {
+    invisible(.Call('_RcppMLPACK_IO_SetParamVecString', PACKAGE = 'RcppMLPACK', paramName, str))
 }
 
-CLI_SetParamVecInt <- function(paramName, ints) {
-    invisible(.Call('_RcppMLPACK_CLI_SetParamVecInt', PACKAGE = 'RcppMLPACK', paramName, ints))
+IO_SetParamVecInt <- function(paramName, ints) {
+    invisible(.Call('_RcppMLPACK_IO_SetParamVecInt', PACKAGE = 'RcppMLPACK', paramName, ints))
 }
 
-CLI_SetParamMat <- function(paramName, paramValue) {
-    invisible(.Call('_RcppMLPACK_CLI_SetParamMat', PACKAGE = 'RcppMLPACK', paramName, paramValue))
+IO_SetParamMat <- function(paramName, paramValue) {
+    invisible(.Call('_RcppMLPACK_IO_SetParamMat', PACKAGE = 'RcppMLPACK', paramName, paramValue))
 }
 
-CLI_SetParamUMat <- function(paramName, paramValue) {
-    invisible(.Call('_RcppMLPACK_CLI_SetParamUMat', PACKAGE = 'RcppMLPACK', paramName, paramValue))
+IO_SetParamUMat <- function(paramName, paramValue) {
+    invisible(.Call('_RcppMLPACK_IO_SetParamUMat', PACKAGE = 'RcppMLPACK', paramName, paramValue))
 }
 
-CLI_SetParamRow <- function(paramName, paramValue) {
-    invisible(.Call('_RcppMLPACK_CLI_SetParamRow', PACKAGE = 'RcppMLPACK', paramName, paramValue))
+IO_SetParamRow <- function(paramName, paramValue) {
+    invisible(.Call('_RcppMLPACK_IO_SetParamRow', PACKAGE = 'RcppMLPACK', paramName, paramValue))
 }
 
-CLI_SetParamURow <- function(paramName, paramValue) {
-    invisible(.Call('_RcppMLPACK_CLI_SetParamURow', PACKAGE = 'RcppMLPACK', paramName, paramValue))
+IO_SetParamURow <- function(paramName, paramValue) {
+    invisible(.Call('_RcppMLPACK_IO_SetParamURow', PACKAGE = 'RcppMLPACK', paramName, paramValue))
 }
 
-CLI_SetParamCol <- function(paramName, paramValue) {
-    invisible(.Call('_RcppMLPACK_CLI_SetParamCol', PACKAGE = 'RcppMLPACK', paramName, paramValue))
+IO_SetParamCol <- function(paramName, paramValue) {
+    invisible(.Call('_RcppMLPACK_IO_SetParamCol', PACKAGE = 'RcppMLPACK', paramName, paramValue))
 }
 
-CLI_SetParamUCol <- function(paramName, paramValue) {
-    invisible(.Call('_RcppMLPACK_CLI_SetParamUCol', PACKAGE = 'RcppMLPACK', paramName, paramValue))
+IO_SetParamUCol <- function(paramName, paramValue) {
+    invisible(.Call('_RcppMLPACK_IO_SetParamUCol', PACKAGE = 'RcppMLPACK', paramName, paramValue))
 }
 
-CLI_SetParamMatWithInfo <- function(paramName, dimensions, paramValue) {
-    invisible(.Call('_RcppMLPACK_CLI_SetParamMatWithInfo', PACKAGE = 'RcppMLPACK', paramName, dimensions, paramValue))
+IO_SetParamMatWithInfo <- function(paramName, dimensions, paramValue) {
+    invisible(.Call('_RcppMLPACK_IO_SetParamMatWithInfo', PACKAGE = 'RcppMLPACK', paramName, dimensions, paramValue))
 }
 
-CLI_GetParamInt <- function(paramName) {
-    .Call('_RcppMLPACK_CLI_GetParamInt', PACKAGE = 'RcppMLPACK', paramName)
+IO_GetParamInt <- function(paramName) {
+    .Call('_RcppMLPACK_IO_GetParamInt', PACKAGE = 'RcppMLPACK', paramName)
 }
 
-CLI_GetParamDouble <- function(paramName) {
-    .Call('_RcppMLPACK_CLI_GetParamDouble', PACKAGE = 'RcppMLPACK', paramName)
+IO_GetParamDouble <- function(paramName) {
+    .Call('_RcppMLPACK_IO_GetParamDouble', PACKAGE = 'RcppMLPACK', paramName)
 }
 
-CLI_GetParamString <- function(paramName) {
-    .Call('_RcppMLPACK_CLI_GetParamString', PACKAGE = 'RcppMLPACK', paramName)
+IO_GetParamString <- function(paramName) {
+    .Call('_RcppMLPACK_IO_GetParamString', PACKAGE = 'RcppMLPACK', paramName)
 }
 
-CLI_GetParamBool <- function(paramName) {
-    .Call('_RcppMLPACK_CLI_GetParamBool', PACKAGE = 'RcppMLPACK', paramName)
+IO_GetParamBool <- function(paramName) {
+    .Call('_RcppMLPACK_IO_GetParamBool', PACKAGE = 'RcppMLPACK', paramName)
 }
 
-CLI_GetParamVecString <- function(paramName) {
-    .Call('_RcppMLPACK_CLI_GetParamVecString', PACKAGE = 'RcppMLPACK', paramName)
+IO_GetParamVecString <- function(paramName) {
+    .Call('_RcppMLPACK_IO_GetParamVecString', PACKAGE = 'RcppMLPACK', paramName)
 }
 
-CLI_GetParamVecInt <- function(paramName) {
-    .Call('_RcppMLPACK_CLI_GetParamVecInt', PACKAGE = 'RcppMLPACK', paramName)
+IO_GetParamVecInt <- function(paramName) {
+    .Call('_RcppMLPACK_IO_GetParamVecInt', PACKAGE = 'RcppMLPACK', paramName)
 }
 
-CLI_GetParamMat <- function(paramName) {
-    .Call('_RcppMLPACK_CLI_GetParamMat', PACKAGE = 'RcppMLPACK', paramName)
+IO_GetParamMat <- function(paramName) {
+    .Call('_RcppMLPACK_IO_GetParamMat', PACKAGE = 'RcppMLPACK', paramName)
 }
 
-CLI_GetParamUMat <- function(paramName) {
-    .Call('_RcppMLPACK_CLI_GetParamUMat', PACKAGE = 'RcppMLPACK', paramName)
+IO_GetParamUMat <- function(paramName) {
+    .Call('_RcppMLPACK_IO_GetParamUMat', PACKAGE = 'RcppMLPACK', paramName)
 }
 
-CLI_GetParamRow <- function(paramName) {
-    .Call('_RcppMLPACK_CLI_GetParamRow', PACKAGE = 'RcppMLPACK', paramName)
+IO_GetParamRow <- function(paramName) {
+    .Call('_RcppMLPACK_IO_GetParamRow', PACKAGE = 'RcppMLPACK', paramName)
 }
 
-CLI_GetParamURow <- function(paramName) {
-    .Call('_RcppMLPACK_CLI_GetParamURow', PACKAGE = 'RcppMLPACK', paramName)
+IO_GetParamURow <- function(paramName) {
+    .Call('_RcppMLPACK_IO_GetParamURow', PACKAGE = 'RcppMLPACK', paramName)
 }
 
-CLI_GetParamCol <- function(paramName) {
-    .Call('_RcppMLPACK_CLI_GetParamCol', PACKAGE = 'RcppMLPACK', paramName)
+IO_GetParamCol <- function(paramName) {
+    .Call('_RcppMLPACK_IO_GetParamCol', PACKAGE = 'RcppMLPACK', paramName)
 }
 
-CLI_GetParamUCol <- function(paramName) {
-    .Call('_RcppMLPACK_CLI_GetParamUCol', PACKAGE = 'RcppMLPACK', paramName)
+IO_GetParamUCol <- function(paramName) {
+    .Call('_RcppMLPACK_IO_GetParamUCol', PACKAGE = 'RcppMLPACK', paramName)
 }
 
-CLI_GetParamMatWithInfo <- function(paramName) {
-    .Call('_RcppMLPACK_CLI_GetParamMatWithInfo', PACKAGE = 'RcppMLPACK', paramName)
+IO_GetParamMatWithInfo <- function(paramName) {
+    .Call('_RcppMLPACK_IO_GetParamMatWithInfo', PACKAGE = 'RcppMLPACK', paramName)
 }
 
-CLI_EnableVerbose <- function() {
-    invisible(.Call('_RcppMLPACK_CLI_EnableVerbose', PACKAGE = 'RcppMLPACK'))
+IO_EnableVerbose <- function() {
+    invisible(.Call('_RcppMLPACK_IO_EnableVerbose', PACKAGE = 'RcppMLPACK'))
 }
 
-CLI_DisableVerbose <- function() {
-    invisible(.Call('_RcppMLPACK_CLI_DisableVerbose', PACKAGE = 'RcppMLPACK'))
+IO_DisableVerbose <- function() {
+    invisible(.Call('_RcppMLPACK_IO_DisableVerbose', PACKAGE = 'RcppMLPACK'))
 }
 
-CLI_ResetTimers <- function() {
-    invisible(.Call('_RcppMLPACK_CLI_ResetTimers', PACKAGE = 'RcppMLPACK'))
+IO_ResetTimers <- function() {
+    invisible(.Call('_RcppMLPACK_IO_ResetTimers', PACKAGE = 'RcppMLPACK'))
 }
 
-CLI_SetPassed <- function(paramName) {
-    invisible(.Call('_RcppMLPACK_CLI_SetPassed', PACKAGE = 'RcppMLPACK', paramName))
+IO_SetPassed <- function(paramName) {
+    invisible(.Call('_RcppMLPACK_IO_SetPassed', PACKAGE = 'RcppMLPACK', paramName))
 }
 
-CLI_ClearSettings <- function() {
-    invisible(.Call('_RcppMLPACK_CLI_ClearSettings', PACKAGE = 'RcppMLPACK'))
+IO_ClearSettings <- function() {
+    invisible(.Call('_RcppMLPACK_IO_ClearSettings', PACKAGE = 'RcppMLPACK'))
 }
 
 radical_mlpackMain <- function() {
@@ -669,12 +669,12 @@ random_forest_mlpackMain <- function() {
     invisible(.Call('_RcppMLPACK_random_forest_mlpackMain', PACKAGE = 'RcppMLPACK'))
 }
 
-CLI_GetParamRandomForestModelPtr <- function(paramName) {
-    .Call('_RcppMLPACK_CLI_GetParamRandomForestModelPtr', PACKAGE = 'RcppMLPACK', paramName)
+IO_GetParamRandomForestModelPtr <- function(paramName) {
+    .Call('_RcppMLPACK_IO_GetParamRandomForestModelPtr', PACKAGE = 'RcppMLPACK', paramName)
 }
 
-CLI_SetParamRandomForestModelPtr <- function(paramName, ptr) {
-    invisible(.Call('_RcppMLPACK_CLI_SetParamRandomForestModelPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
+IO_SetParamRandomForestModelPtr <- function(paramName, ptr) {
+    invisible(.Call('_RcppMLPACK_IO_SetParamRandomForestModelPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
 }
 
 SerializeRandomForestModelPtr <- function(ptr) {
@@ -685,36 +685,16 @@ DeserializeRandomForestModelPtr <- function(str) {
     .Call('_RcppMLPACK_DeserializeRandomForestModelPtr', PACKAGE = 'RcppMLPACK', str)
 }
 
-range_search_mlpackMain <- function() {
-    invisible(.Call('_RcppMLPACK_range_search_mlpackMain', PACKAGE = 'RcppMLPACK'))
-}
-
-CLI_GetParamRSModelPtr <- function(paramName) {
-    .Call('_RcppMLPACK_CLI_GetParamRSModelPtr', PACKAGE = 'RcppMLPACK', paramName)
-}
-
-CLI_SetParamRSModelPtr <- function(paramName, ptr) {
-    invisible(.Call('_RcppMLPACK_CLI_SetParamRSModelPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
-}
-
-SerializeRSModelPtr <- function(ptr) {
-    .Call('_RcppMLPACK_SerializeRSModelPtr', PACKAGE = 'RcppMLPACK', ptr)
-}
-
-DeserializeRSModelPtr <- function(str) {
-    .Call('_RcppMLPACK_DeserializeRSModelPtr', PACKAGE = 'RcppMLPACK', str)
-}
-
 softmax_regression_mlpackMain <- function() {
     invisible(.Call('_RcppMLPACK_softmax_regression_mlpackMain', PACKAGE = 'RcppMLPACK'))
 }
 
-CLI_GetParamSoftmaxRegressionPtr <- function(paramName) {
-    .Call('_RcppMLPACK_CLI_GetParamSoftmaxRegressionPtr', PACKAGE = 'RcppMLPACK', paramName)
+IO_GetParamSoftmaxRegressionPtr <- function(paramName) {
+    .Call('_RcppMLPACK_IO_GetParamSoftmaxRegressionPtr', PACKAGE = 'RcppMLPACK', paramName)
 }
 
-CLI_SetParamSoftmaxRegressionPtr <- function(paramName, ptr) {
-    invisible(.Call('_RcppMLPACK_CLI_SetParamSoftmaxRegressionPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
+IO_SetParamSoftmaxRegressionPtr <- function(paramName, ptr) {
+    invisible(.Call('_RcppMLPACK_IO_SetParamSoftmaxRegressionPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
 }
 
 SerializeSoftmaxRegressionPtr <- function(ptr) {
@@ -729,12 +709,12 @@ sparse_coding_mlpackMain <- function() {
     invisible(.Call('_RcppMLPACK_sparse_coding_mlpackMain', PACKAGE = 'RcppMLPACK'))
 }
 
-CLI_GetParamSparseCodingPtr <- function(paramName) {
-    .Call('_RcppMLPACK_CLI_GetParamSparseCodingPtr', PACKAGE = 'RcppMLPACK', paramName)
+IO_GetParamSparseCodingPtr <- function(paramName) {
+    .Call('_RcppMLPACK_IO_GetParamSparseCodingPtr', PACKAGE = 'RcppMLPACK', paramName)
 }
 
-CLI_SetParamSparseCodingPtr <- function(paramName, ptr) {
-    invisible(.Call('_RcppMLPACK_CLI_SetParamSparseCodingPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
+IO_SetParamSparseCodingPtr <- function(paramName, ptr) {
+    invisible(.Call('_RcppMLPACK_IO_SetParamSparseCodingPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
 }
 
 SerializeSparseCodingPtr <- function(ptr) {
@@ -749,12 +729,12 @@ test_r_binding_mlpackMain <- function() {
     invisible(.Call('_RcppMLPACK_test_r_binding_mlpackMain', PACKAGE = 'RcppMLPACK'))
 }
 
-CLI_GetParamGaussianKernelPtr <- function(paramName) {
-    .Call('_RcppMLPACK_CLI_GetParamGaussianKernelPtr', PACKAGE = 'RcppMLPACK', paramName)
+IO_GetParamGaussianKernelPtr <- function(paramName) {
+    .Call('_RcppMLPACK_IO_GetParamGaussianKernelPtr', PACKAGE = 'RcppMLPACK', paramName)
 }
 
-CLI_SetParamGaussianKernelPtr <- function(paramName, ptr) {
-    invisible(.Call('_RcppMLPACK_CLI_SetParamGaussianKernelPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
+IO_SetParamGaussianKernelPtr <- function(paramName, ptr) {
+    invisible(.Call('_RcppMLPACK_IO_SetParamGaussianKernelPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
 }
 
 SerializeGaussianKernelPtr <- function(ptr) {

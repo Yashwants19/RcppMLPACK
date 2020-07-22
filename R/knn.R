@@ -1,4 +1,73 @@
+#' @title k-Nearest-Neighbors Search
+#'
+#' @description
+#' An implementation of k-nearest-neighbor search using single-tree and
+#' dual-tree algorithms.  Given a set of reference points and query points, this
+#' can find the k nearest neighbors in the reference set of each query point
+#' using trees; trees that are built can be saved for future use.
+#'
+#' @param algorithm Type of neighbor search: 'naive', 'single_tree', 'dual_tree',
+#'   'greedy'.  Default value "dual_tree" (character).
+#' @param epsilon If specified, will do approximate nearest neighbor search with
+#'   given relative error.  Default value "0" (numeric).
+#' @param input_model Pre-trained kNN model (KNNModel).
+#' @param k Number of nearest neighbors to find.  Default value "0" (integer).
+#' @param leaf_size Leaf size for tree building (used for kd-trees, vp trees, random
+#'   projection trees, UB trees, R trees, R* trees, X trees, Hilbert R trees, R+
+#'   trees, R++ trees, spill trees, and octrees).  Default value "20"
+#'   (integer).
+#' @param query Matrix containing query points (optional) (numeric matrix).
+#' @param random_basis Before tree-building, project the data onto a random
+#'   orthogonal basis.  Default value "FALSE" (logical).
+#' @param reference Matrix containing the reference dataset (numeric matrix).
+#' @param rho Balance threshold (only valid for spill trees).  Default value "0.7"
+#'   (numeric).
+#' @param seed Random seed (if 0, std::time(NULL) is used).  Default value "0"
+#'   (integer).
+#' @param tau Overlapping size (only valid for spill trees).  Default value "0"
+#'   (numeric).
+#' @param tree_type Type of tree to use: 'kd', 'vp', 'rp', 'max-rp', 'ub', 'cover',
+#'   'r', 'r-star', 'x', 'ball', 'hilbert-r', 'r-plus', 'r-plus-plus', 'spill',
+#'   'oct'.  Default value "kd" (character).
+#' @param true_distances Matrix of true distances to compute the effective error
+#'   (average relative error) (it is printed when -v is specified) (numeric
+#'   matrix).
+#' @param true_neighbors Matrix of true neighbors to compute the recall (it is
+#'   printed when -v is specified) (integer matrix).
+#' @param verbose Display informational messages and the full list of parameters and
+#'   timers at the end of execution.  Default value "FALSE" (logical).
+#'
+#' @return A list with several components:
+#' \item{distances}{Matrix to output distances into (numeric matrix).}
+#' \item{neighbors}{Matrix to output neighbors into (integer matrix).}
+#' \item{output_model}{If specified, the kNN model will be output here (KNNModel).}
+#'
+#' @details
+#' This program will calculate the k-nearest-neighbors of a set of points using
+#' kd-trees or cover trees (cover tree support is experimental and may be slow).
+#' You may specify a separate set of reference points and query points, or just
+#' a reference set which will be used as both the reference and query set.
+#'
+#' @author
+#' mlpack developers
+#'
 #' @export
+#' @examples
+#' # For example, the following command will calculate the 5 nearest neighbors
+#' # of each point in "input" and store the distances in "distances" and the
+#' # neighbors in "neighbors": 
+#' 
+#' \donttest{
+#' output <- knn(k=5, reference=input)
+#' neighbors <- output$neighbors
+#' distances <- output$distances
+#' }
+#' 
+#' # The output is organized such that row i and column j in the neighbors
+#' # output matrix corresponds to the index of the point in the reference set
+#' # which is the j'th nearest neighbor from the point in the query set with
+#' # index i.  Row j and column i in the distances output matrix corresponds to
+#' # the distance between those two points.
 knn <- function(algorithm=NA,
                 epsilon=NA,
                 input_model=NA,
@@ -14,87 +83,93 @@ knn <- function(algorithm=NA,
                 true_distances=NA,
                 true_neighbors=NA,
                 verbose=FALSE) {
+  # Restore IO settings.
+  IO_RestoreSettings("k-Nearest-Neighbors Search")
 
-  CLI_RestoreSettings("k-Nearest-Neighbors Search")
-
+  # Process each input argument before calling mlpackMain().
   if (!identical(algorithm, NA)) {
-    CLI_SetParamString("algorithm", algorithm)
+    IO_SetParamString("algorithm", algorithm)
   }
 
   if (!identical(epsilon, NA)) {
-    CLI_SetParamDouble("epsilon", epsilon)
+    IO_SetParamDouble("epsilon", epsilon)
   }
 
   if (!identical(input_model, NA)) {
-    CLI_SetParamKNNModelPtr("input_model", input_model)
+    IO_SetParamKNNModelPtr("input_model", input_model)
   }
 
   if (!identical(k, NA)) {
-    CLI_SetParamInt("k", k)
+    IO_SetParamInt("k", k)
   }
 
   if (!identical(leaf_size, NA)) {
-    CLI_SetParamInt("leaf_size", leaf_size)
+    IO_SetParamInt("leaf_size", leaf_size)
   }
 
   if (!identical(query, NA)) {
-    CLI_SetParamMat("query", to_matrix(query))
+    IO_SetParamMat("query", to_matrix(query))
   }
 
   if (!identical(random_basis, FALSE)) {
-    CLI_SetParamBool("random_basis", random_basis)
+    IO_SetParamBool("random_basis", random_basis)
   }
 
   if (!identical(reference, NA)) {
-    CLI_SetParamMat("reference", to_matrix(reference))
+    IO_SetParamMat("reference", to_matrix(reference))
   }
 
   if (!identical(rho, NA)) {
-    CLI_SetParamDouble("rho", rho)
+    IO_SetParamDouble("rho", rho)
   }
 
   if (!identical(seed, NA)) {
-    CLI_SetParamInt("seed", seed)
+    IO_SetParamInt("seed", seed)
   }
 
   if (!identical(tau, NA)) {
-    CLI_SetParamDouble("tau", tau)
+    IO_SetParamDouble("tau", tau)
   }
 
   if (!identical(tree_type, NA)) {
-    CLI_SetParamString("tree_type", tree_type)
+    IO_SetParamString("tree_type", tree_type)
   }
 
   if (!identical(true_distances, NA)) {
-    CLI_SetParamMat("true_distances", to_matrix(true_distances))
+    IO_SetParamMat("true_distances", to_matrix(true_distances))
   }
 
   if (!identical(true_neighbors, NA)) {
-    CLI_SetParamUMat("true_neighbors", to_matrix(true_neighbors))
+    IO_SetParamUMat("true_neighbors", to_matrix(true_neighbors))
   }
 
   if (verbose) {
-    CLI_EnableVerbose()
+    IO_EnableVerbose()
   } else {
-    CLI_DisableVerbose()
+    IO_DisableVerbose()
   }
 
-  CLI_SetPassed("distances")
-  CLI_SetPassed("neighbors")
-  CLI_SetPassed("output_model")
+  # Mark all output options as passed.
+  IO_SetPassed("distances")
+  IO_SetPassed("neighbors")
+  IO_SetPassed("output_model")
 
+  # Call the program.
   knn_mlpackMain()
 
-  output_model <- CLI_GetParamKNNModelPtr("output_model")
+  # Add ModelType as attribute to the model pointer, if needed.
+  output_model <- IO_GetParamKNNModelPtr("output_model")
   attr(output_model, "type") <- "KNNModel"
 
+  # Extract the results in order.
   out <- list(
-      "distances" = CLI_GetParamMat("distances"),
-      "neighbors" = CLI_GetParamUMat("neighbors"),
+      "distances" = IO_GetParamMat("distances"),
+      "neighbors" = IO_GetParamUMat("neighbors"),
       "output_model" = output_model
   )
 
-  CLI_ClearSettings()
+  # Clear the parameters.
+  IO_ClearSettings()
 
   return(out)
 }
