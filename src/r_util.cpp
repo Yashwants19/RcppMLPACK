@@ -1,7 +1,17 @@
-#include <RcppMLPACK.h>
+/**
+ * @file src/r_util.cpp
+ * @author Yashwant Singh Parihar
+ *
+ * Utility functions for R-bindings.
+ *
+ * mlpack is free software; you may redistribute it and/or modify it under the
+ * terms of the 3-clause BSD license.  You should have received a copy of the
+ * 3-clause BSD license along with mlpack.  If not, see
+ * http://www.opensource.org/licenses/BSD-3-Clause for more information.
+ */
+#include <rcpp_mlpack.h>
 #include <mlpack/prereqs.hpp>
-#include <mlpack/core/util/cli.hpp>
-
+#include <mlpack/core/util/io.hpp>
 
 using namespace mlpack;
 using namespace Rcpp;
@@ -20,106 +30,120 @@ bool inline inplace_transpose(arma::Mat<eT>& X)
   }
 }
 
+// Call IO::RestoreSettings() for a given program name.
 // [[Rcpp::export]]
-void CLI_RestoreSettings(const std::string& programName)
+void IO_RestoreSettings(const std::string& programName)
 {
- CLI::RestoreSettings(programName);
+ IO::RestoreSettings(programName);
 }
 
+// Call IO::SetParam<int>().
 // [[Rcpp::export]]
-void CLI_SetParamInt(const std::string& paramName, int paramValue)
+void IO_SetParamInt(const std::string& paramName, int paramValue)
 {
-  CLI::GetParam<int>(paramName) = paramValue;
-  CLI::SetPassed(paramName);
+  IO::GetParam<int>(paramName) = paramValue;
+  IO::SetPassed(paramName);
 }
 
+// Call IO::SetParam<double>().
 // [[Rcpp::export]]
-void CLI_SetParamDouble(const std::string& paramName, double paramValue)
+void IO_SetParamDouble(const std::string& paramName, double paramValue)
 {
-  CLI::GetParam<double>(paramName) = paramValue;
-  CLI::SetPassed(paramName);
+  IO::GetParam<double>(paramName) = paramValue;
+  IO::SetPassed(paramName);
 }
 
+// Call IO::SetParam<std::string>().
 // [[Rcpp::export]]
-void CLI_SetParamString(const std::string& paramName, std::string& paramValue)
+void IO_SetParamString(const std::string& paramName, std::string& paramValue)
 {
-  CLI::GetParam<std::string>(paramName) = paramValue;
-  CLI::SetPassed(paramName);
+  IO::GetParam<std::string>(paramName) = paramValue;
+  IO::SetPassed(paramName);
 }
 
+// Call IO::SetParam<bool>().
 // [[Rcpp::export]]
-void CLI_SetParamBool(const std::string& paramName, bool paramValue)
+void IO_SetParamBool(const std::string& paramName, bool paramValue)
 {
-  CLI::GetParam<bool>(paramName) = paramValue;
-  CLI::SetPassed(paramName);
+  IO::GetParam<bool>(paramName) = paramValue;
+  IO::SetPassed(paramName);
 }
 
+// Call IO::SetParam<std::vector<std::string>>().
 // [[Rcpp::export]]
-void CLI_SetParamVectorStr(const std::string& paramName,
+void IO_SetParamVecString(const std::string& paramName,
                            const std::vector<std::string>& str)
 {
-  CLI::GetParam<std::vector<std::string>>(paramName) = std::move(str);
-  CLI::SetPassed(paramName);
+  IO::GetParam<std::vector<std::string>>(paramName) = std::move(str);
+  IO::SetPassed(paramName);
 }
 
+// Call IO::SetParam<std::vector<int>>().
 // [[Rcpp::export]]
-void CLI_SetParamVectorInt(const std::string& paramName,
-                           const std::vector<int>& ints)
+void IO_SetParamVecInt(const std::string& paramName,
+                        const std::vector<int>& ints)
 {
-  CLI::GetParam<std::vector<int>>(paramName) = std::move(ints);
-  CLI::SetPassed(paramName);
+  IO::GetParam<std::vector<int>>(paramName) = std::move(ints);
+  IO::SetPassed(paramName);
 }
 
+// Call IO::SetParam<arma::mat>().
 // [[Rcpp::export]]
-void CLI_SetParamMat(const std::string& paramName,
+void IO_SetParamMat(const std::string& paramName,
                      const arma::mat& paramValue)
 {
-  CLI::GetParam<arma::mat>(paramName) = std::move(paramValue.t());
-  CLI::SetPassed(paramName);
+  IO::GetParam<arma::mat>(paramName) = std::move(paramValue.t());
+  IO::SetPassed(paramName);
 }
 
+// Call IO::SetParam<arma::Mat<size_t>>().
 // [[Rcpp::export]]
-void CLI_SetParamUMat(const std::string& paramName,
+void IO_SetParamUMat(const std::string& paramName,
                       const arma::Mat<size_t>& paramValue)
 {
-  CLI::GetParam<arma::Mat<size_t>>(paramName) = std::move(paramValue.t());
-  CLI::SetPassed(paramName);
+  IO::GetParam<arma::Mat<size_t>>(paramName) = std::move(paramValue.t());
+  IO::SetPassed(paramName);
 }
 
+// Call IO::SetParam<arma::rowvec>().
 // [[Rcpp::export]]
-void CLI_SetParamRow(const std::string& paramName,
+void IO_SetParamRow(const std::string& paramName,
                      const arma::rowvec& paramValue)
 {
-  CLI::GetParam<arma::rowvec>(paramName) = std::move(paramValue);
-  CLI::SetPassed(paramName);
+  IO::GetParam<arma::rowvec>(paramName) = std::move(paramValue);
+  IO::SetPassed(paramName);
 }
 
+// Call IO::SetParam<arma::Row<size_t>>().
 // [[Rcpp::export]]
-void CLI_SetParamURow(const std::string& paramName,
+void IO_SetParamURow(const std::string& paramName,
                       const arma::Row<size_t>& paramValue)
 {
-  CLI::GetParam<arma::Row<size_t>>(paramName) = std::move(paramValue);
-  CLI::SetPassed(paramName);
+  IO::GetParam<arma::Row<size_t>>(paramName) = std::move(paramValue);
+  IO::SetPassed(paramName);
 }
 
+// Call IO::SetParam<arma::vec>().
 // [[Rcpp::export]]
-void CLI_SetParamCol(const std::string& paramName,
+void IO_SetParamCol(const std::string& paramName,
                      const arma::vec& paramValue)
 {
-  CLI::GetParam<arma::vec>(paramName) = std::move(paramValue);
-  CLI::SetPassed(paramName);
+  IO::GetParam<arma::vec>(paramName) = std::move(paramValue);
+  IO::SetPassed(paramName);
 }
 
+// Call IO::SetParam<arma::Col<size_t>>().
 // [[Rcpp::export]]
-void CLI_SetParamUCol(const std::string& paramName,
+void IO_SetParamUCol(const std::string& paramName,
                       const arma::Col<size_t>& paramValue)
 {
-  CLI::GetParam<arma::Col<size_t>>(paramName) = std::move(paramValue);
-  CLI::SetPassed(paramName);
+  IO::GetParam<arma::Col<size_t>>(paramName) = std::move(paramValue);
+  IO::SetPassed(paramName);
 }
 
+// Call IO::SetParam<std::tuple<data::DatasetInfo, arma::mat>>().
 // [[Rcpp::export]]
-void CLI_SetParamMatWithInfo(const std::string& paramName,
+void IO_SetParamMatWithInfo(const std::string& paramName,
                              const LogicalVector& dimensions,
                              const arma::mat& paramValue)
 {
@@ -129,95 +153,108 @@ void CLI_SetParamMatWithInfo(const std::string& paramName,
     d.Type(i) = (dimensions[i]) ? data::Datatype::categorical :
         data::Datatype::numeric;
   }
-  std::get<0>(CLI::GetParam<std::tuple<data::DatasetInfo, arma::mat>>(
+  std::get<0>(IO::GetParam<std::tuple<data::DatasetInfo, arma::mat>>(
       paramName)) = std::move(d);
-  std::get<1>(CLI::GetParam<std::tuple<data::DatasetInfo, arma::mat>>(
+  std::get<1>(IO::GetParam<std::tuple<data::DatasetInfo, arma::mat>>(
       paramName)) = std::move(paramValue.t());
-  CLI::SetPassed(paramName);
+  IO::SetPassed(paramName);
 }
 
+// Call IO::GetParam<int>().
 // [[Rcpp::export]]
-int CLI_GetParamInt(const std::string& paramName)
+int IO_GetParamInt(const std::string& paramName)
 {
-  return CLI::GetParam<int>(paramName);
+  return IO::GetParam<int>(paramName);
 }
 
+// Call IO::GetParam<double>().
 // [[Rcpp::export]]
-double CLI_GetParamDouble(const std::string& paramName)
+double IO_GetParamDouble(const std::string& paramName)
 {
-  return CLI::GetParam<double>(paramName);
+  return IO::GetParam<double>(paramName);
 }
 
+// Call IO::GetParam<std::string>().
 // [[Rcpp::export]]
-std::string& CLI_GetParamString(const std::string& paramName)
+std::string& IO_GetParamString(const std::string& paramName)
 {
-  return CLI::GetParam<std::string>(paramName);
+  return IO::GetParam<std::string>(paramName);
 }
 
+// Call IO::GetParam<bool>().
 // [[Rcpp::export]]
-bool CLI_GetParamBool(const std::string& paramName)
+bool IO_GetParamBool(const std::string& paramName)
 {
-  return CLI::GetParam<bool>(paramName);
+  return IO::GetParam<bool>(paramName);
 }
 
+// Call IO::GetParam<std::vector<std::string>>().
 // [[Rcpp::export]]
-const std::vector<std::string>& CLI_GetParamVectorStr(const 
+const std::vector<std::string>& IO_GetParamVecString(const
                                     std::string& paramName)
 {
-  return std::move(CLI::GetParam<std::vector<std::string>>(paramName));
+  return std::move(IO::GetParam<std::vector<std::string>>(paramName));
 }
 
+// Call IO::GetParam<std::vector<int>>().
 // [[Rcpp::export]]
-const std::vector<int>& CLI_GetParamVectorInt(const std::string& paramName)
+const std::vector<int>& IO_GetParamVecInt(const std::string& paramName)
 {
-  return std::move(CLI::GetParam<std::vector<int>>(paramName));
+  return std::move(IO::GetParam<std::vector<int>>(paramName));
 }
 
+// Call IO::GetParam<arma::mat>().
 // [[Rcpp::export]]
-const arma::mat& CLI_GetParamMat(const std::string& paramName)
+const arma::mat& IO_GetParamMat(const std::string& paramName)
 {
-  inplace_transpose(CLI::GetParam<arma::mat>(paramName));
-  return std::move(CLI::GetParam<arma::mat>(paramName));
+  inplace_transpose(IO::GetParam<arma::mat>(paramName));
+  return std::move(IO::GetParam<arma::mat>(paramName));
 }
 
+// Call IO::GetParam<arma::Mat<size_t>>().
 // [[Rcpp::export]]
-const arma::Mat<size_t>& CLI_GetParamUMat(const std::string& paramName)
+const arma::Mat<size_t>& IO_GetParamUMat(const std::string& paramName)
 {
-  inplace_transpose(CLI::GetParam<arma::Mat<size_t>>(paramName));
-  return std::move(CLI::GetParam<arma::Mat<size_t>>(paramName));
+  inplace_transpose(IO::GetParam<arma::Mat<size_t>>(paramName));
+  return std::move(IO::GetParam<arma::Mat<size_t>>(paramName));
 }
 
+// Call IO::GetParam<arma::rowvec>().
 // [[Rcpp::export]]
-const arma::vec CLI_GetParamRow(const std::string& paramName)
+const arma::vec IO_GetParamRow(const std::string& paramName)
 {
-  return std::move(CLI::GetParam<arma::rowvec>(paramName).t());
+  return std::move(IO::GetParam<arma::rowvec>(paramName).t());
 }
 
+// Call IO::GetParam<arma::Row<size_t>>().
 // [[Rcpp::export]]
-const arma::Col<size_t> CLI_GetParamURow(const std::string& paramName)
+const arma::Col<size_t> IO_GetParamURow(const std::string& paramName)
 {
-  return std::move(CLI::GetParam<arma::Row<size_t>>(paramName).t());
+  return std::move(IO::GetParam<arma::Row<size_t>>(paramName).t());
 }
 
+// Call IO::GetParam<arma::vec>().
 // [[Rcpp::export]]
-const arma::rowvec CLI_GetParamCol(const std::string& paramName)
+const arma::rowvec IO_GetParamCol(const std::string& paramName)
 {
-  return std::move(CLI::GetParam<arma::vec>(paramName).t());
+  return std::move(IO::GetParam<arma::vec>(paramName).t());
 }
 
+// Call IO::GetParam<arma::Col<size_t>>().
 // [[Rcpp::export]]
-const arma::Row<size_t> CLI_GetParamUCol(const std::string& paramName)
+const arma::Row<size_t> IO_GetParamUCol(const std::string& paramName)
 {
-  return std::move(CLI::GetParam<arma::Col<size_t>>(paramName).t());
+  return std::move(IO::GetParam<arma::Col<size_t>>(paramName).t());
 }
 
+// Call IO::GetParam<std::tuple<data::DatasetInfo, arma::mat>>().
 // [[Rcpp::export]]
-List CLI_GetParamMatWithInfo(const std::string& paramName)
+List IO_GetParamMatWithInfo(const std::string& paramName)
 {
   const data::DatasetInfo& d = std::get<0>(
-      CLI::GetParam<std::tuple<data::DatasetInfo, arma::mat>>(paramName));
+      IO::GetParam<std::tuple<data::DatasetInfo, arma::mat>>(paramName));
   const arma::mat& m = std::get<1>(
-      CLI::GetParam<std::tuple<data::DatasetInfo, arma::mat>>(paramName)).t();
+      IO::GetParam<std::tuple<data::DatasetInfo, arma::mat>>(paramName)).t();
 
   LogicalVector dims(d.Dimensionality());
   for (size_t i = 0; i < d.Dimensionality(); ++i)
@@ -227,32 +264,37 @@ List CLI_GetParamMatWithInfo(const std::string& paramName)
                        Rcpp::Named("Data") = std::move(m));
 }
 
+// Enable verbose output.
 // [[Rcpp::export]]
-void CLI_EnableVerbose()
+void IO_EnableVerbose()
 {
   Log::Info.ignoreInput = false;
 }
 
+// Disable verbose output.
 // [[Rcpp::export]]
-void CLI_DisableVerbose()
+void IO_DisableVerbose()
 {
   Log::Info.ignoreInput = true;
 }
 
+// Reset the state of all timers.
 // [[Rcpp::export]]
-void CLI_ResetTimers()
+void IO_ResetTimers()
 {
-  CLI::GetSingleton().timer.Reset();
+  IO::GetSingleton().timer.Reset();
 }
 
+// Set an argument as passed to the IO object.
 // [[Rcpp::export]]
-void CLI_SetPassed(const std::string& paramName)
+void IO_SetPassed(const std::string& paramName)
 {
-  CLI::SetPassed(paramName);
+  IO::SetPassed(paramName);
 }
 
+// Clear settings.
 // [[Rcpp::export]]
-void CLI_ClearSettings()
+void IO_ClearSettings()
 {
-  CLI::ClearSettings();
+  IO::ClearSettings();
 }

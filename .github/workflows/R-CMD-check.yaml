@@ -19,6 +19,8 @@ jobs:
       matrix:
         config:
         - { os: windows-latest, r: '3.6'}
+        - { os: windows-latest, r: 'devel'}
+        - { os: windows-latest, r: 'release'}
         - { os: macOS-latest, r: '3.6'}
         - { os: macOS-latest, r: 'devel'}
         - { os: macOS-latest, r: 'release'}
@@ -34,6 +36,7 @@ jobs:
       R_BUILD_ARGS: "--no-build-vignettes"
       R_CHECK_ARGS: "--no-build-vignettes"
       _R_CHECK_FORCE_SUGGESTS: 0
+      _R_CHECK_DONTTEST_EXAMPLES_: false
 
     steps:
       - uses: actions/checkout@v1
@@ -67,7 +70,7 @@ jobs:
         run: Rscript -e "library(remotes)" -e "update(readRDS('depends.Rds'))" -e "remotes::install_cran('rcmdcheck')"
 
       - name: Check
-        run: Rscript -e "rcmdcheck::rcmdcheck(args = c('--no-manual', '--no-build-vignettes', '--no-vignettes'), build_args = '--no-build-vignettes', error_on = 'error', check_dir = 'check')"
+        run: Rscript -e "rcmdcheck::rcmdcheck(args = c('--no-manual', '--no-build-vignettes', '--no-vignettes', '--as-cran'), build_args = '--no-build-vignettes', error_on = 'error', check_dir = 'check')"
 
       - name: Upload check results
         if: failure()

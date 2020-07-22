@@ -8,3 +8,4 @@ appveyor.yml
 .*\.tar\.gz$
 ^\.travis\.yml$
 ^\appveyor\.yml$
+^\.github$

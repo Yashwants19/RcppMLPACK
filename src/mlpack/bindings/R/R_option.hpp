@@ -1,6 +1,6 @@
 /**
- * @file R_option.hpp
- * @author Yashwant Singh
+ * @file bindings/R/R_option.hpp
+ * @author Yashwant Singh Parihar
  *
  * The R option type.
  *
@@ -12,6 +12,13 @@
 #ifndef MLPACK_BINDINGS_R_R_OPTION_HPP
 #define MLPACK_BINDINGS_R_R_OPTION_HPP
 #include <mlpack/core/util/param_data.hpp>
+#include "get_param.hpp"
+#include "get_printable_param.hpp"
+#include "print_input_param.hpp"
+#include "print_input_processing.hpp"
+#include "print_output_processing.hpp"
+#include "print_doc.hpp"
+#include "print_serialize_util.hpp"
 
 namespace mlpack {
 namespace bindings {
@@ -26,8 +33,21 @@ class ROption
  public:
   /**
    * Construct a ROption object.  When constructed, it will register itself
-   * with CLI. The testName parameter is not used and added for compatibility
+   * with IO. The testName parameter is not used and added for compatibility
    * reasons.
+   *
+   * @param defaultValue Default value this parameter will be initialized to
+   *      (for flags, this should be false, for instance).
+   * @param identifier The name of the option (no dashes in front; for --help,
+   *      we would pass "help").
+   * @param description A short string describing the option.
+   * @param alias Short name of the parameter. "" for no alias.
+   * @param cppName Name of the C++ type of this parameter (i.e. "int").
+   * @param required Whether or not the option is required at runtime.
+   * @param input Whether or not the option is an input option.
+   * @param noTranspose If the parameter is a matrix and this is true, then the
+   *      matrix will not be transposed on loading.
+   * @param * (testName) Is not used and added for compatibility reasons.
    */
   ROption(const T defaultValue,
           const std::string& identifier,
@@ -39,7 +59,7 @@ class ROption
           const bool noTranspose = false,
           const std::string& /* testName */ = "")
   {
-    // Create the ParamData object to give to CLI.
+    // Create the ParamData object to give to IO.
     util::ParamData data;
     data.desc = description;
     data.name = identifier;
@@ -63,15 +83,34 @@ class ROption
 
     // Restore the parameters for this program.
     if (identifier != "verbose")
-      CLI::RestoreSettings(CLI::ProgramName(), false);
+      IO::RestoreSettings(IO::ProgramName(), false);
+
+    // Set the function pointers that we'll need.  All of these function
+    // pointers will be used by both the program that generates the R, and
+    // also the binding itself.  (The binding itself will only use GetParam,
+    // GetPrintableParam, and GetRawParam.)
+    IO::GetSingleton().functionMap[data.tname]["GetParam"] = &GetParam<T>;
+    IO::GetSingleton().functionMap[data.tname]["GetPrintableParam"] =
+        &GetPrintableParam<T>;
+
+    // These are used by the R generator.
+    IO::GetSingleton().functionMap[data.tname]["PrintDoc"] = &PrintDoc<T>;
+    IO::GetSingleton().functionMap[data.tname]["PrintInputParam"] =
+        &PrintInputParam<T>;
+    IO::GetSingleton().functionMap[data.tname]["PrintOutputProcessing"] =
+        &PrintOutputProcessing<T>;
+    IO::GetSingleton().functionMap[data.tname]["PrintInputProcessing"] =
+        &PrintInputProcessing<T>;
+    IO::GetSingleton().functionMap[data.tname]["PrintSerializeUtil"] =
+        &PrintSerializeUtil<T>;
 
     // Add the ParamData object, then store.  This is necessary because we may
-    // import more than one .so or .o that uses CLI, so we have to keep the options
+    // import more than one .so or .o that uses IO, so we have to keep the options
     // separate.  programName is a global variable from mlpack_main.hpp.
-    CLI::Add(std::move(data));
+    IO::Add(std::move(data));
     if (identifier != "verbose")
-      CLI::StoreSettings(CLI::ProgramName());
-    CLI::ClearSettings();
+      IO::StoreSettings(IO::ProgramName());
+    IO::ClearSettings();
   }
 };
 
