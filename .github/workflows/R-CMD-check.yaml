@@ -36,6 +36,7 @@ jobs:
       R_BUILD_ARGS: "--no-build-vignettes"
       R_CHECK_ARGS: "--no-build-vignettes"
       _R_CHECK_FORCE_SUGGESTS: 0
+      _R_CHECK_DONTTEST_EXAMPLES_: false
 
     steps:
       - uses: actions/checkout@v1
