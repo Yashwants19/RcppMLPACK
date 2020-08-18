@@ -548,6 +548,59 @@ BEGIN_RCPP
     return R_NilValue;
 END_RCPP
 }
+// hoeffding_tree_mlpackMain
+void hoeffding_tree_mlpackMain();
+RcppExport SEXP _RcppMLPACK_hoeffding_tree_mlpackMain() {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    hoeffding_tree_mlpackMain();
+    return R_NilValue;
+END_RCPP
+}
+// IO_GetParamHoeffdingTreeModelPtr
+SEXP IO_GetParamHoeffdingTreeModelPtr(const std::string& paramName);
+RcppExport SEXP _RcppMLPACK_IO_GetParamHoeffdingTreeModelPtr(SEXP paramNameSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const std::string& >::type paramName(paramNameSEXP);
+    rcpp_result_gen = Rcpp::wrap(IO_GetParamHoeffdingTreeModelPtr(paramName));
+    return rcpp_result_gen;
+END_RCPP
+}
+// IO_SetParamHoeffdingTreeModelPtr
+void IO_SetParamHoeffdingTreeModelPtr(const std::string& paramName, SEXP ptr);
+RcppExport SEXP _RcppMLPACK_IO_SetParamHoeffdingTreeModelPtr(SEXP paramNameSEXP, SEXP ptrSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const std::string& >::type paramName(paramNameSEXP);
+    Rcpp::traits::input_parameter< SEXP >::type ptr(ptrSEXP);
+    IO_SetParamHoeffdingTreeModelPtr(paramName, ptr);
+    return R_NilValue;
+END_RCPP
+}
+// SerializeHoeffdingTreeModelPtr
+Rcpp::RawVector SerializeHoeffdingTreeModelPtr(SEXP ptr);
+RcppExport SEXP _RcppMLPACK_SerializeHoeffdingTreeModelPtr(SEXP ptrSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< SEXP >::type ptr(ptrSEXP);
+    rcpp_result_gen = Rcpp::wrap(SerializeHoeffdingTreeModelPtr(ptr));
+    return rcpp_result_gen;
+END_RCPP
+}
+// DeserializeHoeffdingTreeModelPtr
+SEXP DeserializeHoeffdingTreeModelPtr(Rcpp::RawVector str);
+RcppExport SEXP _RcppMLPACK_DeserializeHoeffdingTreeModelPtr(SEXP strSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::RawVector >::type str(strSEXP);
+    rcpp_result_gen = Rcpp::wrap(DeserializeHoeffdingTreeModelPtr(str));
+    return rcpp_result_gen;
+END_RCPP
+}
 // image_converter_mlpackMain
 void image_converter_mlpackMain();
 RcppExport SEXP _RcppMLPACK_image_converter_mlpackMain() {
@@ -1954,6 +2007,11 @@ static const R_CallMethodDef CallEntries[] = {
     {"_RcppMLPACK_hmm_loglik_mlpackMain", (DL_FUNC) &_RcppMLPACK_hmm_loglik_mlpackMain, 0},
     {"_RcppMLPACK_hmm_train_mlpackMain", (DL_FUNC) &_RcppMLPACK_hmm_train_mlpackMain, 0},
     {"_RcppMLPACK_hmm_viterbi_mlpackMain", (DL_FUNC) &_RcppMLPACK_hmm_viterbi_mlpackMain, 0},
+    {"_RcppMLPACK_hoeffding_tree_mlpackMain", (DL_FUNC) &_RcppMLPACK_hoeffding_tree_mlpackMain, 0},
+    {"_RcppMLPACK_IO_GetParamHoeffdingTreeModelPtr", (DL_FUNC) &_RcppMLPACK_IO_GetParamHoeffdingTreeModelPtr, 1},
+    {"_RcppMLPACK_IO_SetParamHoeffdingTreeModelPtr", (DL_FUNC) &_RcppMLPACK_IO_SetParamHoeffdingTreeModelPtr, 2},
+    {"_RcppMLPACK_SerializeHoeffdingTreeModelPtr", (DL_FUNC) &_RcppMLPACK_SerializeHoeffdingTreeModelPtr, 1},
+    {"_RcppMLPACK_DeserializeHoeffdingTreeModelPtr", (DL_FUNC) &_RcppMLPACK_DeserializeHoeffdingTreeModelPtr, 1},
     {"_RcppMLPACK_image_converter_mlpackMain", (DL_FUNC) &_RcppMLPACK_image_converter_mlpackMain, 0},
     {"_RcppMLPACK_kde_mlpackMain", (DL_FUNC) &_RcppMLPACK_kde_mlpackMain, 0},
     {"_RcppMLPACK_IO_GetParamKDEModelPtr", (DL_FUNC) &_RcppMLPACK_IO_GetParamKDEModelPtr, 1},
