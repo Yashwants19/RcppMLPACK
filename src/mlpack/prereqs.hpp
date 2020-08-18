@@ -15,13 +15,6 @@
 #define _USE_MATH_DEFINES
 #include <cmath>
 
-// First, check if Armadillo was included before, warning if so.
-#ifdef ARMA_INCLUDES
-#pragma message "Armadillo was included before mlpack; this can sometimes cause\
- problems.  It should only be necessary to include <mlpack/core.hpp> and not \
-<armadillo>."
-#endif
-
 // Next, standard includes.
 #include <cstdlib>
 #include <cstdio>
@@ -38,7 +31,6 @@
 #ifndef M_PI
   #define M_PI 3.141592653589793238462643383279
 #endif
-
 // MLPACK_COUT_STREAM is used to change the default stream for printing
 // purpose.
 #if !defined(MLPACK_COUT_STREAM)
@@ -79,26 +71,30 @@ using enable_if_t = typename enable_if<B, T>::type;
 #define BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS
 #define BOOST_MPL_LIMIT_LIST_SIZE 50
 
-// We'll need the necessary boost::serialization features, as well as what we
-// use with mlpack.  In Boost 1.59 and newer, the BOOST_PFTO code is no longer
-// defined, but we still need to define it (as nothing) so that the mlpack
-// serialization shim compiles.
-#include <boost/serialization/serialization.hpp>
-// We are not including boost/serialization/vector.hpp here. It is included in
-// mlpack/core/boost_backport/boost_backport_serialization.hpp because of
-// different behaviors of vector serialization in different versions of boost.
-// #include <boost/serialization/vector.hpp>
-#include <boost/serialization/map.hpp>
-// boost_backport.hpp handles the version and backporting of serialization (and
-// other) features.
-#include "mlpack/core/boost_backport/boost_backport_serialization.hpp"
-// Boost 1.59 and newer don't use BOOST_PFTO, but our shims do.  We can resolve
-// any issue by setting BOOST_PFTO to nothing.
-#ifndef BOOST_PFTO
-  #define BOOST_PFTO
-#endif
+// Now include Armadillo through the special mlpack extensions.
+#include <mlpack/core/arma_extend/arma_extend.hpp>
+#include <mlpack/core/util/arma_traits.hpp>
+
+#include <cereal/archives/binary.hpp>
+#include <cereal/archives/portable_binary.hpp>
+#include <cereal/archives/xml.hpp>
+#include <cereal/archives/json.hpp>
+#include <cereal/types/array.hpp>
+#include <cereal/types/boost_variant.hpp>
+#include <cereal/types/string.hpp>
+#include <cereal/types/vector.hpp>
+#include <cereal/types/unordered_map.hpp>
+#include <cereal/types/tuple.hpp>
+#include <cereal/types/utility.hpp>
+
+#include <mlpack/core/cereal/array_wrapper.hpp>
+#include <mlpack/core/cereal/pointer_wrapper.hpp>
+#include <mlpack/core/cereal/pointer_vector_wrapper.hpp>
+#include <mlpack/core/cereal/pointer_variant_wrapper.hpp>
+#include <mlpack/core/cereal/pointer_vector_variant_wrapper.hpp>
+#include <mlpack/core/arma_extend/serialize_armadillo.hpp>
+
 #include <mlpack/core/data/has_serialize.hpp>
-#include <mlpack/core/data/serialization_template_version.hpp>
 
 // If we have Boost 1.58 or older and are using C++14, the compilation is likely
 // to fail due to boost::visitor issues.  We will pre-emptively fail.
@@ -115,10 +111,6 @@ or upgrade Boost to 1.59 or newer.
   #pragma warning(disable : 4519)
   #define ARMA_USE_CXX11
 #endif
-
-// Now include Armadillo through the special mlpack extensions.
-#include <mlpack/core/arma_extend/arma_extend.hpp>
-#include <mlpack/core/util/arma_traits.hpp>
 
 // Ensure that the user isn't doing something stupid with their Armadillo
 // defines.

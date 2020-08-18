@@ -41,8 +41,8 @@ PROGRAM_INFO("K-Rank-Approximate-Nearest-Neighbors (kRANN)",
     "set of points. You may specify a separate set of reference points and "
     "query points, or just a reference set which will be used as both the "
     "reference and query set. You must specify the rank approximation (in %) "
-    "(and optionally the success probability).",
-    // Example.
+    "(and optionally the success probability)."
+    "\n\n"
     "For example, the following will return 5 neighbors from the top 0.1% of "
     "the data (with probability 0.95) for each point in " +
     PRINT_DATASET("input") + " and store the distances in " +
@@ -155,13 +155,11 @@ static void mlpackMain()
   RequireParamValue<double>("tau", [](double x) {
       return (x >= 0.0 && x <=100.0); }, true,
       "tau must be in range [0.0, 100.0]");
-  const double tau = IO::GetParam<double>("tau");
 
   // Sanity check on alpha.
   RequireParamValue<double>("alpha", [](double x) {
       return (x >= 0.0 && x <=1.0); }, true,
       "alpha must be in range [0.0, 1.0]");
-  const double alpha = IO::GetParam<double>("alpha");
 
   // We either have to load the reference data, or we have to load the model.
   RANNModel* rann;
@@ -227,9 +225,9 @@ static void mlpackMain()
 
   // Apply the parameters for search.
   if (IO::HasParam("tau"))
-    rann->Tau() = tau;
+    rann->Tau() = IO::GetParam<double>("tau");
   if (IO::HasParam("alpha"))
-    rann->Alpha() = alpha;
+    rann->Alpha() = IO::GetParam<double>("alpha");
   if (IO::HasParam("single_sample_limit"))
     rann->SingleSampleLimit() = IO::GetParam<int>("single_sample_limit");
   rann->SampleAtLeaves() = IO::HasParam("sample_at_leaves");

@@ -46,9 +46,7 @@ void CReLU<InputDataType, OutputDataType>::Backward(
 
 template<typename InputDataType, typename OutputDataType>
 template<typename Archive>
-void CReLU<InputDataType, OutputDataType>::serialize(
-    Archive& /* ar */,
-    const unsigned int /* version */)
+void CReLU<InputDataType, OutputDataType>::serialize(Archive& /* ar */)
 {
   // Nothing to do here.
 }

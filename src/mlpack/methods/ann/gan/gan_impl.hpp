@@ -14,12 +14,10 @@
 #include "gan.hpp"
 
 #include <mlpack/core.hpp>
-
 #include <mlpack/methods/ann/ffn.hpp>
 #include <mlpack/methods/ann/init_rules/network_init.hpp>
 #include <mlpack/methods/ann/visitor/output_parameter_visitor.hpp>
 #include <mlpack/methods/ann/activation_functions/softplus_function.hpp>
-#include <boost/serialization/variant.hpp>
 
 namespace mlpack {
 namespace ann /** Artifical Neural Network.  */ {
@@ -487,14 +485,14 @@ template<
 >
 template<typename Archive>
 void GAN<Model, InitializationRuleType, Noise, PolicyType>::
-serialize(Archive& ar, const unsigned int /* version */)
+serialize(Archive& ar)
 {
-  ar & BOOST_SERIALIZATION_NVP(parameter);
-  ar & BOOST_SERIALIZATION_NVP(generator);
-  ar & BOOST_SERIALIZATION_NVP(discriminator);
-  ar & BOOST_SERIALIZATION_NVP(reset);
-  ar & BOOST_SERIALIZATION_NVP(genWeights);
-  ar & BOOST_SERIALIZATION_NVP(discWeights);
+  ar & CEREAL_NVP(parameter);
+  ar & CEREAL_NVP(generator);
+  ar & CEREAL_NVP(discriminator);
+  ar & CEREAL_NVP(reset);
+  ar & CEREAL_NVP(genWeights);
+  ar & CEREAL_NVP(discWeights);
 
   if (Archive::is_loading::value)
   {

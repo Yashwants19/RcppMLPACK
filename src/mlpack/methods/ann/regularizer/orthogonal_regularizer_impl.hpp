@@ -54,10 +54,12 @@ void OrthogonalRegularizer::Evaluate(const MatType& weight, MatType& gradient)
 }
 
 template<typename Archive>
-void OrthogonalRegularizer::serialize(
-    Archive& ar, const unsigned int /* version */)
+void OrthogonalRegularizer::serialize(Archive& ar)
 {
-  ar & BOOST_SERIALIZATION_NVP(factor);
+  uint8_t version = 1;
+  ar & CEREAL_NVP(version);
+
+  ar & CEREAL_NVP(factor);
 }
 
 } // namespace ann

@@ -268,10 +268,13 @@ template<typename InputDataType, typename OutputDataType,
          typename... CustomLayers>
 template<typename Archive>
 void Concat<InputDataType, OutputDataType, CustomLayers...>::serialize(
-    Archive& ar, const unsigned int /* version */)
+    Archive& ar)
 {
-  ar & BOOST_SERIALIZATION_NVP(model);
-  ar & BOOST_SERIALIZATION_NVP(run);
+  uint8_t version = 1;
+  ar & CEREAL_NVP(version);
+
+  ar & CEREAL_NVP(model);
+  ar & CEREAL_NVP(run);
 
   // Do we have to load or save a model?
   if (model)
@@ -283,7 +286,7 @@ void Concat<InputDataType, OutputDataType, CustomLayers...>::serialize(
           boost::apply_visitor(deleteVisitor));
     }
 
-    ar & BOOST_SERIALIZATION_NVP(network);
+    ar & CEREAL_VECTOR_VARIANT_POINTER(network);
   }
 }
 

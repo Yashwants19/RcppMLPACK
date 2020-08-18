@@ -60,8 +60,8 @@ PROGRAM_INFO("Parametric Naive Bayes Classifier",
     "Note: the " + PRINT_PARAM_STRING("output") + " and " +
     PRINT_PARAM_STRING("output_probs") + " parameters are deprecated and will "
     "be removed in mlpack 4.0.0.  Use " + PRINT_PARAM_STRING("predictions") +
-    " and " + PRINT_PARAM_STRING("probabilities") + " instead.",
-    // Example.
+    " and " + PRINT_PARAM_STRING("probabilities") + " instead."
+    "\n\n"
     "For example, to train a Naive Bayes classifier on the dataset " +
     PRINT_DATASET("data") + " with labels " + PRINT_DATASET("labels") + " "
     "and save the model to " + PRINT_MODEL("nbc_model") + ", the following "
@@ -95,10 +95,10 @@ struct NBCModel
 
   //! Serialize the model.
   template<typename Archive>
-  void serialize(Archive& ar, const unsigned int /* version */)
+  void serialize(Archive& ar)
   {
-    ar & BOOST_SERIALIZATION_NVP(nbc);
-    ar & BOOST_SERIALIZATION_NVP(mappings);
+    ar & CEREAL_NVP(nbc);
+    ar & CEREAL_NVP(mappings);
   }
 };
 

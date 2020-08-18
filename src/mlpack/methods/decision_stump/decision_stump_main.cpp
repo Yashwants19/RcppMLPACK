@@ -67,8 +67,6 @@ PROGRAM_INFO("Decision Stump",
     "After training, a decision stump can be saved with the " +
     PRINT_PARAM_STRING("output_model") + " output parameter.  That stump may "
     "later be re-used in subsequent calls to this program (or others).",
-    // Example.
-    "",
     SEE_ALSO("Decision tree", "#decision_tree"),
     SEE_ALSO("Decision stumps on Wikipedia",
         "https://en.wikipedia.org/wiki/Decision_stump"),
@@ -99,10 +97,10 @@ struct DSModel
 
   //! Serialize the model.
   template<typename Archive>
-  void serialize(Archive& ar, const unsigned int /* version */)
+  void serialize(Archive& ar)
   {
-    ar & BOOST_SERIALIZATION_NVP(mappings);
-    ar & BOOST_SERIALIZATION_NVP(stump);
+    ar & CEREAL_NVP(mappings);
+    ar & CEREAL_NVP(stump);
   }
 };
 

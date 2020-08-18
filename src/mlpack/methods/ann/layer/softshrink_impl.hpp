@@ -49,10 +49,12 @@ void SoftShrink<InputDataType, OutputDataType>::Backward(
 template<typename InputDataType, typename OutputDataType>
 template<typename Archive>
 void SoftShrink<InputDataType, OutputDataType>::serialize(
-    Archive& ar,
-    const unsigned int /* version */)
+    Archive& ar)
 {
-  ar & BOOST_SERIALIZATION_NVP(lambda);
+  uint8_t version = 1;
+  ar & CEREAL_NVP(version);
+
+  ar & CEREAL_NVP(lambda);
 }
 
 } // namespace ann

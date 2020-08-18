@@ -38,8 +38,8 @@ Rcpp::RawVector SerializeRandomForestModelPtr(SEXP ptr)
 {
   std::ostringstream oss;
   {
-    boost::archive::binary_oarchive oa(oss);
-    oa << boost::serialization::make_nvp("RandomForestModel",
+    cereal::BinaryOutputArchive oa(oss);
+    oa << cereal::make_nvp("RandomForestModel",
           *Rcpp::as<Rcpp::XPtr<RandomForestModel>>(ptr));
   }
 
@@ -60,8 +60,8 @@ SEXP DeserializeRandomForestModelPtr(Rcpp::RawVector str)
 
   std::istringstream iss(std::string((char *) &str[0], str.size()));
   {
-    boost::archive::binary_iarchive ia(iss);
-    ia >> boost::serialization::make_nvp("RandomForestModel", *ptr);
+    cereal::BinaryInputArchive ia(iss);
+    ia >> cereal::make_nvp("RandomForestModel", *ptr);
   }
 
   // R will be responsible for freeing this.

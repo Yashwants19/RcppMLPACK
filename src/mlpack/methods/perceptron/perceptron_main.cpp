@@ -57,8 +57,8 @@ PROGRAM_INFO("Perceptron",
     "."
     "\n"
     "Use " + PRINT_PARAM_STRING("predictions") + " instead of " +
-    PRINT_PARAM_STRING("output") + '.',
-    // Example.
+    PRINT_PARAM_STRING("output") + '.' +
+    "\n\n"
     "The training data given with the " + PRINT_PARAM_STRING("training") +
     " option may have class labels as its last dimension (so, if the training "
     "data is in CSV format, labels should be the last column).  Alternately, "
@@ -113,10 +113,10 @@ class PerceptronModel
   const Col<size_t>& Map() const { return map; }
 
   template<typename Archive>
-  void serialize(Archive& ar, const unsigned int /* version */)
+  void serialize(Archive& ar)
   {
-    ar & BOOST_SERIALIZATION_NVP(p);
-    ar & BOOST_SERIALIZATION_NVP(map);
+    ar & CEREAL_NVP(p);
+    ar & CEREAL_NVP(map);
   }
 };
 

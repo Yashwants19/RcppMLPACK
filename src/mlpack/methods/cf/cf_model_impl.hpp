@@ -14,8 +14,6 @@
 
 #include "cf_model.hpp"
 
-#include <boost/serialization/variant.hpp>
-
 #include <mlpack/methods/cf/normalization/no_normalization.hpp>
 #include <mlpack/methods/cf/normalization/overall_mean_normalization.hpp>
 #include <mlpack/methods/cf/normalization/user_mean_normalization.hpp>
@@ -207,13 +205,16 @@ const CFType<DecompositionPolicy, NormalizationType>* CFModel::CFPtr() const
 }
 
 template<typename Archive>
-void CFModel::serialize(Archive& ar, const unsigned int /* version */)
+void CFModel::serialize(Archive& ar)
 {
+  uint8_t version = 1;
+  ar & CEREAL_NVP(version);
+
   // This should never happen, but just in case, be clean with memory.
   if (Archive::is_loading::value)
     boost::apply_visitor(DeleteVisitor(), cf);
 
-  ar & BOOST_SERIALIZATION_NVP(cf);
+  ar & CEREAL_VARIANT_POINTER(cf);
 }
 
 #endif

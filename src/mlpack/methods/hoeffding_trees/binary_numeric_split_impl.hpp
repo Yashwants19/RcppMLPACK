@@ -171,12 +171,14 @@ double BinaryNumericSplit<FitnessFunction, ObservationType>::
 template<typename FitnessFunction, typename ObservationType>
 template<typename Archive>
 void BinaryNumericSplit<FitnessFunction, ObservationType>::serialize(
-    Archive& ar,
-    const unsigned int /* version */)
+    Archive& ar)
 {
+  uint8_t version = 1;
+  ar & CEREAL_NVP(version);
+
   // Serialize.
-  ar & BOOST_SERIALIZATION_NVP(sortedElements);
-  ar & BOOST_SERIALIZATION_NVP(classCounts);
+  ar & CEREAL_NVP(sortedElements);
+  ar & CEREAL_NVP(classCounts);
 }
 
 

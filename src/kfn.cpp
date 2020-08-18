@@ -38,8 +38,8 @@ Rcpp::RawVector SerializeKFNModelPtr(SEXP ptr)
 {
   std::ostringstream oss;
   {
-    boost::archive::binary_oarchive oa(oss);
-    oa << boost::serialization::make_nvp("KFNModel",
+    cereal::BinaryOutputArchive oa(oss);
+    oa << cereal::make_nvp("KFNModel",
           *Rcpp::as<Rcpp::XPtr<KFNModel>>(ptr));
   }
 
@@ -60,8 +60,8 @@ SEXP DeserializeKFNModelPtr(Rcpp::RawVector str)
 
   std::istringstream iss(std::string((char *) &str[0], str.size()));
   {
-    boost::archive::binary_iarchive ia(iss);
-    ia >> boost::serialization::make_nvp("KFNModel", *ptr);
+    cereal::BinaryInputArchive ia(iss);
+    ia >> cereal::make_nvp("KFNModel", *ptr);
   }
 
   // R will be responsible for freeing this.

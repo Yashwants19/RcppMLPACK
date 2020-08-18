@@ -74,7 +74,6 @@ void CosineEmbeddingLoss<InputDataType, OutputDataType>::Backward(
   typedef typename InputType::elem_type ElemType;
 
   const size_t cols = input.n_cols;
-  const size_t batchSize = input.n_elem / cols;
   if (arma::size(input) != arma::size(target))
     Log::Fatal << "Input Tensors must have same dimensions." << std::endl;
 
@@ -106,12 +105,14 @@ void CosineEmbeddingLoss<InputDataType, OutputDataType>::Backward(
 template<typename InputDataType, typename OutputDataType>
 template<typename Archive>
 void CosineEmbeddingLoss<InputDataType, OutputDataType>::serialize(
-    Archive&  ar ,
-    const unsigned int /* version */)
+    Archive&  ar)
 {
-  ar & BOOST_SERIALIZATION_NVP(margin);
-  ar & BOOST_SERIALIZATION_NVP(similarity);
-  ar & BOOST_SERIALIZATION_NVP(takeMean);
+  uint8_t version = 1;
+  ar & CEREAL_NVP(version);
+
+  ar & CEREAL_NVP(margin);
+  ar & CEREAL_NVP(similarity);
+  ar & CEREAL_NVP(takeMean);
 }
 
 } // namespace ann

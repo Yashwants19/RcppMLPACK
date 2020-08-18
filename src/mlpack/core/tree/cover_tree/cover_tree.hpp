@@ -255,7 +255,7 @@ class CoverTree
   CoverTree& operator=(CoverTree&& other);
 
   /**
-   * Create a cover tree from a boost::serialization archive.
+   * Create a cover tree from a cereal archive.
    */
   template<typename Archive>
   CoverTree(
@@ -552,21 +552,21 @@ class CoverTree
  protected:
   /**
    * A default constructor.  This is meant to only be used with
-   * boost::serialization, which is allowed with the friend declaration below.
+   * cereal, which is allowed with the friend declaration below.
    * This does not return a valid tree!  This method must be protected, so that
    * the serialization shim can work with the default constructor.
    */
   CoverTree();
 
   //! Friend access is given for the default constructor.
-  friend class boost::serialization::access;
+  friend class cereal::access;
 
  public:
   /**
    * Serialize the tree.
    */
   template<typename Archive>
-  void serialize(Archive& ar, const unsigned int /* version */);
+  void serialize(Archive& ar);
 
   size_t DistanceComps() const { return distanceComps; }
   size_t& DistanceComps() { return distanceComps; }

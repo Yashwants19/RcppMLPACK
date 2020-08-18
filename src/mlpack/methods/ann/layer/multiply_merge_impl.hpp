@@ -112,16 +112,19 @@ template<typename InputDataType, typename OutputDataType,
          typename... CustomLayers>
 template<typename Archive>
 void MultiplyMerge<InputDataType, OutputDataType, CustomLayers...>::serialize(
-    Archive& ar, const unsigned int /* version */)
+    Archive& ar)
 {
+  uint8_t version = 1;
+  ar & CEREAL_NVP(version);
+
   // Be sure to clear other layers before loading.
   if (Archive::is_loading::value)
     network.clear();
 
-  ar & BOOST_SERIALIZATION_NVP(network);
-  ar & BOOST_SERIALIZATION_NVP(model);
-  ar & BOOST_SERIALIZATION_NVP(run);
-  ar & BOOST_SERIALIZATION_NVP(ownsLayer);
+  ar & CEREAL_VECTOR_VARIANT_POINTER(network);
+  ar & CEREAL_NVP(model);
+  ar & CEREAL_NVP(run);
+  ar & CEREAL_NVP(ownsLayer);
 }
 
 } // namespace ann

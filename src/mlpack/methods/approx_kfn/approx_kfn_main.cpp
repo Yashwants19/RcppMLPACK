@@ -69,8 +69,8 @@ PROGRAM_INFO("Approximate furthest neighbor search",
     PRINT_PARAM_STRING("neighbors") + " and " +
     PRINT_PARAM_STRING("distances") + " output parameters.  Each row of these "
     "output matrices holds the k distances or neighbor indices for each query "
-    "point.",
-    // Example.
+    "point."
+    "\n\n"
     "For example, to find the 5 approximate furthest neighbors with " +
     PRINT_DATASET("reference_set") + " as the reference set and " +
     PRINT_DATASET("query_set") + " as the query set using DrusillaSelect, "
@@ -142,16 +142,16 @@ class ApproxKFNModel
 
   //! Serialize the model.
   template<typename Archive>
-  void serialize(Archive& ar, const unsigned int /* version */)
+  void serialize(Archive& ar)
   {
-    ar & BOOST_SERIALIZATION_NVP(type);
+    ar & CEREAL_NVP(type);
     if (type == 0)
     {
-      ar & BOOST_SERIALIZATION_NVP(ds);
+      ar & CEREAL_NVP(ds);
     }
     else
     {
-      ar & BOOST_SERIALIZATION_NVP(qdafn);
+      ar & CEREAL_NVP(qdafn);
     }
   }
 };

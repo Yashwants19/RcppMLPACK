@@ -716,7 +716,7 @@ operator=(CoverTree&& other)
   return *this;
 }
 
-// Construct from a boost::serialization archive.
+// Construct from a cereal archive.
 template<
     typename MetricType,
     typename StatisticType,
@@ -730,7 +730,7 @@ CoverTree<MetricType, StatisticType, MatType, RootPointPolicy>::CoverTree(
     CoverTree() // Create an empty CoverTree.
 {
   // Now, serialize to our empty tree.
-  ar >> boost::serialization::make_nvp("this", *this);
+  ar >> cereal::make_nvp("this", *this);
 }
 
 
@@ -1691,7 +1691,7 @@ inline void CoverTree<MetricType, StatisticType, MatType, RootPointPolicy>::
 }
 
 /**
- * Default constructor, only for use with boost::serialization.
+ * Default constructor, only for use with cereal.
  */
 template<
     typename MetricType,
@@ -1717,7 +1717,7 @@ CoverTree<MetricType, StatisticType, MatType, RootPointPolicy>::CoverTree() :
 }
 
 /**
- * Serialize to/from a boost::serialization archive.
+ * Serialize to/from a cereal archive.
  */
 template<
     typename MetricType,
@@ -1727,9 +1727,11 @@ template<
 >
 template<typename Archive>
 void CoverTree<MetricType, StatisticType, MatType, RootPointPolicy>::serialize(
-    Archive& ar,
-    const unsigned int /* version */)
+    Archive& ar)
 {
+  uint8_t version = 1;
+  ar & CEREAL_NVP(version);
+
   // If we're loading, and we have children, they need to be deleted.  We may
   // also need to delete the local metric and dataset.
   if (Archive::is_loading::value)
@@ -1745,18 +1747,18 @@ void CoverTree<MetricType, StatisticType, MatType, RootPointPolicy>::serialize(
     parent = NULL;
   }
 
-  ar & BOOST_SERIALIZATION_NVP(dataset);
-  ar & BOOST_SERIALIZATION_NVP(point);
-  ar & BOOST_SERIALIZATION_NVP(scale);
-  ar & BOOST_SERIALIZATION_NVP(base);
-  ar & BOOST_SERIALIZATION_NVP(stat);
-  ar & BOOST_SERIALIZATION_NVP(numDescendants);
-
   bool hasParent = (parent != NULL);
-  ar & BOOST_SERIALIZATION_NVP(hasParent);
-  ar & BOOST_SERIALIZATION_NVP(parentDistance);
-  ar & BOOST_SERIALIZATION_NVP(furthestDescendantDistance);
-  ar & BOOST_SERIALIZATION_NVP(metric);
+  ar & CEREAL_NVP(hasParent);
+  if (!hasParent)
+    ar & CEREAL_POINTER(dataset);
+  ar & CEREAL_NVP(point);
+  ar & CEREAL_NVP(scale);
+  ar & CEREAL_NVP(base);
+  ar & CEREAL_NVP(stat);
+  ar & CEREAL_NVP(numDescendants);
+  ar & CEREAL_NVP(parentDistance);
+  ar & CEREAL_NVP(furthestDescendantDistance);
+  ar & CEREAL_POINTER(metric);
 
   if (Archive::is_loading::value && !hasParent)
   {
@@ -1765,9 +1767,9 @@ void CoverTree<MetricType, StatisticType, MatType, RootPointPolicy>::serialize(
   }
 
   // Lastly, serialize the children.
-  ar & BOOST_SERIALIZATION_NVP(children);
+  ar & CEREAL_VECTOR_POINTER(children);
 
-  if (Archive::is_loading::value && parent == NULL)
+  if (Archive::is_loading::value)
   {
     // Look through each child individually.
     for (size_t i = 0; i < children.size(); ++i)

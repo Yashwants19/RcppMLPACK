@@ -91,10 +91,10 @@ class RefinedStart
 
   //! Serialize the object.
   template<typename Archive>
-  void serialize(Archive& ar, const unsigned int /* version */)
+  void serialize(Archive& ar)
   {
-    ar & BOOST_SERIALIZATION_NVP(samplings);
-    ar & BOOST_SERIALIZATION_NVP(percentage);
+    ar & CEREAL_NVP(samplings);
+    ar & CEREAL_NVP(percentage);
   }
 
  private:

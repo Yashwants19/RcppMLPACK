@@ -59,8 +59,8 @@ PROGRAM_INFO("Decision tree",
     " parameter.  Predictions for each test point may be saved via the " +
     PRINT_PARAM_STRING("predictions") + " output parameter.  Class "
     "probabilities for each prediction may be saved with the " +
-    PRINT_PARAM_STRING("probabilities") + " output parameter.",
-    // Example.
+    PRINT_PARAM_STRING("probabilities") + " output parameter."
+    "\n\n"
     "For example, to train a decision tree with a minimum leaf size of 20 on "
     "the dataset contained in " + PRINT_DATASET("data") + " with labels " +
     PRINT_DATASET("labels") + ", saving the output model to " +
@@ -130,10 +130,10 @@ class DecisionTreeModel
 
   // Serialize the model.
   template<typename Archive>
-  void serialize(Archive& ar, const unsigned int /* version */)
+  void serialize(Archive& ar)
   {
-    ar & BOOST_SERIALIZATION_NVP(tree);
-    ar & BOOST_SERIALIZATION_NVP(info);
+    ar & CEREAL_NVP(tree);
+    ar & CEREAL_NVP(info);
   }
 };
 

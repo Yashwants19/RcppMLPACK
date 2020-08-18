@@ -38,8 +38,8 @@ Rcpp::RawVector SerializeLARSPtr(SEXP ptr)
 {
   std::ostringstream oss;
   {
-    boost::archive::binary_oarchive oa(oss);
-    oa << boost::serialization::make_nvp("LARS",
+    cereal::BinaryOutputArchive oa(oss);
+    oa << cereal::make_nvp("LARS",
           *Rcpp::as<Rcpp::XPtr<LARS>>(ptr));
   }
 
@@ -60,8 +60,8 @@ SEXP DeserializeLARSPtr(Rcpp::RawVector str)
 
   std::istringstream iss(std::string((char *) &str[0], str.size()));
   {
-    boost::archive::binary_iarchive ia(iss);
-    ia >> boost::serialization::make_nvp("LARS", *ptr);
+    cereal::BinaryInputArchive ia(iss);
+    ia >> cereal::make_nvp("LARS", *ptr);
   }
 
   // R will be responsible for freeing this.

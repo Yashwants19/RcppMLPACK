@@ -84,10 +84,12 @@ inline typename Vec1Type::elem_type IPMetric<KernelType>::Evaluate(
 // Serialize the kernel.
 template<typename KernelType>
 template<typename Archive>
-void IPMetric<KernelType>::serialize(Archive& ar,
-                                     const unsigned int /* version */)
+void IPMetric<KernelType>::serialize(Archive& ar)
 {
   // If we're loading, we need to allocate space for the kernel, and we will own
+  uint8_t version = 1;
+  ar & CEREAL_NVP(version);
+
   // the kernel.
   if (Archive::is_loading::value)
   {
@@ -96,7 +98,7 @@ void IPMetric<KernelType>::serialize(Archive& ar,
     kernelOwner = true;
   }
 
-  ar & BOOST_SERIALIZATION_NVP(kernel);
+  ar & CEREAL_POINTER(kernel);
 }
 
 // A specialization for the linear kernel, which actually just turns out to be

@@ -58,9 +58,12 @@ void Add<InputDataType, OutputDataType>::Gradient(
 template<typename InputDataType, typename OutputDataType>
 template<typename Archive>
 void Add<InputDataType, OutputDataType>::serialize(
-    Archive& ar, const unsigned int /* version */)
+    Archive& ar)
 {
-  ar & BOOST_SERIALIZATION_NVP(outSize);
+  uint8_t version = 1;
+  ar & CEREAL_NVP(version);
+
+  ar & CEREAL_NVP(outSize);
 
   if (Archive::is_loading::value)
     weights.set_size(outSize, 1);

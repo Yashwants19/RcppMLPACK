@@ -378,7 +378,7 @@ operator=(RectangleTree&& other)
 }
 
 /**
- * Construct the tree from a boost::serialization archive.
+ * Construct the tree from a cereal archive.
  */
 template<typename MetricType,
          typename StatisticType,
@@ -395,7 +395,7 @@ RectangleTree(
     RectangleTree() // Use default constructor.
 {
   // Now serialize.
-  ar >> BOOST_SERIALIZATION_NVP(*this);
+  ar >> CEREAL_NVP(*this);
 }
 
 /**
@@ -1036,7 +1036,7 @@ void RectangleTree<MetricType, StatisticType, MatType, SplitType, DescentType,
   }
 }
 
-//! Default constructor for boost::serialization.
+//! Default constructor for cereal.
 template<typename MetricType,
          typename StatisticType,
          typename MatType,
@@ -1048,7 +1048,7 @@ RectangleTree<MetricType, StatisticType, MatType, SplitType, DescentType,
 RectangleTree() :
     maxNumChildren(0), // Try to give sensible defaults, but it shouldn't matter
     minNumChildren(0), // because this tree isn't valid anyway and is only used
-    numChildren(0),    // by boost::serialization.
+    numChildren(0),    // by cereal.
     parent(NULL),
     begin(0),
     count(0),
@@ -1392,10 +1392,11 @@ template<typename MetricType,
          template<typename> class AuxiliaryInformationType>
 template<typename Archive>
 void RectangleTree<MetricType, StatisticType, MatType, SplitType, DescentType,
-                   AuxiliaryInformationType>::serialize(
-    Archive& ar,
-    const unsigned int /* version */)
+                   AuxiliaryInformationType>::serialize(Archive& ar)
 {
+  uint8_t version = 1;
+  ar & CEREAL_NVP(version);
+
   // Clean up memory, if necessary.
   if (Archive::is_loading::value)
   {
@@ -1409,25 +1410,29 @@ void RectangleTree<MetricType, StatisticType, MatType, SplitType, DescentType,
     parent = NULL;
   }
 
-  ar & BOOST_SERIALIZATION_NVP(maxNumChildren);
-  ar & BOOST_SERIALIZATION_NVP(minNumChildren);
-  ar & BOOST_SERIALIZATION_NVP(numChildren);
+  bool hasParent = (parent != NULL);
+
+  ar & CEREAL_NVP(maxNumChildren);
+  ar & CEREAL_NVP(minNumChildren);
+  ar & CEREAL_NVP(numChildren);
   if (Archive::is_loading::value)
     children.resize(maxNumChildren + 1);
 
-  ar & BOOST_SERIALIZATION_NVP(begin);
-  ar & BOOST_SERIALIZATION_NVP(count);
-  ar & BOOST_SERIALIZATION_NVP(numDescendants);
-  ar & BOOST_SERIALIZATION_NVP(maxLeafSize);
-  ar & BOOST_SERIALIZATION_NVP(minLeafSize);
-  ar & BOOST_SERIALIZATION_NVP(bound);
-  ar & BOOST_SERIALIZATION_NVP(stat);
-  ar & BOOST_SERIALIZATION_NVP(parentDistance);
-  ar & BOOST_SERIALIZATION_NVP(dataset);
-  ar & BOOST_SERIALIZATION_NVP(ownsDataset);
+  ar & CEREAL_NVP(begin);
+  ar & CEREAL_NVP(count);
+  ar & CEREAL_NVP(numDescendants);
+  ar & CEREAL_NVP(maxLeafSize);
+  ar & CEREAL_NVP(minLeafSize);
+  ar & CEREAL_NVP(bound);
+  ar & CEREAL_NVP(stat);
+  ar & CEREAL_NVP(parentDistance);
+  ar & CEREAL_NVP(hasParent);
 
-  ar & BOOST_SERIALIZATION_NVP(points);
-  ar & BOOST_SERIALIZATION_NVP(auxiliaryInfo);
+  if (!hasParent)
+    ar & CEREAL_POINTER(dataset);
+
+  ar & CEREAL_NVP(points);
+  ar & CEREAL_NVP(auxiliaryInfo);
 
   // Since we may or may not be holding children, we need to serialize _only_
   // numChildren children.
@@ -1435,7 +1440,7 @@ void RectangleTree<MetricType, StatisticType, MatType, SplitType, DescentType,
   {
     std::ostringstream oss;
     oss << "children" << i;
-    ar & boost::serialization::make_nvp(oss.str().c_str(), children[i]);
+    ar & CEREAL_POINTER(children[i]);
 
     if (Archive::is_loading::value)
       children[i]->parent = this;

@@ -12,7 +12,10 @@
 #ifndef MLPACK_BINDINGS_R_RCPP_MLPACK_H
 #define MLPACK_BINDINGS_R_RCPP_MLPACK_H
 
+#define BINDING_TYPE BINDING_TYPE_R
 #include <Rcpp.h>
+
+#define CEREAL_ARCHIVES_JSON_HPP_
 
 // To suppress Found ‘__assert_fail’, possibly from ‘assert’ (C).
 #define BOOST_DISABLE_ASSERTS
@@ -67,11 +70,12 @@
 #include <mlpack/core/util/timers.cpp>
 #include <mlpack/core/util/version.cpp>
 #include <mlpack/methods/adaboost/adaboost_model.cpp>
+#include <mlpack/methods/bayesian_linear_regression/bayesian_linear_regression.cpp>
 #include <mlpack/methods/block_krylov_svd/randomized_block_krylov_svd.cpp>
 #include <mlpack/methods/fastmks/fastmks_model.cpp>
 #include <mlpack/methods/gmm/diagonal_gmm.cpp>
 #include <mlpack/methods/gmm/gmm.cpp>
-#include <mlpack/methods/hoeffding_trees/hoeffding_tree_model.cpp>
+//#include <mlpack/methods/hoeffding_trees/hoeffding_tree_model.cpp>
 #include <mlpack/methods/lars/lars.cpp>
 #include <mlpack/methods/linear_regression/linear_regression.cpp>
 #include <mlpack/methods/local_coordinate_coding/lcc.cpp>
@@ -90,7 +94,7 @@
 
 
 #include <mlpack/core.hpp>
-
+/*
 // These are all the boost files, we need to compile R bindings for mlpack that
 // are not a part of mlpack itself.
 #include <boost/serialization/archive_exception.cpp>
@@ -109,7 +113,7 @@
 #include <boost/serialization/basic_serializer_map.cpp>
 #include <boost/serialization/void_cast.cpp>
 #include <boost/serialization/utf8_codecvt_facet.cpp>
-
+*/
 #undef ARMA_EXTRA_MAT_PROTO
 #undef ARMA_EXTRA_MAT_MEAT
 

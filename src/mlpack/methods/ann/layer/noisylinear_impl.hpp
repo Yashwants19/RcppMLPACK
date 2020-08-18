@@ -129,10 +129,13 @@ void NoisyLinear<InputDataType, OutputDataType>::Gradient(
 template<typename InputDataType, typename OutputDataType>
 template<typename Archive>
 void NoisyLinear<InputDataType, OutputDataType>::serialize(
-    Archive& ar, const unsigned int /* version */)
+    Archive& ar)
 {
-  ar & BOOST_SERIALIZATION_NVP(inSize);
-  ar & BOOST_SERIALIZATION_NVP(outSize);
+  uint8_t version = 1;
+  ar & CEREAL_NVP(version);
+
+  ar & CEREAL_NVP(inSize);
+  ar & CEREAL_NVP(outSize);
 
   // This is inefficient, but we have to allocate this memory so that
   // WeightSetVisitor gets the right size.

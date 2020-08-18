@@ -38,8 +38,8 @@ Rcpp::RawVector SerializeHMMModelPtr(SEXP ptr)
 {
   std::ostringstream oss;
   {
-    boost::archive::binary_oarchive oa(oss);
-    oa << boost::serialization::make_nvp("HMMModel",
+    cereal::BinaryOutputArchive oa(oss);
+    oa << cereal::make_nvp("HMMModel",
           *Rcpp::as<Rcpp::XPtr<HMMModel>>(ptr));
   }
 
@@ -60,8 +60,8 @@ SEXP DeserializeHMMModelPtr(Rcpp::RawVector str)
 
   std::istringstream iss(std::string((char *) &str[0], str.size()));
   {
-    boost::archive::binary_iarchive ia(iss);
-    ia >> boost::serialization::make_nvp("HMMModel", *ptr);
+    cereal::BinaryInputArchive ia(iss);
+    ia >> cereal::make_nvp("HMMModel", *ptr);
   }
 
   // R will be responsible for freeing this.

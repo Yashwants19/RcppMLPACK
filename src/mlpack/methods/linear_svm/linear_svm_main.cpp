@@ -77,8 +77,8 @@ PROGRAM_INFO("Linear SVM is an L2-regularized support vector machine.",
     "so long as an existing linear SVM model is given with the " +
     PRINT_PARAM_STRING("input_model") + " parameter.  The output predictions "
     "from the linear SVM model may be saved with the " +
-    PRINT_PARAM_STRING("predictions") + " parameter.",
-    // Example.
+    PRINT_PARAM_STRING("predictions") + " parameter." +
+    "\n\n"
     "As an example, to train a LinaerSVM on the data '" +
     PRINT_DATASET("data") + "' with labels '" + PRINT_DATASET("labels") + "' "
     "with L2 regularization of 0.1, saving the model to '" +
@@ -137,10 +137,10 @@ class LinearSVMModel
   LinearSVM<> svm;
 
   template<typename Archive>
-  void serialize(Archive& ar, const unsigned int /* version */)
+  void serialize(Archive& ar)
   {
-    ar & BOOST_SERIALIZATION_NVP(mappings);
-    ar & BOOST_SERIALIZATION_NVP(svm);
+    ar & CEREAL_NVP(mappings);
+    ar & CEREAL_NVP(svm);
   }
 };
 

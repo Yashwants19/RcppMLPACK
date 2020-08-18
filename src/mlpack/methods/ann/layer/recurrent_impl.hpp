@@ -256,8 +256,11 @@ template<typename InputDataType, typename OutputDataType,
          typename... CustomLayers>
 template<typename Archive>
 void Recurrent<InputDataType, OutputDataType, CustomLayers...>::serialize(
-    Archive& ar, const unsigned int /* version */)
+    Archive& ar)
 {
+  uint8_t version = 1;
+  ar & CEREAL_NVP(version);
+
   // Clean up memory, if we are loading.
   if (Archive::is_loading::value)
   {
@@ -268,12 +271,12 @@ void Recurrent<InputDataType, OutputDataType, CustomLayers...>::serialize(
     network.clear();
   }
 
-  ar & BOOST_SERIALIZATION_NVP(startModule);
-  ar & BOOST_SERIALIZATION_NVP(inputModule);
-  ar & BOOST_SERIALIZATION_NVP(feedbackModule);
-  ar & BOOST_SERIALIZATION_NVP(transferModule);
-  ar & BOOST_SERIALIZATION_NVP(rho);
-  ar & BOOST_SERIALIZATION_NVP(ownsLayer);
+  ar & CEREAL_VARIANT_POINTER(startModule);
+  ar & CEREAL_VARIANT_POINTER(inputModule);
+  ar & CEREAL_VARIANT_POINTER(feedbackModule);
+  ar & CEREAL_VARIANT_POINTER(transferModule);
+  ar & CEREAL_NVP(rho);
+  ar & CEREAL_NVP(ownsLayer);
 
   // Set up the network.
   if (Archive::is_loading::value)

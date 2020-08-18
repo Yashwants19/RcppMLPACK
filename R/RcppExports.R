@@ -41,6 +41,26 @@ DeserializeApproxKFNModelPtr <- function(str) {
     .Call('_RcppMLPACK_DeserializeApproxKFNModelPtr', PACKAGE = 'RcppMLPACK', str)
 }
 
+bayesian_linear_regression_mlpackMain <- function() {
+    invisible(.Call('_RcppMLPACK_bayesian_linear_regression_mlpackMain', PACKAGE = 'RcppMLPACK'))
+}
+
+IO_GetParamBayesianLinearRegressionPtr <- function(paramName) {
+    .Call('_RcppMLPACK_IO_GetParamBayesianLinearRegressionPtr', PACKAGE = 'RcppMLPACK', paramName)
+}
+
+IO_SetParamBayesianLinearRegressionPtr <- function(paramName, ptr) {
+    invisible(.Call('_RcppMLPACK_IO_SetParamBayesianLinearRegressionPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
+}
+
+SerializeBayesianLinearRegressionPtr <- function(ptr) {
+    .Call('_RcppMLPACK_SerializeBayesianLinearRegressionPtr', PACKAGE = 'RcppMLPACK', ptr)
+}
+
+DeserializeBayesianLinearRegressionPtr <- function(str) {
+    .Call('_RcppMLPACK_DeserializeBayesianLinearRegressionPtr', PACKAGE = 'RcppMLPACK', str)
+}
+
 cf_mlpackMain <- function() {
     invisible(.Call('_RcppMLPACK_cf_mlpackMain', PACKAGE = 'RcppMLPACK'))
 }
@@ -63,26 +83,6 @@ DeserializeCFModelPtr <- function(str) {
 
 dbscan_mlpackMain <- function() {
     invisible(.Call('_RcppMLPACK_dbscan_mlpackMain', PACKAGE = 'RcppMLPACK'))
-}
-
-decision_stump_mlpackMain <- function() {
-    invisible(.Call('_RcppMLPACK_decision_stump_mlpackMain', PACKAGE = 'RcppMLPACK'))
-}
-
-IO_GetParamDSModelPtr <- function(paramName) {
-    .Call('_RcppMLPACK_IO_GetParamDSModelPtr', PACKAGE = 'RcppMLPACK', paramName)
-}
-
-IO_SetParamDSModelPtr <- function(paramName, ptr) {
-    invisible(.Call('_RcppMLPACK_IO_SetParamDSModelPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
-}
-
-SerializeDSModelPtr <- function(ptr) {
-    .Call('_RcppMLPACK_SerializeDSModelPtr', PACKAGE = 'RcppMLPACK', ptr)
-}
-
-DeserializeDSModelPtr <- function(str) {
-    .Call('_RcppMLPACK_DeserializeDSModelPtr', PACKAGE = 'RcppMLPACK', str)
 }
 
 decision_tree_mlpackMain <- function() {
@@ -207,26 +207,6 @@ hmm_train_mlpackMain <- function() {
 
 hmm_viterbi_mlpackMain <- function() {
     invisible(.Call('_RcppMLPACK_hmm_viterbi_mlpackMain', PACKAGE = 'RcppMLPACK'))
-}
-
-hoeffding_tree_mlpackMain <- function() {
-    invisible(.Call('_RcppMLPACK_hoeffding_tree_mlpackMain', PACKAGE = 'RcppMLPACK'))
-}
-
-IO_GetParamHoeffdingTreeModelPtr <- function(paramName) {
-    .Call('_RcppMLPACK_IO_GetParamHoeffdingTreeModelPtr', PACKAGE = 'RcppMLPACK', paramName)
-}
-
-IO_SetParamHoeffdingTreeModelPtr <- function(paramName, ptr) {
-    invisible(.Call('_RcppMLPACK_IO_SetParamHoeffdingTreeModelPtr', PACKAGE = 'RcppMLPACK', paramName, ptr))
-}
-
-SerializeHoeffdingTreeModelPtr <- function(ptr) {
-    .Call('_RcppMLPACK_SerializeHoeffdingTreeModelPtr', PACKAGE = 'RcppMLPACK', ptr)
-}
-
-DeserializeHoeffdingTreeModelPtr <- function(str) {
-    .Call('_RcppMLPACK_DeserializeHoeffdingTreeModelPtr', PACKAGE = 'RcppMLPACK', str)
 }
 
 image_converter_mlpackMain <- function() {

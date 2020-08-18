@@ -77,8 +77,8 @@ PROGRAM_INFO("Gaussian Mixture Model (GMM) Training",
     "will avoid the checks after each iteration of the EM algorithm which "
     "ensure that the covariance matrices are positive definite.  Specifying "
     "the flag can cause faster runtime, but may also cause non-positive "
-    "definite covariance matrices, which will cause the program to crash.",
-    // Example.
+    "definite covariance matrices, which will cause the program to crash."
+    "\n\n"
     "As an example, to train a 6-Gaussian GMM on the data in " +
     PRINT_DATASET("data") + " with a maximum of 100 iterations of EM and 3 "
     "trials, saving the trained GMM to " + PRINT_MODEL("gmm") + ", the "
@@ -250,7 +250,7 @@ static void mlpackMain()
       {
         gmm->Component(i).Mean() = dgmm.Component(i).Mean();
         gmm->Component(i).Covariance(
-            std::move(arma::diagmat(dgmm.Component(i).Covariance())));
+            arma::diagmat(dgmm.Component(i).Covariance()));
       }
       gmm->Weights() = dgmm.Weights();
     }
@@ -308,7 +308,7 @@ static void mlpackMain()
       {
         gmm->Component(i).Mean() = dgmm.Component(i).Mean();
         gmm->Component(i).Covariance(
-            std::move(arma::diagmat(dgmm.Component(i).Covariance())));
+            arma::diagmat(dgmm.Component(i).Covariance()));
       }
       gmm->Weights() = dgmm.Weights();
     }

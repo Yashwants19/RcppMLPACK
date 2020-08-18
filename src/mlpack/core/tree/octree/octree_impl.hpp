@@ -489,7 +489,7 @@ Octree<MetricType, StatisticType, MatType>::Octree(
     Octree() // Create an empty tree.
 {
   // De-serialize the tree into this object.
-  ar >> BOOST_SERIALIZATION_NVP(*this);
+  ar >> CEREAL_NVP(*this);
 }
 
 template<typename MetricType, typename StatisticType, typename MatType>
@@ -708,10 +708,11 @@ Octree<MetricType, StatisticType, MatType>::RangeDistance(
 //! Serialize the tree.
 template<typename MetricType, typename StatisticType, typename MatType>
 template<typename Archive>
-void Octree<MetricType, StatisticType, MatType>::serialize(
-    Archive& ar,
-    const unsigned int /* version */)
+void Octree<MetricType, StatisticType, MatType>::serialize(Archive& ar)
 {
+  uint8_t version = 1;
+  ar & CEREAL_NVP(version);
+
   // If we're loading and we have children, they need to be deleted.
   if (Archive::is_loading::value)
   {
@@ -725,16 +726,20 @@ void Octree<MetricType, StatisticType, MatType>::serialize(
     parent = NULL;
   }
 
-  ar & BOOST_SERIALIZATION_NVP(begin);
-  ar & BOOST_SERIALIZATION_NVP(count);
-  ar & BOOST_SERIALIZATION_NVP(bound);
-  ar & BOOST_SERIALIZATION_NVP(stat);
-  ar & BOOST_SERIALIZATION_NVP(parentDistance);
-  ar & BOOST_SERIALIZATION_NVP(furthestDescendantDistance);
-  ar & BOOST_SERIALIZATION_NVP(metric);
-  ar & BOOST_SERIALIZATION_NVP(dataset);
+  bool hasParent = (parent != NULL);
 
-  ar & BOOST_SERIALIZATION_NVP(children);
+  ar & CEREAL_NVP(begin);
+  ar & CEREAL_NVP(count);
+  ar & CEREAL_NVP(bound);
+  ar & CEREAL_NVP(stat);
+  ar & CEREAL_NVP(parentDistance);
+  ar & CEREAL_NVP(furthestDescendantDistance);
+  ar & CEREAL_NVP(metric);
+  ar & CEREAL_NVP(hasParent);
+  if (!hasParent)
+    ar & CEREAL_POINTER(dataset);
+
+  ar & CEREAL_VECTOR_POINTER(children);
 
   if (Archive::is_loading::value)
   {

@@ -90,11 +90,14 @@ void Reparametrization<InputDataType, OutputDataType>::Backward(
 template<typename InputDataType, typename OutputDataType>
 template<typename Archive>
 void Reparametrization<InputDataType, OutputDataType>::serialize(
-    Archive& ar, const unsigned int /* version */)
+    Archive& ar)
 {
-  ar & BOOST_SERIALIZATION_NVP(latentSize);
-  ar & BOOST_SERIALIZATION_NVP(stochastic);
-  ar & BOOST_SERIALIZATION_NVP(includeKl);
+  uint8_t version = 1;
+  ar & CEREAL_NVP(version);
+
+  ar & CEREAL_NVP(latentSize);
+  ar & CEREAL_NVP(stochastic);
+  ar & CEREAL_NVP(includeKl);
 }
 
 } // namespace ann

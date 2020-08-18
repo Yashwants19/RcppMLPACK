@@ -158,9 +158,9 @@ class HMMModel
 
   //! Serialize the model.
   template<typename Archive>
-  void serialize(Archive& ar, const unsigned int version)
+  void serialize(Archive& ar)
   {
-    ar & BOOST_SERIALIZATION_NVP(type);
+    ar & CEREAL_NVP(type);
 
     // If necessary, clean memory.
     if (Archive::is_loading::value)
@@ -177,18 +177,14 @@ class HMMModel
     }
 
     if (type == HMMType::DiscreteHMM)
-      ar & BOOST_SERIALIZATION_NVP(discreteHMM);
+      ar & CEREAL_POINTER(discreteHMM);
     else if (type == HMMType::GaussianHMM)
-      ar & BOOST_SERIALIZATION_NVP(gaussianHMM);
+      ar & CEREAL_POINTER(gaussianHMM);
     else if (type == HMMType::GaussianMixtureModelHMM)
-      ar & BOOST_SERIALIZATION_NVP(gmmHMM);
+      ar & CEREAL_POINTER(gmmHMM);
 
-    // Backward compatibility: new versions of HMM has a Diagonal GMM type.
-    if (version > 0)
-    {
-      if (type == HMMType::DiagonalGaussianMixtureModelHMM)
-        ar & BOOST_SERIALIZATION_NVP(diagGMMHMM);
-    }
+    if (type == HMMType::DiagonalGaussianMixtureModelHMM)
+      ar & CEREAL_POINTER(diagGMMHMM);
   }
 
   // Accessor method for type of HMM
@@ -221,8 +217,5 @@ class HMMModel
 
 } // namespace hmm
 } // namespace mlpack
-
-//! Set the serialization version of the HMMModel class.
-BOOST_CLASS_VERSION(mlpack::hmm::HMMModel, 1);
 
 #endif

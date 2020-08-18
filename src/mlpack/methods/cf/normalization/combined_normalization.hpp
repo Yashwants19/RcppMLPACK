@@ -102,9 +102,9 @@ class CombinedNormalization
    * Serialization.
    */
   template<typename Archive>
-  void serialize(Archive& ar, const unsigned int version)
+  void serialize(Archive& ar)
   {
-    SequenceSerialize<0, Archive>(ar, version);
+    SequenceSerialize<0, Archive>(ar);
   }
 
  private:
@@ -184,13 +184,13 @@ class CombinedNormalization
       int I, /* Which normalization in tuple to serialize */
       typename Archive,
       typename = std::enable_if_t<(I < std::tuple_size<TupleType>::value)>>
-  void SequenceSerialize(Archive& ar, const unsigned int version)
+  void SequenceSerialize(Archive& ar)
   {
     std::string tagName = "normalization_";
     tagName += std::to_string(I);
-    ar & boost::serialization::make_nvp(
+    ar & cereal::make_nvp(
         tagName.c_str(), std::get<I>(normalizations));
-    SequenceSerialize<I + 1, Archive>(ar, version);
+    SequenceSerialize<I + 1, Archive>(ar);
   }
 
   //! End of tuple unpacking.
@@ -199,7 +199,7 @@ class CombinedNormalization
       typename Archive,
       typename = std::enable_if_t<(I >= std::tuple_size<TupleType>::value)>,
       typename = void>
-  void SequenceSerialize(Archive& /* ar */, const unsigned int /* version */)
+  void SequenceSerialize(Archive& /* ar */)
   { }
 };
 

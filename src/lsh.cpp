@@ -38,8 +38,8 @@ Rcpp::RawVector SerializeLSHSearchPtr(SEXP ptr)
 {
   std::ostringstream oss;
   {
-    boost::archive::binary_oarchive oa(oss);
-    oa << boost::serialization::make_nvp("LSHSearch",
+    cereal::BinaryOutputArchive oa(oss);
+    oa << cereal::make_nvp("LSHSearch",
           *Rcpp::as<Rcpp::XPtr<LSHSearch<>>>(ptr));
   }
 
@@ -60,8 +60,8 @@ SEXP DeserializeLSHSearchPtr(Rcpp::RawVector str)
 
   std::istringstream iss(std::string((char *) &str[0], str.size()));
   {
-    boost::archive::binary_iarchive ia(iss);
-    ia >> boost::serialization::make_nvp("LSHSearch", *ptr);
+    cereal::BinaryInputArchive ia(iss);
+    ia >> cereal::make_nvp("LSHSearch", *ptr);
   }
 
   // R will be responsible for freeing this.

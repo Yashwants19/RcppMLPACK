@@ -22,7 +22,7 @@ PROGRAM_INFO("R binding test",
     "A simple program to test R binding functionality.",
     "A simple program to test R binding functionality.  You can build "
     "mlpack with the BUILD_TESTS option set to off, and this binding will "
-    "no longer be built.", "");
+    "no longer be built.");
 
 PARAM_STRING_IN_REQ("string_in", "Input string, must be 'hello'.", "s");
 PARAM_INT_IN_REQ("int_in", "Input int, must be 12.", "i");
@@ -118,7 +118,7 @@ static void mlpackMain()
   {
     arma::Col<size_t> out =
         move(IO::GetParam<arma::Col<size_t>>("ucol_in"));
-    out *= 2;
+    out += 1;
 
     IO::GetParam<arma::Col<size_t>>("ucol_out") = move(out);
   }
@@ -135,7 +135,7 @@ static void mlpackMain()
   {
     arma::Row<size_t> out =
         move(IO::GetParam<arma::Row<size_t>>("urow_in"));
-    out *= 2;
+    out += 1;
 
     IO::GetParam<arma::Row<size_t>>("urow_out") = move(out);
   }

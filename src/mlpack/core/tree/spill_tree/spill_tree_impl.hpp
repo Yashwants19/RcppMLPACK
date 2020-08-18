@@ -397,7 +397,7 @@ SpillTree(
 {
   // We've delegated to the constructor which gives us an empty tree, and now we
   // can serialize from it.
-  ar >> BOOST_SERIALIZATION_NVP(*this);
+  ar >> CEREAL_NVP(*this);
 }
 
 /**
@@ -852,7 +852,7 @@ bool SpillTree<MetricType, StatisticType, MatType, HyperplaneType, SplitType>::
   return false;
 }
 
-// Default constructor (private), for boost::serialization.
+// Default constructor (private), for cereal.
 template<typename MetricType,
          typename StatisticType,
          typename MatType,
@@ -887,7 +887,7 @@ template<typename MetricType,
              class SplitType>
 template<typename Archive>
 void SpillTree<MetricType, StatisticType, MatType, HyperplaneType, SplitType>::
-    serialize(Archive& ar, const unsigned int /* version */)
+    serialize(Archive& ar)
 {
   // If we're loading, and we have children, they need to be deleted.
   if (Archive::is_loading::value)
@@ -904,31 +904,38 @@ void SpillTree<MetricType, StatisticType, MatType, HyperplaneType, SplitType>::
     right = NULL;
   }
 
-  ar & BOOST_SERIALIZATION_NVP(count);
-  ar & BOOST_SERIALIZATION_NVP(pointsIndex);
-  ar & BOOST_SERIALIZATION_NVP(overlappingNode);
-  ar & BOOST_SERIALIZATION_NVP(hyperplane);
-  ar & BOOST_SERIALIZATION_NVP(bound);
-  ar & BOOST_SERIALIZATION_NVP(stat);
-  ar & BOOST_SERIALIZATION_NVP(parent);
-  ar & BOOST_SERIALIZATION_NVP(parentDistance);
-  ar & BOOST_SERIALIZATION_NVP(furthestDescendantDistance);
-  ar & BOOST_SERIALIZATION_NVP(dataset);
+  ar & CEREAL_NVP(count);
+  ar & CEREAL_POINTER(pointsIndex);
+  ar & CEREAL_NVP(overlappingNode);
+  ar & CEREAL_NVP(hyperplane);
+  ar & CEREAL_NVP(bound);
+  ar & CEREAL_NVP(stat);
+  ar & CEREAL_NVP(parentDistance);
+  ar & CEREAL_NVP(furthestDescendantDistance);
+  // Force a non-const pointer.
+  MatType* datasetPtr = const_cast<MatType*>(dataset);
 
   if (Archive::is_loading::value)
+  {
+    dataset = datasetPtr;
     localDataset = true;
+  }
 
-  // Save children last; otherwise boost::serialization gets confused.
+  // Save children last; otherwise cereal gets confused.
   bool hasLeft = (left != NULL);
   bool hasRight = (right != NULL);
+  bool hasParent = (parent != NULL);
 
-  ar & BOOST_SERIALIZATION_NVP(hasLeft);
-  ar & BOOST_SERIALIZATION_NVP(hasRight);
+  ar & CEREAL_NVP(hasLeft);
+  ar & CEREAL_NVP(hasRight);
+  ar & CEREAL_NVP(hasParent);
 
   if (hasLeft)
-    ar & BOOST_SERIALIZATION_NVP(left);
+    ar & CEREAL_POINTER(left);
   if (hasRight)
-    ar & BOOST_SERIALIZATION_NVP(right);
+    ar & CEREAL_POINTER(right);
+  if (!hasParent)
+    ar & CEREAL_POINTER(datasetPtr);
 
   if (Archive::is_loading::value)
   {

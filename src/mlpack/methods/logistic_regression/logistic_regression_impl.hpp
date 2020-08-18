@@ -172,12 +172,13 @@ double LogisticRegression<MatType>::ComputeAccuracy(
 
 template<typename MatType>
 template<typename Archive>
-void LogisticRegression<MatType>::serialize(
-    Archive& ar,
-    const unsigned int /* version */)
+void LogisticRegression<MatType>::serialize(Archive& ar)
 {
-  ar & BOOST_SERIALIZATION_NVP(parameters);
-  ar & BOOST_SERIALIZATION_NVP(lambda);
+  uint8_t version = 1;
+  ar & CEREAL_NVP(version);
+
+  ar & CEREAL_NVP(parameters);
+  ar & CEREAL_NVP(lambda);
 }
 
 } // namespace regression

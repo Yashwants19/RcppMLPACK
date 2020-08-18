@@ -64,10 +64,12 @@ void CELU<InputDataType, OutputDataType>::Backward(
 template<typename InputDataType, typename OutputDataType>
 template<typename Archive>
 void CELU<InputDataType, OutputDataType>::serialize(
-    Archive& ar,
-    const unsigned int /* version */)
+    Archive& ar)
 {
-  ar & BOOST_SERIALIZATION_NVP(alpha);
+  uint8_t version = 1;
+  ar & CEREAL_NVP(version);
+
+  ar & CEREAL_NVP(alpha);
 }
 
 } // namespace ann

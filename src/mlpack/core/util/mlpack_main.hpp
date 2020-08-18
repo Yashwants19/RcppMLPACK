@@ -362,10 +362,10 @@ static const std::string testName = "";
 #include <mlpack/core/util/param.hpp>
 
 #undef PROGRAM_INFO
-#define PROGRAM_INFO(NAME, SHORT_DESC, DESC, EXAMPLE, ...) static \
+#define PROGRAM_INFO(NAME, SHORT_DESC, DESC, ...) static \
     mlpack::util::ProgramDoc \
     io_programdoc_dummy_object = mlpack::util::ProgramDoc(NAME, SHORT_DESC, \
-    []() { return DESC; }, []() { return EXAMPLE; }, { __VA_ARGS__ })
+    []() { return DESC; }, { __VA_ARGS__ })
 
 PARAM_FLAG("verbose", "Display informational messages and the full list of "
     "parameters and timers at the end of execution.", "v");

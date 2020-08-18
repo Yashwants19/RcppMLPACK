@@ -68,11 +68,10 @@ using DatasetInfo = DatasetMapper<IncrementPolicy, std::string>;
  *     documentation.  See the SEE_ALSO() macro.  This is a varargs argument, so
  *     you can add as many SEE_ALSO()s as you like.
  */
-#define PROGRAM_INFO(NAME, SHORT_DESC, DESC, EXAMPLE, ...) \
+#define PROGRAM_INFO(NAME, SHORT_DESC, DESC, ...) \
     static mlpack::util::ProgramDoc \
     io_programdoc_dummy_object = mlpack::util::ProgramDoc(NAME, SHORT_DESC, \
-    []() { return std::string(DESC) + std::string(EXAMPLE); }, []() \
-    { return ""; }, { __VA_ARGS__ })
+    []() { return DESC; }, { __VA_ARGS__ } )
 
 /**
  * Define a flag parameter.
@@ -932,7 +931,7 @@ using DatasetInfo = DatasetMapper<IncrementPolicy, std::string>;
  *
  * @code
  * template<typename Archive>
- * void serialize(Archive& ar, const unsigned int version);
+ * void serialize(Archive& ar);
  * @endcode
  *
  * @param TYPE Type of the model to be loaded.
@@ -963,7 +962,7 @@ using DatasetInfo = DatasetMapper<IncrementPolicy, std::string>;
  *
  * @code
  * template<typename Archive>
- * void serialize(Archive& ar, const unsigned int version);
+ * void serialize(Archive& ar);
  * @endcode
  *
  * @param TYPE Type of the model to be loaded.

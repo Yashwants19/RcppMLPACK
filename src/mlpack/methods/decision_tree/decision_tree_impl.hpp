@@ -1131,9 +1131,11 @@ void DecisionTree<FitnessFunction,
                   CategoricalSplitType,
                   DimensionSelectionType,
                   ElemType,
-                  NoRecursion>::serialize(Archive& ar,
-                                          const unsigned int /* version */)
+                  NoRecursion>::serialize(Archive& ar)
 {
+  uint8_t version = 1;
+  ar & CEREAL_NVP(version);
+
   // Clean memory if needed.
   if (Archive::is_loading::value)
   {
@@ -1141,14 +1143,13 @@ void DecisionTree<FitnessFunction,
       delete children[i];
     children.clear();
   }
-
   // Serialize the children first.
-  ar & BOOST_SERIALIZATION_NVP(children);
+  CEREAL_VECTOR_POINTER(children);
 
   // Now serialize the rest of the object.
-  ar & BOOST_SERIALIZATION_NVP(splitDimension);
-  ar & BOOST_SERIALIZATION_NVP(dimensionTypeOrMajorityClass);
-  ar & BOOST_SERIALIZATION_NVP(classProbabilities);
+  ar & CEREAL_NVP(splitDimension);
+  ar & CEREAL_NVP(dimensionTypeOrMajorityClass);
+  ar & CEREAL_NVP(classProbabilities);
 }
 
 template<typename FitnessFunction,

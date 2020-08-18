@@ -102,9 +102,12 @@ void ConcatPerformance<
     OutputLayerType,
     InputDataType,
     OutputDataType
->::serialize(Archive& ar, const unsigned int /* version */)
+>::serialize(Archive& ar)
 {
-  ar & BOOST_SERIALIZATION_NVP(inSize);
+  uint8_t version = 1;
+  ar & CEREAL_NVP(version);
+
+  ar & CEREAL_NVP(inSize);
 }
 
 } // namespace ann

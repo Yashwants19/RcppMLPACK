@@ -52,8 +52,7 @@ void ReconstructionLoss<InputDataType, OutputDataType, DistType>::Backward(
 template<typename InputDataType, typename OutputDataType, typename DistType>
 template<typename Archive>
 void ReconstructionLoss<InputDataType, OutputDataType, DistType>::serialize(
-    Archive& /* ar */,
-    const unsigned int /* version */)
+    Archive& /* ar */)
 {
   // Nothing to do here.
 }

@@ -111,8 +111,8 @@ PROGRAM_INFO("Large Margin Nearest Neighbors (LMNN)",
     "literature on L-BFGS.  In addition, a normalized starting point can be "
     "used by specifying the " + PRINT_PARAM_STRING("normalize") + " parameter."
     "\n\n"
-    "By default, the AMSGrad optimizer is used.",
-    // Example.
+    "By default, the AMSGrad optimizer is used."
+    "\n\n"
     "Example - Let's say we want to learn distance on iris dataset with "
     "number of targets as 3 using BigBatch_SGD optimizer. A simple call for "
     "the same will look like: "
@@ -418,7 +418,7 @@ static void mlpackMain()
   if (IO::HasParam("output"))
     IO::GetParam<arma::mat>("output") = distance;
   if (IO::HasParam("transformed_data"))
-    IO::GetParam<arma::mat>("transformed_data") = std::move(distance * data);
+    IO::GetParam<arma::mat>("transformed_data") = distance * data;
   if (IO::HasParam("centered_data"))
   {
     if (center)

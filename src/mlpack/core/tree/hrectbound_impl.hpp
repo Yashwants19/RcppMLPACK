@@ -662,11 +662,11 @@ inline ElemType HRectBound<MetricType, ElemType>::Diameter() const
 //! Serialize the bound object.
 template<typename MetricType, typename ElemType>
 template<typename Archive>
-void HRectBound<MetricType, ElemType>::serialize(
-    Archive& ar,
-    const unsigned int /* version */)
+void HRectBound<MetricType, ElemType>::serialize(Archive& ar)
 {
-  ar & BOOST_SERIALIZATION_NVP(dim);
+  uint8_t version = 1;
+  ar & CEREAL_NVP(version);
+  ar & CEREAL_NVP(dim);
 
   // Allocate memory for the bounds, if necessary.
   if (Archive::is_loading::value)
@@ -677,10 +677,10 @@ void HRectBound<MetricType, ElemType>::serialize(
   }
 
   // We can't serialize a raw array directly, so wrap it.
-  auto boundsArray = boost::serialization::make_array(bounds, dim);
-  ar & BOOST_SERIALIZATION_NVP(boundsArray);
-  ar & BOOST_SERIALIZATION_NVP(minWidth);
-  ar & BOOST_SERIALIZATION_NVP(metric);
+  auto boundsArray = cereal::make_array(bounds, dim);
+  ar & CEREAL_NVP(boundsArray);
+  ar & CEREAL_NVP(minWidth);
+  ar & CEREAL_NVP(metric);
 }
 
 } // namespace bound

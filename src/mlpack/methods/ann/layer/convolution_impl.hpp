@@ -385,26 +385,27 @@ void Convolution<
     GradientConvolutionRule,
     InputDataType,
     OutputDataType
->::serialize(Archive& ar, const unsigned int version)
+>::serialize(Archive& ar)
 {
-  ar & BOOST_SERIALIZATION_NVP(inSize);
-  ar & BOOST_SERIALIZATION_NVP(outSize);
-  ar & BOOST_SERIALIZATION_NVP(batchSize);
-  ar & BOOST_SERIALIZATION_NVP(kernelWidth);
-  ar & BOOST_SERIALIZATION_NVP(kernelHeight);
-  ar & BOOST_SERIALIZATION_NVP(strideWidth);
-  ar & BOOST_SERIALIZATION_NVP(strideHeight);
-  ar & BOOST_SERIALIZATION_NVP(padWLeft);
-  ar & BOOST_SERIALIZATION_NVP(padWRight);
-  ar & BOOST_SERIALIZATION_NVP(padHBottom);
-  ar & BOOST_SERIALIZATION_NVP(padHTop);
-  ar & BOOST_SERIALIZATION_NVP(inputWidth);
-  ar & BOOST_SERIALIZATION_NVP(inputHeight);
-  ar & BOOST_SERIALIZATION_NVP(outputWidth);
-  ar & BOOST_SERIALIZATION_NVP(outputHeight);
+  uint8_t version = 1;
+  ar & CEREAL_NVP(version);
 
-  if (version > 0)
-    ar & BOOST_SERIALIZATION_NVP(padding);
+  ar & CEREAL_NVP(inSize);
+  ar & CEREAL_NVP(outSize);
+  ar & CEREAL_NVP(batchSize);
+  ar & CEREAL_NVP(kernelWidth);
+  ar & CEREAL_NVP(kernelHeight);
+  ar & CEREAL_NVP(strideWidth);
+  ar & CEREAL_NVP(strideHeight);
+  ar & CEREAL_NVP(padWLeft);
+  ar & CEREAL_NVP(padWRight);
+  ar & CEREAL_NVP(padHBottom);
+  ar & CEREAL_NVP(padHTop);
+  ar & CEREAL_NVP(inputWidth);
+  ar & CEREAL_NVP(inputHeight);
+  ar & CEREAL_NVP(outputWidth);
+  ar & CEREAL_NVP(outputHeight);
+  ar & CEREAL_NVP(padding);
 
   if (Archive::is_loading::value)
   {

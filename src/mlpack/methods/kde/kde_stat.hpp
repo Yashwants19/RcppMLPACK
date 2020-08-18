@@ -67,30 +67,14 @@ class KDEStat
 
   //! Serialize the statistic to/from an archive.
   template<typename Archive>
-  void serialize(Archive& ar, const unsigned int version)
+  void serialize(Archive& ar)
   {
-    // Backward compatibility: Old versions of KDEStat needed to handle obsolete
-    // values.
-    if (version == 0 && Archive::is_loading::value)
-    {
-      // Placeholders.
-      arma::vec centroid;
-      bool validCentroid;
+    ar & CEREAL_NVP(mcBeta);
+    ar & CEREAL_NVP(mcAlpha);
+    ar & CEREAL_NVP(accumAlpha);
+    ar & CEREAL_NVP(accumError);
 
-      ar & BOOST_SERIALIZATION_NVP(centroid);
-      ar & BOOST_SERIALIZATION_NVP(validCentroid);
-    }
-
-    // Backward compatibility: Old versions of KDEStat did not need to handle
-    // alpha values.
-    if (version > 0)
-    {
-      ar & BOOST_SERIALIZATION_NVP(mcBeta);
-      ar & BOOST_SERIALIZATION_NVP(mcAlpha);
-      ar & BOOST_SERIALIZATION_NVP(accumAlpha);
-      ar & BOOST_SERIALIZATION_NVP(accumError);
-    }
-    else if (Archive::is_loading::value)
+    if (Archive::is_loading::value)
     {
       mcBeta = -1;
       mcAlpha = -1;
@@ -115,8 +99,5 @@ class KDEStat
 
 } // namespace kde
 } // namespace mlpack
-
-//! Set the serialization version of the KDEStat class.
-BOOST_TEMPLATE_CLASS_VERSION(template<>, mlpack::kde::KDEStat, 1);
 
 #endif

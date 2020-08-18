@@ -64,8 +64,8 @@ PROGRAM_INFO("Random forests",
     PRINT_PARAM_STRING("test_labels") + " parameter.  Predictions for each "
     "test point may be saved via the " + PRINT_PARAM_STRING("predictions") +
     "output parameter.  Class probabilities for each prediction may be saved "
-    "with the " + PRINT_PARAM_STRING("probabilities") + " output parameter.",
-    // Example.
+    "with the " + PRINT_PARAM_STRING("probabilities") + " output parameter."
+    "\n\n"
     "For example, to train a random forest with a minimum leaf size of 20 "
     "using 10 trees on the dataset contained in " + PRINT_DATASET("data") +
     "with labels " + PRINT_DATASET("labels") + ", saving the output random "
@@ -138,9 +138,9 @@ class RandomForestModel
 
   // Serialize the model.
   template<typename Archive>
-  void serialize(Archive& ar, const unsigned int /* version */)
+  void serialize(Archive& ar)
   {
-    ar & BOOST_SERIALIZATION_NVP(rf);
+    ar & CEREAL_NVP(rf);
   }
 };
 

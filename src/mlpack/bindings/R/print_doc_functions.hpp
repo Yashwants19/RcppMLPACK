@@ -73,7 +73,7 @@ std::string PrintInputOptions(const std::string& paramName,
 /**
  * Recursion base case.
  */
-inline std::string PrintOutputOptions();
+inline std::string PrintOutputOptions(const bool /* markdown */);
 
 template<typename T, typename... Args>
 std::string PrintOutputOptions(const bool markdown,

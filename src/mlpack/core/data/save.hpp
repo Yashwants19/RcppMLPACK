@@ -32,7 +32,7 @@ namespace data /** Functions to load and save matrices. */ {
  * The supported types of files are the same as found in Armadillo:
  *
  *  - CSV (csv_ascii), denoted by .csv, or optionally .txt
- *  - ASCII (raw_ascii), denoted by .txt
+ *  - ASCII (raw_ascii), denoted by .json
  *  - Armadillo ASCII (arma_ascii), also denoted by .txt
  *  - PGM (pgm_binary), denoted by .pgm
  *  - PPM (ppm_binary), denoted by .ppm
@@ -96,14 +96,14 @@ bool Save(const std::string& filename,
  * used and the filetype cannot be determined, and error will be given.
  *
  * The supported types of files are the same as what is supported by the
- * boost::serialization library:
+ * cereal library:
  *
- *  - text, denoted by .txt
+ *  - json, denoted by .json
  *  - xml, denoted by .xml
  *  - binary, denoted by .bin
  *
  * The format parameter can take any of the values in the 'format' enum:
- * 'format::autodetect', 'format::text', 'format::xml', and 'format::binary'.
+ * 'format::autodetect', 'format::json', 'format::xml', and 'format::binary'.
  * The autodetect functionality operates on the file extension (so, "file.txt"
  * would be autodetected as text).
  *

@@ -131,9 +131,9 @@ class OverallMeanNormalization
    * Serialization.
    */
   template<typename Archive>
-  void serialize(Archive& ar, const unsigned int /* version */)
+  void serialize(Archive& ar)
   {
-    ar & BOOST_SERIALIZATION_NVP(mean);
+    ar & CEREAL_NVP(mean);
   }
 
  private:

@@ -50,11 +50,13 @@ void Join<InputDataType, OutputDataType>::Backward(
 template<typename InputDataType, typename OutputDataType>
 template<typename Archive>
 void Join<InputDataType, OutputDataType>::serialize(
-    Archive& ar,
-    const unsigned int /* version */)
+    Archive& ar)
 {
-  ar & BOOST_SERIALIZATION_NVP(inSizeRows);
-  ar & BOOST_SERIALIZATION_NVP(inSizeCols);
+  uint8_t version = 1;
+  ar & CEREAL_NVP(version);
+
+  ar & CEREAL_NVP(inSizeRows);
+  ar & CEREAL_NVP(inSizeCols);
 }
 
 } // namespace ann

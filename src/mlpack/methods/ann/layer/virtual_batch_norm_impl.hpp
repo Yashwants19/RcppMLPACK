@@ -132,9 +132,12 @@ void VirtualBatchNorm<InputDataType, OutputDataType>::Gradient(
 template<typename InputDataType, typename OutputDataType>
 template<typename Archive>
 void VirtualBatchNorm<InputDataType, OutputDataType>::serialize(
-    Archive& ar, const unsigned int /* version */)
+    Archive& ar)
 {
-  ar & BOOST_SERIALIZATION_NVP(size);
+  uint8_t version = 1;
+  ar & CEREAL_NVP(version);
+
+  ar & CEREAL_NVP(size);
 
   if (Archive::is_loading::value)
   {
@@ -142,9 +145,9 @@ void VirtualBatchNorm<InputDataType, OutputDataType>::serialize(
     loading = false;
   }
 
-  ar & BOOST_SERIALIZATION_NVP(eps);
-  ar & BOOST_SERIALIZATION_NVP(gamma);
-  ar & BOOST_SERIALIZATION_NVP(beta);
+  ar & CEREAL_NVP(eps);
+  ar & CEREAL_NVP(gamma);
+  ar & CEREAL_NVP(beta);
 }
 
 } // namespace ann

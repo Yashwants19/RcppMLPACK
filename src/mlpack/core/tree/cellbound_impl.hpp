@@ -980,11 +980,12 @@ inline ElemType CellBound<MetricType, ElemType>::Diameter() const
 //! Serialize the bound object.
 template<typename MetricType, typename ElemType>
 template<typename Archive>
-void CellBound<MetricType, ElemType>::serialize(
-    Archive& ar,
-    const unsigned int /* version */)
+void CellBound<MetricType, ElemType>::serialize(Archive& ar)
 {
   // Allocate memory for the bounds, if necessary.
+  uint8_t version = 1;
+  ar & CEREAL_NVP(version);
+
   if (Archive::is_loading::value)
   {
     if (bounds)
@@ -992,15 +993,15 @@ void CellBound<MetricType, ElemType>::serialize(
     bounds = new math::RangeType<ElemType>[dim];
   }
 
-  auto boundsArray = boost::serialization::make_array(bounds, dim);
-  ar & BOOST_SERIALIZATION_NVP(boundsArray);
-  ar & BOOST_SERIALIZATION_NVP(minWidth);
-  ar & BOOST_SERIALIZATION_NVP(loBound);
-  ar & BOOST_SERIALIZATION_NVP(hiBound);
-  ar & BOOST_SERIALIZATION_NVP(numBounds);
-  ar & BOOST_SERIALIZATION_NVP(loAddress);
-  ar & BOOST_SERIALIZATION_NVP(hiAddress);
-  ar & BOOST_SERIALIZATION_NVP(metric);
+  auto boundsArray = cereal::make_array(bounds, dim);
+  ar & CEREAL_NVP(boundsArray);
+  ar & CEREAL_NVP(minWidth);
+  ar & CEREAL_NVP(loBound);
+  ar & CEREAL_NVP(hiBound);
+  ar & CEREAL_NVP(numBounds);
+  ar & CEREAL_NVP(loAddress);
+  ar & CEREAL_NVP(hiAddress);
+  ar & CEREAL_NVP(metric);
 }
 
 } // namespace bound

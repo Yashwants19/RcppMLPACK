@@ -26,13 +26,13 @@ namespace util {
  * next line.  For example,
  *
  * @code
- * PrefixedOutStream outstr(MLPACK_COUT_STREAM, "[TEST] ");
+ * PrefixedOutStream outstr(std::cout, "[TEST] ");
  * outstr << "Hello world I like " << 7.5;
  * outstr << "...Continue" << std::endl;
  * outstr << "After the CR\n" << std::endl;
  * @endcode
  *
- * would give, on MLPACK_COUT_STREAM,
+ * would give, on std::cout,
  *
  * @code
  * [TEST] Hello world I like 7.5...Continue
@@ -111,8 +111,7 @@ class PrefixedOutStream
   template<typename T>
   PrefixedOutStream& operator<<(const T& s);
 
-  //! The output stream that all data is to be sent to; example:
-  //! MLPACK_COUT_STREAM.
+  //! The output stream that all data is to be sent to; example: std::cout.
   std::ostream& destination;
 
   //! Discards input, prints nothing if true.

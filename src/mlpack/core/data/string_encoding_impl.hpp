@@ -199,10 +199,13 @@ EncodeHelper(const std::vector<std::string>& input,
 template<typename EncodingPolicyType, typename DictionaryType>
 template<typename Archive>
 void StringEncoding<EncodingPolicyType, DictionaryType>::serialize(
-    Archive& ar, const unsigned int /* version */)
+    Archive& ar)
 {
-  ar & BOOST_SERIALIZATION_NVP(encodingPolicy);
-  ar & BOOST_SERIALIZATION_NVP(dictionary);
+  uint8_t version = 1;
+  ar & CEREAL_NVP(version);
+
+  ar & CEREAL_NVP(encodingPolicy);
+  ar & CEREAL_NVP(dictionary);
 }
 
 } // namespace data

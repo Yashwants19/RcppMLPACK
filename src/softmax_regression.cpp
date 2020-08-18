@@ -38,8 +38,8 @@ Rcpp::RawVector SerializeSoftmaxRegressionPtr(SEXP ptr)
 {
   std::ostringstream oss;
   {
-    boost::archive::binary_oarchive oa(oss);
-    oa << boost::serialization::make_nvp("SoftmaxRegression",
+    cereal::BinaryOutputArchive oa(oss);
+    oa << cereal::make_nvp("SoftmaxRegression",
           *Rcpp::as<Rcpp::XPtr<SoftmaxRegression>>(ptr));
   }
 
@@ -60,8 +60,8 @@ SEXP DeserializeSoftmaxRegressionPtr(Rcpp::RawVector str)
 
   std::istringstream iss(std::string((char *) &str[0], str.size()));
   {
-    boost::archive::binary_iarchive ia(iss);
-    ia >> boost::serialization::make_nvp("SoftmaxRegression", *ptr);
+    cereal::BinaryInputArchive ia(iss);
+    ia >> cereal::make_nvp("SoftmaxRegression", *ptr);
   }
 
   // R will be responsible for freeing this.

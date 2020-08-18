@@ -254,7 +254,7 @@ class AtrousConvolution
    * Serialize the layer.
    */
   template<typename Archive>
-  void serialize(Archive& ar, const unsigned int /* version */);
+  void serialize(Archive& ar);
 
  private:
   /*
@@ -390,28 +390,6 @@ class AtrousConvolution
 
 } // namespace ann
 } // namespace mlpack
-
-//! Set the serialization version of the AtrousConvolution class.
-namespace boost {
-namespace serialization {
-
-template<
-    typename ForwardConvolutionRule,
-    typename BackwardConvolutionRule,
-    typename GradientConvolutionRule,
-    typename InputDataType,
-    typename OutputDataType
->
-struct version<
-    mlpack::ann::AtrousConvolution<ForwardConvolutionRule,
-        BackwardConvolutionRule, GradientConvolutionRule, InputDataType,
-        OutputDataType> >
-{
-  BOOST_STATIC_CONSTANT(int, value = 2);
-};
-
-} // namespace serialization
-} // namespace boost
 
 // Include implementation.
 #include "atrous_convolution_impl.hpp"

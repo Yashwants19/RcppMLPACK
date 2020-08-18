@@ -82,13 +82,15 @@ void PoissonNLLLoss<InputDataType, OutputDataType>::Backward(
 template<typename InputDataType, typename OutputDataType>
 template<typename Archive>
 void PoissonNLLLoss<InputDataType, OutputDataType>::serialize(
-    Archive& ar,
-    const unsigned int /* version */)
+    Archive& ar)
 {
-  ar & BOOST_SERIALIZATION_NVP(logInput);
-  ar & BOOST_SERIALIZATION_NVP(full);
-  ar & BOOST_SERIALIZATION_NVP(eps);
-  ar & BOOST_SERIALIZATION_NVP(mean);
+  uint8_t version = 1;
+  ar & CEREAL_NVP(version);
+
+  ar & CEREAL_NVP(logInput);
+  ar & CEREAL_NVP(full);
+  ar & CEREAL_NVP(eps);
+  ar & CEREAL_NVP(mean);
 }
 
 } // namespace ann

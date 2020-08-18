@@ -189,18 +189,20 @@ double HoeffdingNumericSplit<FitnessFunction, ObservationType>::
 template<typename FitnessFunction, typename ObservationType>
 template<typename Archive>
 void HoeffdingNumericSplit<FitnessFunction, ObservationType>::serialize(
-    Archive& ar,
-    const unsigned int /* version */)
+    Archive& ar)
 {
-  ar & BOOST_SERIALIZATION_NVP(samplesSeen);
-  ar & BOOST_SERIALIZATION_NVP(observationsBeforeBinning);
-  ar & BOOST_SERIALIZATION_NVP(bins);
+  uint8_t version = 1;
+  ar & CEREAL_NVP(version);
+
+  ar & CEREAL_NVP(samplesSeen);
+  ar & CEREAL_NVP(observationsBeforeBinning);
+  ar & CEREAL_NVP(bins);
 
   if (samplesSeen >= observationsBeforeBinning)
   {
     // The binning has happened, so we only need to save the resulting bins.
-    ar & BOOST_SERIALIZATION_NVP(splitPoints);
-    ar & BOOST_SERIALIZATION_NVP(sufficientStatistics);
+    ar & CEREAL_NVP(splitPoints);
+    ar & CEREAL_NVP(sufficientStatistics);
 
     if (Archive::is_loading::value)
     {
@@ -223,9 +225,9 @@ void HoeffdingNumericSplit<FitnessFunction, ObservationType>::serialize(
     size_t numClasses;
     if (Archive::is_saving::value)
       numClasses = sufficientStatistics.n_rows;
-    ar & BOOST_SERIALIZATION_NVP(numClasses);
-    ar & BOOST_SERIALIZATION_NVP(observations);
-    ar & BOOST_SERIALIZATION_NVP(labels);
+    ar & CEREAL_NVP(numClasses);
+    ar & CEREAL_NVP(observations);
+    ar & CEREAL_NVP(labels);
 
     if (Archive::is_loading::value)
     {

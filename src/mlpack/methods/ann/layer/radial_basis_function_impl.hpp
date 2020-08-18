@@ -91,11 +91,13 @@ template<typename InputDataType, typename OutputDataType,
          typename Activation>
 template<typename Archive>
 void RBF<InputDataType, OutputDataType, Activation>::serialize(
-    Archive& ar,
-    const unsigned int /* version */)
+    Archive& ar)
 {
-  ar & BOOST_SERIALIZATION_NVP(distances);
-  ar & BOOST_SERIALIZATION_NVP(centres);
+  uint8_t version = 1;
+  ar & CEREAL_NVP(version);
+
+  ar & CEREAL_NVP(distances);
+  ar & CEREAL_NVP(centres);
 }
 
 } // namespace ann

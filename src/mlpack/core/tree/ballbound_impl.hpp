@@ -284,11 +284,13 @@ BallBound<MetricType, VecType>::operator|=(const MatType& data)
 template<typename MetricType, typename VecType>
 template<typename Archive>
 void BallBound<MetricType, VecType>::serialize(
-    Archive& ar,
-    const unsigned int /* version */)
+    Archive& ar)
 {
-  ar & BOOST_SERIALIZATION_NVP(radius);
-  ar & BOOST_SERIALIZATION_NVP(center);
+  uint8_t version = 1;
+  ar & CEREAL_NVP(version);
+
+  ar & CEREAL_NVP(radius);
+  ar & CEREAL_NVP(center);
 
   if (Archive::is_loading::value)
   {
@@ -297,8 +299,8 @@ void BallBound<MetricType, VecType>::serialize(
       delete metric;
   }
 
-  ar & BOOST_SERIALIZATION_NVP(metric);
-  ar & BOOST_SERIALIZATION_NVP(ownsMetric);
+  ar & CEREAL_POINTER(metric);
+  ar & CEREAL_NVP(ownsMetric);
 }
 
 } // namespace bound

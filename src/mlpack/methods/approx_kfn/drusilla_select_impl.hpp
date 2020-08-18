@@ -201,13 +201,16 @@ void DrusillaSelect<MatType>::Search(const MatType& querySet,
 //! Serialize the model.
 template<typename MatType>
 template<typename Archive>
-void DrusillaSelect<MatType>::serialize(Archive& ar,
-                                        const unsigned int /* version */)
+void DrusillaSelect<MatType>::serialize(Archive& ar
+                                    )
 {
-  ar & BOOST_SERIALIZATION_NVP(candidateSet);
-  ar & BOOST_SERIALIZATION_NVP(candidateIndices);
-  ar & BOOST_SERIALIZATION_NVP(l);
-  ar & BOOST_SERIALIZATION_NVP(m);
+  uint8_t version = 1;
+  ar & CEREAL_NVP(version);
+
+  ar & CEREAL_NVP(candidateSet);
+  ar & CEREAL_NVP(candidateIndices);
+  ar & CEREAL_NVP(l);
+  ar & CEREAL_NVP(m);
 }
 
 } // namespace neighbor

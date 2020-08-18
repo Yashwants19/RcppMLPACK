@@ -38,8 +38,8 @@ Rcpp::RawVector SerializeRANNModelPtr(SEXP ptr)
 {
   std::ostringstream oss;
   {
-    boost::archive::binary_oarchive oa(oss);
-    oa << boost::serialization::make_nvp("RANNModel",
+    cereal::BinaryOutputArchive oa(oss);
+    oa << cereal::make_nvp("RANNModel",
           *Rcpp::as<Rcpp::XPtr<RANNModel>>(ptr));
   }
 
@@ -60,8 +60,8 @@ SEXP DeserializeRANNModelPtr(Rcpp::RawVector str)
 
   std::istringstream iss(std::string((char *) &str[0], str.size()));
   {
-    boost::archive::binary_iarchive ia(iss);
-    ia >> boost::serialization::make_nvp("RANNModel", *ptr);
+    cereal::BinaryInputArchive ia(iss);
+    ia >> cereal::make_nvp("RANNModel", *ptr);
   }
 
   // R will be responsible for freeing this.

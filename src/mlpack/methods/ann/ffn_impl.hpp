@@ -23,8 +23,6 @@
 #include "visitor/set_input_height_visitor.hpp"
 #include "visitor/set_input_width_visitor.hpp"
 
-#include <boost/serialization/variant.hpp>
-
 namespace mlpack {
 namespace ann /** Artificial Neural Network. */ {
 
@@ -39,7 +37,7 @@ FFN<OutputLayerType, InitializationRuleType, CustomLayers...>::FFN(
     height(0),
     reset(false),
     numFunctions(0),
-    deterministic(true)
+    deterministic(false)
 {
   /* Nothing to do here. */
 }
@@ -60,7 +58,7 @@ void FFN<OutputLayerType, InitializationRuleType, CustomLayers...>::ResetData(
   numFunctions = responses.n_cols;
   this->predictors = std::move(predictors);
   this->responses = std::move(responses);
-  this->deterministic = true;
+  this->deterministic = false;
   ResetDeterministic();
 
   if (!reset)
@@ -157,12 +155,6 @@ void FFN<OutputLayerType, InitializationRuleType, CustomLayers...>::Forward(
 {
   if (parameter.is_empty())
     ResetParameters();
-
-  if (!deterministic)
-  {
-    deterministic = true;
-    ResetDeterministic();
-  }
 
   Forward(inputs);
   results = boost::apply_visitor(outputParameterVisitor, network.back());
@@ -547,25 +539,18 @@ template<typename OutputLayerType, typename InitializationRuleType,
          typename... CustomLayers>
 template<typename Archive>
 void FFN<OutputLayerType, InitializationRuleType, CustomLayers...>::serialize(
-    Archive& ar, const unsigned int version)
+    Archive& ar)
 {
-  ar & BOOST_SERIALIZATION_NVP(parameter);
-  ar & BOOST_SERIALIZATION_NVP(width);
-  ar & BOOST_SERIALIZATION_NVP(height);
+  uint8_t version = 1;
+  ar & CEREAL_NVP(version);
 
-  // Early versions used the currentInput member, which is now no longer needed.
-  if (version < 2)
-  {
-    arma::mat currentInput; // Temporary matrix to output.
-    ar & BOOST_SERIALIZATION_NVP(currentInput);
-  }
+  ar & CEREAL_NVP(parameter);
+  ar & CEREAL_NVP(width);
+  ar & CEREAL_NVP(height);
 
-  // Earlier versions of the FFN code did not serialize whether or not the model
-  // was reset.
-  if (version > 0)
-  {
-    ar & BOOST_SERIALIZATION_NVP(reset);
-  }
+  arma::mat currentInput; // Temporary matrix to output.
+  ar & CEREAL_NVP(currentInput);
+  ar & CEREAL_NVP(reset);
 
   // Be sure to clear other layers before loading.
   if (Archive::is_loading::value)
@@ -575,16 +560,11 @@ void FFN<OutputLayerType, InitializationRuleType, CustomLayers...>::serialize(
     network.clear();
   }
 
-  ar & BOOST_SERIALIZATION_NVP(network);
+  ar & CEREAL_VECTOR_VARIANT_POINTER(network);
 
   // If we are loading, we need to initialize the weights.
   if (Archive::is_loading::value)
   {
-    // The behavior in earlier versions was to always assume the weights needed
-    // to be reset.
-    if (version == 0)
-      reset = false;
-
     size_t offset = 0;
     for (size_t i = 0; i < network.size(); ++i)
     {
