@@ -14,27 +14,30 @@ linear_regression(
 )
 }
 \arguments{
-\item{input_model}{Existing LinearRegression model to use (LinearRegression).}
+\item{input_model}{Existing LinearRegression model to use
+(LinearRegression).}
 
-\item{lambda}{Tikhonov regularization for ridge regression.  If 0, the method
-reduces to linear regression.  Default value "0" (numeric).}
+\item{lambda}{Tikhonov regularization for ridge regression.  If 0, the
+method reduces to linear regression.  Default value "0" (numeric).}
 
 \item{test}{Matrix containing X' (test regressors) (numeric matrix).}
 
-\item{training}{Matrix containing training set X (regressors) (numeric matrix).}
+\item{training}{Matrix containing training set X (regressors) (numeric
+matrix).}
 
-\item{training_responses}{Optional vector containing y (responses). If not given,
-the responses are assumed to be the last row of the input file (numeric
-row).}
+\item{training_responses}{Optional vector containing y (responses). If
+not given, the responses are assumed to be the last row of the input file
+(numeric row).}
 
-\item{verbose}{Display informational messages and the full list of parameters and
-timers at the end of execution.  Default value "FALSE" (logical).}
+\item{verbose}{Display informational messages and the full list of
+parameters and timers at the end of execution.  Default value "FALSE"
+(logical).}
 }
 \value{
 A list with several components:
 \item{output_model}{Output LinearRegression model (LinearRegression).}
-\item{output_predictions}{If --test_file is specified, this matrix is where the
-  predicted responses will be saved (numeric row).}
+\item{output_predictions}{If --test_file is specified, this matrix is
+  where the predicted responses will be saved (numeric row).}
 }
 \description{
 An implementation of simple linear regression and ridge regression using

@@ -14,31 +14,34 @@ nbc(
 )
 }
 \arguments{
-\item{incremental_variance}{The variance of each class will be calculated
-incrementally.  Default value "FALSE" (logical).}
+\item{incremental_variance}{The variance of each class will be
+calculated incrementally.  Default value "FALSE" (logical).}
 
 \item{input_model}{Input Naive Bayes model (NBCModel).}
 
-\item{labels}{A file containing labels for the training set (integer row).}
+\item{labels}{A file containing labels for the training set (integer
+row).}
 
 \item{test}{A matrix containing the test set (numeric matrix).}
 
 \item{training}{A matrix containing the training set (numeric matrix).}
 
-\item{verbose}{Display informational messages and the full list of parameters and
-timers at the end of execution.  Default value "FALSE" (logical).}
+\item{verbose}{Display informational messages and the full list of
+parameters and timers at the end of execution.  Default value "FALSE"
+(logical).}
 }
 \value{
 A list with several components:
-\item{output}{The matrix in which the predicted labels for the test set will be
-  written (deprecated) (integer row).}
-\item{output_model}{File to save trained Naive Bayes model to (NBCModel).}
-\item{output_probs}{The matrix in which the predicted probability of labels for
-  the test set will be written (deprecated) (numeric matrix).}
-\item{predictions}{The matrix in which the predicted labels for the test set will
-  be written (integer row).}
-\item{probabilities}{The matrix in which the predicted probability of labels for
-  the test set will be written (numeric matrix).}
+\item{output}{The matrix in which the predicted labels for the test set
+  will be written (deprecated) (integer row).}
+\item{output_model}{File to save trained Naive Bayes model to
+  (NBCModel).}
+\item{output_probs}{The matrix in which the predicted probability of
+  labels for the test set will be written (deprecated) (numeric matrix).}
+\item{predictions}{The matrix in which the predicted labels for the test
+  set will be written (integer row).}
+\item{probabilities}{The matrix in which the predicted probability of
+  labels for the test set will be written (numeric matrix).}
 }
 \description{
 An implementation of the Naive Bayes Classifier, used for classification.

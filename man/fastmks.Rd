@@ -21,39 +21,43 @@ fastmks(
 )
 }
 \arguments{
-\item{bandwidth}{Bandwidth (for Gaussian, Epanechnikov, and triangular kernels). 
-Default value "1" (numeric).}
+\item{bandwidth}{Bandwidth (for Gaussian, Epanechnikov, and triangular
+kernels).  Default value "1" (numeric).}
 
-\item{base}{Base to use during cover tree construction.  Default value "2"
+\item{base}{Base to use during cover tree construction.  Default value
+"2" (numeric).}
+
+\item{degree}{Degree of polynomial kernel.  Default value "2"
 (numeric).}
-
-\item{degree}{Degree of polynomial kernel.  Default value "2" (numeric).}
 
 \item{input_model}{Input FastMKS model to use (FastMKSModel).}
 
-\item{k}{Number of maximum kernels to find.  Default value "0" (integer).}
+\item{k}{Number of maximum kernels to find.  Default value "0"
+(integer).}
 
-\item{kernel}{Kernel type to use: 'linear', 'polynomial', 'cosine', 'gaussian',
-'epanechnikov', 'triangular', 'hyptan'.  Default value "linear"
+\item{kernel}{Kernel type to use: 'linear', 'polynomial', 'cosine',
+'gaussian', 'epanechnikov', 'triangular', 'hyptan'.  Default value "linear"
 (character).}
 
-\item{naive}{If true, O(n^2) naive mode is used for computation.  Default value
-"FALSE" (logical).}
+\item{naive}{If true, O(n^2) naive mode is used for computation. 
+Default value "FALSE" (logical).}
 
-\item{offset}{Offset of kernel (for polynomial and hyptan kernels).  Default value
-"0" (numeric).}
+\item{offset}{Offset of kernel (for polynomial and hyptan kernels). 
+Default value "0" (numeric).}
 
 \item{query}{The query dataset (numeric matrix).}
 
 \item{reference}{The reference dataset (numeric matrix).}
 
-\item{scale}{Scale of kernel (for hyptan kernel).  Default value "1" (numeric).}
+\item{scale}{Scale of kernel (for hyptan kernel).  Default value "1"
+(numeric).}
 
-\item{single}{If true, single-tree search is used (as opposed to dual-tree search.
-Default value "FALSE" (logical).}
+\item{single}{If true, single-tree search is used (as opposed to
+dual-tree search.  Default value "FALSE" (logical).}
 
-\item{verbose}{Display informational messages and the full list of parameters and
-timers at the end of execution.  Default value "FALSE" (logical).}
+\item{verbose}{Display informational messages and the full list of
+parameters and timers at the end of execution.  Default value "FALSE"
+(logical).}
 }
 \value{
 A list with several components:

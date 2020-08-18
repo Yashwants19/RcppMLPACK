@@ -19,23 +19,24 @@ local_coordinate_coding(
 )
 }
 \arguments{
-\item{atoms}{Number of atoms in the dictionary.  Default value "0" (integer).}
+\item{atoms}{Number of atoms in the dictionary.  Default value "0"
+(integer).}
 
 \item{initial_dictionary}{Optional initial dictionary (numeric matrix).}
 
 \item{input_model}{Input LCC model (LocalCoordinateCoding).}
 
-\item{lambda}{Weighted l1-norm regularization parameter.  Default value "0"
-(numeric).}
+\item{lambda}{Weighted l1-norm regularization parameter.  Default value
+"0" (numeric).}
 
-\item{max_iterations}{Maximum number of iterations for LCC (0 indicates no limit).
-Default value "0" (integer).}
+\item{max_iterations}{Maximum number of iterations for LCC (0 indicates
+no limit).  Default value "0" (integer).}
 
-\item{normalize}{If set, the input data matrix will be normalized before coding. 
-Default value "FALSE" (logical).}
+\item{normalize}{If set, the input data matrix will be normalized before
+coding.  Default value "FALSE" (logical).}
 
-\item{seed}{Random seed.  If 0, 'std::time(NULL)' is used.  Default value "0"
-(integer).}
+\item{seed}{Random seed.  If 0, 'std::time(NULL)' is used.  Default
+value "0" (integer).}
 
 \item{test}{Test points to encode (numeric matrix).}
 
@@ -44,14 +45,16 @@ Default value "FALSE" (logical).}
 
 \item{training}{Matrix of training data (X) (numeric matrix).}
 
-\item{verbose}{Display informational messages and the full list of parameters and
-timers at the end of execution.  Default value "FALSE" (logical).}
+\item{verbose}{Display informational messages and the full list of
+parameters and timers at the end of execution.  Default value "FALSE"
+(logical).}
 }
 \value{
 A list with several components:
 \item{codes}{Output codes matrix (numeric matrix).}
 \item{dictionary}{Output dictionary matrix (numeric matrix).}
-\item{output_model}{Output for trained LCC model (LocalCoordinateCoding).}
+\item{output_model}{Output for trained LCC model
+  (LocalCoordinateCoding).}
 }
 \description{
 An implementation of Local Coordinate Coding (LCC), a data transformation

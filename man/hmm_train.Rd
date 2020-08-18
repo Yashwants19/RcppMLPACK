@@ -20,32 +20,34 @@ hmm_train(
 \arguments{
 \item{input_file}{File containing input observations (character).}
 
-\item{batch}{If true, input_file (and if passed, labels_file) are expected to
-contain a list of files to use as input observation sequences (and label
-sequences).  Default value "FALSE" (logical).}
+\item{batch}{If true, input_file (and if passed, labels_file) are
+expected to contain a list of files to use as input observation sequences
+(and label sequences).  Default value "FALSE" (logical).}
 
-\item{gaussians}{Number of gaussians in each GMM (necessary when type is 'gmm'). 
-Default value "0" (integer).}
+\item{gaussians}{Number of gaussians in each GMM (necessary when type is
+'gmm').  Default value "0" (integer).}
 
-\item{input_model}{Pre-existing HMM model to initialize training with (HMMModel).}
+\item{input_model}{Pre-existing HMM model to initialize training with
+(HMMModel).}
 
-\item{labels_file}{Optional file of hidden states, used for labeled training. 
-Default value "" (character).}
+\item{labels_file}{Optional file of hidden states, used for labeled
+training.  Default value "" (character).}
 
-\item{seed}{Random seed.  If 0, 'std::time(NULL)' is used.  Default value "0"
-(integer).}
+\item{seed}{Random seed.  If 0, 'std::time(NULL)' is used.  Default
+value "0" (integer).}
 
-\item{states}{Number of hidden states in HMM (necessary, unless model_file is
-specified).  Default value "0" (integer).}
+\item{states}{Number of hidden states in HMM (necessary, unless
+model_file is specified).  Default value "0" (integer).}
 
-\item{tolerance}{Tolerance of the Baum-Welch algorithm.  Default value "1e-05"
-(numeric).}
+\item{tolerance}{Tolerance of the Baum-Welch algorithm.  Default value
+"1e-05" (numeric).}
 
-\item{type}{Type of HMM: discrete | gaussian | diag_gmm | gmm.  Default value
-"gaussian" (character).}
+\item{type}{Type of HMM: discrete | gaussian | diag_gmm | gmm.  Default
+value "gaussian" (character).}
 
-\item{verbose}{Display informational messages and the full list of parameters and
-timers at the end of execution.  Default value "FALSE" (logical).}
+\item{verbose}{Display informational messages and the full list of
+parameters and timers at the end of execution.  Default value "FALSE"
+(logical).}
 }
 \value{
 A list with several components:

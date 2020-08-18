@@ -17,23 +17,24 @@ preprocess_describe(
 \arguments{
 \item{input}{Matrix containing data (numeric matrix).}
 
-\item{dimension}{Dimension of the data. Use this to specify a dimensio.  Default
-value "0" (integer).}
+\item{dimension}{Dimension of the data. Use this to specify a dimensio. 
+Default value "0" (integer).}
 
-\item{population}{If specified, the program will calculate statistics assuming the
-dataset is the population. By default, the program will assume the dataset
-as a sample.  Default value "FALSE" (logical).}
+\item{population}{If specified, the program will calculate statistics
+assuming the dataset is the population. By default, the program will assume
+the dataset as a sample.  Default value "FALSE" (logical).}
 
 \item{precision}{Precision of the output statistics.  Default value "4"
 (integer).}
 
-\item{row_major}{If specified, the program will calculate statistics across rows,
-not across columns.  (Remember that in mlpack, a column represents a point,
-so this option is generally not necessary..  Default value "FALSE"
-(logical).}
+\item{row_major}{If specified, the program will calculate statistics
+across rows, not across columns.  (Remember that in mlpack, a column
+represents a point, so this option is generally not necessary..  Default
+value "FALSE" (logical).}
 
-\item{verbose}{Display informational messages and the full list of parameters and
-timers at the end of execution.  Default value "FALSE" (logical).}
+\item{verbose}{Display informational messages and the full list of
+parameters and timers at the end of execution.  Default value "FALSE"
+(logical).}
 
 \item{width}{Width of the output table.  Default value "8" (integer).}
 }

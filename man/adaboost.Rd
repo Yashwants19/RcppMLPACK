@@ -18,31 +18,32 @@ adaboost(
 \arguments{
 \item{input_model}{Input AdaBoost model (AdaBoostModel).}
 
-\item{iterations}{The maximum number of boosting iterations to be run (0 will run
-until convergence..  Default value "1000" (integer).}
+\item{iterations}{The maximum number of boosting iterations to be run (0
+will run until convergence..  Default value "1000" (integer).}
 
 \item{labels}{Labels for the training set (integer row).}
 
 \item{test}{Test dataset (numeric matrix).}
 
-\item{tolerance}{The tolerance for change in values of the weighted error during
-training.  Default value "1e-10" (numeric).}
+\item{tolerance}{The tolerance for change in values of the weighted
+error during training.  Default value "1e-10" (numeric).}
 
 \item{training}{Dataset for training AdaBoost (numeric matrix).}
 
-\item{verbose}{Display informational messages and the full list of parameters and
-timers at the end of execution.  Default value "FALSE" (logical).}
+\item{verbose}{Display informational messages and the full list of
+parameters and timers at the end of execution.  Default value "FALSE"
+(logical).}
 
-\item{weak_learner}{The type of weak learner to use: 'decision_stump', or
-'perceptron'.  Default value "decision_stump" (character).}
+\item{weak_learner}{The type of weak learner to use: 'decision_stump',
+or 'perceptron'.  Default value "decision_stump" (character).}
 }
 \value{
 A list with several components:
 \item{output}{Predicted labels for the test set (integer row).}
 \item{output_model}{Output trained AdaBoost model (AdaBoostModel).}
 \item{predictions}{Predicted labels for the test set (integer row).}
-\item{probabilities}{Predicted class probabilities for each point in the test set
-  (numeric matrix).}
+\item{probabilities}{Predicted class probabilities for each point in the
+  test set (numeric matrix).}
 }
 \description{
 An implementation of the AdaBoost.MH (Adaptive Boosting) algorithm for

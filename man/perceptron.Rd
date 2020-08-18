@@ -16,25 +16,28 @@ perceptron(
 \arguments{
 \item{input_model}{Input perceptron model (PerceptronModel).}
 
-\item{labels}{A matrix containing labels for the training set (integer row).}
+\item{labels}{A matrix containing labels for the training set (integer
+row).}
 
-\item{max_iterations}{The maximum number of iterations the perceptron is to be ru.
-Default value "1000" (integer).}
+\item{max_iterations}{The maximum number of iterations the perceptron is
+to be ru.  Default value "1000" (integer).}
 
 \item{test}{A matrix containing the test set (numeric matrix).}
 
 \item{training}{A matrix containing the training set (numeric matrix).}
 
-\item{verbose}{Display informational messages and the full list of parameters and
-timers at the end of execution.  Default value "FALSE" (logical).}
+\item{verbose}{Display informational messages and the full list of
+parameters and timers at the end of execution.  Default value "FALSE"
+(logical).}
 }
 \value{
 A list with several components:
-\item{output}{The matrix in which the predicted labels for the test set will be
-  written (integer row).}
-\item{output_model}{Output for trained perceptron model (PerceptronModel).}
-\item{predictions}{The matrix in which the predicted labels for the test set will
-  be written (integer row).}
+\item{output}{The matrix in which the predicted labels for the test set
+  will be written (integer row).}
+\item{output_model}{Output for trained perceptron model
+  (PerceptronModel).}
+\item{predictions}{The matrix in which the predicted labels for the test
+  set will be written (integer row).}
 }
 \description{
 An implementation of a perceptron---a single level neural network--=for

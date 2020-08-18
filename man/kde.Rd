@@ -23,54 +23,58 @@ kde(
 )
 }
 \arguments{
-\item{abs_error}{Relative error tolerance for the prediction.  Default value "0"
-(numeric).}
+\item{abs_error}{Relative error tolerance for the prediction.  Default
+value "0" (numeric).}
 
-\item{algorithm}{Algorithm to use for the prediction.('dual-tree', 'single-tree').
-Default value "dual-tree" (character).}
+\item{algorithm}{Algorithm to use for the prediction.('dual-tree',
+'single-tree').  Default value "dual-tree" (character).}
 
 \item{bandwidth}{Bandwidth of the kernel.  Default value "1" (numeric).}
 
-\item{initial_sample_size}{Initial sample size for Monte Carlo estimations. 
-Default value "100" (integer).}
+\item{initial_sample_size}{Initial sample size for Monte Carlo
+estimations.  Default value "100" (integer).}
 
 \item{input_model}{Contains pre-trained KDE model (KDEModel).}
 
-\item{kernel}{Kernel to use for the prediction.('gaussian', 'epanechnikov',
-'laplacian', 'spherical', 'triangular').  Default value "gaussian"
-(character).}
+\item{kernel}{Kernel to use for the prediction.('gaussian',
+'epanechnikov', 'laplacian', 'spherical', 'triangular').  Default value
+"gaussian" (character).}
 
-\item{mc_break_coef}{Controls what fraction of the amount of node's descendants is
-the limit for the sample size before it recurses.  Default value "0.4"
+\item{mc_break_coef}{Controls what fraction of the amount of node's
+descendants is the limit for the sample size before it recurses.  Default
+value "0.4" (numeric).}
+
+\item{mc_entry_coef}{Controls how much larger does the amount of node
+descendants has to be compared to the initial sample size in order to be a
+candidate for Monte Carlo estimations.  Default value "3" (numeric).}
+
+\item{mc_probability}{Probability of the estimation being bounded by
+relative error when using Monte Carlo estimations.  Default value "0.95"
 (numeric).}
 
-\item{mc_entry_coef}{Controls how much larger does the amount of node descendants
-has to be compared to the initial sample size in order to be a candidate
-for Monte Carlo estimations.  Default value "3" (numeric).}
-
-\item{mc_probability}{Probability of the estimation being bounded by relative
-error when using Monte Carlo estimations.  Default value "0.95" (numeric).}
-
-\item{monte_carlo}{Whether to use Monte Carlo estimations when possible.  Default
-value "FALSE" (logical).}
+\item{monte_carlo}{Whether to use Monte Carlo estimations when possible.
+Default value "FALSE" (logical).}
 
 \item{query}{Query dataset to KDE on (numeric matrix).}
 
 \item{reference}{Input reference dataset use for KDE (numeric matrix).}
 
-\item{rel_error}{Relative error tolerance for the prediction.  Default value
-"0.05" (numeric).}
+\item{rel_error}{Relative error tolerance for the prediction.  Default
+value "0.05" (numeric).}
 
-\item{tree}{Tree to use for the prediction.('kd-tree', 'ball-tree', 'cover-tree',
-'octree', 'r-tree').  Default value "kd-tree" (character).}
+\item{tree}{Tree to use for the prediction.('kd-tree', 'ball-tree',
+'cover-tree', 'octree', 'r-tree').  Default value "kd-tree" (character).}
 
-\item{verbose}{Display informational messages and the full list of parameters and
-timers at the end of execution.  Default value "FALSE" (logical).}
+\item{verbose}{Display informational messages and the full list of
+parameters and timers at the end of execution.  Default value "FALSE"
+(logical).}
 }
 \value{
 A list with several components:
-\item{output_model}{If specified, the KDE model will be saved here (KDEModel).}
-\item{predictions}{Vector to store density predictions (numeric column).}
+\item{output_model}{If specified, the KDE model will be saved here
+  (KDEModel).}
+\item{predictions}{Vector to store density predictions (numeric
+  column).}
 }
 \description{
 An implementation of kernel density estimation with dual-tree algorithms.

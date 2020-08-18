@@ -18,31 +18,34 @@ radical(
 \arguments{
 \item{input}{Input dataset for ICA (numeric matrix).}
 
-\item{angles}{Number of angles to consider in brute-force search during Radical2D.
-Default value "150" (integer).}
+\item{angles}{Number of angles to consider in brute-force search during
+Radical2D.  Default value "150" (integer).}
 
-\item{noise_std_dev}{Standard deviation of Gaussian noise.  Default value "0.175"
-(numeric).}
+\item{noise_std_dev}{Standard deviation of Gaussian noise.  Default
+value "0.175" (numeric).}
 
-\item{objective}{If set, an estimate of the final objective function is printed. 
-Default value "FALSE" (logical).}
+\item{objective}{If set, an estimate of the final objective function is
+printed.  Default value "FALSE" (logical).}
 
-\item{replicates}{Number of Gaussian-perturbed replicates to use (per point) in
-Radical2D.  Default value "30" (integer).}
+\item{replicates}{Number of Gaussian-perturbed replicates to use (per
+point) in Radical2D.  Default value "30" (integer).}
 
-\item{seed}{Random seed.  If 0, 'std::time(NULL)' is used.  Default value "0"
-(integer).}
+\item{seed}{Random seed.  If 0, 'std::time(NULL)' is used.  Default
+value "0" (integer).}
 
-\item{sweeps}{Number of sweeps; each sweep calls Radical2D once for each pair of
-dimensions.  Default value "0" (integer).}
+\item{sweeps}{Number of sweeps; each sweep calls Radical2D once for each
+pair of dimensions.  Default value "0" (integer).}
 
-\item{verbose}{Display informational messages and the full list of parameters and
-timers at the end of execution.  Default value "FALSE" (logical).}
+\item{verbose}{Display informational messages and the full list of
+parameters and timers at the end of execution.  Default value "FALSE"
+(logical).}
 }
 \value{
 A list with several components:
-\item{output_ic}{Matrix to save independent components to (numeric matrix).}
-\item{output_unmixing}{Matrix to save unmixing matrix to (numeric matrix).}
+\item{output_ic}{Matrix to save independent components to (numeric
+  matrix).}
+\item{output_unmixing}{Matrix to save unmixing matrix to (numeric
+  matrix).}
 }
 \description{
 An implementation of RADICAL, a method for independent component analysis

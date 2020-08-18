@@ -18,30 +18,34 @@ dbscan(
 \arguments{
 \item{input}{Input dataset to cluster (numeric matrix).}
 
-\item{epsilon}{Radius of each range search.  Default value "1" (numeric).}
+\item{epsilon}{Radius of each range search.  Default value "1"
+(numeric).}
 
-\item{min_size}{Minimum number of points for a cluster.  Default value "5"
-(integer).}
+\item{min_size}{Minimum number of points for a cluster.  Default value
+"5" (integer).}
 
-\item{naive}{If set, brute-force range search (not tree-based) will be used. 
-Default value "FALSE" (logical).}
+\item{naive}{If set, brute-force range search (not tree-based) will be
+used.  Default value "FALSE" (logical).}
 
-\item{selection_type}{If using point selection policy, the type of selection to
-use ('ordered', 'random').  Default value "ordered" (character).}
+\item{selection_type}{If using point selection policy, the type of
+selection to use ('ordered', 'random').  Default value "ordered"
+(character).}
 
-\item{single_mode}{If set, single-tree range search (not dual-tree) will be used. 
-Default value "FALSE" (logical).}
+\item{single_mode}{If set, single-tree range search (not dual-tree) will
+be used.  Default value "FALSE" (logical).}
 
-\item{tree_type}{If using single-tree or dual-tree search, the type of tree to use
-('kd', 'r', 'r-star', 'x', 'hilbert-r', 'r-plus', 'r-plus-plus', 'cover',
-'ball').  Default value "kd" (character).}
+\item{tree_type}{If using single-tree or dual-tree search, the type of
+tree to use ('kd', 'r', 'r-star', 'x', 'hilbert-r', 'r-plus',
+'r-plus-plus', 'cover', 'ball').  Default value "kd" (character).}
 
-\item{verbose}{Display informational messages and the full list of parameters and
-timers at the end of execution.  Default value "FALSE" (logical).}
+\item{verbose}{Display informational messages and the full list of
+parameters and timers at the end of execution.  Default value "FALSE"
+(logical).}
 }
 \value{
 A list with several components:
-\item{assignments}{Output matrix for assignments of each point (integer row).}
+\item{assignments}{Output matrix for assignments of each point (integer
+  row).}
 \item{centroids}{Matrix to save output centroids to (numeric matrix).}
 }
 \description{

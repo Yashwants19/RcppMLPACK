@@ -22,49 +22,52 @@ logistic_regression(
 \arguments{
 \item{batch_size}{Batch size for SGD.  Default value "64" (integer).}
 
-\item{decision_boundary}{Decision boundary for prediction; if the logistic
-function for a point is less than the boundary, the class is taken to be 0;
-otherwise, the class is 1.  Default value "0.5" (numeric).}
+\item{decision_boundary}{Decision boundary for prediction; if the
+logistic function for a point is less than the boundary, the class is taken
+to be 0; otherwise, the class is 1.  Default value "0.5" (numeric).}
 
 \item{input_model}{Existing model (parameters) (LogisticRegression).}
 
-\item{labels}{A matrix containing labels (0 or 1) for the points in the training
-set (y) (integer row).}
+\item{labels}{A matrix containing labels (0 or 1) for the points in the
+training set (y) (integer row).}
 
-\item{lambda}{L2-regularization parameter for training.  Default value "0"
+\item{lambda}{L2-regularization parameter for training.  Default value
+"0" (numeric).}
+
+\item{max_iterations}{Maximum iterations for optimizer (0 indicates no
+limit).  Default value "10000" (integer).}
+
+\item{optimizer}{Optimizer to use for training ('lbfgs' or 'sgd'). 
+Default value "lbfgs" (character).}
+
+\item{step_size}{Step size for SGD optimizer.  Default value "0.01"
 (numeric).}
-
-\item{max_iterations}{Maximum iterations for optimizer (0 indicates no limit). 
-Default value "10000" (integer).}
-
-\item{optimizer}{Optimizer to use for training ('lbfgs' or 'sgd').  Default value
-"lbfgs" (character).}
-
-\item{step_size}{Step size for SGD optimizer.  Default value "0.01" (numeric).}
 
 \item{test}{Matrix containing test dataset (numeric matrix).}
 
-\item{tolerance}{Convergence tolerance for optimizer.  Default value "1e-10"
-(numeric).}
+\item{tolerance}{Convergence tolerance for optimizer.  Default value
+"1e-10" (numeric).}
 
-\item{training}{A matrix containing the training set (the matrix of predictors, X)
-(numeric matrix).}
+\item{training}{A matrix containing the training set (the matrix of
+predictors, X) (numeric matrix).}
 
-\item{verbose}{Display informational messages and the full list of parameters and
-timers at the end of execution.  Default value "FALSE" (logical).}
+\item{verbose}{Display informational messages and the full list of
+parameters and timers at the end of execution.  Default value "FALSE"
+(logical).}
 }
 \value{
 A list with several components:
-\item{output}{If test data is specified, this matrix is where the predictions for
-  the test set will be saved (integer row).}
+\item{output}{If test data is specified, this matrix is where the
+  predictions for the test set will be saved (integer row).}
 \item{output_model}{Output for trained logistic regression model
   (LogisticRegression).}
-\item{output_probabilities}{If test data is specified, this matrix is where the
-  class probabilities for the test set will be saved (numeric matrix).}
+\item{output_probabilities}{If test data is specified, this matrix is
+  where the class probabilities for the test set will be saved (numeric
+  matrix).}
 \item{predictions}{If test data is specified, this matrix is where the
   predictions for the test set will be saved (integer row).}
-\item{probabilities}{If test data is specified, this matrix is where the class
-  probabilities for the test set will be saved (numeric matrix).}
+\item{probabilities}{If test data is specified, this matrix is where the
+  class probabilities for the test set will be saved (numeric matrix).}
 }
 \description{
 An implementation of L2-regularized logistic regression for two-class

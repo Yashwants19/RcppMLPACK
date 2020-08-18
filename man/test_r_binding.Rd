@@ -31,17 +31,19 @@ test_r_binding(
 
 \item{string_in}{Input string, must be 'hello' (character).}
 
-\item{build_model}{If true, a model will be returned.  Default value "FALSE"
-(logical).}
+\item{build_model}{If true, a model will be returned.  Default value
+"FALSE" (logical).}
 
 \item{col_in}{Input column (numeric column).}
 
-\item{flag1}{Input flag, must be specified.  Default value "FALSE" (logical).}
+\item{flag1}{Input flag, must be specified.  Default value "FALSE"
+(logical).}
 
-\item{flag2}{Input flag, must not be specified.  Default value "FALSE" (logical).}
+\item{flag2}{Input flag, must not be specified.  Default value "FALSE"
+(logical).}
 
-\item{matrix_and_info_in}{Input matrix and info (numeric matrix/data.frame with
-info).}
+\item{matrix_and_info_in}{Input matrix and info (numeric
+matrix/data.frame with info).}
 
 \item{matrix_in}{Input matrix (numeric matrix).}
 
@@ -59,24 +61,29 @@ info).}
 
 \item{vector_in}{Input vector of numbers (integer vector).}
 
-\item{verbose}{Display informational messages and the full list of parameters and
-timers at the end of execution.  Default value "FALSE" (logical).}
+\item{verbose}{Display informational messages and the full list of
+parameters and timers at the end of execution.  Default value "FALSE"
+(logical).}
 }
 \value{
 A list with several components:
 \item{col_out}{Output column. 2x input colum (numeric column).}
-\item{double_out}{Output double, will be 5.0.  Default value "0" (numeric).}
+\item{double_out}{Output double, will be 5.0.  Default value "0"
+  (numeric).}
 \item{int_out}{Output int, will be 13.  Default value "0" (integer).}
 \item{matrix_and_info_out}{Output matrix and info; all numeric elements
   multiplied by 3 (numeric matrix).}
 \item{matrix_out}{Output matrix (numeric matrix).}
-\item{model_bw_out}{The bandwidth of the model.  Default value "0" (numeric).}
-\item{model_out}{Output model, with twice the bandwidth (GaussianKernel).}
+\item{model_bw_out}{The bandwidth of the model.  Default value "0"
+  (numeric).}
+\item{model_out}{Output model, with twice the bandwidth
+  (GaussianKernel).}
 \item{row_out}{Output row.  2x input row (numeric row).}
 \item{str_vector_out}{Output string vector (character vector).}
 \item{string_out}{Output string, will be 'hello2'.  Default value ""
   (character).}
-\item{ucol_out}{Output unsigned column. 2x input column (integer column).}
+\item{ucol_out}{Output unsigned column. 2x input column (integer
+  column).}
 \item{umatrix_out}{Output unsigned matrix (integer matrix).}
 \item{urow_out}{Output unsigned row.  2x input row (integer row).}
 \item{vector_out}{Output vector (integer vector).}

@@ -21,46 +21,53 @@ sparse_coding(
 )
 }
 \arguments{
-\item{atoms}{Number of atoms in the dictionary.  Default value "15" (integer).}
-
-\item{initial_dictionary}{Optional initial dictionary matrix (numeric matrix).}
-
-\item{input_model}{File containing input sparse coding model (SparseCoding).}
-
-\item{lambda1}{Sparse coding l1-norm regularization parameter.  Default value "0"
-(numeric).}
-
-\item{lambda2}{Sparse coding l2-norm regularization parameter.  Default value "0"
-(numeric).}
-
-\item{max_iterations}{Maximum number of iterations for sparse coding (0 indicates
-no limit).  Default value "0" (integer).}
-
-\item{newton_tolerance}{Tolerance for convergence of Newton method.  Default value
-"1e-06" (numeric).}
-
-\item{normalize}{If set, the input data matrix will be normalized before coding. 
-Default value "FALSE" (logical).}
-
-\item{objective_tolerance}{Tolerance for convergence of the objective function. 
-Default value "0.01" (numeric).}
-
-\item{seed}{Random seed.  If 0, 'std::time(NULL)' is used.  Default value "0"
+\item{atoms}{Number of atoms in the dictionary.  Default value "15"
 (integer).}
 
-\item{test}{Optional matrix to be encoded by trained model (numeric matrix).}
+\item{initial_dictionary}{Optional initial dictionary matrix (numeric
+matrix).}
+
+\item{input_model}{File containing input sparse coding model
+(SparseCoding).}
+
+\item{lambda1}{Sparse coding l1-norm regularization parameter.  Default
+value "0" (numeric).}
+
+\item{lambda2}{Sparse coding l2-norm regularization parameter.  Default
+value "0" (numeric).}
+
+\item{max_iterations}{Maximum number of iterations for sparse coding (0
+indicates no limit).  Default value "0" (integer).}
+
+\item{newton_tolerance}{Tolerance for convergence of Newton method. 
+Default value "1e-06" (numeric).}
+
+\item{normalize}{If set, the input data matrix will be normalized before
+coding.  Default value "FALSE" (logical).}
+
+\item{objective_tolerance}{Tolerance for convergence of the objective
+function.  Default value "0.01" (numeric).}
+
+\item{seed}{Random seed.  If 0, 'std::time(NULL)' is used.  Default
+value "0" (integer).}
+
+\item{test}{Optional matrix to be encoded by trained model (numeric
+matrix).}
 
 \item{training}{Matrix of training data (X) (numeric matrix).}
 
-\item{verbose}{Display informational messages and the full list of parameters and
-timers at the end of execution.  Default value "FALSE" (logical).}
+\item{verbose}{Display informational messages and the full list of
+parameters and timers at the end of execution.  Default value "FALSE"
+(logical).}
 }
 \value{
 A list with several components:
 \item{codes}{Matrix to save the output sparse codes of the test matrix
   (--test_file) to (numeric matrix).}
-\item{dictionary}{Matrix to save the output dictionary to (numeric matrix).}
-\item{output_model}{File to save trained sparse coding model to (SparseCoding).}
+\item{dictionary}{Matrix to save the output dictionary to (numeric
+  matrix).}
+\item{output_model}{File to save trained sparse coding model to
+  (SparseCoding).}
 }
 \description{
 An implementation of Sparse Coding with Dictionary Learning.  Given a

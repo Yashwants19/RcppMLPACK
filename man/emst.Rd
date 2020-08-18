@@ -13,11 +13,12 @@ emst(input, leaf_size = NA, naive = FALSE, verbose = FALSE)
 empirically best performance, but at the cost of greater memory
 requirements.  Default value "1" (integer).}
 
-\item{naive}{Compute the MST using O(n^2) naive algorithm.  Default value "FALSE"
-(logical).}
+\item{naive}{Compute the MST using O(n^2) naive algorithm.  Default
+value "FALSE" (logical).}
 
-\item{verbose}{Display informational messages and the full list of parameters and
-timers at the end of execution.  Default value "FALSE" (logical).}
+\item{verbose}{Display informational messages and the full list of
+parameters and timers at the end of execution.  Default value "FALSE"
+(logical).}
 }
 \value{
 A list with several components:

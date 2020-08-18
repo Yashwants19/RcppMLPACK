@@ -16,28 +16,31 @@ image_converter(
 )
 }
 \arguments{
-\item{input}{Image filenames which have to be loaded/saved (character vector).}
+\item{input}{Image filenames which have to be loaded/saved (character
+vector).}
 
-\item{channels}{Number of channels in the image.  Default value "0" (integer).}
+\item{channels}{Number of channels in the image.  Default value "0"
+(integer).}
 
 \item{dataset}{Input matrix to save as images (numeric matrix).}
 
 \item{height}{Height of the images.  Default value "0" (integer).}
 
-\item{quality}{Compression of the image if saved as jpg (0-100).  Default value
-"90" (integer).}
+\item{quality}{Compression of the image if saved as jpg (0-100). 
+Default value "90" (integer).}
 
 \item{save}{Save a dataset as images.  Default value "FALSE" (logical).}
 
-\item{verbose}{Display informational messages and the full list of parameters and
-timers at the end of execution.  Default value "FALSE" (logical).}
+\item{verbose}{Display informational messages and the full list of
+parameters and timers at the end of execution.  Default value "FALSE"
+(logical).}
 
 \item{width}{Width of the image.  Default value "0" (integer).}
 }
 \value{
 A list with several components:
-\item{output}{Matrix to save images data to, Onlyneeded if you are specifying
-  'save' option (numeric matrix).}
+\item{output}{Matrix to save images data to, Onlyneeded if you are
+  specifying 'save' option (numeric matrix).}
 }
 \description{
 A utility to load an image or set of images into a single dataset that can

@@ -22,8 +22,8 @@ kmeans(
 )
 }
 \arguments{
-\item{clusters}{Number of clusters to find (0 autodetects from initial centroids)
-(integer).}
+\item{clusters}{Number of clusters to find (0 autodetects from initial
+centroids) (integer).}
 
 \item{input}{Input dataset to perform clustering on (numeric matrix).}
 
@@ -31,44 +31,47 @@ kmeans(
 'pelleg-moore', 'elkan', 'hamerly', 'dualtree', or 'dualtree-covertree'). 
 Default value "naive" (character).}
 
-\item{allow_empty_clusters}{Allow empty clusters to be persist.  Default value
-"FALSE" (logical).}
+\item{allow_empty_clusters}{Allow empty clusters to be persist.  Default
+value "FALSE" (logical).}
 
-\item{in_place}{If specified, a column containing the learned cluster assignments
-will be added to the input dataset file.  In this case, --output_file is
-overridden. (Do not use in Python..  Default value "FALSE" (logical).}
-
-\item{initial_centroids}{Start with the specified initial centroids (numeric
-matrix).}
-
-\item{kill_empty_clusters}{Remove empty clusters when they occur.  Default value
-"FALSE" (logical).}
-
-\item{labels_only}{Only output labels into output file.  Default value "FALSE"
+\item{in_place}{If specified, a column containing the learned cluster
+assignments will be added to the input dataset file.  In this case,
+--output_file is overridden. (Do not use in Python..  Default value "FALSE"
 (logical).}
 
-\item{max_iterations}{Maximum number of iterations before k-means terminates. 
-Default value "1000" (integer).}
+\item{initial_centroids}{Start with the specified initial centroids
+(numeric matrix).}
 
-\item{percentage}{Percentage of dataset to use for each refined start sampling
-(use when --refined_start is specified).  Default value "0.02" (numeric).}
+\item{kill_empty_clusters}{Remove empty clusters when they occur. 
+Default value "FALSE" (logical).}
 
-\item{refined_start}{Use the refined initial point strategy by Bradley and Fayyad
-to choose initial points.  Default value "FALSE" (logical).}
+\item{labels_only}{Only output labels into output file.  Default value
+"FALSE" (logical).}
 
-\item{samplings}{Number of samplings to perform for refined start (use when
---refined_start is specified).  Default value "100" (integer).}
+\item{max_iterations}{Maximum number of iterations before k-means
+terminates.  Default value "1000" (integer).}
 
-\item{seed}{Random seed.  If 0, 'std::time(NULL)' is used.  Default value "0"
-(integer).}
+\item{percentage}{Percentage of dataset to use for each refined start
+sampling (use when --refined_start is specified).  Default value "0.02"
+(numeric).}
 
-\item{verbose}{Display informational messages and the full list of parameters and
-timers at the end of execution.  Default value "FALSE" (logical).}
+\item{refined_start}{Use the refined initial point strategy by Bradley
+and Fayyad to choose initial points.  Default value "FALSE" (logical).}
+
+\item{samplings}{Number of samplings to perform for refined start (use
+when --refined_start is specified).  Default value "100" (integer).}
+
+\item{seed}{Random seed.  If 0, 'std::time(NULL)' is used.  Default
+value "0" (integer).}
+
+\item{verbose}{Display informational messages and the full list of
+parameters and timers at the end of execution.  Default value "FALSE"
+(logical).}
 }
 \value{
 A list with several components:
-\item{centroid}{If specified, the centroids of each cluster will  be written to
-  the given file (numeric matrix).}
+\item{centroid}{If specified, the centroids of each cluster will  be
+  written to the given file (numeric matrix).}
 \item{output}{Matrix to store output labels or labeled data to (numeric
   matrix).}
 }

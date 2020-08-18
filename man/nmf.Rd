@@ -25,21 +25,22 @@ nmf(
 
 \item{initial_w}{Initial W matrix (numeric matrix).}
 
-\item{max_iterations}{Number of iterations before NMF terminates (0 runs until
-convergence.  Default value "10000" (integer).}
+\item{max_iterations}{Number of iterations before NMF terminates (0 runs
+until convergence.  Default value "10000" (integer).}
 
 \item{min_residue}{The minimum root mean square residue allowed for each
 iteration, below which the program terminates.  Default value "1e-05"
 (numeric).}
 
-\item{seed}{Random seed.  If 0, 'std::time(NULL)' is used.  Default value "0"
-(integer).}
+\item{seed}{Random seed.  If 0, 'std::time(NULL)' is used.  Default
+value "0" (integer).}
 
-\item{update_rules}{Update rules for each iteration; ( multdist | multdiv | als ).
-Default value "multdist" (character).}
+\item{update_rules}{Update rules for each iteration; ( multdist |
+multdiv | als ).  Default value "multdist" (character).}
 
-\item{verbose}{Display informational messages and the full list of parameters and
-timers at the end of execution.  Default value "FALSE" (logical).}
+\item{verbose}{Display informational messages and the full list of
+parameters and timers at the end of execution.  Default value "FALSE"
+(logical).}
 }
 \value{
 A list with several components:

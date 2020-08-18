@@ -11,13 +11,15 @@ hmm_generate(length, model, seed = NA, start_state = NA, verbose = FALSE)
 
 \item{model}{Trained HMM to generate sequences with (HMMModel).}
 
-\item{seed}{Random seed.  If 0, 'std::time(NULL)' is used.  Default value "0"
+\item{seed}{Random seed.  If 0, 'std::time(NULL)' is used.  Default
+value "0" (integer).}
+
+\item{start_state}{Starting state of sequence.  Default value "0"
 (integer).}
 
-\item{start_state}{Starting state of sequence.  Default value "0" (integer).}
-
-\item{verbose}{Display informational messages and the full list of parameters and
-timers at the end of execution.  Default value "FALSE" (logical).}
+\item{verbose}{Display informational messages and the full list of
+parameters and timers at the end of execution.  Default value "FALSE"
+(logical).}
 }
 \value{
 A list with several components:

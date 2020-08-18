@@ -24,50 +24,56 @@ krann(
 )
 }
 \arguments{
-\item{alpha}{The desired success probability.  Default value "0.95" (numeric).}
+\item{alpha}{The desired success probability.  Default value "0.95"
+(numeric).}
 
-\item{first_leaf_exact}{The flag to trigger sampling only after exactly exploring
-the first leaf.  Default value "FALSE" (logical).}
+\item{first_leaf_exact}{The flag to trigger sampling only after exactly
+exploring the first leaf.  Default value "FALSE" (logical).}
 
 \item{input_model}{Pre-trained kNN model (RANNModel).}
 
-\item{k}{Number of nearest neighbors to find.  Default value "0" (integer).}
+\item{k}{Number of nearest neighbors to find.  Default value "0"
+(integer).}
 
-\item{leaf_size}{Leaf size for tree building (used for kd-trees, UB trees, R
-trees, R* trees, X trees, Hilbert R trees, R+ trees, R++ trees, and
-octrees).  Default value "20" (integer).}
+\item{leaf_size}{Leaf size for tree building (used for kd-trees, UB
+trees, R trees, R* trees, X trees, Hilbert R trees, R+ trees, R++ trees,
+and octrees).  Default value "20" (integer).}
 
-\item{naive}{If true, sampling will be done without using a tree.  Default value
-"FALSE" (logical).}
+\item{naive}{If true, sampling will be done without using a tree. 
+Default value "FALSE" (logical).}
 
-\item{query}{Matrix containing query points (optional) (numeric matrix).}
+\item{query}{Matrix containing query points (optional) (numeric
+matrix).}
 
 \item{random_basis}{Before tree-building, project the data onto a random
 orthogonal basis.  Default value "FALSE" (logical).}
 
-\item{reference}{Matrix containing the reference dataset (numeric matrix).}
+\item{reference}{Matrix containing the reference dataset (numeric
+matrix).}
 
-\item{sample_at_leaves}{The flag to trigger sampling at leaves.  Default value
-"FALSE" (logical).}
+\item{sample_at_leaves}{The flag to trigger sampling at leaves.  Default
+value "FALSE" (logical).}
 
-\item{seed}{Random seed (if 0, std::time(NULL) is used).  Default value "0"
+\item{seed}{Random seed (if 0, std::time(NULL) is used).  Default value
+"0" (integer).}
+
+\item{single_mode}{If true, single-tree search is used (as opposed to
+dual-tree search.  Default value "FALSE" (logical).}
+
+\item{single_sample_limit}{The limit on the maximum number of samples
+(and hence the largest node you can approximate).  Default value "20"
 (integer).}
 
-\item{single_mode}{If true, single-tree search is used (as opposed to dual-tree
-search.  Default value "FALSE" (logical).}
+\item{tau}{The allowed rank-error in terms of the percentile of the
+data.  Default value "5" (numeric).}
 
-\item{single_sample_limit}{The limit on the maximum number of samples (and hence
-the largest node you can approximate).  Default value "20" (integer).}
-
-\item{tau}{The allowed rank-error in terms of the percentile of the data.  Default
-value "5" (numeric).}
-
-\item{tree_type}{Type of tree to use: 'kd', 'ub', 'cover', 'r', 'x', 'r-star',
-'hilbert-r', 'r-plus', 'r-plus-plus', 'oct'.  Default value "kd"
+\item{tree_type}{Type of tree to use: 'kd', 'ub', 'cover', 'r', 'x',
+'r-star', 'hilbert-r', 'r-plus', 'r-plus-plus', 'oct'.  Default value "kd"
 (character).}
 
-\item{verbose}{Display informational messages and the full list of parameters and
-timers at the end of execution.  Default value "FALSE" (logical).}
+\item{verbose}{Display informational messages and the full list of
+parameters and timers at the end of execution.  Default value "FALSE"
+(logical).}
 }
 \value{
 A list with several components:

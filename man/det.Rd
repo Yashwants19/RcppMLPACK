@@ -17,44 +17,47 @@ det(
 )
 }
 \arguments{
-\item{folds}{The number of folds of cross-validation to perform for the estimation
-(0 is LOOCV.  Default value "10" (integer).}
+\item{folds}{The number of folds of cross-validation to perform for the
+estimation (0 is LOOCV.  Default value "10" (integer).}
 
 \item{input_model}{Trained density estimation tree to load (DTree).}
 
-\item{max_leaf_size}{The maximum size of a leaf in the unpruned, fully grown DET. 
-Default value "10" (integer).}
+\item{max_leaf_size}{The maximum size of a leaf in the unpruned, fully
+grown DET.  Default value "10" (integer).}
 
-\item{min_leaf_size}{The minimum size of a leaf in the unpruned, fully grown DET. 
-Default value "5" (integer).}
+\item{min_leaf_size}{The minimum size of a leaf in the unpruned, fully
+grown DET.  Default value "5" (integer).}
 
-\item{path_format}{The format of path printing: 'lr', 'id-lr', or 'lr-id'. 
-Default value "lr" (character).}
+\item{path_format}{The format of path printing: 'lr', 'id-lr', or
+'lr-id'.  Default value "lr" (character).}
 
-\item{skip_pruning}{Whether to bypass the pruning process and output the unpruned
-tree only.  Default value "FALSE" (logical).}
+\item{skip_pruning}{Whether to bypass the pruning process and output the
+unpruned tree only.  Default value "FALSE" (logical).}
 
-\item{test}{A set of test points to estimate the density of (numeric matrix).}
-
-\item{training}{The data set on which to build a density estimation tree (numeric
+\item{test}{A set of test points to estimate the density of (numeric
 matrix).}
 
-\item{verbose}{Display informational messages and the full list of parameters and
-timers at the end of execution.  Default value "FALSE" (logical).}
+\item{training}{The data set on which to build a density estimation tree
+(numeric matrix).}
+
+\item{verbose}{Display informational messages and the full list of
+parameters and timers at the end of execution.  Default value "FALSE"
+(logical).}
 }
 \value{
 A list with several components:
-\item{output_model}{Output to save trained density estimation tree to (DTree).}
-\item{tag_counters_file}{The file to output the number of points that went to
-  each leaf.  Default value "" (character).}
-\item{tag_file}{The file to output the tags (and possibly paths) for each sample
-  in the test set.  Default value "" (character).}
-\item{test_set_estimates}{The output estimates on the test set from the final
-  optimally pruned tree (numeric matrix).}
-\item{training_set_estimates}{The output density estimates on the training set
-  from the final optimally pruned tree (numeric matrix).}
-\item{vi}{The output variable importance values for each feature (numeric
-  matrix).}
+\item{output_model}{Output to save trained density estimation tree to
+  (DTree).}
+\item{tag_counters_file}{The file to output the number of points that
+  went to each leaf.  Default value "" (character).}
+\item{tag_file}{The file to output the tags (and possibly paths) for
+  each sample in the test set.  Default value "" (character).}
+\item{test_set_estimates}{The output estimates on the test set from the
+  final optimally pruned tree (numeric matrix).}
+\item{training_set_estimates}{The output density estimates on the
+  training set from the final optimally pruned tree (numeric matrix).}
+\item{vi}{The output variable importance values for each feature
+  (numeric matrix).}
 }
 \description{
 An implementation of density estimation trees for the density estimation

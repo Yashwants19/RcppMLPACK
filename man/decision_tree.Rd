@@ -20,45 +20,49 @@ decision_tree(
 )
 }
 \arguments{
-\item{input_model}{Pre-trained decision tree, to be used with test points
-(DecisionTreeModel).}
+\item{input_model}{Pre-trained decision tree, to be used with test
+points (DecisionTreeModel).}
 
 \item{labels}{Training labels (integer row).}
 
-\item{maximum_depth}{Maximum depth of the tree (0 means no limit).  Default value
-"0" (integer).}
+\item{maximum_depth}{Maximum depth of the tree (0 means no limit). 
+Default value "0" (integer).}
 
-\item{minimum_gain_split}{Minimum gain for node splitting.  Default value "1e-07"
-(numeric).}
+\item{minimum_gain_split}{Minimum gain for node splitting.  Default
+value "1e-07" (numeric).}
 
-\item{minimum_leaf_size}{Minimum number of points in a leaf.  Default value "20"
-(integer).}
+\item{minimum_leaf_size}{Minimum number of points in a leaf.  Default
+value "20" (integer).}
 
-\item{print_training_accuracy}{Print the training accuracy.  Default value "FALSE"
+\item{print_training_accuracy}{Print the training accuracy.  Default
+value "FALSE" (logical).}
+
+\item{print_training_error}{Print the training error (deprecated; will
+be removed in mlpack 4.0.0).  Default value "FALSE" (logical).}
+
+\item{test}{Testing dataset (may be categorical) (numeric
+matrix/data.frame with info).}
+
+\item{test_labels}{Test point labels, if accuracy calculation is desired
+(integer row).}
+
+\item{training}{Training dataset (may be categorical) (numeric
+matrix/data.frame with info).}
+
+\item{verbose}{Display informational messages and the full list of
+parameters and timers at the end of execution.  Default value "FALSE"
 (logical).}
-
-\item{print_training_error}{Print the training error (deprecated; will be removed
-in mlpack 4.0.0).  Default value "FALSE" (logical).}
-
-\item{test}{Testing dataset (may be categorical) (numeric matrix/data.frame with
-info).}
-
-\item{test_labels}{Test point labels, if accuracy calculation is desired (integer
-row).}
-
-\item{training}{Training dataset (may be categorical) (numeric matrix/data.frame
-with info).}
-
-\item{verbose}{Display informational messages and the full list of parameters and
-timers at the end of execution.  Default value "FALSE" (logical).}
 
 \item{weights}{The weight of label (numeric matrix).}
 }
 \value{
 A list with several components:
-\item{output_model}{Output for trained decision tree (DecisionTreeModel).}
-\item{predictions}{Class predictions for each test point (integer row).}
-\item{probabilities}{Class probabilities for each test point (numeric matrix).}
+\item{output_model}{Output for trained decision tree
+  (DecisionTreeModel).}
+\item{predictions}{Class predictions for each test point (integer
+  row).}
+\item{probabilities}{Class probabilities for each test point (numeric
+  matrix).}
 }
 \description{
 An implementation of an ID3-style decision tree for classification, which

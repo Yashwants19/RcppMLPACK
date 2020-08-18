@@ -20,29 +20,30 @@ lars(
 
 \item{input_model}{Trained LARS model to use (LARS).}
 
-\item{lambda1}{Regularization parameter for l1-norm penalty.  Default value "0"
-(numeric).}
+\item{lambda1}{Regularization parameter for l1-norm penalty.  Default
+value "0" (numeric).}
 
-\item{lambda2}{Regularization parameter for l2-norm penalty.  Default value "0"
-(numeric).}
+\item{lambda2}{Regularization parameter for l2-norm penalty.  Default
+value "0" (numeric).}
 
 \item{responses}{Matrix of responses/observations (y) (numeric matrix).}
 
-\item{test}{Matrix containing points to regress on (test points) (numeric
-matrix).}
+\item{test}{Matrix containing points to regress on (test points)
+(numeric matrix).}
 
-\item{use_cholesky}{Use Cholesky decomposition during computation rather than
-explicitly computing the full Gram matrix.  Default value "FALSE"
+\item{use_cholesky}{Use Cholesky decomposition during computation rather
+than explicitly computing the full Gram matrix.  Default value "FALSE"
 (logical).}
 
-\item{verbose}{Display informational messages and the full list of parameters and
-timers at the end of execution.  Default value "FALSE" (logical).}
+\item{verbose}{Display informational messages and the full list of
+parameters and timers at the end of execution.  Default value "FALSE"
+(logical).}
 }
 \value{
 A list with several components:
 \item{output_model}{Output LARS model (LARS).}
-\item{output_predictions}{If --test_file is specified, this file is where the
-  predicted responses will be saved (numeric matrix).}
+\item{output_predictions}{If --test_file is specified, this file is
+  where the predicted responses will be saved (numeric matrix).}
 }
 \description{
 An implementation of Least Angle Regression (Stagewise/laSso), also known as

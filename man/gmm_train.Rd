@@ -25,48 +25,52 @@ gmm_train(
 \arguments{
 \item{gaussians}{Number of Gaussians in the GMM (integer).}
 
-\item{input}{The training data on which the model will be fit (numeric matrix).}
+\item{input}{The training data on which the model will be fit (numeric
+matrix).}
 
-\item{diagonal_covariance}{Force the covariance of the Gaussians to be diagonal. 
-This can accelerate training time significantly.  Default value "FALSE"
-(logical).}
+\item{diagonal_covariance}{Force the covariance of the Gaussians to be
+diagonal.  This can accelerate training time significantly.  Default value
+"FALSE" (logical).}
 
-\item{input_model}{Initial input GMM model to start training with (GMM).}
+\item{input_model}{Initial input GMM model to start training with
+(GMM).}
 
-\item{kmeans_max_iterations}{Maximum number of iterations for the k-means
-algorithm (used to initialize EM).  Default value "1000" (integer).}
-
-\item{max_iterations}{Maximum number of iterations of EM algorithm (passing 0 will
-run until convergence).  Default value "250" (integer).}
-
-\item{no_force_positive}{Do not force the covariance matrices to be positive
-definite.  Default value "FALSE" (logical).}
-
-\item{noise}{Variance of zero-mean Gaussian noise to add to data.  Default value
-"0" (numeric).}
-
-\item{percentage}{If using --refined_start, specify the percentage of the dataset
-used for each sampling (should be between 0.0 and 1.0).  Default value
-"0.02" (numeric).}
-
-\item{refined_start}{During the initialization, use refined initial positions for
-k-means clustering (Bradley and Fayyad, 1998).  Default value "FALSE"
-(logical).}
-
-\item{samplings}{If using --refined_start, specify the number of samplings used
-for initial points.  Default value "100" (integer).}
-
-\item{seed}{Random seed.  If 0, 'std::time(NULL)' is used.  Default value "0"
+\item{kmeans_max_iterations}{Maximum number of iterations for the
+k-means algorithm (used to initialize EM).  Default value "1000"
 (integer).}
+
+\item{max_iterations}{Maximum number of iterations of EM algorithm
+(passing 0 will run until convergence).  Default value "250" (integer).}
+
+\item{no_force_positive}{Do not force the covariance matrices to be
+positive definite.  Default value "FALSE" (logical).}
+
+\item{noise}{Variance of zero-mean Gaussian noise to add to data. 
+Default value "0" (numeric).}
+
+\item{percentage}{If using --refined_start, specify the percentage of
+the dataset used for each sampling (should be between 0.0 and 1.0). 
+Default value "0.02" (numeric).}
+
+\item{refined_start}{During the initialization, use refined initial
+positions for k-means clustering (Bradley and Fayyad, 1998).  Default value
+"FALSE" (logical).}
+
+\item{samplings}{If using --refined_start, specify the number of
+samplings used for initial points.  Default value "100" (integer).}
+
+\item{seed}{Random seed.  If 0, 'std::time(NULL)' is used.  Default
+value "0" (integer).}
 
 \item{tolerance}{Tolerance for convergence of EM.  Default value "1e-10"
 (numeric).}
 
-\item{trials}{Number of trials to perform in training GMM.  Default value "1"
-(integer).}
+\item{trials}{Number of trials to perform in training GMM.  Default
+value "1" (integer).}
 
-\item{verbose}{Display informational messages and the full list of parameters and
-timers at the end of execution.  Default value "FALSE" (logical).}
+\item{verbose}{Display informational messages and the full list of
+parameters and timers at the end of execution.  Default value "FALSE"
+(logical).}
 }
 \value{
 A list with several components:

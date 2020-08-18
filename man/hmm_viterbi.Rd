@@ -11,12 +11,14 @@ hmm_viterbi(input, input_model, verbose = FALSE)
 
 \item{input_model}{Trained HMM to use (HMMModel).}
 
-\item{verbose}{Display informational messages and the full list of parameters and
-timers at the end of execution.  Default value "FALSE" (logical).}
+\item{verbose}{Display informational messages and the full list of
+parameters and timers at the end of execution.  Default value "FALSE"
+(logical).}
 }
 \value{
 A list with several components:
-\item{output}{File to save predicted state sequence to (integer matrix).}
+\item{output}{File to save predicted state sequence to (integer
+  matrix).}
 }
 \description{
 A utility for computing the most probable hidden state sequence for Hidden

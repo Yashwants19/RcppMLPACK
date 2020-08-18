@@ -21,35 +21,37 @@ kernel_pca(
 \arguments{
 \item{input}{Input dataset to perform KPCA on (numeric matrix).}
 
-\item{kernel}{The kernel to use; see the above documentation for the list of
-usable kernels (character).}
+\item{kernel}{The kernel to use; see the above documentation for the
+list of usable kernels (character).}
 
-\item{bandwidth}{Bandwidth, for 'gaussian' and 'laplacian' kernels.  Default value
-"1" (numeric).}
+\item{bandwidth}{Bandwidth, for 'gaussian' and 'laplacian' kernels. 
+Default value "1" (numeric).}
 
-\item{center}{If set, the transformed data will be centered about the origin. 
+\item{center}{If set, the transformed data will be centered about the
+origin.  Default value "FALSE" (logical).}
+
+\item{degree}{Degree of polynomial, for 'polynomial' kernel.  Default
+value "1" (numeric).}
+
+\item{kernel_scale}{Scale, for 'hyptan' kernel.  Default value "1"
+(numeric).}
+
+\item{new_dimensionality}{If not 0, reduce the dimensionality of the
+output dataset by ignoring the dimensions with the smallest eigenvalues. 
+Default value "0" (integer).}
+
+\item{nystroem_method}{If set, the Nystroem method will be used. 
 Default value "FALSE" (logical).}
 
-\item{degree}{Degree of polynomial, for 'polynomial' kernel.  Default value "1"
-(numeric).}
+\item{offset}{Offset, for 'hyptan' and 'polynomial' kernels.  Default
+value "0" (numeric).}
 
-\item{kernel_scale}{Scale, for 'hyptan' kernel.  Default value "1" (numeric).}
+\item{sampling}{Sampling scheme to use for the Nystroem method:
+'kmeans', 'random', 'ordered.  Default value "kmeans" (character).}
 
-\item{new_dimensionality}{If not 0, reduce the dimensionality of the output
-dataset by ignoring the dimensions with the smallest eigenvalues.  Default
-value "0" (integer).}
-
-\item{nystroem_method}{If set, the Nystroem method will be used.  Default value
-"FALSE" (logical).}
-
-\item{offset}{Offset, for 'hyptan' and 'polynomial' kernels.  Default value "0"
-(numeric).}
-
-\item{sampling}{Sampling scheme to use for the Nystroem method: 'kmeans',
-'random', 'ordered.  Default value "kmeans" (character).}
-
-\item{verbose}{Display informational messages and the full list of parameters and
-timers at the end of execution.  Default value "FALSE" (logical).}
+\item{verbose}{Display informational messages and the full list of
+parameters and timers at the end of execution.  Default value "FALSE"
+(logical).}
 }
 \value{
 A list with several components:

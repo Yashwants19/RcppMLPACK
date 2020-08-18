@@ -19,27 +19,29 @@ preprocess_scale(
 \arguments{
 \item{input}{Matrix containing data (numeric matrix).}
 
-\item{epsilon}{regularization Parameter for pcawhitening, or zcawhitening, should
-be between -1 to 1.  Default value "1e-06" (numeric).}
+\item{epsilon}{regularization Parameter for pcawhitening, or
+zcawhitening, should be between -1 to 1.  Default value "1e-06" (numeric).}
 
 \item{input_model}{Input Scaling model (ScalingModel).}
 
-\item{inverse_scaling}{Inverse Scaling to get original datase.  Default value
-"FALSE" (logical).}
+\item{inverse_scaling}{Inverse Scaling to get original datase.  Default
+value "FALSE" (logical).}
 
-\item{max_value}{Ending value of range for min_max_scaler.  Default value "1"
+\item{max_value}{Ending value of range for min_max_scaler.  Default
+value "1" (integer).}
+
+\item{min_value}{Starting value of range for min_max_scaler.  Default
+value "0" (integer).}
+
+\item{scaler_method}{method to use for scaling, the default is
+standard_scaler.  Default value "standard_scaler" (character).}
+
+\item{seed}{Random seed (0 for std::time(NULL)).  Default value "0"
 (integer).}
 
-\item{min_value}{Starting value of range for min_max_scaler.  Default value "0"
-(integer).}
-
-\item{scaler_method}{method to use for scaling, the default is standard_scaler. 
-Default value "standard_scaler" (character).}
-
-\item{seed}{Random seed (0 for std::time(NULL)).  Default value "0" (integer).}
-
-\item{verbose}{Display informational messages and the full list of parameters and
-timers at the end of execution.  Default value "FALSE" (logical).}
+\item{verbose}{Display informational messages and the full list of
+parameters and timers at the end of execution.  Default value "FALSE"
+(logical).}
 }
 \value{
 A list with several components:

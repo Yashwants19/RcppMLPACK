@@ -11,8 +11,9 @@ hmm_loglik(input, input_model, verbose = FALSE)
 
 \item{input_model}{File containing HMM (HMMModel).}
 
-\item{verbose}{Display informational messages and the full list of parameters and
-timers at the end of execution.  Default value "FALSE" (logical).}
+\item{verbose}{Display informational messages and the full list of
+parameters and timers at the end of execution.  Default value "FALSE"
+(logical).}
 }
 \value{
 A list with several components:

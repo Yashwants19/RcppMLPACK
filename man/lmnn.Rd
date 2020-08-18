@@ -29,65 +29,70 @@ lmnn(
 \arguments{
 \item{input}{Input dataset to run LMNN on (numeric matrix).}
 
-\item{batch_size}{Batch size for mini-batch SGD.  Default value "50" (integer).}
+\item{batch_size}{Batch size for mini-batch SGD.  Default value "50"
+(integer).}
 
-\item{center}{Perform mean-centering on the dataset. It is useful when the
-centroid of the data is far from the origin.  Default value "FALSE"
+\item{center}{Perform mean-centering on the dataset. It is useful when
+the centroid of the data is far from the origin.  Default value "FALSE"
 (logical).}
 
-\item{distance}{Initial distance matrix to be used as starting poin (numeric
-matrix).}
+\item{distance}{Initial distance matrix to be used as starting poin
+(numeric matrix).}
 
-\item{k}{Number of target neighbors to use for each datapoint.  Default value "1"
-(integer).}
+\item{k}{Number of target neighbors to use for each datapoint.  Default
+value "1" (integer).}
 
 \item{labels}{Labels for input dataset (integer row).}
 
-\item{linear_scan}{Don't shuffle the order in which data points are visited for
-SGD or mini-batch SGD.  Default value "FALSE" (logical).}
+\item{linear_scan}{Don't shuffle the order in which data points are
+visited for SGD or mini-batch SGD.  Default value "FALSE" (logical).}
 
-\item{max_iterations}{Maximum number of iterations for L-BFGS (0 indicates no
-limit).  Default value "100000" (integer).}
+\item{max_iterations}{Maximum number of iterations for L-BFGS (0
+indicates no limit).  Default value "100000" (integer).}
 
-\item{normalize}{Use a normalized starting point for optimization. Itis useful for
-when points are far apart, or when SGD is returning NaN.  Default value
-"FALSE" (logical).}
+\item{normalize}{Use a normalized starting point for optimization. Itis
+useful for when points are far apart, or when SGD is returning NaN. 
+Default value "FALSE" (logical).}
 
-\item{optimizer}{Optimizer to use; 'amsgrad', 'bbsgd', 'sgd', or 'lbfgs'.  Default
-value "amsgrad" (character).}
+\item{optimizer}{Optimizer to use; 'amsgrad', 'bbsgd', 'sgd', or
+'lbfgs'.  Default value "amsgrad" (character).}
 
-\item{passes}{Maximum number of full passes over dataset for AMSGrad, BB_SGD and
-SGD.  Default value "50" (integer).}
+\item{passes}{Maximum number of full passes over dataset for AMSGrad,
+BB_SGD and SGD.  Default value "50" (integer).}
 
-\item{print_accuracy}{Print accuracies on initial and transformed datase.  Default
-value "FALSE" (logical).}
+\item{print_accuracy}{Print accuracies on initial and transformed
+datase.  Default value "FALSE" (logical).}
 
-\item{range}{Number of iterations after which impostors needs to be recalculate. 
-Default value "1" (integer).}
+\item{range}{Number of iterations after which impostors needs to be
+recalculate.  Default value "1" (integer).}
 
 \item{rank}{Rank of distance matrix to be optimized..  Default value "0"
 (integer).}
 
-\item{regularization}{Regularization for LMNN objective function.  Default value
-"0.5" (numeric).}
+\item{regularization}{Regularization for LMNN objective function. 
+Default value "0.5" (numeric).}
 
-\item{seed}{Random seed.  If 0, 'std::time(NULL)' is used.  Default value "0"
-(integer).}
+\item{seed}{Random seed.  If 0, 'std::time(NULL)' is used.  Default
+value "0" (integer).}
 
-\item{step_size}{Step size for AMSGrad, BB_SGD and SGD (alpha).  Default value
-"0.01" (numeric).}
+\item{step_size}{Step size for AMSGrad, BB_SGD and SGD (alpha).  Default
+value "0.01" (numeric).}
 
-\item{tolerance}{Maximum tolerance for termination of AMSGrad, BB_SGD, SGD or
-L-BFGS.  Default value "1e-07" (numeric).}
+\item{tolerance}{Maximum tolerance for termination of AMSGrad, BB_SGD,
+SGD or L-BFGS.  Default value "1e-07" (numeric).}
 
-\item{verbose}{Display informational messages and the full list of parameters and
-timers at the end of execution.  Default value "FALSE" (logical).}
+\item{verbose}{Display informational messages and the full list of
+parameters and timers at the end of execution.  Default value "FALSE"
+(logical).}
 }
 \value{
 A list with several components:
-\item{centered_data}{Output matrix for mean-centered dataset (numeric matrix).}
-\item{output}{Output matrix for learned distance matrix (numeric matrix).}
-\item{transformed_data}{Output matrix for transformed dataset (numeric matrix).}
+\item{centered_data}{Output matrix for mean-centered dataset (numeric
+  matrix).}
+\item{output}{Output matrix for learned distance matrix (numeric
+  matrix).}
+\item{transformed_data}{Output matrix for transformed dataset (numeric
+  matrix).}
 }
 \description{
 An implementation of Large Margin Nearest Neighbors (LMNN), a distance

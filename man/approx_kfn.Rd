@@ -21,29 +21,32 @@ approx_kfn(
 \item{algorithm}{Algorithm to use: 'ds' or 'qdafn'.  Default value "ds"
 (character).}
 
-\item{calculate_error}{If set, calculate the average distance error for the first
-furthest neighbor only.  Default value "FALSE" (logical).}
+\item{calculate_error}{If set, calculate the average distance error for
+the first furthest neighbor only.  Default value "FALSE" (logical).}
 
-\item{exact_distances}{Matrix containing exact distances to furthest neighbors;
-this can be used to avoid explicit calculation when --calculate_error is
-set (numeric matrix).}
+\item{exact_distances}{Matrix containing exact distances to furthest
+neighbors; this can be used to avoid explicit calculation when
+--calculate_error is set (numeric matrix).}
 
 \item{input_model}{File containing input model (ApproxKFNModel).}
 
 \item{k}{Number of furthest neighbors to search for.  Default value "0"
 (integer).}
 
-\item{num_projections}{Number of projections to use in each hash table.  Default
-value "5" (integer).}
+\item{num_projections}{Number of projections to use in each hash table. 
+Default value "5" (integer).}
 
-\item{num_tables}{Number of hash tables to use.  Default value "5" (integer).}
+\item{num_tables}{Number of hash tables to use.  Default value "5"
+(integer).}
 
 \item{query}{Matrix containing query points (numeric matrix).}
 
-\item{reference}{Matrix containing the reference dataset (numeric matrix).}
+\item{reference}{Matrix containing the reference dataset (numeric
+matrix).}
 
-\item{verbose}{Display informational messages and the full list of parameters and
-timers at the end of execution.  Default value "FALSE" (logical).}
+\item{verbose}{Display informational messages and the full list of
+parameters and timers at the end of execution.  Default value "FALSE"
+(logical).}
 }
 \value{
 A list with several components:

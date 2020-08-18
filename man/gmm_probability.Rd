@@ -7,16 +7,19 @@
 gmm_probability(input, input_model, verbose = FALSE)
 }
 \arguments{
-\item{input}{Input matrix to calculate probabilities of (numeric matrix).}
+\item{input}{Input matrix to calculate probabilities of (numeric
+matrix).}
 
 \item{input_model}{Input GMM to use as model (GMM).}
 
-\item{verbose}{Display informational messages and the full list of parameters and
-timers at the end of execution.  Default value "FALSE" (logical).}
+\item{verbose}{Display informational messages and the full list of
+parameters and timers at the end of execution.  Default value "FALSE"
+(logical).}
 }
 \value{
 A list with several components:
-\item{output}{Matrix to store calculated probabilities in (numeric matrix).}
+\item{output}{Matrix to store calculated probabilities in (numeric
+  matrix).}
 }
 \description{
 A probability calculator for GMMs.  Given a pre-trained GMM and a set of

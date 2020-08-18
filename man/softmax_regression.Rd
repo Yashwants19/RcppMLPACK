@@ -21,37 +21,39 @@ softmax_regression(
 \item{input_model}{File containing existing model (parameters)
 (SoftmaxRegression).}
 
-\item{labels}{A matrix containing labels (0 or 1) for the points in the training
-set (y). The labels must order as a row (integer row).}
+\item{labels}{A matrix containing labels (0 or 1) for the points in the
+training set (y). The labels must order as a row (integer row).}
 
-\item{lambda}{L2-regularization constan.  Default value "0.0001" (numeric).}
+\item{lambda}{L2-regularization constan.  Default value "0.0001"
+(numeric).}
 
-\item{max_iterations}{Maximum number of iterations before termination.  Default
-value "400" (integer).}
+\item{max_iterations}{Maximum number of iterations before termination. 
+Default value "400" (integer).}
 
-\item{no_intercept}{Do not add the intercept term to the model.  Default value
-"FALSE" (logical).}
+\item{no_intercept}{Do not add the intercept term to the model.  Default
+value "FALSE" (logical).}
 
-\item{number_of_classes}{Number of classes for classification; if unspecified (or
-0), the number of classes found in the labels will be used.  Default value
-"0" (integer).}
+\item{number_of_classes}{Number of classes for classification; if
+unspecified (or 0), the number of classes found in the labels will be used.
+ Default value "0" (integer).}
 
 \item{test}{Matrix containing test dataset (numeric matrix).}
 
 \item{test_labels}{Matrix containing test labels (integer row).}
 
-\item{training}{A matrix containing the training set (the matrix of predictors, X)
-(numeric matrix).}
+\item{training}{A matrix containing the training set (the matrix of
+predictors, X) (numeric matrix).}
 
-\item{verbose}{Display informational messages and the full list of parameters and
-timers at the end of execution.  Default value "FALSE" (logical).}
+\item{verbose}{Display informational messages and the full list of
+parameters and timers at the end of execution.  Default value "FALSE"
+(logical).}
 }
 \value{
 A list with several components:
 \item{output_model}{File to save trained softmax regression model to
   (SoftmaxRegression).}
-\item{predictions}{Matrix to save predictions for test dataset into (integer
-  row).}
+\item{predictions}{Matrix to save predictions for test dataset into
+  (integer row).}
 }
 \description{
 An implementation of softmax regression for classification, which is a

@@ -18,23 +18,26 @@ preprocess_split(
 
 \item{input_labels}{Matrix containing labels (integer matrix).}
 
-\item{no_shuffle}{Avoid shuffling and splitting the data.  Default value "FALSE"
+\item{no_shuffle}{Avoid shuffling and splitting the data.  Default value
+"FALSE" (logical).}
+
+\item{seed}{Random seed (0 for std::time(NULL)).  Default value "0"
+(integer).}
+
+\item{test_ratio}{Ratio of test set; if not set,the ratio defaults to
+0..  Default value "0.2" (numeric).}
+
+\item{verbose}{Display informational messages and the full list of
+parameters and timers at the end of execution.  Default value "FALSE"
 (logical).}
-
-\item{seed}{Random seed (0 for std::time(NULL)).  Default value "0" (integer).}
-
-\item{test_ratio}{Ratio of test set; if not set,the ratio defaults to 0..  Default
-value "0.2" (numeric).}
-
-\item{verbose}{Display informational messages and the full list of parameters and
-timers at the end of execution.  Default value "FALSE" (logical).}
 }
 \value{
 A list with several components:
 \item{test}{Matrix to save test data to (numeric matrix).}
 \item{test_labels}{Matrix to save test labels to (integer matrix).}
 \item{training}{Matrix to save training data to (numeric matrix).}
-\item{training_labels}{Matrix to save train labels to (integer matrix).}
+\item{training_labels}{Matrix to save train labels to (integer
+  matrix).}
 }
 \description{
 A utility to split data into a training and testing dataset.  This can also

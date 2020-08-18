@@ -27,56 +27,59 @@ nca(
 \arguments{
 \item{input}{Input dataset to run NCA on (numeric matrix).}
 
-\item{armijo_constant}{Armijo constant for L-BFGS.  Default value "0.0001"
-(numeric).}
+\item{armijo_constant}{Armijo constant for L-BFGS.  Default value
+"0.0001" (numeric).}
 
-\item{batch_size}{Batch size for mini-batch SGD.  Default value "50" (integer).}
+\item{batch_size}{Batch size for mini-batch SGD.  Default value "50"
+(integer).}
 
 \item{labels}{Labels for input dataset (integer row).}
 
-\item{linear_scan}{Don't shuffle the order in which data points are visited for
-SGD or mini-batch SGD.  Default value "FALSE" (logical).}
+\item{linear_scan}{Don't shuffle the order in which data points are
+visited for SGD or mini-batch SGD.  Default value "FALSE" (logical).}
 
-\item{max_iterations}{Maximum number of iterations for SGD or L-BFGS (0 indicates
-no limit).  Default value "500000" (integer).}
+\item{max_iterations}{Maximum number of iterations for SGD or L-BFGS (0
+indicates no limit).  Default value "500000" (integer).}
 
-\item{max_line_search_trials}{Maximum number of line search trials for L-BFGS. 
-Default value "50" (integer).}
+\item{max_line_search_trials}{Maximum number of line search trials for
+L-BFGS.  Default value "50" (integer).}
 
-\item{max_step}{Maximum step of line search for L-BFGS.  Default value "1e+20"
-(numeric).}
+\item{max_step}{Maximum step of line search for L-BFGS.  Default value
+"1e+20" (numeric).}
 
-\item{min_step}{Minimum step of line search for L-BFGS.  Default value "1e-20"
-(numeric).}
+\item{min_step}{Minimum step of line search for L-BFGS.  Default value
+"1e-20" (numeric).}
 
-\item{normalize}{Use a normalized starting point for optimization. This is useful
-for when points are far apart, or when SGD is returning NaN.  Default value
-"FALSE" (logical).}
+\item{normalize}{Use a normalized starting point for optimization. This
+is useful for when points are far apart, or when SGD is returning NaN. 
+Default value "FALSE" (logical).}
 
-\item{num_basis}{Number of memory points to be stored for L-BFGS.  Default value
-"5" (integer).}
+\item{num_basis}{Number of memory points to be stored for L-BFGS. 
+Default value "5" (integer).}
 
-\item{optimizer}{Optimizer to use; 'sgd' or 'lbfgs'.  Default value "sgd"
-(character).}
+\item{optimizer}{Optimizer to use; 'sgd' or 'lbfgs'.  Default value
+"sgd" (character).}
 
-\item{seed}{Random seed.  If 0, 'std::time(NULL)' is used.  Default value "0"
-(integer).}
+\item{seed}{Random seed.  If 0, 'std::time(NULL)' is used.  Default
+value "0" (integer).}
 
-\item{step_size}{Step size for stochastic gradient descent (alpha).  Default value
-"0.01" (numeric).}
+\item{step_size}{Step size for stochastic gradient descent (alpha). 
+Default value "0.01" (numeric).}
 
-\item{tolerance}{Maximum tolerance for termination of SGD or L-BFGS.  Default
-value "1e-07" (numeric).}
+\item{tolerance}{Maximum tolerance for termination of SGD or L-BFGS. 
+Default value "1e-07" (numeric).}
 
-\item{verbose}{Display informational messages and the full list of parameters and
-timers at the end of execution.  Default value "FALSE" (logical).}
+\item{verbose}{Display informational messages and the full list of
+parameters and timers at the end of execution.  Default value "FALSE"
+(logical).}
 
 \item{wolfe}{Wolfe condition parameter for L-BFGS.  Default value "0.9"
 (numeric).}
 }
 \value{
 A list with several components:
-\item{output}{Output matrix for learned distance matrix (numeric matrix).}
+\item{output}{Output matrix for learned distance matrix (numeric
+  matrix).}
 }
 \description{
 An implementation of neighborhood components analysis, a distance learning

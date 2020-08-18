@@ -9,14 +9,16 @@ preprocess_binarize(input, dimension = NA, threshold = NA, verbose = FALSE)
 \arguments{
 \item{input}{Input data matrix (numeric matrix).}
 
-\item{dimension}{Dimension to apply the binarization. If not set, the program will
-binarize every dimension by default.  Default value "0" (integer).}
+\item{dimension}{Dimension to apply the binarization. If not set, the
+program will binarize every dimension by default.  Default value "0"
+(integer).}
 
-\item{threshold}{Threshold to be applied for binarization. If not set, the
-threshold defaults to 0.0.  Default value "0" (numeric).}
+\item{threshold}{Threshold to be applied for binarization. If not set,
+the threshold defaults to 0.0.  Default value "0" (numeric).}
 
-\item{verbose}{Display informational messages and the full list of parameters and
-timers at the end of execution.  Default value "FALSE" (logical).}
+\item{verbose}{Display informational messages and the full list of
+parameters and timers at the end of execution.  Default value "FALSE"
+(logical).}
 }
 \value{
 A list with several components:

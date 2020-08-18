@@ -25,57 +25,61 @@ cf(
 )
 }
 \arguments{
-\item{algorithm}{Algorithm used for matrix factorization.  Default value "NMF"
-(character).}
+\item{algorithm}{Algorithm used for matrix factorization.  Default value
+"NMF" (character).}
 
-\item{all_user_recommendations}{Generate recommendations for all users.  Default
-value "FALSE" (logical).}
+\item{all_user_recommendations}{Generate recommendations for all users. 
+Default value "FALSE" (logical).}
 
 \item{input_model}{Trained CF model to load (CFModel).}
 
-\item{interpolation}{Algorithm used for weight interpolation.  Default value
-"average" (character).}
+\item{interpolation}{Algorithm used for weight interpolation.  Default
+value "average" (character).}
 
-\item{iteration_only_termination}{Terminate only when the maximum number of
-iterations is reached.  Default value "FALSE" (logical).}
+\item{iteration_only_termination}{Terminate only when the maximum number
+of iterations is reached.  Default value "FALSE" (logical).}
 
-\item{max_iterations}{Maximum number of iterations. If set to zero, there is no
-limit on the number of iterations.  Default value "1000" (integer).}
+\item{max_iterations}{Maximum number of iterations. If set to zero,
+there is no limit on the number of iterations.  Default value "1000"
+(integer).}
 
-\item{min_residue}{Residue required to terminate the factorization (lower values
-generally mean better fits).  Default value "1e-05" (numeric).}
+\item{min_residue}{Residue required to terminate the factorization
+(lower values generally mean better fits).  Default value "1e-05"
+(numeric).}
 
-\item{neighbor_search}{Algorithm used for neighbor search.  Default value
-"euclidean" (character).}
+\item{neighbor_search}{Algorithm used for neighbor search.  Default
+value "euclidean" (character).}
 
-\item{neighborhood}{Size of the neighborhood of similar users to consider for each
+\item{neighborhood}{Size of the neighborhood of similar users to
+consider for each query user.  Default value "5" (integer).}
+
+\item{normalization}{Normalization performed on the ratings.  Default
+value "none" (character).}
+
+\item{query}{List of query users for which recommendations should be
+generated (integer matrix).}
+
+\item{rank}{Rank of decomposed matrices (if 0, a heuristic is used to
+estimate the rank).  Default value "0" (integer).}
+
+\item{recommendations}{Number of recommendations to generate for each
 query user.  Default value "5" (integer).}
 
-\item{normalization}{Normalization performed on the ratings.  Default value "none"
-(character).}
-
-\item{query}{List of query users for which recommendations should be generated
-(integer matrix).}
-
-\item{rank}{Rank of decomposed matrices (if 0, a heuristic is used to estimate the
-rank).  Default value "0" (integer).}
-
-\item{recommendations}{Number of recommendations to generate for each query user. 
-Default value "5" (integer).}
-
-\item{seed}{Set the random seed (0 uses std::time(NULL)).  Default value "0"
-(integer).}
+\item{seed}{Set the random seed (0 uses std::time(NULL)).  Default value
+"0" (integer).}
 
 \item{test}{Test set to calculate RMSE on (numeric matrix).}
 
 \item{training}{Input dataset to perform CF on (numeric matrix).}
 
-\item{verbose}{Display informational messages and the full list of parameters and
-timers at the end of execution.  Default value "FALSE" (logical).}
+\item{verbose}{Display informational messages and the full list of
+parameters and timers at the end of execution.  Default value "FALSE"
+(logical).}
 }
 \value{
 A list with several components:
-\item{output}{Matrix that will store output recommendations (integer matrix).}
+\item{output}{Matrix that will store output recommendations (integer
+  matrix).}
 \item{output_model}{Output for trained CF model (CFModel).}
 }
 \description{
