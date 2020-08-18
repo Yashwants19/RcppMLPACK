@@ -6,12 +6,14 @@
 #' preprocessing step.
 #'
 #' @param input Input data matrix (numeric matrix).
-#' @param dimension Dimension to apply the binarization. If not set, the program will
-#'   binarize every dimension by default.  Default value "0" (integer).
-#' @param threshold Threshold to be applied for binarization. If not set, the
-#'   threshold defaults to 0.0.  Default value "0" (numeric).
-#' @param verbose Display informational messages and the full list of parameters and
-#'   timers at the end of execution.  Default value "FALSE" (logical).
+#' @param dimension Dimension to apply the binarization. If not set, the
+#'   program will binarize every dimension by default.  Default value "0"
+#'   (integer).
+#' @param threshold Threshold to be applied for binarization. If not set,
+#'   the threshold defaults to 0.0.  Default value "0" (numeric).
+#' @param verbose Display informational messages and the full list of
+#'   parameters and timers at the end of execution.  Default value "FALSE"
+#'   (logical).
 #'
 #' @return A list with several components:
 #' \item{output}{Matrix in which to save the output (numeric matrix).}

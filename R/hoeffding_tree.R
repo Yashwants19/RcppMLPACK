@@ -6,41 +6,44 @@
 #' saved for later use, or a pre-trained Hoeffding tree can be used for
 #' predicting the classifications of new points.
 #'
-#' @param batch_mode If true, samples will be considered in batch instead of as a
-#'   stream.  This generally results in better trees but at the cost of memory
-#'   usage and runtime.  Default value "FALSE" (logical).
-#' @param bins If the 'domingos' split strategy is used, this specifies the number of
-#'   bins for each numeric split.  Default value "10" (integer).
-#' @param confidence Confidence before splitting (between 0 and 1).  Default value
-#'   "0.95" (numeric).
-#' @param info_gain If set, information gain is used instead of Gini impurity for
-#'   calculating Hoeffding bounds.  Default value "FALSE" (logical).
-#' @param input_model Input trained Hoeffding tree model (HoeffdingTreeModel).
+#' @param batch_mode If true, samples will be considered in batch instead
+#'   of as a stream.  This generally results in better trees but at the cost of
+#'   memory usage and runtime.  Default value "FALSE" (logical).
+#' @param bins If the 'domingos' split strategy is used, this specifies the
+#'   number of bins for each numeric split.  Default value "10" (integer).
+#' @param confidence Confidence before splitting (between 0 and 1). 
+#'   Default value "0.95" (numeric).
+#' @param info_gain If set, information gain is used instead of Gini
+#'   impurity for calculating Hoeffding bounds.  Default value "FALSE"
+#'   (logical).
+#' @param input_model Input trained Hoeffding tree model
+#'   (HoeffdingTreeModel).
 #' @param labels Labels for training dataset (integer row).
-#' @param max_samples Maximum number of samples before splitting.  Default value
-#'   "5000" (integer).
-#' @param min_samples Minimum number of samples before splitting.  Default value
-#'   "100" (integer).
-#' @param numeric_split_strategy The splitting strategy to use for numeric features:
-#'   'domingos' or 'binary'.  Default value "binary" (character).
-#' @param observations_before_binning If the 'domingos' split strategy is used, this
-#'   specifies the number of samples observed before binning is performed. 
-#'   Default value "100" (integer).
-#' @param passes Number of passes to take over the dataset.  Default value "1"
-#'   (integer).
-#' @param test Testing dataset (may be categorical) (numeric matrix/data.frame with
-#'   info).
+#' @param max_samples Maximum number of samples before splitting.  Default
+#'   value "5000" (integer).
+#' @param min_samples Minimum number of samples before splitting.  Default
+#'   value "100" (integer).
+#' @param numeric_split_strategy The splitting strategy to use for numeric
+#'   features: 'domingos' or 'binary'.  Default value "binary" (character).
+#' @param observations_before_binning If the 'domingos' split strategy is
+#'   used, this specifies the number of samples observed before binning is
+#'   performed.  Default value "100" (integer).
+#' @param passes Number of passes to take over the dataset.  Default value
+#'   "1" (integer).
+#' @param test Testing dataset (may be categorical) (numeric
+#'   matrix/data.frame with info).
 #' @param test_labels Labels of test data (integer row).
-#' @param training Training dataset (may be categorical) (numeric matrix/data.frame
-#'   with info).
-#' @param verbose Display informational messages and the full list of parameters and
-#'   timers at the end of execution.  Default value "FALSE" (logical).
+#' @param training Training dataset (may be categorical) (numeric
+#'   matrix/data.frame with info).
+#' @param verbose Display informational messages and the full list of
+#'   parameters and timers at the end of execution.  Default value "FALSE"
+#'   (logical).
 #'
 #' @return A list with several components:
 #' \item{output_model}{Output for trained Hoeffding tree model
 #'   (HoeffdingTreeModel).}
-#' \item{predictions}{Matrix to output label predictions for test data into (integer
-#'   row).}
+#' \item{predictions}{Matrix to output label predictions for test data into
+#'   (integer row).}
 #' \item{probabilities}{In addition to predicting labels, provide rediction
 #'   probabilities in this matrix (numeric matrix).}
 #'

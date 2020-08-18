@@ -6,24 +6,26 @@
 #' other mlpack HMM tools.
 #'
 #' @param input_file File containing input observations (character).
-#' @param batch If true, input_file (and if passed, labels_file) are expected to
-#'   contain a list of files to use as input observation sequences (and label
-#'   sequences).  Default value "FALSE" (logical).
-#' @param gaussians Number of gaussians in each GMM (necessary when type is 'gmm'). 
-#'   Default value "0" (integer).
-#' @param input_model Pre-existing HMM model to initialize training with (HMMModel).
-#' @param labels_file Optional file of hidden states, used for labeled training. 
-#'   Default value "" (character).
-#' @param seed Random seed.  If 0, 'std::time(NULL)' is used.  Default value "0"
-#'   (integer).
-#' @param states Number of hidden states in HMM (necessary, unless model_file is
-#'   specified).  Default value "0" (integer).
-#' @param tolerance Tolerance of the Baum-Welch algorithm.  Default value "1e-05"
-#'   (numeric).
-#' @param type Type of HMM: discrete | gaussian | diag_gmm | gmm.  Default value
-#'   "gaussian" (character).
-#' @param verbose Display informational messages and the full list of parameters and
-#'   timers at the end of execution.  Default value "FALSE" (logical).
+#' @param batch If true, input_file (and if passed, labels_file) are
+#'   expected to contain a list of files to use as input observation sequences
+#'   (and label sequences).  Default value "FALSE" (logical).
+#' @param gaussians Number of gaussians in each GMM (necessary when type is
+#'   'gmm').  Default value "0" (integer).
+#' @param input_model Pre-existing HMM model to initialize training with
+#'   (HMMModel).
+#' @param labels_file Optional file of hidden states, used for labeled
+#'   training.  Default value "" (character).
+#' @param seed Random seed.  If 0, 'std::time(NULL)' is used.  Default
+#'   value "0" (integer).
+#' @param states Number of hidden states in HMM (necessary, unless
+#'   model_file is specified).  Default value "0" (integer).
+#' @param tolerance Tolerance of the Baum-Welch algorithm.  Default value
+#'   "1e-05" (numeric).
+#' @param type Type of HMM: discrete | gaussian | diag_gmm | gmm.  Default
+#'   value "gaussian" (character).
+#' @param verbose Display informational messages and the full list of
+#'   parameters and timers at the end of execution.  Default value "FALSE"
+#'   (logical).
 #'
 #' @return A list with several components:
 #' \item{output_model}{Output for trained HMM (HMMModel).}

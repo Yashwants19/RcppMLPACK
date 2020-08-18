@@ -7,11 +7,13 @@
 #'
 #' @param length Length of sequence to generate (integer).
 #' @param model Trained HMM to generate sequences with (HMMModel).
-#' @param seed Random seed.  If 0, 'std::time(NULL)' is used.  Default value "0"
+#' @param seed Random seed.  If 0, 'std::time(NULL)' is used.  Default
+#'   value "0" (integer).
+#' @param start_state Starting state of sequence.  Default value "0"
 #'   (integer).
-#' @param start_state Starting state of sequence.  Default value "0" (integer).
-#' @param verbose Display informational messages and the full list of parameters and
-#'   timers at the end of execution.  Default value "FALSE" (logical).
+#' @param verbose Display informational messages and the full list of
+#'   parameters and timers at the end of execution.  Default value "FALSE"
+#'   (logical).
 #'
 #' @return A list with several components:
 #' \item{output}{Matrix to save observation sequence to (numeric matrix).}

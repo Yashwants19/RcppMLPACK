@@ -8,10 +8,11 @@
 #' @param leaf_size Leaf size in the kd-tree.  One-element leaves give the
 #'   empirically best performance, but at the cost of greater memory
 #'   requirements.  Default value "1" (integer).
-#' @param naive Compute the MST using O(n^2) naive algorithm.  Default value "FALSE"
+#' @param naive Compute the MST using O(n^2) naive algorithm.  Default
+#'   value "FALSE" (logical).
+#' @param verbose Display informational messages and the full list of
+#'   parameters and timers at the end of execution.  Default value "FALSE"
 #'   (logical).
-#' @param verbose Display informational messages and the full list of parameters and
-#'   timers at the end of execution.  Default value "FALSE" (logical).
 #'
 #' @return A list with several components:
 #' \item{output}{Output data.  Stored as an edge list (numeric matrix).}

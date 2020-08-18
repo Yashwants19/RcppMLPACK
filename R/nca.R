@@ -7,40 +7,43 @@
 #' returns the learned distance metric.
 #'
 #' @param input Input dataset to run NCA on (numeric matrix).
-#' @param armijo_constant Armijo constant for L-BFGS.  Default value "0.0001"
-#'   (numeric).
-#' @param batch_size Batch size for mini-batch SGD.  Default value "50" (integer).
-#' @param labels Labels for input dataset (integer row).
-#' @param linear_scan Don't shuffle the order in which data points are visited for
-#'   SGD or mini-batch SGD.  Default value "FALSE" (logical).
-#' @param max_iterations Maximum number of iterations for SGD or L-BFGS (0 indicates
-#'   no limit).  Default value "500000" (integer).
-#' @param max_line_search_trials Maximum number of line search trials for L-BFGS. 
-#'   Default value "50" (integer).
-#' @param max_step Maximum step of line search for L-BFGS.  Default value "1e+20"
-#'   (numeric).
-#' @param min_step Minimum step of line search for L-BFGS.  Default value "1e-20"
-#'   (numeric).
-#' @param normalize Use a normalized starting point for optimization. This is useful
-#'   for when points are far apart, or when SGD is returning NaN.  Default value
-#'   "FALSE" (logical).
-#' @param num_basis Number of memory points to be stored for L-BFGS.  Default value
-#'   "5" (integer).
-#' @param optimizer Optimizer to use; 'sgd' or 'lbfgs'.  Default value "sgd"
-#'   (character).
-#' @param seed Random seed.  If 0, 'std::time(NULL)' is used.  Default value "0"
+#' @param armijo_constant Armijo constant for L-BFGS.  Default value
+#'   "0.0001" (numeric).
+#' @param batch_size Batch size for mini-batch SGD.  Default value "50"
 #'   (integer).
-#' @param step_size Step size for stochastic gradient descent (alpha).  Default value
-#'   "0.01" (numeric).
-#' @param tolerance Maximum tolerance for termination of SGD or L-BFGS.  Default
-#'   value "1e-07" (numeric).
-#' @param verbose Display informational messages and the full list of parameters and
-#'   timers at the end of execution.  Default value "FALSE" (logical).
+#' @param labels Labels for input dataset (integer row).
+#' @param linear_scan Don't shuffle the order in which data points are
+#'   visited for SGD or mini-batch SGD.  Default value "FALSE" (logical).
+#' @param max_iterations Maximum number of iterations for SGD or L-BFGS (0
+#'   indicates no limit).  Default value "500000" (integer).
+#' @param max_line_search_trials Maximum number of line search trials for
+#'   L-BFGS.  Default value "50" (integer).
+#' @param max_step Maximum step of line search for L-BFGS.  Default value
+#'   "1e+20" (numeric).
+#' @param min_step Minimum step of line search for L-BFGS.  Default value
+#'   "1e-20" (numeric).
+#' @param normalize Use a normalized starting point for optimization. This
+#'   is useful for when points are far apart, or when SGD is returning NaN. 
+#'   Default value "FALSE" (logical).
+#' @param num_basis Number of memory points to be stored for L-BFGS. 
+#'   Default value "5" (integer).
+#' @param optimizer Optimizer to use; 'sgd' or 'lbfgs'.  Default value
+#'   "sgd" (character).
+#' @param seed Random seed.  If 0, 'std::time(NULL)' is used.  Default
+#'   value "0" (integer).
+#' @param step_size Step size for stochastic gradient descent (alpha). 
+#'   Default value "0.01" (numeric).
+#' @param tolerance Maximum tolerance for termination of SGD or L-BFGS. 
+#'   Default value "1e-07" (numeric).
+#' @param verbose Display informational messages and the full list of
+#'   parameters and timers at the end of execution.  Default value "FALSE"
+#'   (logical).
 #' @param wolfe Wolfe condition parameter for L-BFGS.  Default value "0.9"
 #'   (numeric).
 #'
 #' @return A list with several components:
-#' \item{output}{Output matrix for learned distance matrix (numeric matrix).}
+#' \item{output}{Output matrix for learned distance matrix (numeric
+#'   matrix).}
 #'
 #' @details
 #' This program implements Neighborhood Components Analysis, both a linear

@@ -6,29 +6,33 @@
 #' of query points, this will compute the k approximate nearest neighbors of
 #' each query point in the reference set; models can be saved for future use.
 #'
-#' @param bucket_size The size of a bucket in the second level hash.  Default value
-#'   "500" (integer).
+#' @param bucket_size The size of a bucket in the second level hash. 
+#'   Default value "500" (integer).
 #' @param hash_width The hash width for the first-level hashing in the LSH
 #'   preprocessing. By default, the LSH class automatically estimates a hash
 #'   width for its use.  Default value "0" (numeric).
 #' @param input_model Input LSH model (LSHSearch).
-#' @param k Number of nearest neighbors to find.  Default value "0" (integer).
+#' @param k Number of nearest neighbors to find.  Default value "0"
+#'   (integer).
 #' @param num_probes Number of additional probes for multiprobe LSH; if 0,
 #'   traditional LSH is used.  Default value "0" (integer).
-#' @param projections The number of hash functions for each tabl.  Default value "10"
-#'   (integer).
-#' @param query Matrix containing query points (optional) (numeric matrix).
-#' @param reference Matrix containing the reference dataset (numeric matrix).
-#' @param second_hash_size The size of the second level hash table.  Default value
-#'   "99901" (integer).
-#' @param seed Random seed.  If 0, 'std::time(NULL)' is used.  Default value "0"
-#'   (integer).
+#' @param projections The number of hash functions for each tabl.  Default
+#'   value "10" (integer).
+#' @param query Matrix containing query points (optional) (numeric
+#'   matrix).
+#' @param reference Matrix containing the reference dataset (numeric
+#'   matrix).
+#' @param second_hash_size The size of the second level hash table. 
+#'   Default value "99901" (integer).
+#' @param seed Random seed.  If 0, 'std::time(NULL)' is used.  Default
+#'   value "0" (integer).
 #' @param tables The number of hash tables to be used.  Default value "30"
 #'   (integer).
-#' @param true_neighbors Matrix of true neighbors to compute recall with (the recall
-#'   is printed when -v is specified) (integer matrix).
-#' @param verbose Display informational messages and the full list of parameters and
-#'   timers at the end of execution.  Default value "FALSE" (logical).
+#' @param true_neighbors Matrix of true neighbors to compute recall with
+#'   (the recall is printed when -v is specified) (integer matrix).
+#' @param verbose Display informational messages and the full list of
+#'   parameters and timers at the end of execution.  Default value "FALSE"
+#'   (logical).
 #'
 #' @return A list with several components:
 #' \item{distances}{Matrix to output distances into (numeric matrix).}

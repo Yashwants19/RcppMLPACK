@@ -8,17 +8,18 @@
 #' @param rank Rank of the factorization (integer).
 #' @param initial_h Initial H matrix (numeric matrix).
 #' @param initial_w Initial W matrix (numeric matrix).
-#' @param max_iterations Number of iterations before NMF terminates (0 runs until
-#'   convergence.  Default value "10000" (integer).
+#' @param max_iterations Number of iterations before NMF terminates (0 runs
+#'   until convergence.  Default value "10000" (integer).
 #' @param min_residue The minimum root mean square residue allowed for each
 #'   iteration, below which the program terminates.  Default value "1e-05"
 #'   (numeric).
-#' @param seed Random seed.  If 0, 'std::time(NULL)' is used.  Default value "0"
-#'   (integer).
-#' @param update_rules Update rules for each iteration; ( multdist | multdiv | als ).
-#'    Default value "multdist" (character).
-#' @param verbose Display informational messages and the full list of parameters and
-#'   timers at the end of execution.  Default value "FALSE" (logical).
+#' @param seed Random seed.  If 0, 'std::time(NULL)' is used.  Default
+#'   value "0" (integer).
+#' @param update_rules Update rules for each iteration; ( multdist |
+#'   multdiv | als ).  Default value "multdist" (character).
+#' @param verbose Display informational messages and the full list of
+#'   parameters and timers at the end of execution.  Default value "FALSE"
+#'   (logical).
 #'
 #' @return A list with several components:
 #' \item{h}{Matrix to save the calculated H to (numeric matrix).}

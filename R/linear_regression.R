@@ -6,21 +6,24 @@
 #' trained and saved for later use, or a pre-trained model can be used to output
 #' regression predictions for a test set.
 #'
-#' @param input_model Existing LinearRegression model to use (LinearRegression).
-#' @param lambda Tikhonov regularization for ridge regression.  If 0, the method
-#'   reduces to linear regression.  Default value "0" (numeric).
+#' @param input_model Existing LinearRegression model to use
+#'   (LinearRegression).
+#' @param lambda Tikhonov regularization for ridge regression.  If 0, the
+#'   method reduces to linear regression.  Default value "0" (numeric).
 #' @param test Matrix containing X' (test regressors) (numeric matrix).
-#' @param training Matrix containing training set X (regressors) (numeric matrix).
-#' @param training_responses Optional vector containing y (responses). If not given,
-#'   the responses are assumed to be the last row of the input file (numeric
-#'   row).
-#' @param verbose Display informational messages and the full list of parameters and
-#'   timers at the end of execution.  Default value "FALSE" (logical).
+#' @param training Matrix containing training set X (regressors) (numeric
+#'   matrix).
+#' @param training_responses Optional vector containing y (responses). If
+#'   not given, the responses are assumed to be the last row of the input file
+#'   (numeric row).
+#' @param verbose Display informational messages and the full list of
+#'   parameters and timers at the end of execution.  Default value "FALSE"
+#'   (logical).
 #'
 #' @return A list with several components:
 #' \item{output_model}{Output LinearRegression model (LinearRegression).}
-#' \item{output_predictions}{If --test_file is specified, this matrix is where the
-#'   predicted responses will be saved (numeric row).}
+#' \item{output_predictions}{If --test_file is specified, this matrix is
+#'   where the predicted responses will be saved (numeric row).}
 #'
 #' @details
 #' An implementation of simple linear regression and simple ridge regression

@@ -6,33 +6,37 @@
 #' features, a decision tree can be trained and saved; or, an existing decision
 #' tree can be used for classification on new points.
 #'
-#' @param input_model Pre-trained decision tree, to be used with test points
-#'   (DecisionTreeModel).
+#' @param input_model Pre-trained decision tree, to be used with test
+#'   points (DecisionTreeModel).
 #' @param labels Training labels (integer row).
-#' @param maximum_depth Maximum depth of the tree (0 means no limit).  Default value
-#'   "0" (integer).
-#' @param minimum_gain_split Minimum gain for node splitting.  Default value "1e-07"
-#'   (numeric).
-#' @param minimum_leaf_size Minimum number of points in a leaf.  Default value "20"
-#'   (integer).
-#' @param print_training_accuracy Print the training accuracy.  Default value "FALSE"
+#' @param maximum_depth Maximum depth of the tree (0 means no limit). 
+#'   Default value "0" (integer).
+#' @param minimum_gain_split Minimum gain for node splitting.  Default
+#'   value "1e-07" (numeric).
+#' @param minimum_leaf_size Minimum number of points in a leaf.  Default
+#'   value "20" (integer).
+#' @param print_training_accuracy Print the training accuracy.  Default
+#'   value "FALSE" (logical).
+#' @param print_training_error Print the training error (deprecated; will
+#'   be removed in mlpack 4.0.0).  Default value "FALSE" (logical).
+#' @param test Testing dataset (may be categorical) (numeric
+#'   matrix/data.frame with info).
+#' @param test_labels Test point labels, if accuracy calculation is desired
+#'   (integer row).
+#' @param training Training dataset (may be categorical) (numeric
+#'   matrix/data.frame with info).
+#' @param verbose Display informational messages and the full list of
+#'   parameters and timers at the end of execution.  Default value "FALSE"
 #'   (logical).
-#' @param print_training_error Print the training error (deprecated; will be removed
-#'   in mlpack 4.0.0).  Default value "FALSE" (logical).
-#' @param test Testing dataset (may be categorical) (numeric matrix/data.frame with
-#'   info).
-#' @param test_labels Test point labels, if accuracy calculation is desired (integer
-#'   row).
-#' @param training Training dataset (may be categorical) (numeric matrix/data.frame
-#'   with info).
-#' @param verbose Display informational messages and the full list of parameters and
-#'   timers at the end of execution.  Default value "FALSE" (logical).
 #' @param weights The weight of label (numeric matrix).
 #'
 #' @return A list with several components:
-#' \item{output_model}{Output for trained decision tree (DecisionTreeModel).}
-#' \item{predictions}{Class predictions for each test point (integer row).}
-#' \item{probabilities}{Class probabilities for each test point (numeric matrix).}
+#' \item{output_model}{Output for trained decision tree
+#'   (DecisionTreeModel).}
+#' \item{predictions}{Class predictions for each test point (integer
+#'   row).}
+#' \item{probabilities}{Class probabilities for each test point (numeric
+#'   matrix).}
 #'
 #' @details
 #' Train and evaluate using a decision tree.  Given a dataset containing numeric

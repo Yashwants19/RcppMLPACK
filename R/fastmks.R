@@ -6,27 +6,31 @@
 #' points, this can find the reference point with maximum kernel value for each
 #' query point; trained models can be reused for future queries.
 #'
-#' @param bandwidth Bandwidth (for Gaussian, Epanechnikov, and triangular kernels). 
-#'   Default value "1" (numeric).
-#' @param base Base to use during cover tree construction.  Default value "2"
+#' @param bandwidth Bandwidth (for Gaussian, Epanechnikov, and triangular
+#'   kernels).  Default value "1" (numeric).
+#' @param base Base to use during cover tree construction.  Default value
+#'   "2" (numeric).
+#' @param degree Degree of polynomial kernel.  Default value "2"
 #'   (numeric).
-#' @param degree Degree of polynomial kernel.  Default value "2" (numeric).
 #' @param input_model Input FastMKS model to use (FastMKSModel).
-#' @param k Number of maximum kernels to find.  Default value "0" (integer).
-#' @param kernel Kernel type to use: 'linear', 'polynomial', 'cosine', 'gaussian',
-#'   'epanechnikov', 'triangular', 'hyptan'.  Default value "linear"
+#' @param k Number of maximum kernels to find.  Default value "0"
+#'   (integer).
+#' @param kernel Kernel type to use: 'linear', 'polynomial', 'cosine',
+#'   'gaussian', 'epanechnikov', 'triangular', 'hyptan'.  Default value "linear"
 #'   (character).
-#' @param naive If true, O(n^2) naive mode is used for computation.  Default value
-#'   "FALSE" (logical).
-#' @param offset Offset of kernel (for polynomial and hyptan kernels).  Default value
-#'   "0" (numeric).
+#' @param naive If true, O(n^2) naive mode is used for computation. 
+#'   Default value "FALSE" (logical).
+#' @param offset Offset of kernel (for polynomial and hyptan kernels). 
+#'   Default value "0" (numeric).
 #' @param query The query dataset (numeric matrix).
 #' @param reference The reference dataset (numeric matrix).
-#' @param scale Scale of kernel (for hyptan kernel).  Default value "1" (numeric).
-#' @param single If true, single-tree search is used (as opposed to dual-tree search.
-#'    Default value "FALSE" (logical).
-#' @param verbose Display informational messages and the full list of parameters and
-#'   timers at the end of execution.  Default value "FALSE" (logical).
+#' @param scale Scale of kernel (for hyptan kernel).  Default value "1"
+#'   (numeric).
+#' @param single If true, single-tree search is used (as opposed to
+#'   dual-tree search.  Default value "FALSE" (logical).
+#' @param verbose Display informational messages and the full list of
+#'   parameters and timers at the end of execution.  Default value "FALSE"
+#'   (logical).
 #'
 #' @return A list with several components:
 #' \item{indices}{Output matrix of indices (integer matrix).}

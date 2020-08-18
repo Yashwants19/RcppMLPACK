@@ -1,4 +1,4 @@
-#' RcppMLPACK
+#' mlpack
 #'
 #' mlpack is a fast, flexible machine learning library, written in C++, that
 #' aims to provide fast, extensible implementations of cutting-edge machine
@@ -7,9 +7,8 @@
 #' then be integrated into larger-scale machine learning solutions.
 #'
 #' @docType package
-#' @name RcppMLPACK
+#' @name mlpack
+#' @author mlpack Team
 #' @importFrom Rcpp evalCpp
-#' @import xml2
-#' @importFrom utils packageDescription package.skeleton
-#' @useDynLib RcppMLPACK
+#' @useDynLib mlpack
 NULL

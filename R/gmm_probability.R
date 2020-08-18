@@ -5,13 +5,16 @@
 #' points, this can compute the probability that each point is from the given
 #' GMM.
 #'
-#' @param input Input matrix to calculate probabilities of (numeric matrix).
+#' @param input Input matrix to calculate probabilities of (numeric
+#'   matrix).
 #' @param input_model Input GMM to use as model (GMM).
-#' @param verbose Display informational messages and the full list of parameters and
-#'   timers at the end of execution.  Default value "FALSE" (logical).
+#' @param verbose Display informational messages and the full list of
+#'   parameters and timers at the end of execution.  Default value "FALSE"
+#'   (logical).
 #'
 #' @return A list with several components:
-#' \item{output}{Matrix to store calculated probabilities in (numeric matrix).}
+#' \item{output}{Matrix to store calculated probabilities in (numeric
+#'   matrix).}
 #'
 #' @details
 #' This program calculates the probability that given points came from a given

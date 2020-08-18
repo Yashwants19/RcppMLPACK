@@ -6,20 +6,22 @@
 #' then applied to other datasets.
 #'
 #' @param input Matrix containing data (numeric matrix).
-#' @param epsilon regularization Parameter for pcawhitening, or zcawhitening, should
-#'   be between -1 to 1.  Default value "1e-06" (numeric).
+#' @param epsilon regularization Parameter for pcawhitening, or
+#'   zcawhitening, should be between -1 to 1.  Default value "1e-06" (numeric).
 #' @param input_model Input Scaling model (ScalingModel).
-#' @param inverse_scaling Inverse Scaling to get original datase.  Default value
-#'   "FALSE" (logical).
-#' @param max_value Ending value of range for min_max_scaler.  Default value "1"
+#' @param inverse_scaling Inverse Scaling to get original datase.  Default
+#'   value "FALSE" (logical).
+#' @param max_value Ending value of range for min_max_scaler.  Default
+#'   value "1" (integer).
+#' @param min_value Starting value of range for min_max_scaler.  Default
+#'   value "0" (integer).
+#' @param scaler_method method to use for scaling, the default is
+#'   standard_scaler.  Default value "standard_scaler" (character).
+#' @param seed Random seed (0 for std::time(NULL)).  Default value "0"
 #'   (integer).
-#' @param min_value Starting value of range for min_max_scaler.  Default value "0"
-#'   (integer).
-#' @param scaler_method method to use for scaling, the default is standard_scaler. 
-#'   Default value "standard_scaler" (character).
-#' @param seed Random seed (0 for std::time(NULL)).  Default value "0" (integer).
-#' @param verbose Display informational messages and the full list of parameters and
-#'   timers at the end of execution.  Default value "FALSE" (logical).
+#' @param verbose Display informational messages and the full list of
+#'   parameters and timers at the end of execution.  Default value "FALSE"
+#'   (logical).
 #'
 #' @return A list with several components:
 #' \item{output}{Matrix to save scaled data to (numeric matrix).}

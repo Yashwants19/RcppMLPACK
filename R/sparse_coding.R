@@ -6,33 +6,40 @@
 #' dictionary elements, where the dictionary is learned during computation; a
 #' dictionary can be reused for future sparse coding of new points.
 #'
-#' @param atoms Number of atoms in the dictionary.  Default value "15" (integer).
-#' @param initial_dictionary Optional initial dictionary matrix (numeric matrix).
-#' @param input_model File containing input sparse coding model (SparseCoding).
-#' @param lambda1 Sparse coding l1-norm regularization parameter.  Default value "0"
-#'   (numeric).
-#' @param lambda2 Sparse coding l2-norm regularization parameter.  Default value "0"
-#'   (numeric).
-#' @param max_iterations Maximum number of iterations for sparse coding (0 indicates
-#'   no limit).  Default value "0" (integer).
-#' @param newton_tolerance Tolerance for convergence of Newton method.  Default value
-#'   "1e-06" (numeric).
-#' @param normalize If set, the input data matrix will be normalized before coding. 
-#'   Default value "FALSE" (logical).
-#' @param objective_tolerance Tolerance for convergence of the objective function. 
-#'   Default value "0.01" (numeric).
-#' @param seed Random seed.  If 0, 'std::time(NULL)' is used.  Default value "0"
+#' @param atoms Number of atoms in the dictionary.  Default value "15"
 #'   (integer).
-#' @param test Optional matrix to be encoded by trained model (numeric matrix).
+#' @param initial_dictionary Optional initial dictionary matrix (numeric
+#'   matrix).
+#' @param input_model File containing input sparse coding model
+#'   (SparseCoding).
+#' @param lambda1 Sparse coding l1-norm regularization parameter.  Default
+#'   value "0" (numeric).
+#' @param lambda2 Sparse coding l2-norm regularization parameter.  Default
+#'   value "0" (numeric).
+#' @param max_iterations Maximum number of iterations for sparse coding (0
+#'   indicates no limit).  Default value "0" (integer).
+#' @param newton_tolerance Tolerance for convergence of Newton method. 
+#'   Default value "1e-06" (numeric).
+#' @param normalize If set, the input data matrix will be normalized before
+#'   coding.  Default value "FALSE" (logical).
+#' @param objective_tolerance Tolerance for convergence of the objective
+#'   function.  Default value "0.01" (numeric).
+#' @param seed Random seed.  If 0, 'std::time(NULL)' is used.  Default
+#'   value "0" (integer).
+#' @param test Optional matrix to be encoded by trained model (numeric
+#'   matrix).
 #' @param training Matrix of training data (X) (numeric matrix).
-#' @param verbose Display informational messages and the full list of parameters and
-#'   timers at the end of execution.  Default value "FALSE" (logical).
+#' @param verbose Display informational messages and the full list of
+#'   parameters and timers at the end of execution.  Default value "FALSE"
+#'   (logical).
 #'
 #' @return A list with several components:
 #' \item{codes}{Matrix to save the output sparse codes of the test matrix
 #'   (--test_file) to (numeric matrix).}
-#' \item{dictionary}{Matrix to save the output dictionary to (numeric matrix).}
-#' \item{output_model}{File to save trained sparse coding model to (SparseCoding).}
+#' \item{dictionary}{Matrix to save the output dictionary to (numeric
+#'   matrix).}
+#' \item{output_model}{File to save trained sparse coding model to
+#'   (SparseCoding).}
 #'
 #' @details
 #' An implementation of Sparse Coding with Dictionary Learning, which achieves

@@ -8,8 +8,9 @@
 #'
 #' @param input File containing observations (numeric matrix).
 #' @param input_model File containing HMM (HMMModel).
-#' @param verbose Display informational messages and the full list of parameters and
-#'   timers at the end of execution.  Default value "FALSE" (logical).
+#' @param verbose Display informational messages and the full list of
+#'   parameters and timers at the end of execution.  Default value "FALSE"
+#'   (logical).
 #'
 #' @return A list with several components:
 #' \item{log_likelihood}{Log-likelihood of the sequence.  Default value "0"

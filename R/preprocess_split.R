@@ -6,19 +6,22 @@
 #'
 #' @param input Matrix containing data (numeric matrix).
 #' @param input_labels Matrix containing labels (integer matrix).
-#' @param no_shuffle Avoid shuffling and splitting the data.  Default value "FALSE"
+#' @param no_shuffle Avoid shuffling and splitting the data.  Default value
+#'   "FALSE" (logical).
+#' @param seed Random seed (0 for std::time(NULL)).  Default value "0"
+#'   (integer).
+#' @param test_ratio Ratio of test set; if not set,the ratio defaults to
+#'   0..  Default value "0.2" (numeric).
+#' @param verbose Display informational messages and the full list of
+#'   parameters and timers at the end of execution.  Default value "FALSE"
 #'   (logical).
-#' @param seed Random seed (0 for std::time(NULL)).  Default value "0" (integer).
-#' @param test_ratio Ratio of test set; if not set,the ratio defaults to 0..  Default
-#'   value "0.2" (numeric).
-#' @param verbose Display informational messages and the full list of parameters and
-#'   timers at the end of execution.  Default value "FALSE" (logical).
 #'
 #' @return A list with several components:
 #' \item{test}{Matrix to save test data to (numeric matrix).}
 #' \item{test_labels}{Matrix to save test labels to (integer matrix).}
 #' \item{training}{Matrix to save training data to (numeric matrix).}
-#' \item{training_labels}{Matrix to save train labels to (integer matrix).}
+#' \item{training_labels}{Matrix to save train labels to (integer
+#'   matrix).}
 #'
 #' @details
 #' This utility takes a dataset and optionally labels and splits them into a

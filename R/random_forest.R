@@ -9,35 +9,37 @@
 #' @param input_model Pre-trained random forest to use for classification
 #'   (RandomForestModel).
 #' @param labels Labels for training dataset (integer row).
-#' @param maximum_depth Maximum depth of the tree (0 means no limit).  Default value
-#'   "0" (integer).
-#' @param minimum_gain_split Minimum gain needed to make a split when building a
-#'   tree.  Default value "0" (numeric).
-#' @param minimum_leaf_size Minimum number of points in each leaf node.  Default
-#'   value "1" (integer).
-#' @param num_trees Number of trees in the random forest.  Default value "10"
-#'   (integer).
-#' @param print_training_accuracy If set, then the accuracy of the model on the
-#'   training set will be predicted (verbose must also be specified).  Default
-#'   value "FALSE" (logical).
-#' @param seed Random seed.  If 0, 'std::time(NULL)' is used.  Default value "0"
-#'   (integer).
-#' @param subspace_dim Dimensionality of random subspace to use for each split.  '0'
-#'   will autoselect the square root of data dimensionality.  Default value "0"
-#'   (integer).
+#' @param maximum_depth Maximum depth of the tree (0 means no limit). 
+#'   Default value "0" (integer).
+#' @param minimum_gain_split Minimum gain needed to make a split when
+#'   building a tree.  Default value "0" (numeric).
+#' @param minimum_leaf_size Minimum number of points in each leaf node. 
+#'   Default value "1" (integer).
+#' @param num_trees Number of trees in the random forest.  Default value
+#'   "10" (integer).
+#' @param print_training_accuracy If set, then the accuracy of the model on
+#'   the training set will be predicted (verbose must also be specified). 
+#'   Default value "FALSE" (logical).
+#' @param seed Random seed.  If 0, 'std::time(NULL)' is used.  Default
+#'   value "0" (integer).
+#' @param subspace_dim Dimensionality of random subspace to use for each
+#'   split.  '0' will autoselect the square root of data dimensionality. 
+#'   Default value "0" (integer).
 #' @param test Test dataset to produce predictions for (numeric matrix).
-#' @param test_labels Test dataset labels, if accuracy calculation is desired
-#'   (integer row).
+#' @param test_labels Test dataset labels, if accuracy calculation is
+#'   desired (integer row).
 #' @param training Training dataset (numeric matrix).
-#' @param verbose Display informational messages and the full list of parameters and
-#'   timers at the end of execution.  Default value "FALSE" (logical).
+#' @param verbose Display informational messages and the full list of
+#'   parameters and timers at the end of execution.  Default value "FALSE"
+#'   (logical).
 #'
 #' @return A list with several components:
-#' \item{output_model}{Model to save trained random forest to (RandomForestModel).}
-#' \item{predictions}{Predicted classes for each point in the test set (integer
-#'   row).}
-#' \item{probabilities}{Predicted class probabilities for each point in the test set
-#'   (numeric matrix).}
+#' \item{output_model}{Model to save trained random forest to
+#'   (RandomForestModel).}
+#' \item{predictions}{Predicted classes for each point in the test set
+#'   (integer row).}
+#' \item{probabilities}{Predicted class probabilities for each point in the
+#'   test set (numeric matrix).}
 #'
 #' @details
 #' This program is an implementation of the standard random forest

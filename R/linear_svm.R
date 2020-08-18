@@ -5,45 +5,47 @@
 #' data, a model can be trained and saved for future use; or, a pre-trained
 #' model can be used to classify new points.
 #'
-#' @param delta Margin of difference between correct class and other classes. 
-#'   Default value "1" (numeric).
-#' @param epochs Maximum number of full epochs over dataset for psg.  Default value
-#'   "50" (integer).
+#' @param delta Margin of difference between correct class and other
+#'   classes.  Default value "1" (numeric).
+#' @param epochs Maximum number of full epochs over dataset for psg. 
+#'   Default value "50" (integer).
 #' @param input_model Existing model (parameters) (LinearSVMModel).
-#' @param labels A matrix containing labels (0 or 1) for the points in the training
-#'   set (y) (integer row).
-#' @param lambda L2-regularization parameter for training.  Default value "0.0001"
-#'   (numeric).
-#' @param max_iterations Maximum iterations for optimizer (0 indicates no limit). 
-#'   Default value "10000" (integer).
-#' @param no_intercept Do not add the intercept term to the model.  Default value
-#'   "FALSE" (logical).
-#' @param num_classes Number of classes for classification; if unspecified (or 0),
-#'   the number of classes found in the labels will be used.  Default value "0"
-#'   (integer).
-#' @param optimizer Optimizer to use for training ('lbfgs' or 'psgd').  Default value
-#'   "lbfgs" (character).
-#' @param seed Random seed.  If 0, 'std::time(NULL)' is used.  Default value "0"
-#'   (integer).
-#' @param shuffle Don't shuffle the order in which data points are visited for
-#'   parallel SGD.  Default value "FALSE" (logical).
-#' @param step_size Step size for parallel SGD optimizer.  Default value "0.01"
-#'   (numeric).
+#' @param labels A matrix containing labels (0 or 1) for the points in the
+#'   training set (y) (integer row).
+#' @param lambda L2-regularization parameter for training.  Default value
+#'   "0.0001" (numeric).
+#' @param max_iterations Maximum iterations for optimizer (0 indicates no
+#'   limit).  Default value "10000" (integer).
+#' @param no_intercept Do not add the intercept term to the model.  Default
+#'   value "FALSE" (logical).
+#' @param num_classes Number of classes for classification; if unspecified
+#'   (or 0), the number of classes found in the labels will be used.  Default
+#'   value "0" (integer).
+#' @param optimizer Optimizer to use for training ('lbfgs' or 'psgd'). 
+#'   Default value "lbfgs" (character).
+#' @param seed Random seed.  If 0, 'std::time(NULL)' is used.  Default
+#'   value "0" (integer).
+#' @param shuffle Don't shuffle the order in which data points are visited
+#'   for parallel SGD.  Default value "FALSE" (logical).
+#' @param step_size Step size for parallel SGD optimizer.  Default value
+#'   "0.01" (numeric).
 #' @param test Matrix containing test dataset (numeric matrix).
 #' @param test_labels Matrix containing test labels (integer row).
-#' @param tolerance Convergence tolerance for optimizer.  Default value "1e-10"
-#'   (numeric).
-#' @param training A matrix containing the training set (the matrix of predictors, X)
-#'   (numeric matrix).
-#' @param verbose Display informational messages and the full list of parameters and
-#'   timers at the end of execution.  Default value "FALSE" (logical).
+#' @param tolerance Convergence tolerance for optimizer.  Default value
+#'   "1e-10" (numeric).
+#' @param training A matrix containing the training set (the matrix of
+#'   predictors, X) (numeric matrix).
+#' @param verbose Display informational messages and the full list of
+#'   parameters and timers at the end of execution.  Default value "FALSE"
+#'   (logical).
 #'
 #' @return A list with several components:
-#' \item{output_model}{Output for trained linear svm model (LinearSVMModel).}
+#' \item{output_model}{Output for trained linear svm model
+#'   (LinearSVMModel).}
 #' \item{predictions}{If test data is specified, this matrix is where the
 #'   predictions for the test set will be saved (integer row).}
-#' \item{probabilities}{If test data is specified, this matrix is where the class
-#'   probabilities for the test set will be saved (numeric matrix).}
+#' \item{probabilities}{If test data is specified, this matrix is where the
+#'   class probabilities for the test set will be saved (numeric matrix).}
 #'
 #' @details
 #' An implementation of linear SVMs that uses either L-BFGS or parallel SGD

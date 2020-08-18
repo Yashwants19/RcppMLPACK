@@ -6,25 +6,27 @@
 #' clustering of the data.
 #'
 #' @param input Input dataset to perform clustering on (numeric matrix).
-#' @param force_convergence If specified, the mean shift algorithm will continue
-#'   running regardless of max_iterations until the clusters converge.  Default
-#'   value "FALSE" (logical).
-#' @param in_place If specified, a column containing the learned cluster assignments
-#'   will be added to the input dataset file.  In this case, --output_file is
-#'   overridden.  (Do not use with Python..  Default value "FALSE" (logical).
-#' @param labels_only If specified, only the output labels will be written to the
-#'   file specified by --output_file.  Default value "FALSE" (logical).
-#' @param max_iterations Maximum number of iterations before mean shift terminates. 
-#'   Default value "1000" (integer).
-#' @param radius If the distance between two centroids is less than the given radius,
-#'   one will be removed.  A radius of 0 or less means an estimate will be
-#'   calculated and used for the radius.  Default value "0" (numeric).
-#' @param verbose Display informational messages and the full list of parameters and
-#'   timers at the end of execution.  Default value "FALSE" (logical).
+#' @param force_convergence If specified, the mean shift algorithm will
+#'   continue running regardless of max_iterations until the clusters converge. 
+#'   Default value "FALSE" (logical).
+#' @param in_place If specified, a column containing the learned cluster
+#'   assignments will be added to the input dataset file.  In this case,
+#'   --output_file is overridden.  (Do not use with Python..  Default value
+#'   "FALSE" (logical).
+#' @param labels_only If specified, only the output labels will be written
+#'   to the file specified by --output_file.  Default value "FALSE" (logical).
+#' @param max_iterations Maximum number of iterations before mean shift
+#'   terminates.  Default value "1000" (integer).
+#' @param radius If the distance between two centroids is less than the
+#'   given radius, one will be removed.  A radius of 0 or less means an estimate
+#'   will be calculated and used for the radius.  Default value "0" (numeric).
+#' @param verbose Display informational messages and the full list of
+#'   parameters and timers at the end of execution.  Default value "FALSE"
+#'   (logical).
 #'
 #' @return A list with several components:
-#' \item{centroid}{If specified, the centroids of each cluster will be written to
-#'   the given matrix (numeric matrix).}
+#' \item{centroid}{If specified, the centroids of each cluster will be
+#'   written to the given matrix (numeric matrix).}
 #' \item{output}{Matrix to write output labels or labeled data to (numeric
 #'   matrix).}
 #'

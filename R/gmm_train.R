@@ -6,35 +6,39 @@
 #' tools.
 #'
 #' @param gaussians Number of Gaussians in the GMM (integer).
-#' @param input The training data on which the model will be fit (numeric matrix).
-#' @param diagonal_covariance Force the covariance of the Gaussians to be diagonal. 
-#'   This can accelerate training time significantly.  Default value "FALSE"
-#'   (logical).
-#' @param input_model Initial input GMM model to start training with (GMM).
-#' @param kmeans_max_iterations Maximum number of iterations for the k-means
-#'   algorithm (used to initialize EM).  Default value "1000" (integer).
-#' @param max_iterations Maximum number of iterations of EM algorithm (passing 0 will
-#'   run until convergence).  Default value "250" (integer).
-#' @param no_force_positive Do not force the covariance matrices to be positive
-#'   definite.  Default value "FALSE" (logical).
-#' @param noise Variance of zero-mean Gaussian noise to add to data.  Default value
-#'   "0" (numeric).
-#' @param percentage If using --refined_start, specify the percentage of the dataset
-#'   used for each sampling (should be between 0.0 and 1.0).  Default value
-#'   "0.02" (numeric).
-#' @param refined_start During the initialization, use refined initial positions for
-#'   k-means clustering (Bradley and Fayyad, 1998).  Default value "FALSE"
-#'   (logical).
-#' @param samplings If using --refined_start, specify the number of samplings used
-#'   for initial points.  Default value "100" (integer).
-#' @param seed Random seed.  If 0, 'std::time(NULL)' is used.  Default value "0"
+#' @param input The training data on which the model will be fit (numeric
+#'   matrix).
+#' @param diagonal_covariance Force the covariance of the Gaussians to be
+#'   diagonal.  This can accelerate training time significantly.  Default value
+#'   "FALSE" (logical).
+#' @param input_model Initial input GMM model to start training with
+#'   (GMM).
+#' @param kmeans_max_iterations Maximum number of iterations for the
+#'   k-means algorithm (used to initialize EM).  Default value "1000"
 #'   (integer).
+#' @param max_iterations Maximum number of iterations of EM algorithm
+#'   (passing 0 will run until convergence).  Default value "250" (integer).
+#' @param no_force_positive Do not force the covariance matrices to be
+#'   positive definite.  Default value "FALSE" (logical).
+#' @param noise Variance of zero-mean Gaussian noise to add to data. 
+#'   Default value "0" (numeric).
+#' @param percentage If using --refined_start, specify the percentage of
+#'   the dataset used for each sampling (should be between 0.0 and 1.0). 
+#'   Default value "0.02" (numeric).
+#' @param refined_start During the initialization, use refined initial
+#'   positions for k-means clustering (Bradley and Fayyad, 1998).  Default value
+#'   "FALSE" (logical).
+#' @param samplings If using --refined_start, specify the number of
+#'   samplings used for initial points.  Default value "100" (integer).
+#' @param seed Random seed.  If 0, 'std::time(NULL)' is used.  Default
+#'   value "0" (integer).
 #' @param tolerance Tolerance for convergence of EM.  Default value "1e-10"
 #'   (numeric).
-#' @param trials Number of trials to perform in training GMM.  Default value "1"
-#'   (integer).
-#' @param verbose Display informational messages and the full list of parameters and
-#'   timers at the end of execution.  Default value "FALSE" (logical).
+#' @param trials Number of trials to perform in training GMM.  Default
+#'   value "1" (integer).
+#' @param verbose Display informational messages and the full list of
+#'   parameters and timers at the end of execution.  Default value "FALSE"
+#'   (logical).
 #'
 #' @return A list with several components:
 #' \item{output_model}{Output for trained GMM model (GMM).}

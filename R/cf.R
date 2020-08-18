@@ -5,40 +5,44 @@
 #' recommender systems.  This can be used to train a new CF model, or use an
 #' existing CF model to compute recommendations.
 #'
-#' @param algorithm Algorithm used for matrix factorization.  Default value "NMF"
-#'   (character).
-#' @param all_user_recommendations Generate recommendations for all users.  Default
-#'   value "FALSE" (logical).
+#' @param algorithm Algorithm used for matrix factorization.  Default value
+#'   "NMF" (character).
+#' @param all_user_recommendations Generate recommendations for all users. 
+#'   Default value "FALSE" (logical).
 #' @param input_model Trained CF model to load (CFModel).
-#' @param interpolation Algorithm used for weight interpolation.  Default value
-#'   "average" (character).
-#' @param iteration_only_termination Terminate only when the maximum number of
-#'   iterations is reached.  Default value "FALSE" (logical).
-#' @param max_iterations Maximum number of iterations. If set to zero, there is no
-#'   limit on the number of iterations.  Default value "1000" (integer).
-#' @param min_residue Residue required to terminate the factorization (lower values
-#'   generally mean better fits).  Default value "1e-05" (numeric).
-#' @param neighbor_search Algorithm used for neighbor search.  Default value
-#'   "euclidean" (character).
-#' @param neighborhood Size of the neighborhood of similar users to consider for each
-#'   query user.  Default value "5" (integer).
-#' @param normalization Normalization performed on the ratings.  Default value "none"
-#'   (character).
-#' @param query List of query users for which recommendations should be generated
-#'   (integer matrix).
-#' @param rank Rank of decomposed matrices (if 0, a heuristic is used to estimate the
-#'   rank).  Default value "0" (integer).
-#' @param recommendations Number of recommendations to generate for each query user. 
-#'   Default value "5" (integer).
-#' @param seed Set the random seed (0 uses std::time(NULL)).  Default value "0"
+#' @param interpolation Algorithm used for weight interpolation.  Default
+#'   value "average" (character).
+#' @param iteration_only_termination Terminate only when the maximum number
+#'   of iterations is reached.  Default value "FALSE" (logical).
+#' @param max_iterations Maximum number of iterations. If set to zero,
+#'   there is no limit on the number of iterations.  Default value "1000"
 #'   (integer).
+#' @param min_residue Residue required to terminate the factorization
+#'   (lower values generally mean better fits).  Default value "1e-05"
+#'   (numeric).
+#' @param neighbor_search Algorithm used for neighbor search.  Default
+#'   value "euclidean" (character).
+#' @param neighborhood Size of the neighborhood of similar users to
+#'   consider for each query user.  Default value "5" (integer).
+#' @param normalization Normalization performed on the ratings.  Default
+#'   value "none" (character).
+#' @param query List of query users for which recommendations should be
+#'   generated (integer matrix).
+#' @param rank Rank of decomposed matrices (if 0, a heuristic is used to
+#'   estimate the rank).  Default value "0" (integer).
+#' @param recommendations Number of recommendations to generate for each
+#'   query user.  Default value "5" (integer).
+#' @param seed Set the random seed (0 uses std::time(NULL)).  Default value
+#'   "0" (integer).
 #' @param test Test set to calculate RMSE on (numeric matrix).
 #' @param training Input dataset to perform CF on (numeric matrix).
-#' @param verbose Display informational messages and the full list of parameters and
-#'   timers at the end of execution.  Default value "FALSE" (logical).
+#' @param verbose Display informational messages and the full list of
+#'   parameters and timers at the end of execution.  Default value "FALSE"
+#'   (logical).
 #'
 #' @return A list with several components:
-#' \item{output}{Matrix that will store output recommendations (integer matrix).}
+#' \item{output}{Matrix that will store output recommendations (integer
+#'   matrix).}
 #' \item{output_model}{Output for trained CF model (CFModel).}
 #'
 #' @details

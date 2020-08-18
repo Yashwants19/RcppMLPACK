@@ -5,39 +5,42 @@
 #' Given a dataset and a value of k, this computes and returns a k-means
 #' clustering on that data.
 #'
-#' @param clusters Number of clusters to find (0 autodetects from initial centroids)
-#'   (integer).
+#' @param clusters Number of clusters to find (0 autodetects from initial
+#'   centroids) (integer).
 #' @param input Input dataset to perform clustering on (numeric matrix).
 #' @param algorithm Algorithm to use for the Lloyd iteration ('naive',
 #'   'pelleg-moore', 'elkan', 'hamerly', 'dualtree', or 'dualtree-covertree'). 
 #'   Default value "naive" (character).
-#' @param allow_empty_clusters Allow empty clusters to be persist.  Default value
-#'   "FALSE" (logical).
-#' @param in_place If specified, a column containing the learned cluster assignments
-#'   will be added to the input dataset file.  In this case, --output_file is
-#'   overridden. (Do not use in Python..  Default value "FALSE" (logical).
-#' @param initial_centroids Start with the specified initial centroids (numeric
-#'   matrix).
-#' @param kill_empty_clusters Remove empty clusters when they occur.  Default value
-#'   "FALSE" (logical).
-#' @param labels_only Only output labels into output file.  Default value "FALSE"
+#' @param allow_empty_clusters Allow empty clusters to be persist.  Default
+#'   value "FALSE" (logical).
+#' @param in_place If specified, a column containing the learned cluster
+#'   assignments will be added to the input dataset file.  In this case,
+#'   --output_file is overridden. (Do not use in Python..  Default value "FALSE"
 #'   (logical).
-#' @param max_iterations Maximum number of iterations before k-means terminates. 
-#'   Default value "1000" (integer).
-#' @param percentage Percentage of dataset to use for each refined start sampling
-#'   (use when --refined_start is specified).  Default value "0.02" (numeric).
-#' @param refined_start Use the refined initial point strategy by Bradley and Fayyad
-#'   to choose initial points.  Default value "FALSE" (logical).
-#' @param samplings Number of samplings to perform for refined start (use when
-#'   --refined_start is specified).  Default value "100" (integer).
-#' @param seed Random seed.  If 0, 'std::time(NULL)' is used.  Default value "0"
-#'   (integer).
-#' @param verbose Display informational messages and the full list of parameters and
-#'   timers at the end of execution.  Default value "FALSE" (logical).
+#' @param initial_centroids Start with the specified initial centroids
+#'   (numeric matrix).
+#' @param kill_empty_clusters Remove empty clusters when they occur. 
+#'   Default value "FALSE" (logical).
+#' @param labels_only Only output labels into output file.  Default value
+#'   "FALSE" (logical).
+#' @param max_iterations Maximum number of iterations before k-means
+#'   terminates.  Default value "1000" (integer).
+#' @param percentage Percentage of dataset to use for each refined start
+#'   sampling (use when --refined_start is specified).  Default value "0.02"
+#'   (numeric).
+#' @param refined_start Use the refined initial point strategy by Bradley
+#'   and Fayyad to choose initial points.  Default value "FALSE" (logical).
+#' @param samplings Number of samplings to perform for refined start (use
+#'   when --refined_start is specified).  Default value "100" (integer).
+#' @param seed Random seed.  If 0, 'std::time(NULL)' is used.  Default
+#'   value "0" (integer).
+#' @param verbose Display informational messages and the full list of
+#'   parameters and timers at the end of execution.  Default value "FALSE"
+#'   (logical).
 #'
 #' @return A list with several components:
-#' \item{centroid}{If specified, the centroids of each cluster will  be written to
-#'   the given file (numeric matrix).}
+#' \item{centroid}{If specified, the centroids of each cluster will  be
+#'   written to the given file (numeric matrix).}
 #' \item{output}{Matrix to store output labels or labeled data to (numeric
 #'   matrix).}
 #'

@@ -75,7 +75,7 @@
 #include <mlpack/methods/fastmks/fastmks_model.cpp>
 #include <mlpack/methods/gmm/diagonal_gmm.cpp>
 #include <mlpack/methods/gmm/gmm.cpp>
-//#include <mlpack/methods/hoeffding_trees/hoeffding_tree_model.cpp>
+#include <mlpack/methods/hoeffding_trees/hoeffding_tree_model.cpp>
 #include <mlpack/methods/lars/lars.cpp>
 #include <mlpack/methods/linear_regression/linear_regression.cpp>
 #include <mlpack/methods/local_coordinate_coding/lcc.cpp>
@@ -94,26 +94,7 @@
 
 
 #include <mlpack/core.hpp>
-/*
-// These are all the boost files, we need to compile R bindings for mlpack that
-// are not a part of mlpack itself.
-#include <boost/serialization/archive_exception.cpp>
-#include <boost/serialization/basic_archive.cpp>
-#include <boost/serialization/basic_oarchive.cpp>
-#include <boost/serialization/basic_oserializer.cpp>
-#include <boost/serialization/basic_iarchive.cpp>
-#include <boost/serialization/basic_iserializer.cpp>
-#include <boost/serialization/basic_pointer_iserializer.cpp>
-#include <boost/serialization/basic_pointer_oserializer.cpp>
-#include <boost/serialization/basic_text_oprimitive.cpp>
-#include <boost/serialization/binary_iarchive.cpp>
-#include <boost/serialization/binary_oarchive.cpp>
-#include <boost/serialization/extended_type_info_typeid.cpp>
-#include <boost/serialization/extended_type_info.cpp>
-#include <boost/serialization/basic_serializer_map.cpp>
-#include <boost/serialization/void_cast.cpp>
-#include <boost/serialization/utf8_codecvt_facet.cpp>
-*/
+
 #undef ARMA_EXTRA_MAT_PROTO
 #undef ARMA_EXTRA_MAT_MEAT
 

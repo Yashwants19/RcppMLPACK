@@ -6,28 +6,31 @@
 #' linear combination of a few points in the dataset; once an LCC model is
 #' trained, it can be used to transform points later also.
 #'
-#' @param atoms Number of atoms in the dictionary.  Default value "0" (integer).
+#' @param atoms Number of atoms in the dictionary.  Default value "0"
+#'   (integer).
 #' @param initial_dictionary Optional initial dictionary (numeric matrix).
 #' @param input_model Input LCC model (LocalCoordinateCoding).
-#' @param lambda Weighted l1-norm regularization parameter.  Default value "0"
-#'   (numeric).
-#' @param max_iterations Maximum number of iterations for LCC (0 indicates no limit).
-#'    Default value "0" (integer).
-#' @param normalize If set, the input data matrix will be normalized before coding. 
-#'   Default value "FALSE" (logical).
-#' @param seed Random seed.  If 0, 'std::time(NULL)' is used.  Default value "0"
-#'   (integer).
+#' @param lambda Weighted l1-norm regularization parameter.  Default value
+#'   "0" (numeric).
+#' @param max_iterations Maximum number of iterations for LCC (0 indicates
+#'   no limit).  Default value "0" (integer).
+#' @param normalize If set, the input data matrix will be normalized before
+#'   coding.  Default value "FALSE" (logical).
+#' @param seed Random seed.  If 0, 'std::time(NULL)' is used.  Default
+#'   value "0" (integer).
 #' @param test Test points to encode (numeric matrix).
 #' @param tolerance Tolerance for objective function.  Default value "0.01"
 #'   (numeric).
 #' @param training Matrix of training data (X) (numeric matrix).
-#' @param verbose Display informational messages and the full list of parameters and
-#'   timers at the end of execution.  Default value "FALSE" (logical).
+#' @param verbose Display informational messages and the full list of
+#'   parameters and timers at the end of execution.  Default value "FALSE"
+#'   (logical).
 #'
 #' @return A list with several components:
 #' \item{codes}{Output codes matrix (numeric matrix).}
 #' \item{dictionary}{Output dictionary matrix (numeric matrix).}
-#' \item{output_model}{Output for trained LCC model (LocalCoordinateCoding).}
+#' \item{output_model}{Output for trained LCC model
+#'   (LocalCoordinateCoding).}
 #'
 #' @details
 #' An implementation of Local Coordinate Coding (LCC), which codes data that

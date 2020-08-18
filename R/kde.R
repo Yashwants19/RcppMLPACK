@@ -6,39 +6,43 @@
 #' can estimate the density function at the location of each query point using
 #' trees; trees that are built can be saved for later use.
 #'
-#' @param abs_error Relative error tolerance for the prediction.  Default value "0"
-#'   (numeric).
-#' @param algorithm Algorithm to use for the prediction.('dual-tree', 'single-tree').
-#'    Default value "dual-tree" (character).
+#' @param abs_error Relative error tolerance for the prediction.  Default
+#'   value "0" (numeric).
+#' @param algorithm Algorithm to use for the prediction.('dual-tree',
+#'   'single-tree').  Default value "dual-tree" (character).
 #' @param bandwidth Bandwidth of the kernel.  Default value "1" (numeric).
-#' @param initial_sample_size Initial sample size for Monte Carlo estimations. 
-#'   Default value "100" (integer).
+#' @param initial_sample_size Initial sample size for Monte Carlo
+#'   estimations.  Default value "100" (integer).
 #' @param input_model Contains pre-trained KDE model (KDEModel).
-#' @param kernel Kernel to use for the prediction.('gaussian', 'epanechnikov',
-#'   'laplacian', 'spherical', 'triangular').  Default value "gaussian"
-#'   (character).
-#' @param mc_break_coef Controls what fraction of the amount of node's descendants is
-#'   the limit for the sample size before it recurses.  Default value "0.4"
+#' @param kernel Kernel to use for the prediction.('gaussian',
+#'   'epanechnikov', 'laplacian', 'spherical', 'triangular').  Default value
+#'   "gaussian" (character).
+#' @param mc_break_coef Controls what fraction of the amount of node's
+#'   descendants is the limit for the sample size before it recurses.  Default
+#'   value "0.4" (numeric).
+#' @param mc_entry_coef Controls how much larger does the amount of node
+#'   descendants has to be compared to the initial sample size in order to be a
+#'   candidate for Monte Carlo estimations.  Default value "3" (numeric).
+#' @param mc_probability Probability of the estimation being bounded by
+#'   relative error when using Monte Carlo estimations.  Default value "0.95"
 #'   (numeric).
-#' @param mc_entry_coef Controls how much larger does the amount of node descendants
-#'   has to be compared to the initial sample size in order to be a candidate
-#'   for Monte Carlo estimations.  Default value "3" (numeric).
-#' @param mc_probability Probability of the estimation being bounded by relative
-#'   error when using Monte Carlo estimations.  Default value "0.95" (numeric).
-#' @param monte_carlo Whether to use Monte Carlo estimations when possible.  Default
-#'   value "FALSE" (logical).
+#' @param monte_carlo Whether to use Monte Carlo estimations when possible.
+#'    Default value "FALSE" (logical).
 #' @param query Query dataset to KDE on (numeric matrix).
 #' @param reference Input reference dataset use for KDE (numeric matrix).
-#' @param rel_error Relative error tolerance for the prediction.  Default value
-#'   "0.05" (numeric).
-#' @param tree Tree to use for the prediction.('kd-tree', 'ball-tree', 'cover-tree',
-#'   'octree', 'r-tree').  Default value "kd-tree" (character).
-#' @param verbose Display informational messages and the full list of parameters and
-#'   timers at the end of execution.  Default value "FALSE" (logical).
+#' @param rel_error Relative error tolerance for the prediction.  Default
+#'   value "0.05" (numeric).
+#' @param tree Tree to use for the prediction.('kd-tree', 'ball-tree',
+#'   'cover-tree', 'octree', 'r-tree').  Default value "kd-tree" (character).
+#' @param verbose Display informational messages and the full list of
+#'   parameters and timers at the end of execution.  Default value "FALSE"
+#'   (logical).
 #'
 #' @return A list with several components:
-#' \item{output_model}{If specified, the KDE model will be saved here (KDEModel).}
-#' \item{predictions}{Vector to store density predictions (numeric column).}
+#' \item{output_model}{If specified, the KDE model will be saved here
+#'   (KDEModel).}
+#' \item{predictions}{Vector to store density predictions (numeric
+#'   column).}
 #'
 #' @details
 #' This program performs a Kernel Density Estimation. KDE is a non-parametric

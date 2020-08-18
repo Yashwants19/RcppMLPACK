@@ -7,47 +7,52 @@
 #' a preprocessing step.
 #'
 #' @param input Input dataset to run LMNN on (numeric matrix).
-#' @param batch_size Batch size for mini-batch SGD.  Default value "50" (integer).
-#' @param center Perform mean-centering on the dataset. It is useful when the
-#'   centroid of the data is far from the origin.  Default value "FALSE"
-#'   (logical).
-#' @param distance Initial distance matrix to be used as starting poin (numeric
-#'   matrix).
-#' @param k Number of target neighbors to use for each datapoint.  Default value "1"
+#' @param batch_size Batch size for mini-batch SGD.  Default value "50"
 #'   (integer).
+#' @param center Perform mean-centering on the dataset. It is useful when
+#'   the centroid of the data is far from the origin.  Default value "FALSE"
+#'   (logical).
+#' @param distance Initial distance matrix to be used as starting poin
+#'   (numeric matrix).
+#' @param k Number of target neighbors to use for each datapoint.  Default
+#'   value "1" (integer).
 #' @param labels Labels for input dataset (integer row).
-#' @param linear_scan Don't shuffle the order in which data points are visited for
-#'   SGD or mini-batch SGD.  Default value "FALSE" (logical).
-#' @param max_iterations Maximum number of iterations for L-BFGS (0 indicates no
-#'   limit).  Default value "100000" (integer).
-#' @param normalize Use a normalized starting point for optimization. Itis useful for
-#'   when points are far apart, or when SGD is returning NaN.  Default value
-#'   "FALSE" (logical).
-#' @param optimizer Optimizer to use; 'amsgrad', 'bbsgd', 'sgd', or 'lbfgs'.  Default
-#'   value "amsgrad" (character).
-#' @param passes Maximum number of full passes over dataset for AMSGrad, BB_SGD and
-#'   SGD.  Default value "50" (integer).
-#' @param print_accuracy Print accuracies on initial and transformed datase.  Default
-#'   value "FALSE" (logical).
-#' @param range Number of iterations after which impostors needs to be recalculate. 
-#'   Default value "1" (integer).
+#' @param linear_scan Don't shuffle the order in which data points are
+#'   visited for SGD or mini-batch SGD.  Default value "FALSE" (logical).
+#' @param max_iterations Maximum number of iterations for L-BFGS (0
+#'   indicates no limit).  Default value "100000" (integer).
+#' @param normalize Use a normalized starting point for optimization. Itis
+#'   useful for when points are far apart, or when SGD is returning NaN. 
+#'   Default value "FALSE" (logical).
+#' @param optimizer Optimizer to use; 'amsgrad', 'bbsgd', 'sgd', or
+#'   'lbfgs'.  Default value "amsgrad" (character).
+#' @param passes Maximum number of full passes over dataset for AMSGrad,
+#'   BB_SGD and SGD.  Default value "50" (integer).
+#' @param print_accuracy Print accuracies on initial and transformed
+#'   datase.  Default value "FALSE" (logical).
+#' @param range Number of iterations after which impostors needs to be
+#'   recalculate.  Default value "1" (integer).
 #' @param rank Rank of distance matrix to be optimized..  Default value "0"
 #'   (integer).
-#' @param regularization Regularization for LMNN objective function.  Default value
-#'   "0.5" (numeric).
-#' @param seed Random seed.  If 0, 'std::time(NULL)' is used.  Default value "0"
-#'   (integer).
-#' @param step_size Step size for AMSGrad, BB_SGD and SGD (alpha).  Default value
-#'   "0.01" (numeric).
-#' @param tolerance Maximum tolerance for termination of AMSGrad, BB_SGD, SGD or
-#'   L-BFGS.  Default value "1e-07" (numeric).
-#' @param verbose Display informational messages and the full list of parameters and
-#'   timers at the end of execution.  Default value "FALSE" (logical).
+#' @param regularization Regularization for LMNN objective function. 
+#'   Default value "0.5" (numeric).
+#' @param seed Random seed.  If 0, 'std::time(NULL)' is used.  Default
+#'   value "0" (integer).
+#' @param step_size Step size for AMSGrad, BB_SGD and SGD (alpha).  Default
+#'   value "0.01" (numeric).
+#' @param tolerance Maximum tolerance for termination of AMSGrad, BB_SGD,
+#'   SGD or L-BFGS.  Default value "1e-07" (numeric).
+#' @param verbose Display informational messages and the full list of
+#'   parameters and timers at the end of execution.  Default value "FALSE"
+#'   (logical).
 #'
 #' @return A list with several components:
-#' \item{centered_data}{Output matrix for mean-centered dataset (numeric matrix).}
-#' \item{output}{Output matrix for learned distance matrix (numeric matrix).}
-#' \item{transformed_data}{Output matrix for transformed dataset (numeric matrix).}
+#' \item{centered_data}{Output matrix for mean-centered dataset (numeric
+#'   matrix).}
+#' \item{output}{Output matrix for learned distance matrix (numeric
+#'   matrix).}
+#' \item{transformed_data}{Output matrix for transformed dataset (numeric
+#'   matrix).}
 #'
 #' @details
 #' This program implements Large Margin Nearest Neighbors, a distance learning

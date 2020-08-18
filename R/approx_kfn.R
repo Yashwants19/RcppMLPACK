@@ -8,21 +8,24 @@
 #'
 #' @param algorithm Algorithm to use: 'ds' or 'qdafn'.  Default value "ds"
 #'   (character).
-#' @param calculate_error If set, calculate the average distance error for the first
-#'   furthest neighbor only.  Default value "FALSE" (logical).
-#' @param exact_distances Matrix containing exact distances to furthest neighbors;
-#'   this can be used to avoid explicit calculation when --calculate_error is
-#'   set (numeric matrix).
+#' @param calculate_error If set, calculate the average distance error for
+#'   the first furthest neighbor only.  Default value "FALSE" (logical).
+#' @param exact_distances Matrix containing exact distances to furthest
+#'   neighbors; this can be used to avoid explicit calculation when
+#'   --calculate_error is set (numeric matrix).
 #' @param input_model File containing input model (ApproxKFNModel).
 #' @param k Number of furthest neighbors to search for.  Default value "0"
 #'   (integer).
-#' @param num_projections Number of projections to use in each hash table.  Default
-#'   value "5" (integer).
-#' @param num_tables Number of hash tables to use.  Default value "5" (integer).
+#' @param num_projections Number of projections to use in each hash table. 
+#'   Default value "5" (integer).
+#' @param num_tables Number of hash tables to use.  Default value "5"
+#'   (integer).
 #' @param query Matrix containing query points (numeric matrix).
-#' @param reference Matrix containing the reference dataset (numeric matrix).
-#' @param verbose Display informational messages and the full list of parameters and
-#'   timers at the end of execution.  Default value "FALSE" (logical).
+#' @param reference Matrix containing the reference dataset (numeric
+#'   matrix).
+#' @param verbose Display informational messages and the full list of
+#'   parameters and timers at the end of execution.  Default value "FALSE"
+#'   (logical).
 #'
 #' @return A list with several components:
 #' \item{distances}{Matrix to save furthest neighbor distances to (numeric

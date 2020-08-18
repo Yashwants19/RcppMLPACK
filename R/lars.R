@@ -7,23 +7,24 @@
 #'
 #' @param input Matrix of covariates (X) (numeric matrix).
 #' @param input_model Trained LARS model to use (LARS).
-#' @param lambda1 Regularization parameter for l1-norm penalty.  Default value "0"
-#'   (numeric).
-#' @param lambda2 Regularization parameter for l2-norm penalty.  Default value "0"
-#'   (numeric).
+#' @param lambda1 Regularization parameter for l1-norm penalty.  Default
+#'   value "0" (numeric).
+#' @param lambda2 Regularization parameter for l2-norm penalty.  Default
+#'   value "0" (numeric).
 #' @param responses Matrix of responses/observations (y) (numeric matrix).
-#' @param test Matrix containing points to regress on (test points) (numeric
-#'   matrix).
-#' @param use_cholesky Use Cholesky decomposition during computation rather than
-#'   explicitly computing the full Gram matrix.  Default value "FALSE"
+#' @param test Matrix containing points to regress on (test points)
+#'   (numeric matrix).
+#' @param use_cholesky Use Cholesky decomposition during computation rather
+#'   than explicitly computing the full Gram matrix.  Default value "FALSE"
 #'   (logical).
-#' @param verbose Display informational messages and the full list of parameters and
-#'   timers at the end of execution.  Default value "FALSE" (logical).
+#' @param verbose Display informational messages and the full list of
+#'   parameters and timers at the end of execution.  Default value "FALSE"
+#'   (logical).
 #'
 #' @return A list with several components:
 #' \item{output_model}{Output LARS model (LARS).}
-#' \item{output_predictions}{If --test_file is specified, this file is where the
-#'   predicted responses will be saved (numeric matrix).}
+#' \item{output_predictions}{If --test_file is specified, this file is
+#'   where the predicted responses will be saved (numeric matrix).}
 #'
 #' @details
 #' An implementation of LARS: Least Angle Regression (Stagewise/laSso).  This is

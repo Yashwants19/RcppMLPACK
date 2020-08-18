@@ -6,41 +6,46 @@
 #' can find the k nearest neighbors in the reference set of each query point
 #' using trees; trees that are built can be saved for future use.
 #'
-#' @param algorithm Type of neighbor search: 'naive', 'single_tree', 'dual_tree',
-#'   'greedy'.  Default value "dual_tree" (character).
-#' @param epsilon If specified, will do approximate nearest neighbor search with
-#'   given relative error.  Default value "0" (numeric).
+#' @param algorithm Type of neighbor search: 'naive', 'single_tree',
+#'   'dual_tree', 'greedy'.  Default value "dual_tree" (character).
+#' @param epsilon If specified, will do approximate nearest neighbor search
+#'   with given relative error.  Default value "0" (numeric).
 #' @param input_model Pre-trained kNN model (KNNModel).
-#' @param k Number of nearest neighbors to find.  Default value "0" (integer).
-#' @param leaf_size Leaf size for tree building (used for kd-trees, vp trees, random
-#'   projection trees, UB trees, R trees, R* trees, X trees, Hilbert R trees, R+
-#'   trees, R++ trees, spill trees, and octrees).  Default value "20"
+#' @param k Number of nearest neighbors to find.  Default value "0"
 #'   (integer).
-#' @param query Matrix containing query points (optional) (numeric matrix).
+#' @param leaf_size Leaf size for tree building (used for kd-trees, vp
+#'   trees, random projection trees, UB trees, R trees, R* trees, X trees,
+#'   Hilbert R trees, R+ trees, R++ trees, spill trees, and octrees).  Default
+#'   value "20" (integer).
+#' @param query Matrix containing query points (optional) (numeric
+#'   matrix).
 #' @param random_basis Before tree-building, project the data onto a random
 #'   orthogonal basis.  Default value "FALSE" (logical).
-#' @param reference Matrix containing the reference dataset (numeric matrix).
-#' @param rho Balance threshold (only valid for spill trees).  Default value "0.7"
-#'   (numeric).
-#' @param seed Random seed (if 0, std::time(NULL) is used).  Default value "0"
-#'   (integer).
-#' @param tau Overlapping size (only valid for spill trees).  Default value "0"
-#'   (numeric).
-#' @param tree_type Type of tree to use: 'kd', 'vp', 'rp', 'max-rp', 'ub', 'cover',
-#'   'r', 'r-star', 'x', 'ball', 'hilbert-r', 'r-plus', 'r-plus-plus', 'spill',
-#'   'oct'.  Default value "kd" (character).
-#' @param true_distances Matrix of true distances to compute the effective error
-#'   (average relative error) (it is printed when -v is specified) (numeric
+#' @param reference Matrix containing the reference dataset (numeric
 #'   matrix).
-#' @param true_neighbors Matrix of true neighbors to compute the recall (it is
-#'   printed when -v is specified) (integer matrix).
-#' @param verbose Display informational messages and the full list of parameters and
-#'   timers at the end of execution.  Default value "FALSE" (logical).
+#' @param rho Balance threshold (only valid for spill trees).  Default
+#'   value "0.7" (numeric).
+#' @param seed Random seed (if 0, std::time(NULL) is used).  Default value
+#'   "0" (integer).
+#' @param tau Overlapping size (only valid for spill trees).  Default value
+#'   "0" (numeric).
+#' @param tree_type Type of tree to use: 'kd', 'vp', 'rp', 'max-rp', 'ub',
+#'   'cover', 'r', 'r-star', 'x', 'ball', 'hilbert-r', 'r-plus', 'r-plus-plus',
+#'   'spill', 'oct'.  Default value "kd" (character).
+#' @param true_distances Matrix of true distances to compute the effective
+#'   error (average relative error) (it is printed when -v is specified)
+#'   (numeric matrix).
+#' @param true_neighbors Matrix of true neighbors to compute the recall (it
+#'   is printed when -v is specified) (integer matrix).
+#' @param verbose Display informational messages and the full list of
+#'   parameters and timers at the end of execution.  Default value "FALSE"
+#'   (logical).
 #'
 #' @return A list with several components:
 #' \item{distances}{Matrix to output distances into (numeric matrix).}
 #' \item{neighbors}{Matrix to output neighbors into (integer matrix).}
-#' \item{output_model}{If specified, the kNN model will be output here (KNNModel).}
+#' \item{output_model}{If specified, the kNN model will be output here
+#'   (KNNModel).}
 #'
 #' @details
 #' This program will calculate the k-nearest-neighbors of a set of points using

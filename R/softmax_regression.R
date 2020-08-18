@@ -9,28 +9,30 @@
 #'
 #' @param input_model File containing existing model (parameters)
 #'   (SoftmaxRegression).
-#' @param labels A matrix containing labels (0 or 1) for the points in the training
-#'   set (y). The labels must order as a row (integer row).
-#' @param lambda L2-regularization constan.  Default value "0.0001" (numeric).
-#' @param max_iterations Maximum number of iterations before termination.  Default
-#'   value "400" (integer).
-#' @param no_intercept Do not add the intercept term to the model.  Default value
-#'   "FALSE" (logical).
-#' @param number_of_classes Number of classes for classification; if unspecified (or
-#'   0), the number of classes found in the labels will be used.  Default value
-#'   "0" (integer).
+#' @param labels A matrix containing labels (0 or 1) for the points in the
+#'   training set (y). The labels must order as a row (integer row).
+#' @param lambda L2-regularization constan.  Default value "0.0001"
+#'   (numeric).
+#' @param max_iterations Maximum number of iterations before termination. 
+#'   Default value "400" (integer).
+#' @param no_intercept Do not add the intercept term to the model.  Default
+#'   value "FALSE" (logical).
+#' @param number_of_classes Number of classes for classification; if
+#'   unspecified (or 0), the number of classes found in the labels will be used.
+#'    Default value "0" (integer).
 #' @param test Matrix containing test dataset (numeric matrix).
 #' @param test_labels Matrix containing test labels (integer row).
-#' @param training A matrix containing the training set (the matrix of predictors, X)
-#'   (numeric matrix).
-#' @param verbose Display informational messages and the full list of parameters and
-#'   timers at the end of execution.  Default value "FALSE" (logical).
+#' @param training A matrix containing the training set (the matrix of
+#'   predictors, X) (numeric matrix).
+#' @param verbose Display informational messages and the full list of
+#'   parameters and timers at the end of execution.  Default value "FALSE"
+#'   (logical).
 #'
 #' @return A list with several components:
 #' \item{output_model}{File to save trained softmax regression model to
 #'   (SoftmaxRegression).}
-#' \item{predictions}{Matrix to save predictions for test dataset into (integer
-#'   row).}
+#' \item{predictions}{Matrix to save predictions for test dataset into
+#'   (integer row).}
 #'
 #' @details
 #' This program performs softmax regression, a generalization of logistic

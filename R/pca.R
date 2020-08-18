@@ -7,17 +7,19 @@
 #' linear transformation determined by PCA.
 #'
 #' @param input Input dataset to perform PCA on (numeric matrix).
-#' @param decomposition_method Method used for the principal components analysis:
-#'   'exact', 'randomized', 'randomized-block-krylov', 'quic'.  Default value
-#'   "exact" (character).
-#' @param new_dimensionality Desired dimensionality of output dataset. If 0, no
-#'   dimensionality reduction is performed.  Default value "0" (integer).
-#' @param scale If set, the data will be scaled before running PCA, such that the
-#'   variance of each feature is 1.  Default value "FALSE" (logical).
-#' @param var_to_retain Amount of variance to retain; should be between 0 and 1.  If
-#'   1, all variance is retained.  Overrides -d.  Default value "0" (numeric).
-#' @param verbose Display informational messages and the full list of parameters and
-#'   timers at the end of execution.  Default value "FALSE" (logical).
+#' @param decomposition_method Method used for the principal components
+#'   analysis: 'exact', 'randomized', 'randomized-block-krylov', 'quic'. 
+#'   Default value "exact" (character).
+#' @param new_dimensionality Desired dimensionality of output dataset. If
+#'   0, no dimensionality reduction is performed.  Default value "0" (integer).
+#' @param scale If set, the data will be scaled before running PCA, such
+#'   that the variance of each feature is 1.  Default value "FALSE" (logical).
+#' @param var_to_retain Amount of variance to retain; should be between 0
+#'   and 1.  If 1, all variance is retained.  Overrides -d.  Default value "0"
+#'   (numeric).
+#' @param verbose Display informational messages and the full list of
+#'   parameters and timers at the end of execution.  Default value "FALSE"
+#'   (logical).
 #'
 #' @return A list with several components:
 #' \item{output}{Matrix to save modified dataset to (numeric matrix).}

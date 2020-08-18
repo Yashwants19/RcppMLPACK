@@ -7,20 +7,23 @@
 #' on new points.
 #'
 #' @param input_model Input perceptron model (PerceptronModel).
-#' @param labels A matrix containing labels for the training set (integer row).
-#' @param max_iterations The maximum number of iterations the perceptron is to be ru.
-#'    Default value "1000" (integer).
+#' @param labels A matrix containing labels for the training set (integer
+#'   row).
+#' @param max_iterations The maximum number of iterations the perceptron is
+#'   to be ru.  Default value "1000" (integer).
 #' @param test A matrix containing the test set (numeric matrix).
 #' @param training A matrix containing the training set (numeric matrix).
-#' @param verbose Display informational messages and the full list of parameters and
-#'   timers at the end of execution.  Default value "FALSE" (logical).
+#' @param verbose Display informational messages and the full list of
+#'   parameters and timers at the end of execution.  Default value "FALSE"
+#'   (logical).
 #'
 #' @return A list with several components:
-#' \item{output}{The matrix in which the predicted labels for the test set will be
-#'   written (integer row).}
-#' \item{output_model}{Output for trained perceptron model (PerceptronModel).}
-#' \item{predictions}{The matrix in which the predicted labels for the test set will
-#'   be written (integer row).}
+#' \item{output}{The matrix in which the predicted labels for the test set
+#'   will be written (integer row).}
+#' \item{output_model}{Output for trained perceptron model
+#'   (PerceptronModel).}
+#' \item{predictions}{The matrix in which the predicted labels for the test
+#'   set will be written (integer row).}
 #'
 #' @details
 #' This program implements a perceptron, which is a single level neural network.

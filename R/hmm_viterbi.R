@@ -8,11 +8,13 @@
 #'
 #' @param input Matrix containing observations (numeric matrix).
 #' @param input_model Trained HMM to use (HMMModel).
-#' @param verbose Display informational messages and the full list of parameters and
-#'   timers at the end of execution.  Default value "FALSE" (logical).
+#' @param verbose Display informational messages and the full list of
+#'   parameters and timers at the end of execution.  Default value "FALSE"
+#'   (logical).
 #'
 #' @return A list with several components:
-#' \item{output}{File to save predicted state sequence to (integer matrix).}
+#' \item{output}{File to save predicted state sequence to (integer
+#'   matrix).}
 #'
 #' @details
 #' This utility takes an already-trained HMM, specified as "input_model", and

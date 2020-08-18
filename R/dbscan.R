@@ -5,23 +5,27 @@
 #' and return a clustering of that dataset.
 #'
 #' @param input Input dataset to cluster (numeric matrix).
-#' @param epsilon Radius of each range search.  Default value "1" (numeric).
-#' @param min_size Minimum number of points for a cluster.  Default value "5"
-#'   (integer).
-#' @param naive If set, brute-force range search (not tree-based) will be used. 
-#'   Default value "FALSE" (logical).
-#' @param selection_type If using point selection policy, the type of selection to
-#'   use ('ordered', 'random').  Default value "ordered" (character).
-#' @param single_mode If set, single-tree range search (not dual-tree) will be used. 
-#'   Default value "FALSE" (logical).
-#' @param tree_type If using single-tree or dual-tree search, the type of tree to use
-#'   ('kd', 'r', 'r-star', 'x', 'hilbert-r', 'r-plus', 'r-plus-plus', 'cover',
-#'   'ball').  Default value "kd" (character).
-#' @param verbose Display informational messages and the full list of parameters and
-#'   timers at the end of execution.  Default value "FALSE" (logical).
+#' @param epsilon Radius of each range search.  Default value "1"
+#'   (numeric).
+#' @param min_size Minimum number of points for a cluster.  Default value
+#'   "5" (integer).
+#' @param naive If set, brute-force range search (not tree-based) will be
+#'   used.  Default value "FALSE" (logical).
+#' @param selection_type If using point selection policy, the type of
+#'   selection to use ('ordered', 'random').  Default value "ordered"
+#'   (character).
+#' @param single_mode If set, single-tree range search (not dual-tree) will
+#'   be used.  Default value "FALSE" (logical).
+#' @param tree_type If using single-tree or dual-tree search, the type of
+#'   tree to use ('kd', 'r', 'r-star', 'x', 'hilbert-r', 'r-plus',
+#'   'r-plus-plus', 'cover', 'ball').  Default value "kd" (character).
+#' @param verbose Display informational messages and the full list of
+#'   parameters and timers at the end of execution.  Default value "FALSE"
+#'   (logical).
 #'
 #' @return A list with several components:
-#' \item{assignments}{Output matrix for assignments of each point (integer row).}
+#' \item{assignments}{Output matrix for assignments of each point (integer
+#'   row).}
 #' \item{centroids}{Matrix to save output centroids to (numeric matrix).}
 #'
 #' @details

@@ -6,41 +6,47 @@
 #' can find the k furthest neighbors in the reference set of each query point
 #' using trees; trees that are built can be saved for future use.
 #'
-#' @param algorithm Type of neighbor search: 'naive', 'single_tree', 'dual_tree',
-#'   'greedy'.  Default value "dual_tree" (character).
-#' @param epsilon If specified, will do approximate furthest neighbor search with
-#'   given relative error. Must be in the range [0,1).  Default value "0"
-#'   (numeric).
+#' @param algorithm Type of neighbor search: 'naive', 'single_tree',
+#'   'dual_tree', 'greedy'.  Default value "dual_tree" (character).
+#' @param epsilon If specified, will do approximate furthest neighbor
+#'   search with given relative error. Must be in the range [0,1).  Default
+#'   value "0" (numeric).
 #' @param input_model Pre-trained kFN model (KFNModel).
-#' @param k Number of furthest neighbors to find.  Default value "0" (integer).
-#' @param leaf_size Leaf size for tree building (used for kd-trees, vp trees, random
-#'   projection trees, UB trees, R trees, R* trees, X trees, Hilbert R trees, R+
-#'   trees, R++ trees, and octrees).  Default value "20" (integer).
-#' @param percentage If specified, will do approximate furthest neighbor search. Must
-#'   be in the range (0,1] (decimal form). Resultant neighbors will be at least
-#'   (p*100) % of the distance as the true furthest neighbor.  Default value "1"
-#'   (numeric).
-#' @param query Matrix containing query points (optional) (numeric matrix).
+#' @param k Number of furthest neighbors to find.  Default value "0"
+#'   (integer).
+#' @param leaf_size Leaf size for tree building (used for kd-trees, vp
+#'   trees, random projection trees, UB trees, R trees, R* trees, X trees,
+#'   Hilbert R trees, R+ trees, R++ trees, and octrees).  Default value "20"
+#'   (integer).
+#' @param percentage If specified, will do approximate furthest neighbor
+#'   search. Must be in the range (0,1] (decimal form). Resultant neighbors will
+#'   be at least (p*100) % of the distance as the true furthest neighbor. 
+#'   Default value "1" (numeric).
+#' @param query Matrix containing query points (optional) (numeric
+#'   matrix).
 #' @param random_basis Before tree-building, project the data onto a random
 #'   orthogonal basis.  Default value "FALSE" (logical).
-#' @param reference Matrix containing the reference dataset (numeric matrix).
-#' @param seed Random seed (if 0, std::time(NULL) is used).  Default value "0"
-#'   (integer).
-#' @param tree_type Type of tree to use: 'kd', 'vp', 'rp', 'max-rp', 'ub', 'cover',
-#'   'r', 'r-star', 'x', 'ball', 'hilbert-r', 'r-plus', 'r-plus-plus', 'oct'. 
-#'   Default value "kd" (character).
-#' @param true_distances Matrix of true distances to compute the effective error
-#'   (average relative error) (it is printed when -v is specified) (numeric
+#' @param reference Matrix containing the reference dataset (numeric
 #'   matrix).
-#' @param true_neighbors Matrix of true neighbors to compute the recall (it is
-#'   printed when -v is specified) (integer matrix).
-#' @param verbose Display informational messages and the full list of parameters and
-#'   timers at the end of execution.  Default value "FALSE" (logical).
+#' @param seed Random seed (if 0, std::time(NULL) is used).  Default value
+#'   "0" (integer).
+#' @param tree_type Type of tree to use: 'kd', 'vp', 'rp', 'max-rp', 'ub',
+#'   'cover', 'r', 'r-star', 'x', 'ball', 'hilbert-r', 'r-plus', 'r-plus-plus',
+#'   'oct'.  Default value "kd" (character).
+#' @param true_distances Matrix of true distances to compute the effective
+#'   error (average relative error) (it is printed when -v is specified)
+#'   (numeric matrix).
+#' @param true_neighbors Matrix of true neighbors to compute the recall (it
+#'   is printed when -v is specified) (integer matrix).
+#' @param verbose Display informational messages and the full list of
+#'   parameters and timers at the end of execution.  Default value "FALSE"
+#'   (logical).
 #'
 #' @return A list with several components:
 #' \item{distances}{Matrix to output distances into (numeric matrix).}
 #' \item{neighbors}{Matrix to output neighbors into (integer matrix).}
-#' \item{output_model}{If specified, the kFN model will be output here (KFNModel).}
+#' \item{output_model}{If specified, the kFN model will be output here
+#'   (KFNModel).}
 #'
 #' @details
 #' This program will calculate the k-furthest-neighbors of a set of points. You

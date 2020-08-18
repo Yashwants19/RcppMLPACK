@@ -14,14 +14,13 @@
 #ifndef MLPACK_CORE_UTILITIES_TIMERS_HPP
 #define MLPACK_CORE_UTILITIES_TIMERS_HPP
 
-#include <atomic>
-#include <chrono> // chrono library for cross platform timer calculation.
-#include <iomanip>
-#include <list>
 #include <map>
-#include <mutex>
 #include <string>
+#include <chrono> // chrono library for cross platform timer calculation.
 #include <thread> // std::thread is used for thread safety.
+#include <mutex>
+#include <list>
+#include <atomic>
 
 #if defined(_WIN32)
   // uint64_t isn't defined on every windows.
@@ -29,9 +28,9 @@
     #if SIZEOF_UNSIGNED_LONG == 8
       typedef unsigned long uint64_t;
     #else
-      typedef unsigned long long uint64_t;
-    #endif // SIZEOF_UNSIGNED_LONG
-  #endif // HAVE_UINT64_T
+      typedef unsigned long long  uint64_t;
+    #endif  // SIZEOF_UNSIGNED_LONG
+  #endif  // HAVE_UINT64_T
 #endif
 
 namespace mlpack {
@@ -99,7 +98,7 @@ class Timers
 {
  public:
   //! Default to disabled.
-  Timers() : enabled(false) {  }
+  Timers() : enabled(false) { }
 
   /**
    * Returns a copy of all the timers used via this interface.

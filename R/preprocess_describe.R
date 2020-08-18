@@ -5,19 +5,20 @@
 #' number of details about a dataset in a tabular format.
 #'
 #' @param input Matrix containing data (numeric matrix).
-#' @param dimension Dimension of the data. Use this to specify a dimensio.  Default
-#'   value "0" (integer).
-#' @param population If specified, the program will calculate statistics assuming the
-#'   dataset is the population. By default, the program will assume the dataset
-#'   as a sample.  Default value "FALSE" (logical).
+#' @param dimension Dimension of the data. Use this to specify a dimensio. 
+#'   Default value "0" (integer).
+#' @param population If specified, the program will calculate statistics
+#'   assuming the dataset is the population. By default, the program will assume
+#'   the dataset as a sample.  Default value "FALSE" (logical).
 #' @param precision Precision of the output statistics.  Default value "4"
 #'   (integer).
-#' @param row_major If specified, the program will calculate statistics across rows,
-#'   not across columns.  (Remember that in mlpack, a column represents a point,
-#'   so this option is generally not necessary..  Default value "FALSE"
+#' @param row_major If specified, the program will calculate statistics
+#'   across rows, not across columns.  (Remember that in mlpack, a column
+#'   represents a point, so this option is generally not necessary..  Default
+#'   value "FALSE" (logical).
+#' @param verbose Display informational messages and the full list of
+#'   parameters and timers at the end of execution.  Default value "FALSE"
 #'   (logical).
-#' @param verbose Display informational messages and the full list of parameters and
-#'   timers at the end of execution.  Default value "FALSE" (logical).
 #' @param width Width of the output table.  Default value "8" (integer).
 #'
 #' @return A list with several components:

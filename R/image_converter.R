@@ -6,20 +6,23 @@
 #' image dataset into individual files, for instance after mlpack methods have
 #' been used.
 #'
-#' @param input Image filenames which have to be loaded/saved (character vector).
-#' @param channels Number of channels in the image.  Default value "0" (integer).
+#' @param input Image filenames which have to be loaded/saved (character
+#'   vector).
+#' @param channels Number of channels in the image.  Default value "0"
+#'   (integer).
 #' @param dataset Input matrix to save as images (numeric matrix).
 #' @param height Height of the images.  Default value "0" (integer).
-#' @param quality Compression of the image if saved as jpg (0-100).  Default value
-#'   "90" (integer).
+#' @param quality Compression of the image if saved as jpg (0-100). 
+#'   Default value "90" (integer).
 #' @param save Save a dataset as images.  Default value "FALSE" (logical).
-#' @param verbose Display informational messages and the full list of parameters and
-#'   timers at the end of execution.  Default value "FALSE" (logical).
+#' @param verbose Display informational messages and the full list of
+#'   parameters and timers at the end of execution.  Default value "FALSE"
+#'   (logical).
 #' @param width Width of the image.  Default value "0" (integer).
 #'
 #' @return A list with several components:
-#' \item{output}{Matrix to save images data to, Onlyneeded if you are specifying
-#'   'save' option (numeric matrix).}
+#' \item{output}{Matrix to save images data to, Onlyneeded if you are
+#'   specifying 'save' option (numeric matrix).}
 #'
 #' @details
 #' This utility takes an image or an array of images and loads them to a matrix.
